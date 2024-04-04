@@ -1,0 +1,17 @@
+{
+  "getting-started": {
+    "type": "separator",
+    "title": "Getting Started"
+  },
+  "introduction": "Introducción",
+  "carreras": {
+    "type": "separator",
+    "title": "Carreras"
+  },
+  "web-programming": {
+    "title": "Programación Web"
+  },
+  "cybersecurity": {
+    "title": "Ciberseguridad"
+  }
+}
