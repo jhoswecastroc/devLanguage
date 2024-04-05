@@ -1,6 +1,36 @@
 {
   "docs": {
-    "title": "docs",
+    "title": "Docs",
     "type": "page"
+  },
+  "web": {
+    "title": "Mi Web",
+    "type": "page",
+    "href": "https://jhocode.dev/",
+    "newWindow": true
+  },
+  "programming": {
+    "title": "Programación",
+    "type": "menu",
+    "items": {
+      "javascript": {
+        "title": "Curso de JavaScript",
+        "href": "/html"
+      }
+    }
+  },
+  "cybersecurity": {
+    "title": "Ciberseguridad",
+    "type": "menu",
+    "items": {
+      "html": {
+        "title": "Curso de HTML",
+        "href": "/html"
+      },
+      "css": {
+        "title": "Curso de CSS",
+        "href": "/html"
+      }
+    }
   }
 }

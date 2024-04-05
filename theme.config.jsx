@@ -1,7 +1,22 @@
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  logo: <span>DevLanguage</span>,
+  useNextSeoProps() {
+    return {
+      titleTemplate: "%s - DevLanguage",
+    };
+  },
+  logo: (
+    <span>
+      Dev<strong>Language</strong>
+    </span>
+  ),
   project: {
     link: "https://github.com/shuding/nextra",
   },
-  // ... other theme options
+  footer: {
+    text: "Copyright © 2024 Jhoswe Castro - DevLanguage",
+  },
+  chat: {
+    link: "#",
+  },
 };

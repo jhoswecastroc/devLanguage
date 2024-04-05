@@ -1,51 +1,218 @@
-# 🌟 Bienvenidos a DevLanguage 🌟
+import { Callout } from "nextra-theme-docs";
+import { Tabs, Steps } from "nextra/components";
+import { Cards, Card } from "nextra/components";
+import {useState} from "react";
 
-¡Hola a todos! Soy **Jhoswe Castro**, y me complace enormemente darles la bienvenida a este espacio de aprendizaje, donde juntos, vamos a embarcarnos en una aventura fascinante por el mundo de la programación y el desarrollo web. 🚀
+# Bienvenidos a DevLanguage
+
+¡Hola a todos! Soy **Jhoswe Castro**, fundador de DevLanguage, y me complace enormemente darles la bienvenida a este
+espacio de aprendizaje, donde juntos, vamos a embarcarnos en una aventura fascinante por el mundo de la programación, el
+desarrollo web y la Ciberseguridad. 🚀
 
 ![Bienvenida](https://images.pexels.com/photos/3796788/pexels-photo-3796788.jpeg)
 
-Vivo en el hermoso Cusco, Perú, y mi camino hacia la programación comenzó de una manera un tanto inusual. Después de dedicarme durante años al turismo, descubrí mi pasión por la tecnología y el desarrollo de software. Fue un viaje de autodescubrimiento, aprendizaje autodidacta, y superación de desafíos que ahora quiero compartir y facilitar para ustedes.
+## Comienza a Aprender
 
-Este curso es el resultado de mi viaje personal, repleto de lecciones aprendidas, tanto técnicas como vitales. Es un compendio de conocimientos adquiridos a lo largo de más de 5 años de experiencia en la industria, especializándome en tecnologías como HTML, CSS, JavaScript, Python , NodeJS, ExpressJS, MongoDB, MySQL, PostgreSQL, ReactJS, WordPress, y recientemente, Ciberseguridad.
-
-## 🌈 Lo Que Nos Diferencia de Otros Webs
-
-Cuando decidí emprender este proyecto de educación en programación y desarrollo web, tenía claro que quería ofrecer algo único, algo que realmente marcara una diferencia en la vida de los estudiantes. Aquí están algunas de las razones por las que nuestro curso destaca en un mar de opciones:
-
-### ✨ Experiencia Personal Como Brújula
-
-Mi viaje en el mundo del desarrollo web no comenzó en una aula tradicional. Empezó con una curiosidad insaciable y el desafío de aprender por mi cuenta. Este camino me enseñó no solo sobre programación, sino sobre la perseverancia, la curiosidad, y la importancia de la comunidad. En mi web, estos valores son fundamentales. No solo enseñare programación; compartiré un camino de descubrimiento personal y profesional.
-
-### 📚 Aprendizaje Integral y Práctico
-
-Desde Python hasta React, pasando por Ciberseguridad, nuestro currículo abarca una amplia gama de tecnologías que son cruciales en el mercado actual. Pero lo que realmente nos diferencia es cómo estos conocimientos se integran en un aprendizaje práctico y aplicable. No nos limitamos a enseñar teoría; cada lección está diseñada para que puedas aplicar lo aprendido en proyectos reales.
-
-### 🌟 Comunidad y Soporte
-
-Sabemos que el aprendizaje es un viaje que se disfruta más en buena compañía. Por eso, quiero crear una comunidad el cual sea el pilar de esta web. A través de plataformas como Discord y sesiones y reuniones, podremos resolver dudas, compartir logros, y aprender de los desafíos y soluciones de todos. Este entorno de soporte mutuo es invaluable y algo que raramente se encuentra en cursos en línea.
-
-### 💡 Metodología Dinámica y Actualizada
-
-El campo de la tecnología está en constante evolución, y nuestro curso evoluciona con él. Nos mantenemos al día con las últimas tendencias y actualizaciones, asegurando que lo que aprendes no solo es relevante hoy, sino que también te prepara para los cambios del mañana.
-
-### 🎓 Acceso a Recursos Exclusivos
-
-Al unirte a nuestro curso, obtienes acceso no solo a las lecciones y la comunidad, sino también a recursos exclusivos diseñados para enriquecer tu aprendizaje. Esto incluye tutoriales especiales, descuentos en herramientas de desarrollo, y mucho más.
-
-### ❤️ Pasión por Enseñar
-
-Finalmente, lo que realmente nos diferencia es mi pasión por enseñar. Cada lección, cada proyecto, cada interacción está impregnada de mi deseo de ayudarte a alcanzar tus metas. Creo firmemente en el poder transformador de la educación y estoy aquí para apoyarte en cada paso del camino.
+### Párrafo
 
 ---
 
-### 🤝 Ayúdame a Seguir Creando Contenido
+Cursiva:
+_hola_
 
-Si encuentran valor en lo que hago aquí, te invito a compartirlo y a sumarse a nuestra comunidad. Juntos, podemos hacer que este espacio sea aún más rico y enriquecedor para todos.
+Cursiva:
+_hola_
 
-- 📺 **Suscríbete** a nuestro canal de [YouTube](https://www.youtube.com/@jhoswecastro) para no perderte ninguna actualización.
-- 💬 **Participa** en nuestro [Discord](https://discord.gg/rR78NFHCh9) para resolver dudas y ayudar a otros programadores.
-- 🎓 **Visita** mi [Portafolio](https://jhocode.dev/), si quieres saber un poco mas de mi.
+Negrita:
+**Hola**
 
-Recuerden, cada like, comentario, y nueva suscripción nos ayuda a seguir adelante. 😊
+Cursiva y Negrita: **_Hola_**
 
-¡Estoy emocionado de comenzar este viaje con ustedes! ¡Vamos a hacer de este aprendizaje una experiencia única!
+### Encabezados
+
+---
+
+# Encabezado1
+
+## Encabezado2
+
+### Encabezado3
+
+#### Encabezado4
+
+##### Encabezado5
+
+###### Encabezado6
+
+### Enlaces
+
+---
+
+[YouTube](https://youtube.com)
+[Enlace a un Texto](#)
+
+### Imágenes
+
+---
+
+![Enlace a un imagen](https://images.pexels.com/photos/3796788/pexels-photo-3796788.jpeg)
+
+### División
+
+---
+
+---
+
+---
+
+### Listas
+
+---
+
+1. primavera
+1. Verano
+1. Otoño
+1. Invierno
+
+- primavera
+- Verano
+- otoño
+- invierno
+
+* Otoño
+* Invierno
+- otoño
+- otro
+- invierno
+
+### Citas
+
+---
+
+> Siempre tienes otras opción
+
+> Siempre tienes otras opciónSiempre
+>
+> tienes otras opciónSiempre
+>
+> tienes otras opción
+
+### Código
+
+```
+import { React } from "react";
+
+export default function App() {
+return <h1>Hola Mundo</h1>;
+}
+```
+
+```js
+import { React } from "react";
+
+export default function App() {
+return <h1>Hola Mundo</h1>;
+}
+```
+
+```js filename="demo.js"
+import { React } from "react";
+
+export default function App() {
+return <h1>Hola Mundo</h1>;
+}
+```
+
+```js filename="demo.js" copy
+import { React } from "react";
+
+export default function App() {
+return <h1>Hola Mundo</h1>;
+}
+```
+
+```js filename="demo.js" copy {3}
+import { React } from "react";
+
+export default function App() {
+return <h1>Hola Mundo</h1>;
+}
+```
+
+### Components
+
+<Callout type="error">This is a component</Callout>
+<Callout type="default">This is a component</Callout>
+<Callout type="info">This is a component</Callout>
+<Callout type="warning">This is a component</Callout>
+
+<Callout type="string">This is a component</Callout>
+<Callout type="ReactNode">This is a component</Callout>
+<Callout emoji="" type="error">
+  This is a component
+</Callout>
+<Callout emoji="👾">
+  **Space Invaders** is a 1978 shoot 'em up arcade game developed by Tomohiro Nishikado.
+</Callout>
+
+### Tabs
+
+<Tabs items={["pnpm", "npm" , "yarn" ]}>
+  <Tabs.Tab>**pnpm**: Fast, disk space efficient package manager.</Tabs.Tab>
+  <Tabs.Tab>
+    **npm** is a package manager for the JavaScript programming language.
+  </Tabs.Tab>
+  <Tabs.Tab>**Yarn** is a software packaging system.</Tabs.Tab>
+</Tabs>
+
+<Tabs items={["pnpm", "npm" , "yarn" ]} defaultIndex="3">
+  <Tabs.Tab>**pnpm**: Fast, disk space efficient package manager.</Tabs.Tab>
+  <Tabs.Tab>**npm** is a package manager for th.</Tabs.Tab>
+  <Tabs.Tab>**Yarn** is a software packaging system.</Tabs.Tab>
+</Tabs>
+
+### Steps
+
+<Steps>
+
+  ### Step 1 Contents for step 1.
+
+  lorem ipsum
+
+  ### Step 2 Contents for step 2.
+
+</Steps>
+
+<Cards>
+  <Card icon={"👾 "} title=" Callout" href="/docs/guide/built-ins/callout" />
+  <Card icon={"🍔 "} title=" Tabs" href="/docs/guide/built-ins/tabs" />
+  <Card icon={"🥚 "} title=" Steps" href="/docs/guide/built-ins/steps" />
+</Cards>
+
+<section></section>
+<div></div>
+<h1 className="bg-slate-500 p-5">hola</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam eveniet recusandae id possimus ut
+  eaque earum, nihil suscipit vel quia atque? Pariatur eius exercitationem iusto provident rem! Officiis, veniam.</p>
+
+### Components
+
+
+
+export const Counter =() => {
+const [count, setCount] = useState(0);
+
+return(
+<div className="bg-slate-500">
+  <button onClick={()=> { setCount(count + 1) }}>
+    Clicked {count} times
+  </button>
+</div>
+);
+};
+
+<Counter />
+
+import Counters from '../../components/Counters';
+
+<Counters />
