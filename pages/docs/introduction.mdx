@@ -2,18 +2,133 @@ import { Callout } from "nextra-theme-docs";
 import { Tabs, Steps } from "nextra/components";
 import { Cards, Card } from "nextra/components";
 import {useState} from "react";
+import Image from "next/image";
+import Link from 'next/link';
+import { menuCoursesIntroDevWeb, menuCoursesProgramming, menuCoursesReact, menuCoursesNode, menuCoursesDataBase} from
+"@/constants";
 
-# Bienvenidos a DevLanguage
 
-¡Hola a todos! Soy **Jhoswe Castro**, fundador de DevLanguage, y me complace enormemente darles la bienvenida a este
-espacio de aprendizaje, donde juntos, vamos a embarcarnos en una aventura fascinante por el mundo de la programación, el
-desarrollo web y la Ciberseguridad. 🚀
 
-![Bienvenida](https://images.pexels.com/photos/3796788/pexels-photo-3796788.jpeg)
+<div className="text-center mt-10">
 
-## Comienza a Aprender
+  <div className="flex justify-center">
+    <Image className="-mt-5" alt="Logotipo" src='/assets/logotipo.png' width={400} height={400} />
+  </div>
+
+  <div className="-mt-16">
+    # Bienvenidos a DevLanguage
+
+    ¡Hola a todos! Soy **Jhoswe Castro**, fundador de DevLanguage, y me complace enormemente darles la bienvenida a este
+    espacio de aprendizaje, donde juntos, vamos a embarcarnos en una aventura fascinante por el mundo de la
+    programación,
+    el
+    desarrollo web y la Ciberseguridad. 🚀
+  </div>
+
+  <div className="my-10">
+    <Cards className="!grid-cols-2 !grid-rows-2">
+      <Card className="flex justify-center border dark:hover:text-black " title="Empieza ahora →"
+        href="/docs/guide/built-ins/callout" />
+      <Card className="flex justify-center border duration-300 ease-in-out" title="Vamos a practicar →"
+        href="/docs/guide/built-ins/tabs" />
+    </Cards>
+  </div>
+
+  ## Comienza a Aprender
+
+  <h4 className="mt-10 mb-5 flex justify-start font-semibold">Introducción al Desarrollo Web</h4>
+
+  ---
+
+  <div>
+    <Cards className="!grid-cols-4">
+      {menuCoursesIntroDevWeb.map((item)=>{
+      return(
+      <div
+        className="border flex justify-center flex-col items-center hover:scale-105 hover:border-[#39b5ff] duration-300 ease-in-out relative m-5">
+        <Image className="p-5 pb-20" alt="Html" src={item.imgURL} width={150} height={150} />
+        <Link href={item.route}
+          className="border bottom-5 absolute w-[200px] p-1 -rotate-3 hover:border-[#39b5ff] bg-[#fff] text-[#000] hover:bg-[#39b5ff]  font-semibold">
+        {item.label}
+        </Link>
+      </div>
+      )
+      })}
+    </Cards>
+  </div>
+
+  <h4 className="my-5 flex justify-start font-semibold">Programación Web</h4>
+
+  ---
+
+  <div>
+    <Cards className="!grid-cols-4">
+      {menuCoursesProgramming.map((item)=>{
+      return(
+      <div
+        className="border flex justify-center flex-col items-center hover:scale-105 hover:border-[#39b5ff] duration-300 ease-in-out relative m-5">
+        <Image className="p-5 pb-20" alt="Html" src={item.imgURL} width={150} height={150} />
+        <Link href={item.route}
+          className="border bottom-5 absolute w-[200px] p-1 -rotate-3 hover:border-[#39b5ff] bg-[#000] text-[#fff] hover:bg-[#39b5ff]  font-semibold">
+        {item.label}
+        </Link>
+      </div>
+      )
+      })}
+    </Cards>
+  </div>
+
+  <h4 className="my-5 flex justify-start font-semibold">Backend con NodeJS</h4>
+
+  ---
+
+  <div>
+    <Cards className="!grid-cols-4">
+      {menuCoursesNode.map((item)=>{
+      return(
+      <div
+        className="border flex justify-center flex-col items-center hover:scale-105 hover:border-[#39b5ff] duration-300 ease-in-out relative m-5">
+        <Image className="p-5 pb-20" alt="Html" src={item.imgURL} width={150} height={150} />
+        <Link href={item.route}
+          className="border bottom-5 absolute w-[200px] p-1 -rotate-3 hover:border-[#39b5ff] bg-[#fff] text-[#000] hover:bg-[#39b5ff]  font-semibold">
+        {item.label}
+        </Link>
+      </div>
+      )
+      })}
+    </Cards>
+  </div>
+
+  <h4 className="my-5 flex justify-start font-semibold">Trabajando con Bases de Datos</h4>
+
+  ---
+
+  <div>
+    <Cards className="!grid-cols-4">
+      {menuCoursesDataBase.map((item)=>{
+      return(
+      <div
+        className="border flex justify-center flex-col items-center hover:scale-105 hover:border-[#39b5ff] duration-300 ease-in-out relative m-5">
+        <Image className="p-5 pb-20" alt="Html" src={item.imgURL} width={150} height={150} />
+        <Link href={item.route}
+          className="border bottom-5 absolute w-[200px] p-1 -rotate-3 hover:border-[#39b5ff] bg-[#000] text-[#fff] hover:bg-[#39b5ff]  font-semibold">
+        {item.label}
+        </Link>
+      </div>
+      )
+      })}
+    </Cards>
+  </div>
+
+  ## Comienza a Aprender
+
+
+</div>
+
+
 
 ### Párrafo
+
 
 ---
 
@@ -183,11 +298,7 @@ return <h1>Hola Mundo</h1>;
 
 </Steps>
 
-<Cards>
-  <Card icon={"👾 "} title=" Callout" href="/docs/guide/built-ins/callout" />
-  <Card icon={"🍔 "} title=" Tabs" href="/docs/guide/built-ins/tabs" />
-  <Card icon={"🥚 "} title=" Steps" href="/docs/guide/built-ins/steps" />
-</Cards>
+
 
 <section></section>
 <div></div>
@@ -197,22 +308,8 @@ return <h1>Hola Mundo</h1>;
 
 ### Components
 
-
-
-<!-- export const Counter =() => {
-const [count, setCount] = useState(0);
-
-return(
-<div className="bg-slate-500">
-  <button onClick={()=> { setCount(count + 1) }}>
-    Clicked {count} times
-  </button>
-</div>
-);
-};
-
-<Counter /> -->
-
 import Counters from '../../components/Counters';
 
 <Counters />
+
+<h1 className="font-semibold flex justify-center">Hola Mundo</h1>
