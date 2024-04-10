@@ -76,3 +76,21 @@ export const menuCoursesDataBase: MenuCourse[] = [
     label: "MongoDB",
   },
 ];
+
+export const menuCoursesCyberSecurity: MenuCourse[] = [
+  {
+    imgURL: "/assets/icons/mysql.svg",
+    route: "/docs/mysql/introduction",
+    label: "MySQL",
+  },
+  {
+    imgURL: "/assets/icons/postgresql.svg",
+    route: "/docs/postgresql/introduction",
+    label: "PostgreSQL",
+  },
+  {
+    imgURL: "/assets/icons/mongodb.svg",
+    route: "/docs/mongodb/introduction",
+    label: "MongoDB",
+  },
+];

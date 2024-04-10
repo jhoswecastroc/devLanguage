@@ -17,5 +17,8 @@
   "cybersecurity": {
     "type": "separator",
     "title": "Ciberseguridad"
+  },
+  "cybersecurityAnalytics": {
+    "title": "Curso de Ciberseguridad"
   }
 }

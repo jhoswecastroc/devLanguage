@@ -4,8 +4,16 @@ import { Cards, Card } from "nextra/components";
 import {useState} from "react";
 import Image from "next/image";
 import Link from 'next/link';
-import { menuCoursesIntroDevWeb, menuCoursesProgramming, menuCoursesReact, menuCoursesNode, menuCoursesDataBase} from
+import { menuCoursesIntroDevWeb, menuCoursesProgramming, menuCoursesReact, menuCoursesNode, menuCoursesDataBase,
+menuCoursesCyberSecurity} from
 "@/constants";
+import {
+Accordion,
+AccordionContent,
+AccordionItem,
+AccordionTrigger,
+} from "@/components/ui/accordion"
+
 
 
 
@@ -38,8 +46,6 @@ import { menuCoursesIntroDevWeb, menuCoursesProgramming, menuCoursesReact, menuC
 
   <h4 className="mt-10 mb-5 flex justify-start font-semibold">Introducción al Desarrollo Web</h4>
 
-  ---
-
   <div>
     <Cards className="!grid-cols-4">
       {menuCoursesIntroDevWeb.map((item)=>{
@@ -57,9 +63,9 @@ import { menuCoursesIntroDevWeb, menuCoursesProgramming, menuCoursesReact, menuC
     </Cards>
   </div>
 
-  <h4 className="my-5 flex justify-start font-semibold">Programación Web</h4>
-
   ---
+
+  <h4 className="my-5 flex justify-start font-semibold">Programación Web</h4>
 
   <div>
     <Cards className="!grid-cols-4">
@@ -78,9 +84,9 @@ import { menuCoursesIntroDevWeb, menuCoursesProgramming, menuCoursesReact, menuC
     </Cards>
   </div>
 
-  <h4 className="my-5 flex justify-start font-semibold">Backend con NodeJS</h4>
-
   ---
+
+  <h4 className="my-5 flex justify-start font-semibold">Backend con NodeJS</h4>
 
   <div>
     <Cards className="!grid-cols-4">
@@ -99,9 +105,9 @@ import { menuCoursesIntroDevWeb, menuCoursesProgramming, menuCoursesReact, menuC
     </Cards>
   </div>
 
-  <h4 className="my-5 flex justify-start font-semibold">Trabajando con Bases de Datos</h4>
-
   ---
+
+  <h4 className="my-5 flex justify-start font-semibold">Trabajando con Bases de Datos</h4>
 
   <div>
     <Cards className="!grid-cols-4">
@@ -120,8 +126,64 @@ import { menuCoursesIntroDevWeb, menuCoursesProgramming, menuCoursesReact, menuC
     </Cards>
   </div>
 
-  ## Comienza a Aprender
+  ---
 
+  <h4 className="my-5 flex justify-start font-semibold">Analista Junior en Ciberseguridad</h4>
+
+  <div>
+    <Cards className="!grid-cols-4">
+      {menuCoursesCyberSecurity.map((item)=>{
+      return(
+      <div
+        className="border flex justify-center flex-col items-center hover:scale-105 hover:border-[#39b5ff] duration-300 ease-in-out relative m-5">
+        <Image className="p-5 pb-20" alt="Html" src={item.imgURL} width={150} height={150} />
+        <Link href={item.route}
+          className="border bottom-5 absolute w-[200px] p-1 -rotate-3 hover:border-[#39b5ff] bg-[#fff] text-[#000] hover:bg-[#39b5ff]  font-semibold">
+        {item.label}
+        </Link>
+      </div>
+      )
+      })}
+    </Cards>
+  </div>
+
+  ---
+
+  ## FAQ
+
+  <p className="my-10">Las preguntas frecuentes de DevLanguage son una colección de preguntas y respuestas útiles sobre
+    el proyecto. Si
+    tiene una
+    pregunta que no se responde aquí, abra una discusión (se abre en una pestaña nueva).</p>
+
+  <div>
+    <Accordion type="single" collapsible>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>¿Es gratis?</AccordionTrigger>
+        <AccordionContent className="flex justify-start">
+          Si. Todos los cursos son gratuitos.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>¿Qué requisitos debo tener?</AccordionTrigger>
+        <AccordionContent className="flex justify-start text-start">
+          En cada curso se especifican los requisitos, como por ejemplo conocimientos previos, u otros requisitos
+          específicos, pero en general, solo necesitas una computadora, conexión a
+          internet, y ganas por aprender
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>¿Debo aprender todo lo que hay en los cursos?</AccordionTrigger>
+        <AccordionContent className="flex justify-start text-start">
+          Los cursos que muestro en esta web contiene todo lo necesario para trabajar como programador y analista de
+          Ciberseguridad. Pero es posible que no necesite todo lo que aparece en los cursos; Si recién esta empezando,
+          no te sientas abrumado al mirar estos
+          cursos.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+
+  </div>
 
 </div>
 
