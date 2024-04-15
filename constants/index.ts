@@ -1,25 +1,15 @@
 import { MenuCourse } from "@/types";
 
-export const menuCoursesIntroDevWeb: MenuCourse[] = [
+export const menuCoursesComputerScience: MenuCourse[] = [
   {
     imgURL: "/assets/icons/html.svg",
-    route: "/docs/html/introduction",
-    label: "Html",
+    route: "/docs/html",
+    label: "Curso de HTML",
   },
   {
-    imgURL: "/assets/icons/css.svg",
-    route: "/docs/css/introduction",
-    label: "Css",
-  },
-  {
-    imgURL: "/assets/icons/git.svg",
-    route: "/docs/git/introduction",
-    label: "Git y GitHub",
-  },
-  {
-    imgURL: "/assets/icons/tailwindcss.svg",
-    route: "/docs/tailwind/introduction",
-    label: "Tailwind",
+    imgURL: "/assets/icons/javascript.svg",
+    route: "/docs/javascript",
+    label: "Curso de JavaScript",
   },
 ];
 
@@ -78,6 +68,24 @@ export const menuCoursesDataBase: MenuCourse[] = [
 ];
 
 export const menuCoursesCyberSecurity: MenuCourse[] = [
+  {
+    imgURL: "/assets/icons/mysql.svg",
+    route: "/docs/mysql/introduction",
+    label: "MySQL",
+  },
+  {
+    imgURL: "/assets/icons/postgresql.svg",
+    route: "/docs/postgresql/introduction",
+    label: "PostgreSQL",
+  },
+  {
+    imgURL: "/assets/icons/mongodb.svg",
+    route: "/docs/mongodb/introduction",
+    label: "MongoDB",
+  },
+];
+
+export const menuCoursesComputerScience2: MenuCourse[] = [
   {
     imgURL: "/assets/icons/mysql.svg",
     route: "/docs/mysql/introduction",

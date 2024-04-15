@@ -1,7 +1,14 @@
 {
   "docs": {
     "title": "Docs",
-    "type": "page"
+    "type": "page",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false
+    }
   },
   "web": {
     "title": "Mi Web",
@@ -9,18 +16,18 @@
     "href": "https://jhocode.dev/",
     "newWindow": true
   },
-  "programming": {
-    "title": "Programación",
+  "computer-science": {
+    "title": "Introducción a la Informática",
     "type": "menu",
     "items": {
-      "javascript": {
-        "title": "Curso de JavaScript",
-        "href": "/html"
+      "C": {
+        "title": "Curso de C",
+        "href": "./c"
       }
     }
   },
-  "cybersecurity": {
-    "title": "Ciberseguridad",
+  "web-programming": {
+    "title": "Programación Web",
     "type": "menu",
     "items": {
       "html": {

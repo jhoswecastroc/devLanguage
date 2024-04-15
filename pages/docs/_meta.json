@@ -4,21 +4,30 @@
     "title": "Getting Started"
   },
   "introduction": "Introducción",
-  "programming": {
+  "computerScienceSeparator": {
     "type": "separator",
-    "title": "Programación"
+    "title": "Ciencias de la Computación"
   },
+  "requirementsCS": "Requisitos",
+  "introductionCS": "Introducción a la informática",
   "html": {
-    "title": "Curso de HTML"
+    "title": "Curso de HTML",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": true,
+      "toc": true,
+      "pagination": true
+    }
   },
   "javascript": {
-    "title": "Curso de JavaScript"
-  },
-  "cybersecurity": {
-    "type": "separator",
-    "title": "Ciberseguridad"
-  },
-  "cybersecurityAnalytics": {
-    "title": "Curso de Ciberseguridad"
+    "title": "Curso de JavaScript",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": true,
+      "toc": true,
+      "pagination": true
+    }
   }
 }
