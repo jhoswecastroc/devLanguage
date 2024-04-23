@@ -9,217 +9,218 @@ import { Callout } from "nextra-theme-docs";
     className="bg-gradient-to-b from-yellow-500/75 to-slate-50/100 flex justify-center items-center w-full h-full flex-col gap-2">
     <h1 className="text-black font-semibold text-[24px]">¿Qué es JavaScript?</h1>
     <h3 className="text-black">Lenguaje de programación de la web</h3>
-    <div className="border-t w-[90%] border-black "></div>
-    <div className="flex flex-col">
-      <button className="border px-20 py-2 bg-yellow-400">hola</button>
-      <button>hola</button>
-    </div>
+    <div className="border-t w-[75%] border-black "></div>
 
   </div>
 </div>
 
 <div className="text-start mt-10">
-  <div>
-    ¡Bienvenidos al fascinante mundo de la programación en C! Hoy es un día especial porque vamos a explorar uno de los
-    lenguajes de programación más influyentes y fundamentales en la historia de la computación. Aunque a primera vista,
-    el lenguaje C puede parecer críptico o inusual, especialmente para aquellos que están menos familiarizados con la
-    programación, quiero asegurarles que las ideas y conceptos que abordaremos tienen aplicaciones muy prácticas y son
-    esenciales para formar una base sólida en computación.
 
-    C fue diseñado con un enfoque en ofrecer a los programadores control y eficiencia; fue creado para ser tanto
-    poderoso en términos de acceso a recursos del sistema como eficiente en su ejecución. A lo largo de nuestra
-    exploración de C, no solo aprenderemos la sintaxis y las estructuras de este lenguaje, sino que también nos
-    enfocaremos en cómo podemos usarlo para resolver problemas de manera efectiva.
+¡Bienvenidos al fascinante mundo de JavaScript! Este lenguaje de programación no es solo una herramienta esencial para
+el desarrollo web, sino también una puerta de entrada a numerosas oportunidades en el vasto campo de la tecnología de
+la información. Si estás aquí, es porque estás listo para embarcarte en un viaje educativo que te permitirá no solo
+entender, sino también crear y manipular aplicaciones y programas utilizando JavaScript.
 
-    Nuestra jornada por C también nos permitirá agregar herramientas importantes a nuestro "kit de herramientas" de
-    programación, lo que nos ayudará a abordar problemas más complejos en el futuro. Además de aprender sobre variables,
-    funciones, condicionales y bucles, también abriremos una ventana hacia los aspectos del lenguaje que nos muestran
-    sus limitaciones, algo fundamental para entender cualquier herramienta.
+## ¿Qué es JavaScript?
 
-    Por lo tanto, preparemos nuestros entornos de desarrollo y abramos nuestras mentes a los desafíos que C nos
-    presentará. ¡Comencemos esta aventura asegurándonos de que, al final de nuestra sesión, el mundo de la programación
-    en C se vea un poco menos misterioso y mucho más emocionante!
-  </div>
+JavaScript, abreviado comúnmente como JS, es un lenguaje de programación dinámico que se utiliza para desarrollar
+elementos interactivos en sitios web. A diferencia de HTML que estructura el contenido y CSS que se ocupa del estilo,
+JavaScript introduce la interactividad, permitiendo a las páginas web responder a las acciones del usuario, actualizar
+contenido dinámicamente, animar imágenes, entre muchas otras cosas.
 
-  ## ¿Qué es C?
+Originalmente diseñado para "dar vida" a las páginas web, JavaScript ha evolucionado enormemente desde sus inicios.
+Hoy en día, es uno de los pilares de la web moderna, vital para la funcionalidad interactiva en prácticamente todos
+los sitios web que visitamos.
 
-  El lenguaje de programación C es un lenguaje de programación de alto nivel desarrollado inicialmente por Dennis
-  Ritchie entre 1969 y 1973 en los Laboratorios Bell. C es conocido por su eficiencia y flexibilidad, siendo utilizado
-  en una amplia variedad de aplicaciones, desde sistemas operativos hasta complejos programas de software. Es un
-  lenguaje estructurado que facilita el diseño de algoritmos y estructuras de datos complejas, ofreciendo un control
-  casi total sobre el sistema subyacente.
+<h4 className="font-medium mt-5">Ejemplo</h4>
 
-  ## Características Clave de C
+Consideremos un ejemplo sencillo para demostrar la potencia de JavaScript en comparación con solo usar HTML y CSS.
+Imaginemos que necesitamos listar números del 1 al 500 en una página web:
 
-  <ul className="mt-5">
-    <li>
-      <strong>Simplicidad Estructural:</strong> C proporciona construcciones que mapean de manera eficiente a típicas
-      instrucciones de máquinas. A pesar de ser un lenguaje de alto nivel, las estructuras de C y los tipos de
-      operadores son simples y comprenden fácilmente, lo que lo hace poderoso y eficiente para programar sistemas y
-      aplicaciones de memoria crítica.
-    </li>
-    <li>
-      <strong>Manipulación de Memoria de Bajo Nivel: </strong>
-      C ofrece recursos de manipulación de memoria directa a través de punteros, lo que permite operaciones en la
-      memoria que son cruciales para sistemas operativos y para aquellos programas que necesitan interactuar de cerca
-      con el hardware.
-    </li>
-    <li>
-      <strong>Portabilidad: </strong>Los programas escritos en C pueden ser fácilmente adaptados para ejecutarse en
-      diferentes tipos de máquinas. Esta portabilidad se debe a la estructura estándar del lenguaje y a su modelo de
-      compilación, que transforma el código fuente en código de máquina que ejecuta específicamente sobre la plataforma
-      destino.
-    </li>
-    <li>
-      <strong>Funciones y Estructuras de Control Robustas: </strong>C soporta estructuras de control de flujo como
-      if-else, switch, loops como for, while, y do-while, que ayudan a realizar tareas de iteración y decisión dentro
-      del código.
-    </li>
-    <li>
-      <strong>Eficiencia de Ejecución: </strong>Los programas escritos en C se compilan en código nativo que ayuda a
-      optimizar la ejecución, haciendo de C una opción preferida para el desarrollo de firmware y aplicaciones
-      computacionalmente intensivas.
-    </li>
-    <li>
-      <strong>Extensiva Biblioteca Estándar: </strong>C viene equipado con una amplia biblioteca estándar que incluye
-      funciones para operaciones de entrada/salida, manipulación de cadenas, matemáticas y más, lo que simplifica el
-      proceso de programación.
-    </li>
-    <li>
-      <strong>Flexibilidad para la Programación de Sistemas: </strong>C es ampliamente utilizado para el desarrollo de
-      sistemas debido a su proximidad con el hardware y su capacidad de ejecutar tareas de bajo nivel que otros
-      lenguajes de alto nivel no pueden realizar.
-    </li>
-  </ul>
+```html copy filename="HTML"
+<div id="numberList"></div>
+```
 
-  <Callout emoji="👀" type='info'>
-    El diseño de C, orientado hacia la minimalista y el control, lo ha mantenido relevante a lo largo de las décadas,
-    siendo fundamental en la creación de software moderno y sistemas operativos como Unix.
-  </Callout>
+Con HTML, tendríamos que escribir 500 líneas de código para listar cada número, lo cual sería extremadamente tedioso y
+ineficiente. Aquí es donde JavaScript brilla:
 
-  ## Historia y Evolución de C
+```js copy filename="JavaScript"
+const container = document.getElementById("numberList");
+for (let i = 1; (i = 500); i++) {
+  const paragraph = document.createElement("p");
+  paragraph.textContent = `Número: ${i}`;
+  container.appendChild(paragraph);
+}
+```
 
-  Imagina un viaje en el tiempo visual que nos lleva desde las salas llenas de enormes computadoras hasta los modernos
-  sistemas operativos y aplicaciones que hoy damos por sentados. En este viaje, el lenguaje de programación C ha sido
-  una constante, evolucionando y adaptándose, pero siempre manteniéndose relevante. Aquí tienes una exploración visual y
-  dinámica de cómo C se convirtió en uno de los lenguajes de programación más influyentes.
+En este simple ejemplo, JavaScript utiliza un bucle para generar automáticamente los números del 1 al 500,
+insertándolos en la página web como elementos de párrafo. Esto no solo ahorra tiempo y reduce el código necesario,
+sino que también hace que el proceso sea dinámico y fácilmente ajustable.
 
-  <Steps>
+## ¿Cómo Nos Comunicamos con las Computadoras?
 
-    ### Inicios: La Creación en los Laboratorios Bell (1969-1973)
+En nuestro entorno cotidiano, estamos rodeados de computadoras, desde los teléfonos inteligentes que llevamos en
+nuestros bolsillos hasta los electrodomésticos en nuestros hogares y oficinas. Todas estas máquinas, aunque variadas
+en función y forma, requieren un método de comunicación que permita a los usuarios interactuar efectivamente con
+ellas. Este método es proporcionado por los lenguajes de programación, siendo JavaScript uno de los más prominentes en
+el ámbito de la web.
 
-    El viaje de C comenzó en los laboratorios Bell, un hervidero de innovación. Dennis Ritchie y Ken Thompson, los
-    creadores de C, estaban trabajando en el desarrollo de sistemas operativos. C fue inicialmente diseñado para
-    reescribir el sistema operativo Unix, que originalmente estaba escrito en lenguaje ensamblador. La meta era crear un
-    lenguaje que ofreciera abstracciones de alto nivel sin perder la eficiencia de bajo nivel del ensamblador.
+### Lenguajes Naturales vs. Lenguajes de Máquina
 
-    ### La Década de 1970: El Nacimiento de Unix
+Los seres humanos se comunican utilizando lenguajes naturales, que son ricos en matices y a menudo ambiguos. Sin
+embargo, estas características no son compatibles con las computadoras, que requieren instrucciones precisas y sin
+ambigüedades para funcionar correctamente. Los lenguajes de programación sirven como un puente entre la ambigüedad de
+los lenguajes naturales y la precisión del lenguaje de máquina, el cual es completamente binario y comprendido
+directamente por el hardware de la computadora.
 
-    Durante los primeros años de la década de 1970, C y Unix estaban casi entrelazados. El uso de C para desarrollar
-    Unix fue una prueba de fuego que demostró su capacidad para programación de sistemas y aplicaciones. En 1973, la
-    mayoría del sistema operativo Unix estaba escrita en C, lo que significó un gran avance porque proporcionó
-    portabilidad y facilitó la distribución de Unix a diferentes tipos de hardware.
+### De Lenguaje de Máquina a Lenguajes de Alto Nivel
 
-    ### La Estandarización en los 80: ANSI C y ISO C
+En los albores de la computación, los programadores usaban lenguajes de máquina o ensamblador, que son extremadamente
+precisos pero difíciles para los humanos de escribir y entender debido a su complejidad y proximidad al hardware. Para
+superar estas dificultades y hacer la programación más accesible, se desarrollaron lenguajes de alto nivel como
+JavaScript. Estos lenguajes abstraen muchos de los detalles técnicos del hardware, permitiendo a los programadores
+concentrarse más en resolver problemas lógicos y de diseño.
 
-    A medida que C ganaba popularidad, era evidente que se necesitaba una estandarización para asegurar que el código
-    fuente C pudiera ser portátil y eficiente en diferentes sistemas. En 1983, el Instituto Americano de Estándares
-    Nacionales (ANSI) formó un comité para estandarizar el lenguaje C, culminando en el lanzamiento del estándar ANSI C
-    en 1989. Posteriormente, la Organización Internacional para la Estandarización (ISO) adoptó este estándar en 1990,
-    lo que ayudó a consolidar aún más su uso a nivel mundial.
+### JavaScript: Un Puente entre Humanos y Máquinas
 
-    ### Los 90 y Más Allá: Influencia en Otros Lenguajes
+JavaScript, en particular, ha sido diseñado para ser tanto estructurado como flexible, lo que lo hace accesible para
+principiantes mientras ofrece potentes funcionalidades para programadores experimentados. Originalmente desarrollado
+para añadir interactividad a las páginas web, JavaScript permite a los programadores escribir scripts que el navegador
+interpreta y ejecuta, permitiendo desde simples validaciones de formulario hasta la gestión de complejas interacciones
+dinámicas y manipulación del contenido en tiempo real.
 
-    El impacto de C se extendió más allá de su propio uso directo. Inspiró y dio forma a muchos otros lenguajes de
-    programación, como C++, que se desarrolló como una extensión de C con orientación a objetos, y más tarde influencias
-    en Python, Java, y JavaScript. La sintaxis y las estructuras de control de C han dejado una huella indeleble en la
-    programación moderna.
+Por ejemplo, considere un formulario web que solicita al usuario su edad y verifica que sea mayor de 18 años para
+acceder a un sitio web específico. Este es un simple script de JavaScript que podría usarse:
 
-    ### C Hoy: Uso Continuado y Comunidades
+<h4 className="font-medium mt-5">Ejemplo</h4>
 
-    A pesar de la aparición de muchos otros lenguajes de programación, C sigue siendo fundamental en el desarrollo de
-    software moderno. Es esencial en la programación de sistemas, aplicaciones embebidas, sistemas operativos, y para el
-    desarrollo de otros lenguajes de software. La comunidad de C, tanto profesional como académica, sigue siendo robusta
-    y dinámica, con una vasta cantidad de recursos y bibliotecas disponibles.
+```js copy filename="JavaScript"
+document.getElementById("submit-button").addEventListener("click", function () {
+  var age = document.getElementById("age-input").value;
+  if (age >= 18) {
+    alert("Acceso concedido.");
+  } else {
+    alert("Debes ser mayor de 18 años para acceder a este sitio.");
+  }
+});
+```
 
-  </Steps>
+En este código, JavaScript interactúa directamente con los elementos HTML del formulario y proporciona retroalimentación inmediata al usuario. Este tipo de interacción es un ejemplo claro de cómo los lenguajes de programación como JavaScript permiten una comunicación efectiva entre los usuarios y las máquinas a través de interfaces comprensibles y accesibles.
 
-  ## ¿Por qué estudiar C?
+## Razones para Estudiar JavaScript
 
-  Estudiar C no es solo aprender un lenguaje de programación más; es comprender la base sobre la cual se construyen
-  muchos de los sistemas modernos y software que usamos hoy. C, con su proximidad al hardware y su sintaxis eficiente,
-  ofrece una perspectiva única que es crucial para cualquier persona que busque profundizar en la ciencia de la
-  computación. Veamos más de cerca las razones específicas para aprender C y cómo este conocimiento se aplica en la
-  informática.
+JavaScript se destaca como un lenguaje esencial en el panorama tecnológico actual, ofreciendo numerosas ventajas que justifican su estudio y adopción por programadores de todos los niveles. A continuación, exploramos varias razones convincentes por las cuales aprender JavaScript es una decisión acertada.
 
-  ### Fundamento para la Comprensión de informática
+1. **Ubicuidad en la Web:** JavaScript es, sin exagerar, el lenguaje de programación de la web. Casi todas las páginas web modernas utilizan JavaScript en alguna medida para animar interfaces, gestionar interacciones del usuario, y realizar operaciones complejas en el navegador. Aprender JavaScript te capacita para influir directamente en la vasta mayoría de los sitios web del mundo, permitiéndote modificar y mejorar la experiencia del usuario de forma significativa.
 
-  <ul className="mt-5">
-    <li>
-      <strong>Proximidad al Hardware: </strong>C proporciona un nivel de acceso al hardware que pocos lenguajes de alto
-      nivel ofrecen. Aprender C te enseña cómo funciona la memoria (a través de punteros), cómo se gestiona (mediante la
-      asignación y liberación manual de memoria), y cómo interactúa el software con el hardware. Este conocimiento es
-      esencial para cualquier persona interesada en áreas como el desarrollo de sistemas operativos, programación
-      embebida o la creación de compiladores.
-    </li>
-    <li>
-      <strong>Eficiencia y Control: </strong> C permite un control detallado sobre los recursos del sistema, lo que es
-      crucial para desarrollar aplicaciones donde el rendimiento y la eficiencia son importantes. Esto lo hace ideal
-      para sistemas embebidos, aplicaciones de tiempo real y plataformas donde los recursos son limitados.
-    </li>
-  </ul>
+2. **Versatilidad:** La evolución de tecnologías como Node.js para el backend, React Native para desarrollo de aplicaciones móviles, y Electron para aplicaciones de escritorio ha permitido que JavaScript trascienda su uso tradicional en el navegador. Ahora es posible utilizar JavaScript para desarrollar en una amplia variedad de plataformas, ampliando enormemente el alcance de tus proyectos y habilidades.
 
-  ### Base para Otros Lenguajes de Programación
+3. **Demanda del Mercado:** La demanda de desarrolladores de JavaScript continúa siendo alta. Dominar este lenguaje abre puertas a numerosas oportunidades de empleo en una gama diversa de industrias, desde startups innovadoras hasta grandes corporaciones tecnológicas. Las habilidades en JavaScript son esenciales para cualquiera que desee participar en el desarrollo web moderno o tecnologías de aplicaciones móviles.
 
-  <ul className="mt-5">
-    <li>
-      <strong>Influencia en Lenguajes Modernos: </strong>Muchos lenguajes de programación modernos como C++, Java, y
-      incluso Python, están influenciados por C en términos de sintaxis y estructuras fundamentales. Comprender C
-      facilita el aprendizaje de estos lenguajes y mejora la habilidad para adaptarse a nuevos lenguajes de programación
-      con facilidad.
-    </li>
-    <li>
-      <strong>Comprensión Profunda de la Programación: </strong>C requiere que el programador maneje explícitamente
-      muchos detalles que otros lenguajes manejan automáticamente. Esta gestión manual ofrece una comprensión más
-      profunda de cómo funcionan los lenguajes de programación y cómo se ejecutan los programas, lo que es crucial para
-      la depuración, la optimización y la escritura de código eficiente.
-    </li>
-  </ul>
+4. **Comunidad y Ecosistema:** JavaScript cuenta con una de las comunidades de programadores más grandes y activas del mundo. Esto se traduce en una abundancia de recursos, bibliotecas, y frameworks que facilitan tanto el aprendizaje como el desarrollo de proyectos. Además, encontrarás fácilmente soporte y colaboración para resolver problemas o para impulsar innovaciones.
 
-  ### Aplicaciones Prácticas y Resolución de Problemas
+5. **Innovación Continua:** Aunque JavaScript es un lenguaje maduro, sigue evolucionando y adaptándose a las nuevas necesidades tecnológicas. La estandarización a través de ECMAScript asegura que nuevas características se añadan regularmente, permitiendo que el lenguaje crezca y se mantenga relevante frente a las cambiantes demandas de la industria.
 
-  <ul className="mt-5">
-    <li>
-      <strong>Desarrollo de Software Crítico: </strong>Desde sistemas operativos hasta sistemas embebidos en
-      dispositivos médicos y automotrices, C sigue siendo una opción predominante debido a su estabilidad, velocidad y
-      cercanía al hardware. Aprender C te habilita para trabajar en proyectos donde estos factores son críticos.
-    </li>
-    <li>
-      <strong>Mejora de la Habilidad de Resolución de Problemas: </strong>C promueve un enfoque disciplinado para la
-      programación que requiere pensar en términos de gestión de recursos, optimización y eficiencia, habilidades
-      esenciales para cualquier científico de la computación.
-    </li>
-  </ul>
+6. **Facilidad de Aprendizaje:** JavaScript es conocido por su sintaxis accesible y la capacidad de producir resultados inmediatos en un navegador web, lo que permite a los principiantes comenzar a experimentar y construir proyectos rápidamente. Esta inmediatez es gratificante y fomenta la continuación del aprendizaje, haciendo de JavaScript una excelente opción como primer lenguaje de programación.
 
-  ### Cómo nos Servirá en la Ciencia de la Computación
+<h4 className="font-medium mt-5">Ejemplo</h4>
 
-  <ul className="mt-5">
-    <li>
-      <strong>Herramientas para el Kit de Herramientas de Programación: </strong>C nos da las herramientas para
-      construir sistemas desde cero, entender y mejorar sistemas existentes, y desarrollar software que es tanto
-      eficiente como efectivo.
-    </li>
-    <li>
-      <strong>Comprensión Profunda de la Programación: </strong>El conocimiento de C es indispensable para campos
-      avanzados como la computación de bajo nivel, desarrollo de sistemas operativos, programación de hardware, y mucho
-      más.
-    </li>
-  </ul>
+Consideremos un ejemplo simple de JavaScript que demuestra su capacidad para interactuar con el usuario:
 
-  ## Comparación con Scratch
+```js copy filename="JavaScript"
+function greetUser() {
+  let userName = prompt("¿Cuál es tu nombre?");
+  alert(`¡Hola, ${userName}! Bienvenido a nuestro sitio web.`);
+}
+```
 
+## Características Clave de JavaScript
 
+JavaScript es un lenguaje de programación excepcionalmente poderoso y versátil, ampliamente reconocido por su capacidad para agregar interactividad a las páginas web. A lo largo de los años, ha evolucionado para incluir una serie de características que lo distinguen dentro del panorama del desarrollo de software.
 
+**Interpretado y Compilado Just-In-Time (JIT)**
 
+Una de las características fundamentales de JavaScript es que es un lenguaje interpretado. Esto significa que el código se ejecuta directamente sin la necesidad de un proceso de compilación previo, facilitando la iteración y el desarrollo rápidos. Sin embargo, para mejorar la eficiencia en tiempo de ejecución, muchos motores modernos de JavaScript implementan la compilación Just-In-Time (JIT), que compila el código JavaScript a bytecode casi al momento de su ejecución, optimizando así el rendimiento sin sacrificar la flexibilidad.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log("Calculando...");
+let resultado = 0;
+for (let i = 0; i < 1000000; i++) {
+  resultado += i;
+}
+console.log("Resultado: " + resultado);
+```
+
+Este script calcula la suma de números hasta un millón directamente en el navegador, demostrando cómo JavaScript maneja las tareas de manera dinámica y eficiente gracias al JIT.
+
+**Dinámico y de Tipado Débil**
+
+JavaScript permite la creación y modificación de objetos en tiempo de ejecución y no exige que las variables sean declaradas con un tipo específico, característica conocida como tipado dinámico. Además, su naturaleza de tipado débil significa que las operaciones entre diferentes tipos pueden ocurrir sin errores explícitos, lo que proporciona una gran flexibilidad pero también requiere una atención cuidadosa para evitar bugs sutiles.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let item = "Inicialmente una cadena";
+console.log(item); // Muestra: Inicialmente una cadena
+
+item = 100; // Reasignando a un número sin error
+console.log(item + 20); // Muestra: 120
+```
+
+**Orientación a Objetos (Basada en Prototipos)**
+
+A diferencia de lenguajes que utilizan clases para la programación orientada a objetos, JavaScript utiliza prototipos. Esta característica permite crear objetos que heredan propiedades y métodos de otros objetos sin la necesidad de definir clases de manera formal. Aunque ES6 introdujo la sintaxis de clases, esta es más una capa sintáctica sobre el modelo prototípico existente.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const vehiculo = {
+  arrancar: function () {
+    console.log("Arrancando el motor...");
+  },
+};
+
+const coche = Object.create(vehiculo);
+coche.arrancar(); // Ejecuta el método arrancar heredado de vehiculo
+```
+
+**Funciones de Primera Clase y Cierres (Closures)**
+
+Las funciones en JavaScript son consideradas ciudadanos de primera clase, lo que significa que pueden ser asignadas a variables, pasadas como argumentos, y retornadas por otras funciones. Esta flexibilidad es crucial para técnicas como la programación funcional. Además, JavaScript soporta cierres, permitiendo a una función acceder a variables del ámbito en el que fue creada, incluso después de que el ámbito externo haya terminado.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function crearSaludo(saludo) {
+  return function (nombre) {
+    console.log(saludo + ", " + nombre);
+  };
+}
+
+const saludoPersonal = crearSaludo("Hola");
+saludoPersonal("Marta"); // Muestra: Hola, Marta
+```
+
+En este ejemplo, crearSaludo retorna una función que recuerda el saludo especificado gracias a un cierre.
+
+**Asincronía y Manejo de Eventos**
+
+El modelo de concurrencia de JavaScript se basa en un bucle de eventos, facilitando la construcción de aplicaciones que manejan múltiples eventos y operaciones asíncronas sin bloquear el flujo principal del programa. Esto es esencial para desarrollar interfaces de usuario responsivas y realizar operaciones como solicitudes de red.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log("Primero");
+
+new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Segundo"), 1000);
+}).then(console.log);
+
+console.log("Tercero");
+```
+
+Este fragmento ilustra cómo JavaScript gestiona tareas asíncronas, imprimiendo "Primero", "Tercero" y, después de un segundo, "Segundo".
 
 </div>

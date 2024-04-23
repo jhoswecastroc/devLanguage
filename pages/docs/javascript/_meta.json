@@ -1,4 +1,9 @@
 {
   "requirements": "Requisitos",
-  "que-es-javascript": "¿Qué es JavaScript?"
+  "que-es-javascript": "¿Qué es JavaScript?",
+  "historia-javascript": "Historia de JavaScript",
+  "como-funciona-javascript": "¿Cómo funciona JavaScript?",
+  "entorno-desarrollo": "Entorno de Desarrollo",
+  "introduccion-programacion": "Introducción a la Programación",
+  "estructura-datos-basicas": "Estructura de Datos Básicas"
 }

@@ -1,0 +1,183 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Callout } from "nextra-theme-docs";
+
+<div className="text-center mt-10">
+  <div className="flex justify-center">
+    <Image className="mt-10 mb-10  animate-bounce" alt="Logotipo HTML" src='/assets/icons/html.svg' width={200}
+      height={200} />
+  </div>
+
+  # ¿Qué es HTML?
+
+</div>
+
+<div className="text-start mt-10">
+  <div>
+    HTML, o Lenguaje de Marcado de Hipertexto, es fundamental en el desarrollo de sitios web, actuando como el esqueleto
+    que estructura y organiza el contenido que vemos en Internet. HTML5, la versión más avanzada, enriquece este
+    lenguaje permitiendo una mejor integración de multimedia y aplicaciones interactivas, lo cual facilita la creación
+    de experiencias web más ricas y accesibles.
+  </div>
+
+  ## ¿Qué es HTML?
+
+  HTML es un lenguaje de marcado que instruye a los navegadores sobre cómo estructurar las páginas web. Utiliza
+  etiquetas para organizar y formatear elementos en la página, como textos, imágenes y formularios, de manera que los
+  navegadores puedan presentarlos de forma coherente y atractiva. Esta estructura no solo hace posible que los
+  navegadores interpreten y visualicen el contenido, sino que también ayuda a los desarrolladores a mantener y entender
+  el código de manera más eficaz.
+
+  Mediante el uso de etiquetas, HTML establece un marco de trabajo claro, donde cada elemento tiene su lugar específico
+  y función, facilitando así que los desarrolladores creen sitios web estructurados y los navegadores los desplieguen
+  adecuadamente. Esta organización es crucial para el desarrollo web, pues asegura que los sitios no solo se vean bien,
+  sino que también funcionen de manera fluida en diferentes dispositivos y navegadores.
+
+  <div className="flex justify-center my-5">
+    <Image src="/assets/img/html.png" alt="Imagen de Introducción" width={500} height={500} />
+  </div>
+
+  ### ¿Qué es un Elemento HTML?
+
+  Un elemento HTML es un componente clave en la estructura de una página web, consiste en una etiqueta de inicio,
+  el
+  contenido y una etiqueta de cierre. Estos elementos son los bloques constructivos que definen tanto el contenido
+  como
+  la estructura en un documento HTML. Cada elemento tiene un propósito específico y controla aspectos diferentes
+  del
+  contenido que se muestra en el navegador. Por ejemplo, algunos elementos son para encabezados, párrafos,
+  enlaces,
+  imágenes, listas, y muchos más.
+
+  <h4 className="font-medium mt-5">Ejemplo</h4>
+
+  Tomemos un ejemplo simple para ilustrar un elemento HTML. Un elemento común es el del encabezado, que se usa
+  para
+  definir los títulos en una página:
+
+  ```html filename="example.js" copy
+  <p>This is a paragraph</p>
+  ```
+
+  En este caso, ***\<p>*** es la etiqueta de inicio que indica el comienzo del elemento de párrafo, “This is a
+    paragraph”
+    es
+    el contenido del elemento, y ***\</p>*** es la etiqueta de cierre que marca el final del elemento. Este párrafo
+  aparecería en la página web como un texto.
+
+  <div className="flex justify-center my-5">
+    <Image src="/assets/img/elemento-html.png" alt="Elemento en HTML" width={750} height={750} />
+  </div>
+
+  Los elementos pueden también anidarse dentro de otros elementos para crear estructuras más complejas. Este
+  anidamiento
+  ayuda a organizar el contenido de manera lógica y puede mejorar tanto la legibilidad del código como la
+  experiencia
+  del usuario en la página web. Por ejemplo, podemos tener un encabezado dentro de una sección, y esa sección
+  dentro de
+  un cuerpo de documento:
+
+  ```html filename="example.js" copy
+  <div class="my-list">
+    <h4>My List:</h4>
+
+    <ul>
+      <li>Apple</li>
+      <li>Orange</li>
+      <li>Banana</li>
+    </ul>
+  </div>
+  ```
+
+  Este ejemplo muestra cómo los elementos se estructuran jerárquicamente para formar una página web coherente y
+  bien
+  organizada. Cada nivel de esta estructura debe ser correctamente indentado para reflejar la jerarquía y
+  facilitar la
+  lectura y el mantenimiento del código.
+
+  <div className="flex justify-center my-5">
+    <Image src="/assets/img/anidacion-elementos-HTML.png" alt="Anidación de Elementos en HTML" width={900}
+      height={900} />
+  </div>
+
+  ### ¿Qué es una Etiqueta HTML?
+
+  En el mundo del desarrollo web, las etiquetas HTML son fundamentales para estructurar y dar significado al contenido
+  de las páginas web. Una etiqueta HTML se compone de una etiqueta de apertura y una de cierre, que delimitan el
+  contenido que afectan. Estas etiquetas informan al navegador sobre cómo debe presentar el contenido incluido entre
+  ellas. Cada etiqueta tiene un propósito específico y sigue reglas definidas que determinan cómo se utiliza y qué
+  efectos tiene sobre el contenido del documento HTML.
+
+  <h4 className="font-medium mt-5">Ejemplo</h4>
+
+  Consideremos un ejemplo básico que utiliza etiquetas HTML para estructurar un documento:
+
+  ```html filename="example.js" copy
+  <p>En este párrafo, una <strong>palabra</strong> tiene mayor importancia.</p>
+  ```
+
+  En este fragmento, utilizamos la etiqueta ***`p`*** para definir un párrafo de texto. Dentro del párrafo, empleamos la
+  etiqueta ***`strong`*** para dar énfasis a una palabra específica, indicando que tiene una importancia mayor en el
+  contexto del texto. La etiqueta ***`strong`*** no solo afecta visualmente al texto, presentándolo en negrita, sino que
+  también tiene implicaciones semánticas que indican que el texto es de relevancia especial, lo cual es crucial
+  para la accesibilidad y los motores de búsqueda.
+
+  <Callout emoji="👀" type='warning'>
+    ***Nota***
+
+    ***Elementos Auto-cerrables***: Algunas etiquetas en HTML no requieren una etiqueta de cierre porque no contienen
+    otros elementos o texto; estos se
+    conocen como elementos auto-cerrables o vacíos. Estas etiquetas suelen incluir todos los datos necesarios en la
+    etiqueta de apertura.
+
+    ```html filename="example.js" copy
+    <img src="Logotipo.jpg" alt="Logo de Marca">
+    ```
+
+    Aquí, ***`img`*** es una etiqueta auto-cerrable que utiliza atributos para definir la fuente de la imagen (src) y un
+    texto
+    alternativo (alt) en caso de que la imagen no pueda ser mostrada.
+
+
+  </Callout>
+
+  ### ¿Qué es la Semántica en HTML?
+
+  La semántica en HTML se refiere al significado y la función de los elementos que se utilizan en un documento HTML, en
+  lugar de cómo se ven visualmente. El enfoque semántico ayuda a garantizar que el contenido del documento sea accesible
+  y comprensible tanto para las personas como para las máquinas, como los motores de búsqueda y las herramientas de
+  asistencia. Al usar HTML de manera semántica, nos aseguramos de que cada etiqueta utilizada transmita información
+  sobre el tipo de contenido que está encerrando, lo que facilita la interpretación correcta del mismo sin necesidad de
+  verlo.
+
+  <h4 className="font-medium mt-5">Ejemplo</h4>
+
+  Un ejemplo clásico de la evolución hacia una mayor semántica en HTML es la diferencia entre las etiquetas ***`b`*** y
+  ***`strong`***. Tradicionalmente, la etiqueta ***`b`*** se utilizaba simplemente para dar formato de negrita al texto,
+  sin
+  implicar importancia adicional:
+
+
+  ```html filename="example.js" copy
+  <p>Hola, quiero resaltar esta <b>palabra</b>.</p>
+  ```
+
+  Sin embargo, esto sólo afectaba a la presentación visual y no proporcionaba contexto sobre la importancia del texto.
+  HTML5 promueve una mejor práctica que consiste en utilizar la etiqueta ***`strong`*** cuando el texto tiene
+  importancia
+  especial o urgencia, lo cual es crucial para interpretaciones no visuales, como los lectores de pantalla:
+
+  ```html filename="example.js" copy
+  <p>Hola, quiero resaltar esta <strong>palabra</strong>.</p>
+  ```
+
+  En este último ejemplo, ***`strong`*** no solo aplica un estilo de negrita (que puede ser modificado por CSS) sino que
+  también indica que el texto es de importancia significativa. Este cambio ayuda a que los navegadores y asistentes de
+  accesibilidad puedan entender el énfasis y la importancia de partes específicas del contenido, mejorando la
+  accesibilidad y la indexación por motores de búsqueda.
+
+  La implementación de etiquetas semánticas en HTML es un paso hacia una web más accesible y comprensible para todos. Al
+  separar la presentación del contenido, facilitamos la personalización del estilo a través de CSS, permitiendo cambios
+  visuales sin alterar el significado estructural del contenido.
+
+</div>

@@ -1,5 +1,11 @@
 {
-  "requirements": "Requisitos",
-  "introduction": "Introducción a C",
-  "whatIs": "¿Qué es HTML?"
+  "intro": {
+    "type": "separator",
+    "title": "Introducción a HTML"
+  },
+  "que-es-html": "¿Qué es HTML?",
+  "estructura-etiqueta-html": "Estructura de etiqueta HTML",
+  "atributos-comunes-html": "Atributos comunes en HTML",
+  "estructura-documento-html": "Estructura del documento HTML",
+  "atributos-metadatos": "Atributos de metadatos e idioma"
 }

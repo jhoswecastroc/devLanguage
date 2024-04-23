@@ -1,0 +1,188 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Steps } from "nextra/components";
+import { Callout } from "nextra-theme-docs";
+
+<div className="text-center mt-10">
+  <div className="flex justify-center">
+    <Image className="mt-10 mb-10  animate-bounce" alt="Logotipo HTML" src='/assets/icons/html.svg' width={200}
+      height={200} />
+  </div>
+
+  # Atributos Comunes en HTML
+
+</div>
+
+<div className="text-start mt-10">
+  <div>
+    En el desarrollo de páginas web, los atributos juegan un papel crucial al añadir funcionalidades específicas a las
+    etiquetas HTML. Estos atributos pueden influir en cómo se comportan los elementos en la página, cómo se presentan
+    visualmente, y cómo interactúan entre sí. Si bien existen muchos atributos únicos diseñados para tareas específicas,
+    algunos atributos son especialmente comunes y pueden ser utilizados en una amplia variedad de etiquetas HTML.
+
+    Los atributos comunes en HTML incluyen id, class, y style, entre otros. Estos atributos son fundamentales porque
+    permiten a los desarrolladores identificar elementos específicos, agrupar elementos por características similares, y
+    aplicar estilos directamente a los elementos desde el HTML, respectivamente. A continuación, se describirán los tres
+    atributos mencionados, que son esenciales para la interacción entre HTML y CSS, y cómo cada uno influye en el
+    desarrollo y diseño de sitios web.
+
+    ## El Atributo id en HTML
+    El atributo id en HTML se utiliza para asignar un identificador único a un elemento dentro de un documento HTML.
+    Este atributo es fundamental cuando necesitamos referenciar o manipular un elemento específico con CSS o JavaScript.
+    Su valor debe ser único dentro del documento para evitar conflictos y garantizar que las referencias a este
+    identificador sean inequívocas.
+
+    ### Reglas para Definir un id
+    1. ***Unicidad:*** Cada id debe ser único en el documento. No se puede repetir el mismo id en dos elementos
+    diferentes, ya que esto puede causar problemas al intentar seleccionar o manipular el elemento mediante JavaScript o
+    CSS.
+
+    2. ***Formato del Nombre:***
+    - ***No iniciar con un número:*** Un id no debe comenzar con un número. Aunque técnicamente es posible en HTML5,
+    puede causar problemas en CSS y algunas interpretaciones de JavaScript.
+    - ***Kebab-case:*** Es recomendable utilizar kebab-case (letras minúsculas separadas por guiones) para los
+    identificadores. Por ejemplo, mi-seccion-principal.
+    - ***Evitar caracteres especiales:*** Se deben evitar caracteres especiales, acentuados o emojis para mantener la
+    compatibilidad y facilidad de uso en diferentes sistemas y tecnologías.
+
+    <h4 className="font-medium mt-5">Ejemplo</h4>
+
+    Veamos algunos ejemplos donde el uso del id es aplicado correctamente:
+
+    ```html filename="example.js" copy
+    <div id="contenido-principal">
+      <p>Aquí irá el texto principal del documento.</p>
+    </div>
+
+    <nav id="menu-navegacion">
+      <ul>
+        <li id="inicio">Inicio</li>
+        <li id="servicios">Servicios</li>
+        <li id="contacto">Contacto</li>
+      </ul>
+    </nav>
+
+    <footer id="pie-pagina">
+      Derechos reservados © 2024
+    </footer>
+    ```
+
+    En estos ejemplos, cada id se utiliza para identificar áreas únicas de la página que tienen una función específica.
+    El id contenido-principal podría ser utilizado para referenciar la sección principal de contenido, menu-navegacion
+    para el menú principal, y pie-pagina para el pie de página. Cada uno de estos id permite manipular o estilizar estas
+    secciones de manera independiente en CSS o acceder a ellas específicamente con JavaScript.
+
+    ### Consejos para el Uso de id
+    - ***Usar con Moderación:*** Debido a la necesidad de que sean únicos, los id deben usarse con moderación y solo
+    cuando es necesario distinguir un elemento de manera inequívoca. En casos donde múltiples elementos comparten
+    estilos o comportamientos, es mejor usar clases.
+    - ***Enlaces de Ancla:*** Los id también son muy útiles para crear enlaces de tipo ancla dentro de la misma página,
+    permitiendo crear enlaces que al hacer clic lleven al usuario a esa sección específica del documento.
+
+    La correcta utilización del atributo id mejora significativamente la estructura del código HTML y facilita la
+    interacción con CSS y JavaScript, proporcionando un medio eficaz para acceder y manipular elementos específicos del
+    DOM.
+
+    ## El Atributo class en HTML
+    El atributo class en HTML es uno de los más utilizados para asignar estilos CSS y manipular elementos a través de
+    JavaScript. A diferencia del atributo id, que es único para cada elemento, el atributo class puede ser utilizado en
+    múltiples elementos, permitiendo agruparlos bajo un mismo nombre de clase. Esta característica lo hace
+    extremadamente útil para aplicar estilos consistentes o comportamientos a grupos de elementos.
+
+    ### Flexibilidad de las Clases
+    Las clases ofrecen una gran flexibilidad y son fundamentales para la gestión eficiente de los estilos CSS y la
+    interactividad en las páginas web:
+
+    1. ***Reutilización:*** Puedes usar la misma clase en varios elementos dentro de un mismo documento HTML. Esto es
+    útil para aplicar un estilo uniforme o comportamientos específicos a todos los elementos que comparten esa clase.
+
+    ```html filename="example.js" copy
+    <div class="anuncio">Aquí irá un anuncio</div>
+    <div class="anuncio">Aquí irá otro anuncio</div>
+    ```
+
+    En este ejemplo, ambos div comparten la clase anuncio, lo que significa que cualquier estilo o script que se aplique
+    a esta clase afectará a ambos elementos.
+
+    2. ***Múltiples Clases:*** Un elemento puede tener varias clases al mismo tiempo, lo que permite una mayor
+    especificidad y control sobre el estilo y el comportamiento del elemento. Las clases se separan por espacios dentro
+    del mismo atributo class.Ejemplo:
+
+    ```html filename="example.js" copy
+    <div class="anuncio primero">Primer anuncio especial</div>
+    <div class="anuncio ultimo">Último anuncio especial</div>
+    ```
+
+    Aquí, primer anuncio especial y último anuncio especial reciben estilos tanto de la clase general anuncio como de
+    sus clases específicas primero y ultimo, respectivamente. Esto permite modificar atributos comunes a través de la
+    clase anuncio, mientras que se ajustan detalles específicos mediante primero y ultimo.
+
+    ### Consideraciones al Usar Clases
+
+    - ***Consistencia:*** Mantén una nomenclatura consistente y descriptiva para las clases para facilitar el
+    mantenimiento del código y mejorar la colaboración entre desarrolladores.
+    - ***Sobrecarga de Clases:*** Evita la sobrecarga de clases con demasiados estilos o comportamientos, lo que puede
+    hacer que el mantenimiento del código sea más complicado.
+    - ***Separación de Estilos:*** Utiliza clases en lugar de estilos en línea siempre que sea posible para mantener la
+    separación entre la estructura del documento y su presentación.
+
+    El uso adecuado del atributo class no solo mejora la legibilidad del código HTML, sino que también optimiza la
+    reutilización de estilos y comportamientos, haciendo que el desarrollo y mantenimiento de sitios web sea más
+    eficiente y escalable.
+
+
+    ## Estilos en Línea: El Atributo style
+    El atributo style en HTML permite incorporar estilos CSS directamente dentro de una etiqueta HTML. Aunque es una
+    técnica que puede ser útil en ciertas situaciones, generalmente es recomendable mantener los estilos separados del
+    HTML mediante el uso de hojas de estilo externas para una mejor organización y mantenimiento del código. Sin
+    embargo, los estilos en línea tienen su lugar, especialmente para prototipos rápidos, pruebas específicas de estilo
+    o situaciones donde la dinamicidad del estilo es necesaria y controlada por lógica en JavaScript.
+
+    ### Uso del Atributo style
+    - ***Cómo se Aplica:*** Para aplicar estilos CSS directamente a un elemento, se utiliza el atributo style seguido de
+    las declaraciones CSS que se desean aplicar. Cada declaración dentro del atributo style debe terminar con un punto y
+    coma, y el conjunto de declaraciones debe estar encerrado entre comillas.
+
+    <h4 className="font-medium mt-5">Ejemplo</h4>
+
+    ```html filename="example.js" copy
+    <p style="background-color: indigo; color: white; margin-top: 20px;">
+      Esto es un mensaje con estilos CSS directamente aplicados.
+    </p>
+    ```
+
+    En este ejemplo, el párrafo tiene un fondo de color índigo y texto en color blanco, con un margen superior de 20px.
+    Estos estilos se aplican únicamente a este elemento específico.
+
+    ### Consideraciones y Mejores Prácticas
+
+    ***Ventajas de los Estilos en Línea:***
+    - ***Especificidad:*** Los estilos en línea tienen la máxima especificidad, lo que significa que suelen tener
+    prioridad sobre los estilos definidos en hojas de estilo externas o internas, a menos que se utilicen selectores más
+    específicos o la regla !important.
+    - ***Pruebas y Prototipos Rápidos:*** Son útiles para probar rápidamente estilos sin alterar las hojas de estilo.
+
+    ***Desventajas y Recomendaciones:***
+    - ***Mantenimiento:*** El mantenimiento de los estilos en línea puede ser complicado, especialmente en documentos
+    grandes. Es difícil rastrear y actualizar estilos cuando están dispersos por todo el HTML.
+    - ***Separación de Contenido y Presentación:*** La separación del contenido (HTML) de la presentación (CSS) es una
+    práctica recomendada en el desarrollo web. Los estilos en línea tienden a mezclar ambos, lo que puede llevar a un
+    código más difícil de gestionar y menos accesible.
+    - ***Uso de Variables CSS:*** En algunos casos, el atributo style puede ser utilizado de manera efectiva para
+    definir variables CSS que afectan al elemento y sus hijos, proporcionando un método para manipular estilos
+    dinámicamente con JavaScript.
+
+    <h4 className="font-medium mt-5">Ejemplo</h4>
+
+    ```html filename="example.js" copy
+    <div style="--color-primario: navy;">
+      <p style="color: var(--color-primario);">
+        Este párrafo utiliza una variable CSS definida en su elemento contenedor.
+      </p>
+    </div>
+    ```
+
+    Este ejemplo demuestra cómo una variable CSS puede ser definida dentro de un style y utilizada por elementos
+    internos, lo cual es útil para casos donde la dinámica de estilo es necesaria.
+  </div>
+</div>

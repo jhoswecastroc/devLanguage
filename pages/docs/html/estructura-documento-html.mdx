@@ -1,0 +1,278 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Steps } from "nextra/components";
+import { Callout } from "nextra-theme-docs";
+
+<div className="text-center mt-10">
+  <div className="flex justify-center">
+    <Image className="mt-10 mb-10  animate-bounce" alt="Logotipo HTML" src='/assets/icons/html.svg' width={200}
+      height={200} />
+  </div>
+
+  # Estructura del documento HTML
+
+</div>
+
+<div className="text-start mt-10">
+  <div>
+    HTML, o Lenguaje de Marcado de Hipertexto, es la base sobre la cual se construyen todas las páginas web. Entender la
+    estructura fundamental de un documento HTML es esencial para cualquier persona que trabaje en el desarrollo web, ya
+    que proporciona el esqueleto sobre el cual se apoyan tanto la presentación visual como la funcionalidad de la
+    página.
+
+    ## Estructura del Documento HTML
+
+    La estructura de un documento HTML típicamente se divide en tres partes principales:
+
+    1. ***El DOCTYPE (tipo de documento):*** Es una declaración que especifica la versión de HTML que el documento está
+    utilizando. Ayuda al navegador a entender cómo interpretar el resto del contenido.
+    2. ***La etiqueta `head:`*** Contiene metadatos y otros elementos como el título de la página, enlaces a hojas de
+    estilo, scripts y
+    otras configuraciones que no son visibles directamente en la página.
+    3. ***La etiqueta `body>:`*** Es el cuerpo del documento y contiene todo el contenido visible de la página, como
+    texto, imágenes,
+    vídeos, formularios, y otros elementos interactivos.
+
+    <div className="flex justify-center my-5">
+      <Image src="/assets/img/estructura-html.jpg" alt="Estructura de Etiqueta en HTML" width={900} height={900} />
+    </div>
+
+    Esta estructura básica se encapsula dentro de la etiqueta ***`html`***, que sirve como contenedor principal del
+    documento.
+    La correcta organización de estos elementos es crucial para el funcionamiento adecuado de una página web.
+
+    ```html filename="example.js" copy
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+      <!-- Metadatos, links a CSS, títulos, etc. -->
+    </head>
+
+    <body>
+      <!-- Contenido visible de la página -->
+    </body>
+
+    </html>
+    ```
+
+    ## El DOCTYPE (Tipo de Documento) en HTML
+    El
+    `!DOCTYPE` es una declaración esencial en cualquier documento HTML que informa al navegador sobre la versión de
+    HTML
+    que el documento está utilizando. Aunque no es una etiqueta HTML en sí misma y no requiere de una etiqueta de
+    cierre, esta declaración debe ser la primera línea del documento antes de la etiqueta ***`html`***. Su principal
+    función es ayudar al navegador a renderizar la página correctamente, evitando el modo de compatibilidad (Quirk Mode)
+    que puede llevar a visualizaciones incorrectas del contenido.
+
+    ### ¿Qué es el DOCTYPE?
+    El DOCTYPE no es una etiqueta HTML, sino una declaración que precede a la etiqueta ***`html`*** y sirve para
+    declarar el
+    tipo de documento a los navegadores. Esto les permite saber cómo interpretar el contenido del documento. En la era
+    moderna del desarrollo web, especificar el DOCTYPE es crucial para asegurar que las páginas se comporten de manera
+    consistente en diferentes navegadores.
+
+    <h4 className="font-medium mt-5">Ejemplo</h4>
+
+    HTML5:
+
+    ```html filename="example.js" copy
+    <!DOCTYPE html>
+    ```
+
+    Esta declaración es utilizada para documentos HTML5 y es la más simple y recomendada para todos los documentos HTML
+    actuales. Es concisa y suficiente para que los navegadores modernos interpreten correctamente el documento.
+
+    HTML 4.01 Strict:
+
+    ```html filename="example.js" copy
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+    ```
+
+    Esta es una declaración más compleja utilizada para la especificación HTML 4.01. Hoy en día, es menos común ya que
+    HTML5 ha sido ampliamente adoptado debido a su simplicidad y capacidad para manejar aplicaciones web modernas.
+
+    XHTML 1.0 Strict:
+
+    ```html filename="example.js" copy
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    ```
+
+    Similar a HTML 4.01, pero para documentos que siguen las reglas de XML y XHTML. Estos tipos de DOCTYPE son más
+    estrictos en cuanto a la sintaxis y se usaban cuando XHTML era popular como una versión más rigurosa de HTML.
+
+    ### Consecuencias de No Usar DOCTYPE
+    Si un documento HTML no comienza con una declaración DOCTYPE, los navegadores web entran en un "modo peculiar"
+    (Quirk Mode). Este modo es un mecanismo de retrocompatibilidad que intenta emular el comportamiento de navegadores
+    antiguos para sitios web que fueron creados antes de que se adoptaran los estándares actuales. Sin embargo, este
+    modo puede provocar problemas de visualización inconsistentes, ya que no se adhiere a los estándares web modernos.
+
+    <Callout emoji="👀" type='info'>
+      ***Nota***
+
+      Usar la declaración DOCTYPE adecuada en documentos HTML es más que una buena práctica: es esencial para asegurar
+      que el contenido se muestre correctamente en todos los navegadores, evitando problemas de interpretación y
+      compatibilidad. Aunque HTML5 ha simplificado mucho esta declaración, conocer su propósito y cómo funcionaba en
+      versiones anteriores del lenguaje puede ser crucial para entender la evolución de la web y asegurar la
+      compatibilidad de documentos antiguos.
+
+
+    </Callout>
+
+    ## La Etiqueta `head` y los Metadatos en HTML
+
+    La etiqueta ***`head`*** en un documento HTML es una sección crucial que contiene metadatos y otros elementos que no
+    se visualizan directamente en la página web. Esta sección actúa como un contenedor para información sobre el
+    documento, enlaces a recursos externos como hojas de estilo CSS, scripts de JavaScript, y otros recursos necesarios
+    para la correcta presentación y funcionalidad de la página.
+
+    ### Componentes Principales del `head`
+    1. Título de la Página (***`title`***):
+    El título del documento es uno de los elementos más importantes dentro de
+
+    ***`head`***. Este aparece en la pestaña del navegador y es crucial para la accesibilidad y SEO (Optimización para
+    Motores
+    de Búsqueda).
+
+    ```html filename="example.js" copy
+    <title>Mi Página Web</title>
+    ```
+
+    2. Descripción de la Página (***`meta`***):
+    Las etiquetas ***`meta`*** se utilizan para proporcionar metadatos como la descripción de la página, que es
+    utilizada por motores de búsqueda y cuando se comparte en redes sociales.
+
+    ```html filename="example.js" copy
+    <meta name="description" content="Descripción detallada de mi página web.">
+    ```
+
+    3. Vinculación de Hojas de Estilo CSS:
+    Es común utilizar la etiqueta ***`head`*** para vincular hojas de estilo externas, lo cual separa el contenido del
+    diseño, manteniendo la organización y la facilidad de mantenimiento del sitio.
+
+    ```html filename="example.js" copy
+    <link rel="stylesheet" href="estilos.css">
+    ```
+
+    4. Vinculación de Scripts de JavaScript:
+    Aunque los scripts pueden ser colocados al final del cuerpo para no bloquear la carga de la página, algunos scripts
+    se incluyen en el ***`head`*** para que estén disponibles antes de que el contenido se procese completamente.
+
+    ```html filename="example.js" copy
+    <script src="funciones.js"></script>
+    ```
+
+    5. Icono de la Página (Favicon):
+    El favicon es el pequeño icono que aparece en la pestaña del navegador, lo cual ayuda a identificar visualmente la
+    página web.
+
+    ```html filename="example.js" copy
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    ```
+
+    6. Datos Estructurados y Otros Recursos:
+    Además, ***`head`*** puede contener elementos como datos estructurados para mejorar la indexación y presentación en
+    motores de búsqueda, y vínculos a fuentes web.
+
+    ### Importancia del `head` en un Documento HTML
+    La etiqueta ***`head`*** es esencial por varias razones:
+
+    - ***SEO y Accesibilidad:*** Proporciona metadatos que mejoran la visibilidad y accesibilidad del sitio.
+    - ***Personalización del Documento:*** Permite personalizar el comportamiento del documento a través de CSS y
+    JavaScript.
+    - ***Compatibilidad con Redes Sociales:*** Elementos como las metaetiquetas Open Graph especifican cómo se debe
+    mostrar el contenido cuando se comparte en redes sociales.
+
+    <Callout emoji="👀" type='info'>
+      ***Nota***
+
+      El uso correcto de la etiqueta
+
+      ***`head`*** es fundamental para asegurar que una página web funcione correctamente y sea fácil de encontrar y
+      compartir. Aunque los usuarios no vean directamente el contenido de
+
+      ***`head`***, su impacto en la funcionalidad y accesibilidad de la página es significativo.
+
+
+    </Callout>
+
+    ## La Etiqueta ***`body`***: El Cuerpo del Documento HTML
+
+    La etiqueta ***`body`*** es el contenedor principal donde reside todo el contenido visible de una página web. Esta
+    parte del
+    documento HTML es esencial, pues aquí se incluyen todos los elementos que los usuarios interactúan y visualizan
+    directamente, como texto, imágenes, vídeos, formularios, y más.
+
+    ### Visualización de Contenido
+    El ***`body`*** es responsable de contener y organizar la estructura visual de la página web. Todo lo que se
+    quiere mostrar a los usuarios se debe colocar dentro de esta etiqueta. Desde el punto de vista del desarrollo
+    web, el ***`body`*** es donde se implementa la mayor parte del HTML que define la estructura y el contenido
+    interactivo del sitio.
+
+    <h4 className="font-medium mt-5">Ejemplo</h4>
+
+    ```html filename="example.js" copy
+    <!DOCTYPE html>
+    <html lang="es">
+
+    <head>
+      <title>Título del Documento</title>
+      <meta charset="utf-8">
+    </head>
+
+    <body>
+      <header>
+        <h1>Bienvenidos a Mi Sitio Web</h1>
+        <nav>
+          <ul>
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#services">Servicios</a></li>
+            <li><a href="#contact">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section>
+          <h2>Acerca de Nosotros</h2>
+          <p>Información sobre la empresa...</p>
+        </section>
+        <article>
+          <h2>Últimas Noticias</h2>
+          <p>Noticias relevantes...</p>
+        </article>
+      </main>
+      <footer>
+        <p>Derechos reservados © 2024</p>
+      </footer>
+    </body>
+
+    </html>
+    ```
+
+    En este ejemplo, el ***`body`*** incluye estructuras típicas de una página web: un ***`header`*** con navegación, un
+    ***`main`*** que contiene secciones principales de contenido, y un ***`footer`*** que ofrece información adicional o
+    de cierre.
+
+    ### Importancia del `body` en el Diseño Web
+    1. ***Interactividad:*** Dentro del ***`body`***, se implementan todos los elementos interactivos como botones,
+    enlaces, formularios y controles interactivos que permiten a los usuarios interactuar con la página.
+    Accesibilidad:
+    El uso correcto de etiquetas semánticas dentro del ***`body`***, como ***`article`***, ***`section`***,
+    ***`aside`***, y ***`nav`***, mejora la accesibilidad, permitiendo a las tecnologías asistivas interpretar mejor la
+    estructura y navegar la página de manera efectiva.
+    Optimización para Motores de Búsqueda:
+    La estructura y contenido dentro del ***`body`*** son esenciales para el SEO. Un buen uso de encabezados (H1, H2,
+    H3, etc.), texto relevante y etiquetas semánticas ayudan a mejorar el ranking en los resultados de búsqueda.
+
+    <Callout emoji="👀" type='info'>
+      ***Nota***
+
+      La etiqueta ***`body`*** es, sin duda, una de las partes más críticas de cualquier documento HTML. Su correcta
+      implementación no solo afecta cómo se ve una página, sino también cómo funciona y cómo es percibida tanto por
+      usuarios como por motores de búsqueda. Un ***`body`*** bien estructurado y semánticamente correcto es fundamental
+      para el éxito de cualquier sitio web moderno.
+
+    </Callout>
+
+  </div>
+</div>

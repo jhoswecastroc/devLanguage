@@ -1,0 +1,281 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Steps } from "nextra/components";
+import { Callout } from "nextra-theme-docs";
+
+<div className="text-center mt-10">
+  <div className="flex justify-center">
+    <Image className="mt-10 mb-10  animate-bounce" alt="Logotipo HTML" src='/assets/icons/html.svg' width={200}
+      height={200} />
+  </div>
+
+  # Estructura de Etiqueta HTML
+
+</div>
+
+<div className="text-start mt-10">
+  <div>
+    Como vimos anteriormente, el lenguaje HTML utiliza etiquetas para definir y controlar la presentación del contenido
+    en las páginas web. Cada etiqueta tiene un papel específico, que va desde la definición de la estructura básica del
+    documento hasta la inserción de contenido multimedia y la creación de enlaces, es por ello que comprender la
+    estructura de una etiqueta HTML es fundamental para cualquier desarrollador o diseñador web, ya que es la base sobre
+    la cual se construyen los sitios web.
+
+    La estructura de las etiquetas HTML tiene el siguiente formato:
+
+    <div className="flex justify-center my-5">
+      <Image src="/assets/img/estructura-etiqueta-HTML.png" alt="Estructura de Etiqueta en HTML" width={900}
+        height={900} />
+    </div>
+
+
+    ## Etiqueta HTML
+
+    En la arquitectura de cualquier página web, las etiquetas HTML representan los componentes esenciales que definen
+    cómo se estructura y se muestra el contenido en los navegadores. Cada etiqueta tiene un propósito específico y
+    contribuye a la formación del documento HTML, ofreciendo una guía clara sobre cómo el contenido debe ser
+    interpretado y presentado a los usuarios. Comprender la estructura de las etiquetas HTML es fundamental para
+    cualquier desarrollador web, ya que permite manipular el contenido de la web de manera efectiva y accesible.
+
+    Una etiqueta HTML está compuesta principalmente de dos partes: la etiqueta de apertura y la etiqueta de cierre.
+    Estas envuelven el contenido que desean modificar o describir, proporcionando la estructura necesaria para que el
+    navegador pueda interpretar y presentar correctamente la información en la web.
+
+    ***Etiqueta de apertura:*** Se caracteriza por el nombre de la etiqueta encerrado entre los caracteres `<` y `>`.
+      Por ejemplo, ***`p`*** inicia un párrafo.
+
+      ***Etiqueta de cierre:*** Es similar a la etiqueta de apertura pero incluye una barra diagonal antes del nombre
+      de la etiqueta, como en ***`/p`***, que indica el final del párrafo.
+
+      <div className="flex justify-center my-5">
+        <Image src="/assets/img/etiqueta-HTML.png" alt="Etiquetas en HTML" width={900} height={900} />
+      </div>
+
+      <h4 className="font-medium mt-5">Ejemplo</h4>
+
+      ```html filename="example.js" copy
+      <strong>Texto importante</strong>
+      ```
+
+      En este ejemplo, ***`<strong>`*** es la etiqueta de apertura que comienza el énfasis en el texto, y
+        ***`</strong>`*** es la etiqueta de cierre que finaliza dicho énfasis. El contenido entre estas etiquetas es lo
+      que se destaca como importante en el documento HTML, normalmente mostrándose en negrita en los navegadores.
+
+      La correcta utilización de las etiquetas de apertura y cierre es esencial para la estructura clara y lógica de un
+      documento HTML. No solo facilita la lectura y el mantenimiento del código por parte de los desarrolladores, sino
+      que también asegura que los navegadores y las herramientas de asistencia puedan interpretar el contenido de manera
+      adecuada.
+
+      ## Atributos HTML
+
+      Los atributos HTML son especificaciones que controlan el comportamiento o la apariencia de las etiquetas HTML.
+      Cada atributo en una etiqueta HTML define características adicionales para el elemento, como identificadores,
+      clases, tipos de datos, entre otros. Los atributos siempre se colocan en la etiqueta de apertura y están formados
+      por un par de clave y valor.
+
+      <div className="flex justify-center my-5">
+        <Image src="/assets/img/atributos-HTML.png" alt="Atributos en HTML" width={900} height={900} />
+      </div>
+
+      ### Estructura de los Atributos
+
+      La estructura básica de un atributo en HTML es sencilla: se compone de un nombre y un valor asociado a ese nombre,
+      separados por un signo igual (=). El valor del atributo debe estar encerrado entre comillas dobles.
+
+      <h4 className="font-medium mt-5">Ejemplo</h4>
+
+      ```html filename="example.js" copy
+      <a href="https://www.ejemplo.com">Visita mi página</a>
+      ```
+
+      En este ejemplo, href es un atributo de la etiqueta ***`a`***, que define el URL al que el enlace apunta. El valor
+      del
+      atributo href es "https://www.ejemplo.com", que indica la dirección del enlace.
+
+      ### Tipos de Atributos
+
+      Los atributos se pueden clasificar en diferentes tipos según el valor que aceptan:
+
+      1. ***Conjunto de Valores:*** Algunos atributos solo permiten un conjunto limitado de valores predefinidos. Por
+      ejemplo, el atributo type en los elementos ***`input`*** puede tener valores como text, password, button, etc.,
+      cada uno con un comportamiento específico.
+      2. ***Valores Libres:*** Son atributos que aceptan cualquier valor textual. Por ejemplo, src en ***`img`*** puede
+      aceptar
+      cualquier URL válida de una imagen.
+      3. ***Valores Booleanos:*** Estos atributos representan una condición verdadera o falsa y suelen estar presentes o
+      ausentes. Por ejemplo, el atributo disabled en un ***`input`*** puede estar presente, indicando que el input está
+      desactivado, o ausente, lo que significa que está activo. En HTML5, escribir simplemente disabled equivale a
+      disabled="true"
+
+      <h4 className="font-medium mt-5">Ejemplo</h4>
+
+      ```html filename="example.js" copy
+      <input type="checkbox" name="suscripcion" value="newsletter" checked>
+      ```
+
+      En este fragmento:
+
+      - ***type="checkbox"*** indica que el ***`input`*** es una casilla de verificación.
+      - ***name="suscripcion"*** asigna un nombre al input, que puede ser útil para procesar formularios.
+      - ***value="newsletter"*** asigna un valor específico que se enviará si la casilla está marcada.
+      - ***checked*** es un atributo booleano que indica que la casilla debe mostrarse como marcada por defecto.
+
+      Cada atributo tiene una función específica y mejora la interactividad y la funcionalidad de los elementos en las
+      páginas web. Entender y utilizar correctamente los atributos HTML es esencial para crear páginas web dinámicas y
+      accesibles.
+
+      ## Contenido de la Etiqueta
+
+      El contenido de una etiqueta HTML es crucial, pues define lo que se mostrará en el navegador y cómo interactuará
+      con otros elementos de la página. Este contenido puede ser tan simple como texto directo o tan complejo como
+      incluir múltiples elementos y estructuras anidadas.
+
+      ### Tipos de Contenido de Etiqueta
+
+      1. ***Texto Plano:***
+      La forma más básica de contenido dentro de una etiqueta es el texto plano. Este texto es interpretado por el
+      navegador como parte del contenido de la página web.
+
+      <h4 className="font-medium mt-5">Ejemplo</h4>
+
+      ```html filename="example.js" copy
+      <p>Este es un párrafo simple de texto.</p>
+      ```
+
+      En este ejemplo, el contenido de la etiqueta ***`p`*** es un texto que será mostrado como un párrafo en la página
+      web.
+
+      2. ***Elementos Anidados:***
+      Las etiquetas pueden contener otras etiquetas como su contenido, lo que permite estructurar el documento HTML de
+      forma jerárquica y organizada. Esta capacidad es fundamental para crear layouts complejos y componentes
+      interactivos.
+
+      <h4 className="font-medium mt-5">Ejemplo</h4>
+
+      ```html filename="example.js" copy
+      <div id="seccion">
+        <h1>Encabezado Principal</h1>
+        <p>Texto descriptivo debajo del encabezado.</p>
+      </div>
+      ```
+
+      Aquí, la etiqueta ***`div`*** contiene un encabezado ***`h1`*** y un párrafo ***`p`***. Esta estructura permite
+      agrupar elementos
+      relacionados, mejorando tanto la organización del código como la presentación visual en el navegador.
+
+      ### Consideraciones Importantes
+
+      - ***Atributos Múltiples:***
+      Las etiquetas pueden tener varios atributos que definen sus propiedades y comportamientos. Sin embargo, es
+      importante no repetir el mismo atributo en una etiqueta, ya que el último valor especificado sobrescribirá los
+      anteriores.
+      - ***Orden de los Atributos:***
+      El orden en que se declaran los atributos no afecta la funcionalidad del elemento. Lo que importa es que cada par
+      atributo-valor esté correctamente formateado y colocado dentro de la etiqueta de apertura.
+      - ***Contenido Dinámico:***
+      Además de contener elementos estáticos, una etiqueta puede incluir contenido dinámico que cambia en respuesta a
+      acciones del usuario o eventos programados. Esto se maneja con JavaScript y otros métodos de interacción del lado
+      del cliente.
+
+      <h4 className="font-medium mt-5">Ejemplo</h4>
+
+      Veamos un ejemplo más complejo que muestra cómo se pueden combinar diferentes tipos de contenido dentro de una
+      etiqueta:
+
+      ```html filename="example.js" copy
+      <div id="contenedor">
+        <header>
+          <h2>Título del Artículo</h2>
+        </header>
+        <article>
+          <p>Primer párrafo del artículo.</p>
+          <p>Segundo párrafo del artículo con <strong>énfasis</strong> en una palabra.</p>
+        </article>
+        <footer>
+          <p>Información del autor y fecha de publicación.</p>
+        </footer>
+      </div>
+      ```
+
+      Este ejemplo demuestra cómo se puede estructurar un artículo completo dentro de un ***`div`***, utilizando
+      etiquetas
+      para encabezados, contenido principal, y pie de página. Cada sección contribuye a la semántica y accesibilidad
+      general del documento.
+
+
+      ## Comentarios HTML
+
+      Los comentarios en HTML son herramientas esenciales para los desarrolladores, permitiendo añadir anotaciones en el
+      código que no son procesadas por el navegador. Estos comentarios son invisibles para los usuarios y solo pueden
+      ser vistos en el código fuente. Su principal utilidad es la de proporcionar explicaciones o recordatorios sobre
+      partes del código, lo que es especialmente útil en proyectos grandes o cuando múltiples desarrolladores trabajan
+      en el mismo proyecto.
+
+      ### Tipos de Comentarios en HTML
+
+      En HTML, técnicamente solo hay un tipo de comentario, pero este puede ser utilizado de diferentes maneras:
+
+      1. ***Comentario de Línea:***
+      Aunque HTML no diferencia entre comentarios de línea y de bloque como otros lenguajes de programación, los
+      desarrolladores pueden utilizar comentarios cortos que ocupen solo una línea para aclaraciones rápidas o notas
+      breves.
+
+      <h4 className="font-medium mt-5">Ejemplo</h4>
+
+      ```html filename="example.js" copy
+      <!-- Esto es un comentario de línea -->
+      ```
+
+      2. ***Comentario de Bloque:***
+      Los comentarios más extensos que abarcan varias líneas o explicaciones detalladas pueden ser considerados como
+      comentarios de bloque. Estos son útiles para describir secciones enteras del código o para dejar instrucciones
+      detalladas.
+
+      <h4 className="font-medium mt-5">Ejemplo</h4>
+
+      ```html filename="example.js" copy
+      <!--
+  Esto es un comentario de bloque.
+  Puedes usar varios renglones para explicar algo en detalle.
+  Por ejemplo, explicar cómo funciona esta sección del código HTML.
+-->
+      ```
+
+      ### Cómo Hacer Comentarios en HTML
+
+      Para insertar un comentario en HTML, debes encerrar el texto del comentario entre `<!--` y `-->`. Todo lo que esté
+      dentro de estas marcas será ignorado por el navegador.
+
+      ### Atajos de Teclado para Comentarios
+      En muchos editores de código y entornos de desarrollo integrados (IDE), puedes insertar comentarios rápidamente
+      usando atajos de teclado, que son:
+
+      ***Ctrl*** + ***`{`*** en Windows o ***Cmd*** + ***`{`*** en macOS
+
+      o en otras computadoras puede ser:
+
+      ***Ctrl*** + ***`/`*** en Windows o ***Cmd*** + ***`/`*** en macOS.
+
+      Estos atajos colocarán automáticamente los caracteres de comentario adecuados alrededor del texto seleccionado o
+      de la línea actual donde se encuentra el cursor.
+
+      <h4 className="font-medium mt-5">Ejemplo</h4>
+
+      Supongamos que estamos trabajando en una sección del sitio web que aún no está finalizada:
+
+      ```html filename="example.js" copy
+      <div>
+        <!-- TODO: Finalizar el menú de navegación -->
+        <ul>
+          <li>Inicio</li>
+          <li>Servicios</li>
+          <!-- <li>Contacto</li> Temporalmente deshabilitado -->
+        </ul>
+      </div>
+      ```
+
+      En este ejemplo, el primer comentario indica una tarea pendiente (TODO), mientras que el segundo comenta
+      temporalmente un elemento que no debe mostrarse aún en la página.
+
+  </div>
+</div>

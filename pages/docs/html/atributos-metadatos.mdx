@@ -1,0 +1,309 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Steps } from "nextra/components";
+import { Callout } from "nextra-theme-docs";
+
+<div className="text-center mt-10">
+  <div className="flex justify-center">
+    <Image className="mt-10 mb-10  animate-bounce" alt="Logotipo HTML" src='/assets/icons/html.svg' width={200}
+      height={200} />
+  </div>
+
+  # Atributos de metadatos e idioma en HTML
+
+</div>
+
+<div className="text-start mt-10">
+  <div>
+    Los atributos de metadatos en HTML son herramientas esenciales que proporcionan información adicional sobre los
+    elementos de una página web sin afectar directamente su presentación o comportamiento. Estos atributos ayudan a
+    mejorar la accesibilidad, interactividad y la gestión de la información en la web, facilitando una mejor experiencia
+    tanto para los desarrolladores como para los usuarios.
+
+    Los metadatos no son visibles directamente en la interfaz de la página, pero juegan un papel crucial en cómo los
+    dispositivos y los navegadores interpretan y procesan los elementos HTML. Estos atributos pueden incluir información
+    desde consejos de herramientas hasta configuraciones de accesibilidad y datos personalizados que scripts de
+    JavaScript pueden utilizar para realizar operaciones complejas.
+
+    ## Tooltips: El atributo title
+
+    El atributo title en HTML se utiliza para proporcionar información adicional sobre un elemento, a menudo mostrada
+    como un tooltip —un pequeño cuadro emergente— cuando el usuario coloca el cursor sobre el elemento. Esta
+    funcionalidad ayuda a mejorar la usabilidad y accesibilidad de un sitio web al ofrecer más contexto o descripciones
+    que pueden no ser evidentes solo a través de la visualización del contenido.
+
+    ## Funcionalidad del Atributo title
+    El title se puede aplicar a casi cualquier elemento HTML y es especialmente útil en elementos como enlaces, imágenes
+    y controles de formulario donde detalles adicionales pueden enriquecer la experiencia del usuario y proporcionar
+    guía adicional sin abarrotar la interfaz visual.
+
+    <h4 className="font-medium mt-5">Ejemplo</h4>
+
+    ```html filename="example.js" copy
+    <img src="gandalf.jpg" alt="Gandalf el gris, utilizando un portátil para consultar su correo."
+      title="¡Este es Gandalf el gris!" />
+    ```
+
+    En este ejemplo, el atributo title proporciona un contexto adicional sobre la imagen, que puede ser especialmente
+    útil si la imagen no se carga o si los usuarios necesitan más información sobre lo que representa la imagen.
+
+    ```html filename="example.js" copy
+    <a href="https://www.ejemplo.com" title="Visita nuestra página de inicio">
+      Página de Inicio
+    </a>
+    ```
+
+    Aquí, el title ayuda a explicar el destino del enlace, lo que puede ser útil para mejorar la experiencia del usuario
+    y proporcionar claridad, especialmente en enlaces que de otro modo podrían ser crípticos o ambiguos.
+
+    ### Importancia del title para la Accesibilidad
+
+    Aunque el atributo title puede ser una herramienta útil, es importante destacar que no debe ser el único método para
+    proporcionar información importante debido a las siguientes limitaciones:
+
+    - ***Accesibilidad Limitada:*** No todos los lectores de pantalla leen de manera consistente el atributo title, lo
+    que puede dejar a los usuarios con discapacidades visuales sin acceso a esa información.
+    - ***Visibilidad Limitada:*** Los tooltips son útiles solo para los usuarios que pueden ver y utilizar un ratón o
+    dispositivo señalador, lo que significa que no siempre son accesibles desde teclados o en dispositivos táctiles.
+
+    ### Mejores Prácticas
+    1. ***Complementar, No Reemplazar:*** Utiliza el atributo title para proporcionar información adicional, no como un
+    sustituto de otras etiquetas importantes como ***`label`*** para formularios o alt para imágenes.
+    2. ***No Sobrecargar de Información:*** Mantén los tooltips cortos y al punto, ya que están destinados a ser ayudas
+    rápidas, no descripciones exhaustivas.
+
+    <Callout emoji="👀" type='info'>
+      ***Nota***
+
+      El atributo title es una herramienta útil en HTML que, cuando se usa adecuadamente, puede mejorar
+      significativamente la experiencia del usuario al proporcionar contexto adicional de manera discreta. Sin embargo,
+      es crucial recordar sus limitaciones y asegurarse de que el uso de title complemente y no sustituya a otros
+      métodos más accesibles de proporcionar información
+
+    </Callout>
+
+    ## Metadatos: El Atributo data-
+
+    El atributo data- en HTML es una herramienta poderosa diseñada para almacenar información adicional sobre un
+    elemento, la cual no interfiere con otros comportamientos del navegador pero es accesible a través de CSS y
+    JavaScript. Estos atributos proporcionan una forma flexible y estándar de extender la información asociada con
+    elementos HTML sin recurrir a hacks o usos incorrectos de otros atributos.
+
+    ### Uso y Beneficios del Atributo data-
+
+    ***Personalización de Datos:*** Los atributos data- permiten a los desarrolladores almacenar datos personalizados
+    directamente en elementos HTML, lo que facilita la manipulación de estos datos mediante scripts. Esto es
+    especialmente útil en aplicaciones web dinámicas donde los elementos del DOM necesitan llevar asociada información
+    específica que afecte su comportamiento o presentación.
+
+    <h4 className="font-medium mt-5">Ejemplo</h4>
+
+    Supongamos que estamos desarrollando un sitio web que muestra diferentes redes sociales y sus estadísticas de
+    suscripciones:
+
+    ```html filename="example.js" copy
+    <div id="social-networks">
+      <a href="https://twitter.com/Example" data-subs="44000">Twitter</a>
+      <a href="https://youtube.com/Example" data-subs="100000">YouTube</a>
+      <a href="https://twitch.tv/Example" data-subs="15000">Twitch</a>
+    </div>
+    ```
+
+    En este ejemplo, cada enlace contiene un atributo data-subs que almacena el número de suscriptores en cada
+    plataforma. Este dato puede ser utilizado para mostrar dinámicamente la popularidad de cada canal directamente en la
+    página, o para realizar análisis y comparaciones a través de JavaScript.
+
+    ### Acceso a los Datos con JavaScript:
+
+    JavaScript proporciona una interfaz fácil para acceder a estos datos mediante la propiedad .dataset. Este acceso se
+    hace de manera intuitiva y directa:
+
+    ```html filename="example.js" copy
+    const links = document.querySelectorAll("#social-networks a");
+
+    console.log(links[0].dataset.subs); // "44000"
+    console.log(links[1].dataset.subs); // "100000"
+    console.log(links[2].dataset.subs); // "15000"
+    ```
+
+    ### Mejores Prácticas y Consideraciones
+
+    1. ***Nombrado de Atributos:*** El nombre después de data- debe ser único para el elemento y seguir las convenciones
+    de nombrado que evitan conflictos con futuras actualizaciones de HTML o conflictos con otros scripts.
+    2. ***Uso Moderado:*** Aunque es tentador utilizar data- para muchos propósitos, es importante usar estos atributos
+    de manera moderada para evitar sobrecargar el DOM con datos innecesarios que podrían impactar el rendimiento.
+    3. ***Accesibilidad:*** Los datos almacenados en atributos data- no deben ser utilizados para almacenar información
+    que sea crucial para la comprensión del contenido por parte del usuario, especialmente si esa información es
+    necesaria para la accesibilidad.
+
+
+    <Callout emoji="👀" type='info'>
+      ***Nota***
+
+      Los atributos data- en HTML son extremadamente útiles para añadir información semántica extra a los elementos de
+      manera que puedan ser utilizados por scripts y estilos sin alterar la estructura semántica o funcional del
+      documento. Su flexibilidad y facilidad de uso los convierten en una herramienta indispensable en el desarrollo web
+      moderno, especialmente en aplicaciones interactivas y dinámicas.
+
+    </Callout>
+
+
+    ## Atajos: El Atributo accesskey
+
+    El atributo accesskey en HTML permite a los desarrolladores asignar un atajo de teclado a elementos específicos en
+    una página web, facilitando la navegación rápida y mejorando la accesibilidad, especialmente para usuarios que
+    dependen de teclados en lugar de dispositivos señaladores como el ratón.
+
+    ### Funcionamiento del Atributo accesskey
+    El atributo accesskey asigna una tecla del teclado que, cuando se combina con teclas modificadoras específicas del
+    sistema operativo o del navegador, activará o enfocará el elemento asociado. Esta funcionalidad es particularmente
+    útil para mejorar la usabilidad de formularios, enlaces y controles interactivos en aplicaciones web.
+
+    <h4 className="font-medium mt-5">Ejemplo</h4>
+
+    ```html filename="example.js" copy
+    <form>
+      <input accesskey="N" placeholder="Nombre (ALT+N)" />
+      <input accesskey="A" placeholder="Apellidos (ALT+A)" />
+      <a accesskey="L" href="https://example.com/">Enlace (ALT+L)</a>
+      <button accesskey="B">Botón (ALT+B)</button>
+    </form>
+    ```
+
+    En este ejemplo, el usuario puede presionar ciertas combinaciones de teclas para interactuar directamente con los
+    elementos sin necesidad de usar el ratón. Por ejemplo, Alt + N en Windows puede enfocar el campo de entrada del
+    nombre.
+
+    ### Diferencias entre Navegadores y Sistemas Operativos:
+    Una de las complicaciones del atributo accesskey es la falta de estandarización en las teclas modificadoras entre
+    diferentes navegadores y plataformas, lo que puede resultar en una experiencia inconsistente para los usuarios. Aquí
+    hay algunas combinaciones típicas de teclas modificadoras según el navegador y el sistema operativo:
+
+    <div className="flex justify-center my-5">
+      <Image src="/assets/img/accesskey-HTML.png" alt="Estructura de Etiqueta en HTML" width={900} height={900} />
+    </div>
+
+    ### Desventajas y Consideraciones
+    - ***Interferencia con Atajos del Navegador:*** El uso de accesskey puede interferir con los atajos de teclado
+    predeterminados del navegador o del sistema operativo, lo que puede confundir a los usuarios o llevar a acciones no
+    intencionadas.
+
+    - ***Accesibilidad:*** Aunque el atributo accesskey puede mejorar la accesibilidad, su implementación debe
+    considerarse cuidadosamente para asegurar que no complique la experiencia del usuario. Debe proporcionarse
+    información clara sobre los atajos disponibles y cómo pueden utilizarse.
+
+
+    <Callout emoji="👀" type='info'>
+      ***Nota***
+
+      El uso del atributo accesskey ofrece una forma de mejorar la accesibilidad y la eficiencia de las interfaces web,
+      permitiendo a los usuarios navegar rápidamente a través de elementos clave con el teclado. Sin embargo, debido a
+      las variaciones en su implementación y las posibles interferencias con otros atajos de teclado, debe usarse de
+      manera juiciosa y bien comunicada a los usuarios finales para maximizar su efectividad sin comprometer la
+      usabilidad general del sitio.
+
+    </Callout>
+
+    ## Atributos de Idioma en HTML
+    En el desarrollo de páginas web, gestionar correctamente el idioma del contenido es crucial para la accesibilidad,
+    la internacionalización y el SEO. HTML ofrece varios atributos específicos diseñados para manejar aspectos
+    relacionados con el idioma, tales como el atributo lang, que especifica el idioma del contenido de una etiqueta, y
+    translate, que indica si un elemento debe ser traducido por herramientas automáticas.
+
+    ### El Atributo lang
+    El atributo lang se utiliza para declarar el idioma del texto de un elemento y de sus elementos descendientes. Este
+    atributo es fundamental para ayudar a los lectores de pantalla a pronunciar correctamente el contenido según el
+    idioma especificado, y para los motores de búsqueda para indexar el contenido de manera más efectiva.
+
+    ***Formato:*** El valor del atributo lang debe ser un código de idioma válido conforme a la norma ISO 639-1. Por
+    ejemplo, en para inglés, es para español, fr para francés, etc.
+
+    <h4 className="font-medium mt-5">Ejemplo</h4>
+
+    ```html filename="example.js" copy
+    <!DOCTYPE html>
+    <html lang="es">
+
+    <head>
+      <title>Ejemplo de Uso del Atributo Lang</title>
+    </head>
+
+    <body>
+      <p>Este párrafo está en español.</p>
+      <p lang="en">This paragraph is in English.</p>
+    </body>
+
+    </html>
+    ```
+
+    En este ejemplo, el documento entero está marcado como en español (es), pero un párrafo específico está en inglés,
+    marcado con lang="en". Esto ayuda a los navegadores y a las herramientas de accesibilidad a manejar correctamente el
+    contenido multilingüe.
+
+    #### Importancia del Atributo lang
+
+    - ***Accesibilidad:*** Ayuda a las tecnologías asistivas a proporcionar la pronunciación correcta, mejorando la
+    experiencia del usuario para personas no videntes o con dificultades visuales.
+    - ***SEO:*** Permite a los motores de búsqueda entender el idioma del contenido, lo cual es crucial para servir
+    páginas en los resultados de búsqueda en el idioma adecuado.
+    - ***Facilidad de Mantenimiento:*** Proporciona una forma estandarizada de declarar el idioma del contenido,
+    simplificando la gestión de sitios multilingües.
+
+    <Callout emoji="👀" type='info'>
+      ***Nota***
+
+      El uso adecuado del atributo lang es un pilar fundamental en el desarrollo de sitios web accesibles y
+      correctamente indexados. Es una práctica recomendada siempre especificar el idioma del contenido, especialmente en
+      contextos multilingües, para asegurar una experiencia de usuario óptima y una mejor comprensión por parte de los
+      motores de búsqueda.
+
+    </Callout>
+
+    ## Traducción: El Atributo translate
+    El atributo translate en HTML especifica si el contenido de un elemento debe ser traducido por herramientas
+    automáticas de traducción como Google Translate. Por defecto, el valor de translate es yes, lo que indica que todos
+    los elementos son susceptibles de traducción a menos que se especifique lo contrario.
+
+    ### Uso Práctico del translate:
+    Si tienes contenido específico que debe mantenerse en su idioma original, como nombres propios, marcas registradas,
+    o terminología técnica que podría descontextualizarse al traducir, puedes utilizar translate="no" para evitar su
+    traducción automática.
+
+    <h4 className="font-medium mt-5">Ejemplo</h4>
+
+    ```html filename="example.js" copy
+    <p>
+      Hace algunos días fui a ver la nueva película de <span translate="no">Star Wars</span>.
+    </p>
+    ```
+
+    En este ejemplo, la mención a "Star Wars" no se traducirá, asegurando que el nombre propio se mantenga en su forma
+    original en cualquier idioma.
+
+    ### Direccionalidad: El Atributo dir
+    El atributo dir establece la direccionalidad del texto en elementos HTML, crucial para idiomas que se leen de
+    derecha a izquierda como el árabe, hebreo, y otros. Los valores posibles son ltr (left to right, izquierda a
+    derecha) para la mayoría de los idiomas occidentales, y rtl (right to left, derecha a izquierda) para idiomas que
+    fluyen en dirección opuesta.
+
+    <h4 className="font-medium mt-5">Ejemplo</h4>
+
+    ```html filename="example.js" copy
+    <p>Este es un ejemplo de texto con direccionalidad de izquierda a derecha.</p>
+    <p dir="rtl">هذا مثال على نص باتجاه من اليمين إلى اليسار</p>
+    ```
+
+    El segundo párrafo muestra texto en árabe, el cual debe leerse de derecha a izquierda, por lo que se utiliza
+    dir="rtl" para asegurar la correcta visualización y comprensión del texto.
+
+    ### Importancia de Estos Atributos
+    ***Accesibilidad y Usabilidad:*** Tanto el translate como el dir son fundamentales para garantizar que el contenido
+    web sea accesible y usable para una audiencia global. Permiten que las páginas web se adapten a las necesidades
+    lingüísticas y culturales de los usuarios, mejorando la experiencia del usuario y la accesibilidad del contenido.
+
+    ***SEO y Alcance Global:*** Correctamente implementados, estos atributos ayudan a mejorar el SEO al asegurar que el
+    contenido sea indexado adecuadamente en su idioma correcto y presentado de manera legible en los motores de búsqueda
+    en diferentes idiomas.
+
+  </div>
+</div>

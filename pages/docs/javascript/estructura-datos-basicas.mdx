@@ -1,0 +1,1265 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Steps } from "nextra/components";
+import { Callout } from "nextra-theme-docs";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
+
+# Estructura de Datos Básicas
+
+Al abordar las estructuras de datos básicas en programación, es esencial comenzar con uno de los fundamentos más críticos: las variables. Entender qué son las variables y cómo nombrarlas adecuadamente es vital para cualquier programador, ya que estas son herramientas primordiales en el manejo de datos dentro de cualquier programa.
+
+## ¿Qué son las Variables?
+
+Las variables son fundamentales en cualquier lenguaje de programación porque actúan como contenedores para almacenar datos. Estos datos pueden variar durante la ejecución del programa, de ahí el término "variable".
+
+Una variable se puede imaginar como una caja donde podemos guardar algo para usar más tarde. En el contexto de programación, lo que se guarda en la caja (variable) es un valor que puede ser un número, un texto, un booleano, un objeto, entre otros. La variable entonces tiene un nombre único que se utiliza para acceder a este valor almacenado.
+
+## Nombramiento de las Variables
+
+El nombramiento de las variables es crítico porque proporciona pistas sobre la utilización de la variable dentro del programa. Aquí están algunas buenas prácticas para nombrar variables:
+
+1. **Claridad y Descriptividad:** Los nombres de las variables deben ser claros y descriptivos. Por ejemplo, precioTotal, nombreUsuario son nombres que describen claramente los datos que contienen.
+2. **Uso de camelCase:** En JavaScript, es común utilizar camelCase para nombrar variables. Esto significa que la primera palabra está en minúscula y cada palabra subsecuente comienza con una mayúscula. Por ejemplo, cuentaBancaria.
+3. **Evitar palabras reservadas:** JavaScript tiene palabras reservadas que no se pueden usar como nombres de variables, como new, return, function, entre otros.
+4. **No empezar con números:** Los nombres de variables no deben comenzar con números. Un nombre como 2dias es inválido.
+5. **Expresividad sobre brevedad:** Prefiere nombres que sean más expresivos y claros sobre nombres excesivamente cortos y vagos. Por ejemplo, usar numeroPaginas en lugar de simplemente np hace que el código sea mucho más legible y entendible.
+6. **Consistencia:** Es esencial ser consistente con las convenciones de nomenclatura a lo largo de todo el proyecto. Esto facilita la lectura y mantenimiento del código, especialmente en proyectos con múltiples desarrolladores.
+7. **Evitar nombres genéricos:** Nombres como data o info no proporcionan información útil sobre lo que contiene la variable. Nombres más específicos como datosUsuario o informacionPago son preferibles.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Aquí te muestro cómo podrías declarar y utilizar algunas variables en un pequeño fragmento de código en JavaScript:
+
+```js copy filename="JavaScript"
+let nombreUsuario = "Ana López"; // Almacena el nombre de un usuario
+const IVA = 0.16; // Almacena el valor del Impuesto al Valor Añadido
+let precioSinIVA = 200; // Precio de un producto sin IVA
+let precioConIVA = precioSinIVA + precioSinIVA * IVA; // Calcula el precio con IVA
+
+console.log("El precio final es de $" + precioConIVA); // Muestra el precio final
+```
+
+En este ejemplo, nombreUsuario y precioSinIVA son variables que pueden cambiar a lo largo del programa, mientras que IVA es una constante, lo que significa que su valor no cambiará una vez asignado.
+
+<Callout emoji="👀" type="default">
+  El uso adecuado de variables no solo hace que tu código sea más fácil de
+  entender y mantener, sino que también es crucial para la gestión eficiente de
+  la memoria y el rendimiento de tus aplicaciones. Aprender a nombrar
+  correctamente las variables es un paso esencial para cualquier programador, ya
+  que mejora la calidad del código y facilita la colaboración entre
+  desarrolladores en proyectos más grandes.
+</Callout>
+
+## Declaración de variables
+
+Cuando declaramos una variable en JavaScript, estamos no solo reservando un nombre, sino también asignando espacio en la memoria para almacenar los valores que esta variable pueda tener a lo largo de la ejecución del programa. Este es un concepto fundamental, pues las variables son los bloques constructores básicos de cualquier programa en JavaScript.
+
+### ¿Cómo se Declara una Variable?
+
+Para declarar variables en JavaScript, tenemos tres palabras clave: var, let, y const. Cada una tiene sus propios usos específicos y alcances:
+
+1. **var:** Fue la forma original de declarar variables en JavaScript. Al declarar una variable con var, esta tiene un alcance de función (function scope), pero permite la redeclaración dentro del mismo alcance, lo que puede conducir a errores sutiles.
+
+```js copy filename="JavaScript"
+var height;
+var height; // Permitido: redeclarar la variable
+console.log(height); // -> undefined
+x++;
+```
+
+2. **let:** Introducido en las versiones más recientes de JavaScript (ES6), let proporciona un alcance de bloque (block scope), que restringe su uso al bloque en el que fue declarado. let no permite la redeclaración de la misma variable dentro de su alcance, lo que ayuda a evitar algunos errores comunes.
+
+```js copy filename="JavaScript"
+let height;
+// let height; // Error: 'height' ya ha sido declarada
+console.log(height); // -> undefined
+```
+
+3. **const:** Similar a let en cuanto al alcance de bloque, pero se utiliza para declarar variables cuyo valor no cambiará después de ser asignado inicialmente. Intentar reasignar un valor a una constante resultará en un error.
+
+```js copy filename="JavaScript"
+const GRAVITY = 9.8;
+// GRAVITY = 9.81; // Error: asignación a una constante
+```
+
+<h4 className="font-medium mt-5">Ejemplo de Declaración y Uso Inicial</h4>
+
+Un aspecto importante al declarar variables con var o let es que inicialmente toman el valor de undefined hasta que se les asigna explícitamente un valor. Este comportamiento es diferente cuando olvidamos declarar una variable y tratamos de usarla, lo que resulta en un ReferenceError.
+
+```js copy filename="JavaScript"
+var weight;
+console.log(weight); // -> undefined
+console.log(age); // -> Uncaught ReferenceError: age is not defined
+```
+
+### Buenas Prácticas en la Declaración de Variables
+
+- **Usar let y const en lugar de var:** Las modificaciones en el lenguaje y las buenas prácticas actuales sugieren usar let y const para una mayor claridad y control del alcance, además de prevenir errores por redeclaraciones o hoisting.
+- **Inicialización al declarar:** Siempre que sea posible, inicializa las variables al momento de declararlas para evitar el valor undefined.
+- **Nombres descriptivos:** Elige nombres que describan claramente el propósito de la variable, lo que aumenta la legibilidad del código.
+
+## Inicialización de Variables
+
+La inicialización de variables es un proceso esencial en la programación en JavaScript que implica asignar un valor inicial a una variable inmediatamente después de declararla. Este paso no solo define el estado inicial de la variable, sino que también asegura que la variable esté lista para su uso en el código. La falta de inicialización puede llevar a problemas, ya que las variables no inicializadas en JavaScript tienen un valor predeterminado de undefined, que puede causar comportamientos inesperados en el programa.
+
+### Métodos de Inicialización
+
+1. **Inicialización Directa:** Es el método más común y directo. Consiste en asignar un valor a la variable en el momento de su declaración utilizando el operador de asignación =.
+
+```js copy filename="JavaScript"
+let height = 180; // Declaración e inicialización en una línea
+console.log(height); // -> 180
+```
+
+2. **Inicialización con el Valor de Otra Variable:** Una variable puede ser inicializada utilizando el valor de otra variable ya existente.
+
+```js copy filename="JavaScript"
+let originalAge = 30;
+let age = originalAge; // Inicialización con el valor de otra variable
+console.log(age); // -> 30
+```
+
+3. **Inicialización Post-Declaración:** En ocasiones, primero se declara la variable y más adelante en el código se le asigna un valor.
+
+```js copy filename="JavaScript"
+let weight;
+weight = 70; // Asignación posterior a la declaración
+console.log(weight); // -> 70
+```
+
+### Importancia del Contexto y la Clave let
+
+El uso de let en la declaración e inicialización de variables aporta claridad y reduce los errores, dado que let tiene un alcance de bloque, limitando el uso de la variable al bloque donde se declara. Esto evita problemas comunes de sobreescritura inadvertida que pueden ocurrir con var, que tiene un alcance más amplio y permite redeclaraciones.
+
+### Buenas Prácticas en la Inicialización
+
+- **Inicializar al Declarar:** Siempre que sea posible, es recomendable inicializar las variables en el momento de la declaración para evitar el estado undefined.
+- **Claridad en la Declaración:** Para mantener el código legible y mantenible, es preferible declarar e inicializar cada variable en su propia línea, aunque JavaScript permite hacer múltiples declaraciones en una sola línea.
+
+```js copy filename="JavaScript"
+// Declaración múltiple, menos recomendable por legibilidad
+let x = 5,
+  y = 10,
+  z = 15;
+
+// Declaración individual, más clara y preferida
+let x = 5;
+let y = 10;
+let z = 15;
+```
+
+- **Sensibilidad a Mayúsculas y Minúsculas:** JavaScript diferencia entre mayúsculas y minúsculas, por lo que es crucial ser consistente en el uso de mayúsculas y minúsculas al referirse a variables.
+
+```js copy filename="JavaScript"
+let precio = 100;
+let Precio = 200;
+console.log(precio); // -> 100
+console.log(Precio); // -> 200
+```
+
+## Declaraciones y Modo Estricto
+
+### Revisión Histórica de JavaScript y la Importancia del Modo Estricto
+
+JavaScript ha evolucionado considerablemente desde su creación, especialmente con cambios significativos introducidos en 2009 y 2015, que incluyeron no solo extensiones de sintaxis sino también mejoras en el comportamiento de los intérpretes. Estas modificaciones fueron esenciales para hacer el lenguaje más robusto y predecible, especialmente en situaciones potencialmente erróneas como la inicialización de variables sin una declaración previa.
+
+### El Problema de las Declaraciones Implícitas
+
+Originalmente, JavaScript permitía la práctica de usar variables que no habían sido declaradas formalmente. Esta flexibilidad resultaba en un código que, aunque funcional, podía conducir a situaciones ambiguas y errores difíciles de rastrear.
+
+```js copy filename="JavaScript"
+height = 180;
+console.log(height); // -> 180
+```
+
+En este caso, la variable height se utiliza sin haber sido declarada formalmente, lo que en contextos antiguos del lenguaje, era permitido y no causaba error alguno.
+
+### Introducción del Modo Estricto
+
+El "modo estricto" fue introducido para abordar estas y otras cuestiones, estableciendo un conjunto de restricciones que mejoran la gestión de errores y la predictibilidad del código.
+
+### Activación del Modo Estricto:
+
+El modo estricto se activa añadiendo la cadena **"use strict"**; al inicio del script o función. Esta simple línea cambia radicalmente cómo el intérprete maneja el código, adheriéndose a un estándar más estricto y moderno de JavaScript.
+
+```js copy filename="JavaScript"
+"use strict";
+height = 180; // -> Uncaught ReferenceError: height is not defined
+console.log(height);
+```
+
+Aquí, al intentar usar height sin haberla declarado, el intérprete genera un error (ReferenceError), indicando que el uso de una variable no declarada no está permitido bajo el modo estricto.
+
+### Beneficios del Modo Estricto
+
+1. **Prevención de Errores:** Al requerir que todas las variables sean declaradas antes de su uso, el modo estricto ayuda a prevenir errores que pueden ser difíciles de detectar y solucionar, especialmente en aplicaciones grandes y complejas.
+2. **Mejoras en el Rendimiento:** Al permitir a los motores de JavaScript hacer optimizaciones más específicas, el modo estricto puede mejorar el rendimiento del código.
+3. **Código Más Limpio y Seguro:** El modo estricto fomenta prácticas de codificación más limpias y seguras, alineadas con los estándares modernos.
+
+### Mejores Prácticas
+
+- **Uso Consistente del Modo Estricto:** Se recomienda usar "use strict"; en todos tus scripts para aprovechar sus beneficios y asegurarte de que tu código sea compatible con las versiones más recientes de JavaScript.
+- **Declarar Siempre Todas las Variables:** Evita la tentación de depender de declaraciones implícitas. Asegúrate de declarar todas tus variables con var, let o const.
+
+## Reasignación de Variables
+
+La reasignación en JavaScript es el proceso mediante el cual se cambia el valor almacenado en una variable existente. Este proceso es fundamental en la programación dinámica y permite a las variables almacenar diferentes tipos de datos a lo largo del tiempo, reflejando su naturaleza "variable".
+
+### Flexibilidad de Tipos en JavaScript
+
+Una de las características distintivas de JavaScript es su tipado débil y dinámico, lo que significa que las variables no están limitadas a un tipo de dato específico y pueden cambiar de tipo a lo largo de su vida útil. Esto permite una gran flexibilidad pero también exige una comprensión clara de cómo los datos son manejados y transformados en JavaScript.
+
+```js copy filename="JavaScript"
+let greeting = "Hello!";
+console.log(greeting); // Imprime: Hello!
+greeting = 1;
+console.log(greeting); // Imprime: 1
+```
+
+En este ejemplo, la variable greeting inicialmente almacena una cadena de texto y luego se reasigna para guardar un número. JavaScript maneja este cambio de tipo sin errores, adaptándose dinámicamente al nuevo tipo de dato.
+
+### Operaciones con Variables Reasignadas
+
+La reasignación no solo implica cambiar el valor de una variable, sino que también puede involucrar operaciones que modifiquen ese valor de formas más complejas, como la adición o concatenación.
+
+```js copy filename="JavaScript"
+let steps = 100;
+console.log(steps); // -> 100
+steps = steps + 200;
+console.log(steps); // -> 320
+```
+
+Aquí, steps se inicializa a 100, luego se le suma 200, resultando en 320. Este ejemplo muestra cómo una variable puede ser utilizada en una operación matemática y luego reasignada con el resultado.
+
+### Conversión Implícita de Tipos
+
+JavaScript también realiza conversiones implícitas de tipos cuando es necesario, lo que permite operaciones entre diferentes tipos de datos.
+
+```js copy filename="JavaScript"
+let greeting = "Hello!";
+let counter = 100;
+greeting = greeting + counter;
+console.log(greeting); // -> Hello!100
+```
+
+En este caso, el número counter se convierte implícitamente en una cadena para poder concatenarse con greeting, demostrando cómo JavaScript gestiona los tipos de manera flexible para facilitar operaciones entre ellos.
+
+### Buenas Prácticas en la Reasignación de Variables
+
+- **Claridad en la Modificación de Variables:** Es crucial utilizar nombres claros y descriptivos para las variables que van a ser modificadas frecuentemente, para evitar confusión sobre el estado actual del dato que almacenan.
+- **Precaución con la Conversión de Tipos:** Dado que JavaScript maneja la conversión de tipos de manera implícita, es importante ser consciente de estos cambios para evitar resultados inesperados, especialmente en operaciones complejas o en la integración de múltiples fuentes de datos.
+- **Evitar Reasignaciones Innecesarias:** Aunque JavaScript permite la reasignación flexible de variables, usar esta característica sin restricciones puede llevar a código difícil de seguir y potencialmente propenso a errores.
+
+## Constantes
+
+En JavaScript, una constante es un tipo de "contenedor" que, a diferencia de las variables comunes, no permite la reasignación de su valor una vez que ha sido establecido. Esto se logra mediante la palabra clave **const**. La utilización de constantes es crucial para asegurar la inmutabilidad de valores que no deben cambiar tras su inicialización inicial, proporcionando robustez y previsibilidad al código.
+
+### Características de las Constantes
+
+1. **Inicialización Obligatoria:**
+
+- Una constante debe ser inicializada en el momento de su declaración. Omitir el valor inicial resultará en un error sintáctico, ya que el compilador espera un valor para completar la inicialización.
+
+```js copy filename="JavaScript"
+const greeting = "Hello!";
+// const message; // Esto causaría un error: Missing initializer in const declaration
+```
+
+2. **Finalidad de Uso:**
+
+- Las constantes son especialmente útiles para almacenar información que no debería cambiar a lo largo de la ejecución del programa, como configuraciones, tokens de acceso, y rutas a recursos.
+- Además, su uso permite optimizaciones por parte del motor JavaScript, lo cual puede tener un impacto positivo en el rendimiento del programa.
+
+<h4 className="font-medium mt-5">Ejemplos de Uso de Constantes</h4>
+
+1. Declaración y Modificación Prohibida:
+
+```js copy filename="JavaScript"
+const greeting = "Hello!";
+console.log(greeting); // Imprime: Hello!
+// greeting = "Hi!"; // Esto causaría un error: Assignment to constant variable.
+```
+
+2. Constantes en Cálculos y Configuraciones:
+
+```js copy filename="JavaScript"
+const BASE_URL = "https://api.example.com";
+const API_KEY = "abc123XYZ";
+// Uso de constantes para configurar llamadas a APIs
+```
+
+3. Uso de Constantes en Bucles:
+
+```js copy filename="JavaScript"
+const MAX_ITERATIONS = 10;
+for (let i = 0; i < MAX_ITERATIONS; i++) {
+  console.log("Iteración número ", i);
+}
+console.log("Bucle finalizado.");
+```
+
+En este caso, MAX_ITERATIONS es una constante que define el número de iteraciones en un bucle, facilitando cambios durante el desarrollo sin necesidad de modificar el cuerpo del bucle.
+
+### Consideraciones Adicionales
+
+**Constantes No Son Siempre Inmutables:**
+
+Es importante distinguir entre la reasignación de la constante y la mutabilidad de su contenido. Por ejemplo, las constantes que almacenan objetos o arrays pueden tener contenidos que se modifican:
+
+```js copy filename="JavaScript"
+const configuration = {
+  server: "localhost",
+  port: 8080,
+};
+configuration.port = 3000; // Esto es válido
+// configuration = {}; // Esto no es válido y resultará en un error
+```
+
+**Nomenclatura:**
+
+Para las constantes de valor fijo, es común utilizar SNAKE_UPPER_CASE para su denominación, lo cual las hace fácilmente identificables en el código. Para constantes que podrían ser ajustadas durante el desarrollo, este estilo de nombrado también es útil para localizarlas rápidamente.
+
+<Callout emoji="👀" type="default">
+  Las constantes son una herramienta poderosa en JavaScript que ayuda a escribir
+  código más seguro y estable, al prevenir cambios no intencionados en valores
+  que deben permanecer constantes. Su correcta utilización no solo facilita la
+  gestión de configuraciones y parámetros fijos, sino que también contribuye a
+  la optimización y eficiencia del código.
+</Callout>
+
+## Scope
+
+El "scope" o ámbito de una variable se refiere a la región del programa donde esta variable es accesible. Entender el scope es crucial porque dicta cómo y dónde se pueden utilizar las variables en un programa. Aunque el concepto puede parecer simple, tiene profundas implicaciones en cómo se estructura el código y se evitan errores comunes como colisiones de nombres o problemas de acceso a datos.
+
+### Tipos de Scope
+
+#### Global Scope
+
+- Si una variable se declara fuera de cualquier función o bloque, se encuentra en el ámbito global. Esto significa que puede ser accesible desde cualquier parte del código que se ejecute después de su declaración.
+- El uso excesivo del ámbito global puede llevar a problemas de mantenimiento y a conflictos entre nombres de variables, especialmente en proyectos grandes.
+
+```js copy filename="JavaScript"
+var globalVar = "Accessible everywhere";
+function testFunction() {
+  console.log(globalVar); // Imprime: Accessible everywhere
+}
+console.log(globalVar); // También imprime: Accessible everywhere
+```
+
+#### Local Scope (Function Scope)
+
+Las variables declaradas dentro de una función tienen un scope local a esa función, lo que significa que solo pueden ser accesibles dentro de ella. Este ámbito protege a las variables de ser accesibles globalmente, lo que ayuda a evitar modificaciones no deseadas y conflictos.
+
+```js copy filename="JavaScript"
+function testLocalScope() {
+  var localVar = "Accessible only in this function";
+  console.log(localVar); // Imprime: Accessible only in this function
+}
+testLocalScope();
+// console.log(localVar); // Error: localVar is not defined
+```
+
+#### Block Scope
+
+- Con la introducción de let y const en ES6, JavaScript ganó la capacidad de definir variables con ámbito de bloque, limitando su acceso al bloque en el que son declaradas, como dentro de bucles o condiciones.
+- Un bloque se define como cualquier sección de código encerrada entre llaves {}.
+- Este tipo de scope es particularmente útil para controlar la **`vida útil de las variables`** y reducir efectos secundarios fuera del bloque.
+
+```js copy filename="JavaScript"
+let counter;
+console.log(counter); // -> undefined
+{
+  counter = 1;
+  console.log(counter); // -> 1
+}
+counter = counter + 1;
+console.log(counter); // -> 2
+```
+
+En este ejemplo, counter es accesible dentro y fuera del bloque porque fue declarada fuera del mismo. Sin embargo, su valor es modificado dentro del bloque y el cambio persiste fuera del mismo.
+
+<Callout emoji="😕" type="info">
+
+<h4 className="font-medium">¿Y Qué es la Vida Útil de las Variables?</h4>
+
+La "vida útil" de una variable en JavaScript se refiere al período durante el cual
+la variable existe en la memoria y puede ser accedida o modificada. La vida útil
+de una variable está intrínsecamente ligada a su ámbito o "scope", y determina
+cuándo y cómo se crean, utilizan y destruyen las variables.
+
+</Callout>
+
+---
+
+### Hoisting
+
+El hoisting es un mecanismo en JavaScript por el cual las declaraciones de variables y funciones son movidas a la parte superior de su ámbito antes de que el código sea ejecutado. Este comportamiento puede ser confuso porque permite el uso de funciones y variables antes de que estén visualmente declaradas en el código. Aunque se le describe a menudo como un "levantamiento", es más precisamente un comportamiento del intérprete de JavaScript que procesa declaraciones durante la fase de compilación.
+
+#### Mecanismo de Hoisting
+
+1. **Hoisting de Variables:**
+
+- **Variables var:** Las declaraciones de variables realizadas con var son elevadas al inicio de su contexto de ejecución (al inicio de la función si son locales, o al inicio del script si son globales). Estas variables son inicializadas con undefined en el momento del hoisting.
+- **Variables let y const:** Aunque también son hoisted, no son inicializadas con undefined. En lugar de eso, entran en una zona llamada Temporal Dead Zone (TDZ) hasta que su declaración es alcanzada en el flujo del código, momento en el cual pueden ser inicializadas. Acceder a estas variables antes de su inicialización resultará en un ReferenceError.
+
+<Callout emoji="😕" type="info">
+
+<h4 className="font-medium">¿Y Qué es el Temporal Dead Zone (TDZ)?</h4>
+
+La Temporal Dead Zone (TDZ) representa un periodo durante el cual estas variables
+están en un estado "muerto" en el que no pueden ser accedidas ni utilizadas de ninguna
+manera. La TDZ empieza desde el bloque de código donde la variable es declarada y
+termina cuando la variable es inicializada.
+
+En otras palabras la TDZ es un mecanismo de seguridad que JavaScript implementa para garantizar que las variables se utilicen de manera correcta, previniendo errores que podrían surgir al acceder a variables antes de que estén debidamente inicializadas. Esto contrasta con las variables declaradas con var, que son inicializadas con undefined y son accesibles antes de su declaración explícita en el código.
+
+```js copy filename="JavaScript"
+console.log(a); // ReferenceError: Cannot access 'a' before initialization
+let a = 3;
+```
+
+En este ejemplo, intentar imprimir a antes de que sea declarada resulta en un ReferenceError porque a está en la TDZ en ese momento.
+
+</Callout>
+
+2. **Hoisting de Funciones:**
+
+Las funciones declaradas (aquellas definidas mediante una declaración de función, no mediante expresiones de función) son hoisted completamente, lo que significa que pueden ser llamadas antes de su declaración en el código.
+
+<h4 className="font-medium top-5">Ejemplo</h4>
+
+1. Ejemplo de Hoisting con var:
+
+```js copy filename="JavaScript"
+console.log(num); // undefined
+var num = 6;
+console.log(num); // 6
+```
+
+En este ejemplo, la variable num se hoistea al inicio de su ámbito y se inicializa con undefined, lo que permite que el primer console.log ejecute sin error, mostrando undefined.
+
+2. Ejemplo de Hoisting con Función:
+
+```js copy filename="JavaScript"
+greet(); // "Hello, world!"
+function greet() {
+  console.log("Hello, world!");
+}
+```
+
+Aquí, la función greet puede ser invocada antes de su declaración visual en el código debido al hoisting.
+
+3. Ejemplo de Hoisting con let y Impacto de TDZ:
+
+```js copy filename="JavaScript"
+console.log(value); // ReferenceError: Cannot access 'value' before initialization
+let value = 10;
+```
+
+A pesar de que value está hoisted, intentar acceder a ella antes de su línea de declaración resulta en un error debido a que está en la TDZ.
+
+---
+
+### Scope de let y const
+
+Las palabras clave let y const introducidas en ECMAScript 2015 trajeron consigo una nueva manera de manejar el scope de las variables en JavaScript. A diferencia de var, que proporciona un scope de función, let y const ofrecen un scope de bloque [Block Scope](#block-scope), lo que significa que limitan el alcance de las variables al bloque en el que se declaran.
+
+<h4 className="font-medium mt-5">Ejemplos</h4>
+
+1. **Scope Global y Local:**
+
+```js copy filename="JavaScript"
+let globalLet = "Visible en todo el programa";
+const globalConst = "También visible en todo el programa";
+
+{
+  let blockLet = "Visible solo en este bloque";
+  const blockConst = "Igualmente visible solo en este bloque";
+  console.log(globalLet); // -> "Visible en todo el programa"
+  console.log(globalConst); // -> "También visible en todo el programa"
+  console.log(blockLet); // -> "Visible solo en este bloque"
+  console.log(blockConst); // -> "Igualmente visible solo en este bloque"
+}
+
+console.log(globalLet); // -> "Visible en todo el programa"
+console.log(globalConst); // -> "También visible en todo el programa"
+// console.log(blockLet);    // Error: blockLet is not defined
+// console.log(blockConst);  // Error: blockConst is not defined
+```
+
+2. **Ejemplo con Bucle for:**
+
+```js copy filename="JavaScript"
+console.log("Antes: ", typeof p); // -> "undefined"
+
+for (let p = 0; p < 3; p++) {
+  console.log("Valor de p: ", p); // -> 0, 1, 2
+}
+
+console.log("Después: ", typeof p); // -> "undefined"
+```
+
+En este ejemplo, p solo existe dentro del bucle for. Fuera de este, p no está definida, demostrando el block scope de let.
+
+3. **Scope en Bloques Anidados:**
+
+```js copy filename="JavaScript"
+let outerVariable = 200;
+{
+  let innerVariable = 100;
+  {
+    let innerMostVariable = "interior";
+    console.log(outerVariable); // -> 200
+    console.log(innerVariable); // -> 100
+    console.log(innerMostVariable); // -> "interior"
+  }
+  console.log(outerVariable); // -> 200
+  console.log(innerVariable); // -> 100
+  // console.log(innerMostVariable);  // Error: innerMostVariable is not defined
+}
+```
+
+Aquí, cada variable está confinada a su respectivo bloque, con innerMostVariable accesible solo en su bloque más interno.
+
+### Scope de var
+
+La declaración de variables utilizando var en JavaScript es un tema fundamental que abarca varios aspectos del comportamiento de las variables en diferentes contextos. Aunque hoy en día el uso de var es considerado obsoleto en favor de let y const, es importante entender su funcionamiento para comprender código legado o para manejar situaciones donde se requiere compatibilidad con versiones antiguas de JavaScript.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Consideremos el siguiente escenario para ilustrar cómo var se comporta dentro de un bucle, pero afecta el ámbito fuera de él:
+
+```js copy filename="JavaScript"
+console.log("Antes: ", i); // Error: i is not defined
+for (var i = 0; i < 3; i++) {
+  console.log("Valor de i: ", i); // Muestra 0, 1, 2
+}
+console.log("Después: ", i); // Muestra 3
+```
+
+En este ejemplo, aunque i se declara dentro del bucle for, sigue siendo accesible fuera de este. Esto se debe a que var no respeta el ámbito de bloque, y eleva la variable al ámbito funcional más cercano, o al ámbito global si no está dentro de una función.
+
+#### Comportamiento de var en Diferentes Ámbitos
+
+Como se mencionó anteriormente, var tiene un comportamiento particular cuando se trata de ámbitos de variable:
+
+1. **Scope Global:** Al declarar una variable con var fuera de cualquier función, esta se vuelve global. Esto significa que será accesible desde cualquier punto del script después de su declaración. Es importante notar que el uso de var en este contexto puede llevar a posibles conflictos o errores difíciles de rastrear debido a la contaminación del scope global.
+
+2. **Scope a nivel de función:** var tiene un comportamiento particular cuando se utiliza dentro de funciones. A diferencia de otros bloques (como los de if o ciclos for), solo las funciones crean un nuevo ámbito para las variables declaradas con var.
+
+El ámbito funcional de var se hace evidente cuando se usa dentro de funciones. Aquí, var se comporta de manera más controlada:
+
+```js copy filename="JavaScript"
+var outerVar = "Soy global";
+{
+  var innerVar = "¿También soy global?";
+  console.log(outerVar); // Muestra "Soy global"
+  console.log(innerVar); // Muestra "¿También soy global?"
+}
+console.log(innerVar); // Muestra "¿También soy global?"
+```
+
+En este ejemplo, innerVar parece ser una variable local al bloque {}, pero debido a que var no reconoce estos bloques como ámbitos separados (a excepción de las funciones), innerVar es accesible globalmente.
+
+#### Importancia de Entender var
+
+Aunque var es menos utilizado en código moderno, entender su comportamiento es crucial para:
+
+1. **Mantenimiento de Código Legado:** Muchos proyectos antiguos aún utilizan var, por lo que comprender su comportamiento permite modificar o actualizar esos proyectos sin introducir errores.
+2. **Comprender Conceptos Fundamentales:** Aprender sobre var y su comportamiento puede ser una excelente manera de entender cómo JavaScript maneja los ámbitos de variables.
+
+#### Variables var y el Objeto window
+
+En un entorno de navegador, las variables globales declaradas con var se añaden al objeto window, lo que significa que son accesibles como propiedades de este objeto global:
+
+```js copy filename="JavaScript"
+var globalVar = "accesible";
+console.log(window.globalVar); // "accesible"
+```
+
+Este comportamiento puede tener implicaciones de seguridad y rendimiento, ya que las propiedades del objeto window son accesibles globalmente en todo el script que se ejecuta en la ventana del navegador.
+
+### Fases del Scope
+
+En JavaScript, el manejo del scope y la vida útil de las variables atraviesan varias fases que son cruciales para entender cómo y cuándo las variables son creadas, utilizadas y eliminadas. Estas fases incluyen la declaración, la inicialización, el uso y, finalmente, la salida de scope que lleva a la recolección de basura en algunos casos. Vamos a desglosar estas fases para entender mejor el proceso:
+
+1. **Declaración**
+
+La fase de declaración es donde el nombre de la variable es registrado en su ámbito correspondiente. Durante esta fase, el motor de JavaScript reconoce la variable y asigna un espacio en la memoria para ella, aunque aún no se le ha asignado un valor (excepto en el caso de las constantes, que deben ser inicializadas en su declaración).
+
+- **Variables var:** Se procesan al inicio de la ejecución de la función o del script global debido al hoisting. Inicialmente, se inicializan con el valor undefined.
+- **Variables let y const:** No se inicializan durante la fase de hoisting, lo que significa que no pueden ser accesadas hasta que la declaración sea ejecutada explícitamente en el código. El acceso antes de su inicialización resulta en un ReferenceError.
+
+2. **Inicialización**
+
+La inicialización ocurre cuando a la variable se le asigna un valor por primera vez. En el caso de var, esto puede ser inmediatamente después del hoisting si la declaración y la asignación están en la misma línea. Para let y const, la inicialización debe ocurrir explícitamente después de la declaración en el código.
+
+3. **Uso**
+
+Durante la fase de uso, la variable puede ser leída o modificada, dependiendo de su tipo (const no permite modificaciones después de la inicialización). Esta fase continúa hasta que la variable sale de su ámbito o hasta que el programa termina, en el caso de las variables globales.
+
+4. **Salida de Scope**
+
+Una variable sale de scope cuando el bloque de código en el que fue declarada termina su ejecución. En el caso de las funciones, esto ocurre cuando la función termina de ejecutarse. Las variables que salen de scope ya no son accesibles desde el código.
+
+## Breves palabras sobre las funciones
+
+Las funciones en JavaScript son una de las piezas fundamentales en la construcción de programas eficientes y organizados. Permiten encapsular código que realiza una tarea específica para reutilizarlo múltiples veces sin necesidad de repetirlo, lo cual es crucial para mantener el código limpio y fácil de mantener.
+
+### ¿Por qué usar funciones?
+
+Usar funciones hace que el código sea más legible y fácil de depurar. Si una tarea particular necesita ser modificada, puedes hacerlo en un solo lugar, en la definición de la función, en lugar de buscar y cambiar múltiples instancias del mismo código dispersas por todo el programa.
+
+### Declaración de Funciones
+
+Las funciones se declaran usando la palabra clave function, seguida de un nombre, paréntesis que pueden incluir parámetros, y un bloque de código encerrado en llaves. Aquí tienes un ejemplo simple:
+
+```js copy filename="JavaScript"
+function mostrarMensaje() {
+  console.log("Hola, soy una función");
+}
+```
+
+### Llamada a Funciones
+
+Para ejecutar la función, la "llamamos" usando su nombre seguido de paréntesis. Si la función toma parámetros, los valores de esos parámetros se colocan dentro de los paréntesis.
+
+```js copy filename="JavaScript"
+mostrarMensaje(); // Llama a la función y muestra: Hola, soy una función
+```
+
+<h4 className="font-medium mt-5">Ejemplo de Reusabilidad de Funciones</h4>
+
+Las funciones no solo ahorran tiempo durante la escritura del código, sino que también hacen que el mantenimiento sea más sencillo. Aquí hay un ejemplo que ilustra cómo se puede usar una función para evitar la repetición de código:
+
+```js copy filename="JavaScript"
+function repetirFrase(frase, veces) {
+  for (let i = 0; i < veces; i++) {
+    console.log(frase);
+  }
+}
+
+repetirFrase("Hola mundo", 3);
+```
+
+En este caso, la función repetirFrase toma dos parámetros: la frase a repetir y el número de veces que se debe repetir. Esto muestra cómo las funciones pueden ser herramientas poderosas para escribir código modular y reutilizable.
+
+## Sombreado de Variables
+
+El sombreado de variables ocurre cuando una variable de ámbito local tiene el mismo nombre que una variable en un ámbito superior o global. En JavaScript, esto significa que la variable local "oculta" a la variable global dentro de su propio ámbito, permitiendo comportamientos y valores diferentes a los de la variable global.
+
+### Impacto del Sombreado de Variables
+
+El sombreado permite una flexibilidad considerable en cómo se manejan los datos dentro de funciones o bloques específicos, pero también puede introducir complejidad y posibles errores si no se maneja cuidadosamente. Por ello, es crucial comprender completamente cómo y por qué ocurre el sombreado.
+
+<h4 className="font-medium mt-5">Ejemplos</h4>
+
+**Sin Sombreado**
+
+Primero, observemos un caso sin sombreado. Aquí, counter se modifica dentro de un bloque, afectando su valor globalmente:
+
+```js copy filename="JavaScript"
+let counter = 100;
+console.log(counter); // -> 100
+{
+  counter = 200;
+  console.log(counter); // -> 200
+}
+console.log(counter); // -> 200
+```
+
+En este ejemplo, no se introduce una nueva declaración dentro del bloque, por lo que counter referenciado dentro del bloque sigue siendo la variable global.
+
+**Con Sombreado**
+
+Ahora, veamos un caso con sombreado. Aquí, counter dentro del bloque es una nueva variable local que sombrea a la global:
+
+```js copy filename="JavaScript"
+let counter = 100;
+console.log(counter); // -> 100
+{
+  let counter = 200; // Sombreado aquí
+  console.log(counter); // -> 200
+}
+console.log(counter); // -> 100
+```
+
+Este ejemplo demuestra cómo la declaración con let dentro del bloque crea una nueva instancia de counter que no afecta a la variable global del mismo nombre fuera del bloque.
+
+### Sombreado en Funciones
+
+El sombreado también es común en el contexto de las funciones, especialmente con el uso de var, que tiene un ámbito limitado a la función:
+
+```js copy filename="JavaScript"
+var counter = 100;
+
+function testFunction() {
+  var counter = 200; // Sombreado dentro de la función
+  console.log(counter); // -> 200
+}
+
+console.log(counter); // -> 100
+testFunction(); // Accede a la versión sombreada de counter
+console.log(counter); // -> 100
+```
+
+## Ejercicios
+
+A continuación, presento una serie de quizes, preguntas y ejercicios diseñados para ayudarte a consolidar tu comprensión sobre los conceptos básicos de JavaScript que hemos discutido. Cada ejercicio incluye una solución para que puedas verificar tu trabajo.
+
+### Quizes
+
+<h4 className="font-medium mt-5">¿Qué es una variable en JavaScript?</h4>
+
+<p className="my-2">a) Una función que almacena datos</p>
+<p>b) Un contenedor para almacenar datos</p>
+<p className="my-2">c) Un tipo de bucle</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) Un contenedor para almacenar datos</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué palabra clave en JavaScript declara una variable que no puede ser
+  reasignada?
+</h4>
+
+<p className="my-2">a) let</p>
+<p>b) var</p>
+<p className="my-2">c) const</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) const</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  En JavaScript, ¿cuál de las siguientes opciones representa una práctica
+  correcta de nombramiento de variables?
+</h4>
+
+<p className="my-2">a) Comenzar con un número</p>
+<p>b) Usar espacios entre palabras</p>
+<p className="my-2">c) Usar camelCase</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) Usar camelCase</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cuál es el resultado de una variable declarada con var fuera de cualquier
+  función?
+</h4>
+
+<p className="my-2">a) Scope global</p>
+<p>b) Scope local</p>
+<p className="my-2">c) No tiene scope</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) Scope global</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">¿Qué es el hoisting en JavaScript?</h4>
+
+<p className="my-2">a) Priorizar la ejecución de funciones</p>
+<p>b) Elevar las declaraciones de variables al inicio de su contexto</p>
+<p className="my-2">c) Ignorar declaraciones de variables</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      b) Elevar las declaraciones de variables al inicio de su contexto
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué sucede cuando intentas reasignar una variable const?
+</h4>
+
+<p className="my-2">a) La variable es reasignada sin problemas</p>
+<p>b) Se lanza un error de tipo</p>
+<p className="my-2">c) Se ignora la reasignación</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) Se lanza un error de tipo</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué método se utiliza para imprimir información en la consola de JavaScript?
+</h4>
+
+<p className="my-2">a) console.print()</p>
+<p>b) console.log()</p>
+<p className="my-2">c) console.output()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) console.log()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué describe mejor el 'scope' de una variable en JavaScript?
+</h4>
+
+<p className="my-2">a) El valor de la variable</p>
+<p>b) El tipo de la variable</p>
+<p className="my-2">c) El área del programa donde la variable es accesible</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      c) El área del programa donde la variable es accesible
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué es sombreado de variables en JavaScript?
+</h4>
+
+<div className="my-2">
+  a) Cambiar el valor de una variable global dentro de una función
+</div>
+<p>b) Declarar una nueva variable local con el mismo nombre que una global</p>
+<p className="my-2">c) Eliminar una variable global</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      b) Declarar una nueva variable local con el mismo nombre que una global
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cuál es una característica de las funciones en JavaScript?
+</h4>
+
+<p className="my-2">a) No pueden retornar valores</p>
+<p>b) Pueden contener otras funciones</p>
+<p className="my-2">c) Pueden contener otras funciones</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) Pueden contener otras funciones</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### Preguntas
+
+<h4 className="font-medium mt-5">
+  ¿Cómo diferirías el uso de var, let y const en la declaración de variables?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      - **var** es la forma más antigua de declarar variables y tiene un scope a nivel de función o global si se declara fuera de una función. Se debería usar con precaución, principalmente en situaciones donde la compatibilidad con navegadores antiguos es necesaria.
+      - **let** permite declarar variables con un scope limitado al bloque, declaración o expresión donde se usa. Es útil en la mayoría de los casos donde se requiere cambiar el valor de la variable después de su inicialización, como en bucles o condicionales.
+      - **const** se utiliza para declarar variables que no deben cambiar su valor inicial una vez asignado, es decir, son constantes. Su scope también es de bloque y ayuda a garantizar que los valores no sean reasignados, lo cual es útil para configuraciones y valores que no deberían cambiar a lo largo del tiempo.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Puede explicar cómo el scope global afecta la seguridad y la gestión de la
+  memoria en una aplicación web?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      El uso de variables globales puede llevar a problemas de seguridad ya que cualquier script incluido en la página puede acceder y modificar estas variables, potencialmente llevando a comportamientos no deseados o ataques de tipo XSS (Cross-Site Scripting). En cuanto a la gestión de memoria, las variables globales permanecen en memoria durante todo el ciclo de vida de la página, lo que puede llevar a un uso ineficiente de recursos si las variables acumulan grandes cantidades de datos o si no se liberan adecuadamente.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Describe un escenario donde el hoisting podría causar un bug en el código.
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Supongamos que intentas utilizar una variable antes de declararla con var, pensando que sería undefined, pero otro bloque de código anterior en el mismo scope la ha inicializado con un valor diferente. Por ejemplo:
+
+      ```js copy filename="JavaScript"
+      function ejemploHoisting() {
+        console.log(miVar); // Esperas undefined, pero muestra 'Hola'
+        var miVar = 'Mundo';
+      }
+      var miVar = 'Hola';
+      ejemploHoisting();
+      ```
+
+      Aquí, el hoisting causa que miVar se declare al inicio de la función, pero toma el valor del miVar global inicializado previamente.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cómo podrías implementar el sombreado de variables para manejar
+  configuraciones regionales en una aplicación?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Podrías tener una configuración regional global definida para toda la aplicación y luego, en funciones específicas que manejan lógica relacionada con localidades específicas, podrías declarar variables locales (sombreadas) que tengan configuraciones ajustadas a esas localidades. Esto permite una gran flexibilidad y mantiene el código limpio y modular.
+
+      ```js copy filename="JavaScript"
+      var configuracionGlobal = { moneda: 'USD', idioma: 'en' };
+      function mostrarPrecios() {
+        var configuracionGlobal = { moneda: 'EUR', idioma: 'es' }; // Sombreado
+        console.log('Configuración usada:', configuracionGlobal);
+      }
+      mostrarPrecios();
+      console.log('Configuración global:', configuracionGlobal);
+      ```
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Explique la diferencia entre declarar una función con una declaración de
+  función y una expresión de función.
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Las declaraciones de función son hoisted, lo que significa que pueden ser llamadas antes de que sean definidas en el código. Son ideales cuando se necesita que una función esté disponible globalmente a lo largo de todo el script.
+
+      ```js copy filename="JavaScript"
+      funcionEjemplo();
+      function funcionEjemplo() {
+        console.log('Funciona');
+      }
+      ```
+
+      Las expresiones de función pueden ser anónimas o nombradas y no son hoisted, lo que significa que sólo pueden ser llamadas después de su definición.
+
+      ```js copy filename="JavaScript"
+      var ejemploExpresion = function() {
+        console.log('Funciona después de la declaración');
+      };
+      ejemploExpresion();
+      ```
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cuál es la importancia de inicializar variables correctamente en JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Inicializar variables correctamente ayuda a evitar errores en tiempo de ejecución, facilita la lectura y mantenimiento del código, y asegura que las variables sean utilizadas con los valores esperados desde su primer uso, previniendo comportamientos indeseados o bugs difíciles de rastrear.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cómo afecta use strict al comportamiento de las declaraciones de variables en
+  JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      El modo 'use strict' impide la declaración implícita de variables globales, lo cual ayuda a prevenir errores comunes como asignaciones a variables no declaradas. Esto conduce a un código más seguro y predecible, obligando a los desarrolladores a declarar explícitamente sus variables antes de usarlas.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué técnicas podrías usar para evitar colisiones de nombres en un espacio de
+  nombres global grande?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Una técnica común es el uso de IIFEs (Immediately Invoked Function Expressions) para encapsular el código en su propio ámbito local. Otra técnica es el uso de módulos o espacios de nombres que agrupan funcionalidades relacionadas bajo un único objeto global.
+
+      ```js copy filename="JavaScript"
+      var MiAplicacion = MiAplicacion || {};
+      MiAplicacion.Modulo = (function() {
+        var variablePrivada = 'privada';
+        return {
+          metodoPublico: function() { console.log(variablePrivada); }
+        };
+      })();
+      ```
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Discute cómo y por qué podrías usar console.table() en el desarrollo de una
+  aplicación.
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      console.table() es útil para mostrar datos tabulares, como listas de objetos, en un formato legible en la consola. Esto es especialmente útil en el desarrollo cuando necesitas inspeccionar listas de datos, resultados de pruebas o cualquier información estructurada. Ayuda a visualizar rápidamente las propiedades y valores de los objetos sin necesidad de iterar manualmente a través de ellos.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué estrategias usarías para optimizar la reasignación de variables en un
+  bucle intensivo en JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Una estrategia es minimizar el número de reasignaciones dentro del bucle, por ejemplo, usando acumuladores o valores temporales fuera del bucle. Otra es evitar el uso de variables que no son necesarias fuera del bucle, restringiéndolas al ámbito del bucle cuando sea posible, utilizando let en lugar de var para asegurar que el ámbito de la variable sea limitado al bloque del bucle.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Ejercicios
+
+<h4 className="font-medium mt-5">
+  Declara dos variables, base y altura de un triángulo. Inicialízalas con 10 y 5
+  respectivamente. Calcula el área (area = (base * altura) / 2) e imprímelo con
+  console.log().
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let base = 10;
+        let altura = 5;
+        let area = (base * altura) / 2;
+        console.log("El área del triángulo es:", area);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Crea una constante PI y asígnale 3.14159. Usa esta constante para calcular el
+  área de un círculo con radio 4. Imprime el resultado.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        const PI = 3.14159;
+        let radio = 4;
+        let areaCirculo = PI * radio * radio;
+        console.log("El área del círculo es:", areaCirculo);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Declara una variable global color y asígnale "rojo". Dentro de una función,
+  declara una variable local color y asígnale "azul". Muestra ambos colores
+  usando console.log() dentro y fuera de la función.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let color = "rojo";
+        function cambiarColor() {
+          let color = "azul";
+          console.log("Color dentro de la función:", color);
+        }
+        cambiarColor();
+        console.log("Color fuera de la función:", color);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Escribe una función que acepte dos parámetros y los multiplique. Retorna el
+  resultado y guárdalo en una variable. Muestra este resultado.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        function multiplicar(a, b) {
+          return a * b;
+        }
+        let resultado = multiplicar(6, 7);
+        console.log("El resultado de la multiplicación es:", resultado);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Crea un array de números del 1 al 5. Usa un bucle para modificar cada elemento
+  del array multiplicándolo por 2. Muestra el array modificado.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let numeros = [1, 2, 3, 4, 5];
+        for (let i = 0; i < numeros.length; i++) {
+          numeros[i] *= 2;
+        }
+        console.log("Array modificado:", numeros);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
