@@ -1,0 +1,947 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Steps } from "nextra/components";
+import { Callout } from "nextra-theme-docs";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
+
+# Tipos de Datos
+
+En el mundo de la programación, y específicamente en JavaScript, entender los tipos de datos es fundamental para el manejo adecuado de la información dentro de nuestras aplicaciones. Los tipos de datos nos permiten categorizar la información y definir las operaciones que se pueden realizar con dichos datos.
+
+## Clasificación de los Tipos de Datos en JavaScript
+
+JavaScript es conocido por ser un lenguaje de programación con tipado dinámico, lo que significa que las variables no requieren una declaración de tipo de dato explícita y pueden cambiar de tipo. A pesar de esto, JavaScript define dos categorías principales de tipos de datos: primitivos y compuestos.
+
+### Tipos Primitivos
+
+<table className="table-fixed my-5 w-full text-start">
+  <thead className="bg-sky-900 text-white text-sm">
+    <tr>
+      <th>Tipo de Dato</th>
+      <th>Descripción</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    {[
+      {
+        tipoDeDato: "Number",
+        descripción: "Incluye tanto enteros como números decimales.",
+        ejemplo: "let age = 30;",
+      },
+      {
+        tipoDeDato: "String",
+        descripción: "Cadena de caracteres utilizada para representar texto.",
+        ejemplo: 'let name = "Alice";',
+      },
+      {
+        tipoDeDato: "Boolean",
+        descripción:
+          "Representa dos valores, verdadero (true) o falso (false).",
+        ejemplo: "let isActive = true;",
+      },
+      {
+        tipoDeDato: "Undefined",
+        descripción:
+          "Indica que una variable ha sido declarada pero aún no se le ha asignado un valor.",
+        ejemplo: "let result;",
+      },
+      {
+        tipoDeDato: "Null",
+        descripción:
+          "Representa la ausencia intencional de un valor de objeto.",
+        ejemplo: "let data = null;",
+      },
+      {
+        tipoDeDato: "Symbol",
+        descripción: "Proporciona claves únicas para propiedades de objetos.",
+        ejemplo: "let id = Symbol('id');",
+      },
+      {
+        tipoDeDato: "BigInt",
+        descripción:
+          "Utilizado para almacenar números más grandes que el límite para un tipo Number.",
+        ejemplo: "let bigNumber = 9007199254740991n;",
+      },
+    ].map((item) => (
+      <tr key={item.tipoDeDato}>
+        <td>{item.tipoDeDato}</td>
+        <td>{item.descripción}</td>
+        <td>{item.ejemplo}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+### Tipos Compuestos o Referencia
+
+<table className="table-fixed my-5 w-full text-start">
+  <thead className="bg-sky-900 text-white text-sm">
+    <tr>
+      <th>Tipo de Dato</th>
+      <th>Descripción</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    {[
+      {
+        tipoDeDato: "Object",
+        descripción: "Incluye objetos, arrays, funciones, y más.",
+        ejemplo: 'let user = {name: "Alice", age: 25};',
+      },
+      {
+        tipoDeDato: "Array",
+        descripción: "Lista ordenada de valores.",
+        ejemplo: "let numbers = [1, 2, 3, 4, 5];",
+      },
+      {
+        tipoDeDato: "Function",
+        descripción: "Bloques de código reutilizables.",
+        ejemplo: 'function greet() { console.log("Hello World!"); }',
+      },
+    ].map((item) => (
+      <tr key={item.tipoDeDato}>
+        <td>{item.tipoDeDato}</td>
+        <td>{item.descripción}</td>
+        <td>{item.ejemplo}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+## Importancia de los Tipos de Datos
+
+Los diferentes tipos de datos en JavaScript permiten a los programadores realizar diversas operaciones y manipular datos de manera eficiente. Por ejemplo:
+
+- **Operaciones matemáticas** son principalmente realizadas con el tipo Number.
+- **Manipulación de textos** se realiza con el tipo String, utilizando métodos como .toUpperCase(), .substring(), entre otros.
+- **Control de flujo** se maneja a menudo con valores Boolean, permitiendo ejecutar diferentes secciones de código basadas en condiciones verdaderas o falsas.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Consideremos un ejemplo simple para ilustrar cómo se utilizan los tipos de datos en JavaScript:
+
+```js copy filename="JavaScript"
+// Declaración de diferentes tipos de datos
+let year = 2021; // Number
+let welcomeMessage = "Hello, welcome to 2021!"; // String
+let isLeapYear = false; // Boolean
+let user = { name: "John Doe", age: 28 }; // Object
+
+// Uso de tipos de datos
+console.log(welcomeMessage); // Muestra el mensaje de bienvenida
+if (!isLeapYear) {
+  console.log(year, "is not a leap year."); // Evalúa la condición y muestra el mensaje
+}
+
+// Acceso a propiedad de objeto
+console.log("User:", user.name, "Age:", user.age); // Muestra información del usuario
+```
+
+<Callout emoji="👀" type="default">
+  Entender y utilizar correctamente los tipos de datos en JavaScript es crucial
+  para el desarrollo de aplicaciones robustas y mantenibles. Cada tipo de datos
+  ofrece características y métodos específicos que facilitan la implementación
+  de funcionalidades complejas en programas de cualquier escala. La selección
+  adecuada del tipo de datos no solo impacta en la claridad del código sino
+  también en el rendimiento y la gestión de recursos dentro de la aplicación.
+</Callout>
+
+## ¿Qué Tipo de Dato Tiene?
+
+En JavaScript, es común necesitar identificar el tipo de dato de una variable, especialmente porque es un lenguaje de tipado dinámico donde el tipo de una variable puede cambiar. Para realizar esta tarea, JavaScript proporciona dos herramientas principales: el operador typeof y la propiedad constructor.name. Estas herramientas ayudan a los desarrolladores a comprender y manejar los datos con los que trabajan de manera más efectiva.
+
+### Operador typeof
+
+El operador typeof es una herramienta rápida y fácil para identificar el tipo básico de una variable. Es un operador unario, lo que significa que toma un solo operando y devuelve una cadena que describe el tipo de dato del valor. Aquí están los posibles valores que typeof puede retornar:
+
+- **"undefined"** — para variables no definidas o no inicializadas.
+- **"boolean"** — para valores booleanos (true o false).
+- **"number"** — para números, ya sean enteros o flotantes.
+- **"bigint"** — para números enteros muy grandes que no pueden ser representados por el tipo number.
+- **"string"** — para cadenas de caracteres.
+- **"symbol"** — para valores del tipo Symbol.
+- **"function"** — para funciones.
+- **"object"** — para objetos, que incluyen objetos de tipo Array y null (debido a un error histórico en JavaScript, null se considera un objeto).
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let name = "Alice";
+console.log(typeof name); // "string"
+
+let age = 30;
+console.log(typeof age); // "number"
+
+let isActive = true;
+console.log(typeof isActive); // "boolean"
+
+let user = null;
+console.log(typeof user); // "object" – Caso especial para null
+
+let calculateAge = function () {
+  return age;
+};
+console.log(typeof calculateAge); // "function"
+```
+
+### constructor.name
+
+Aunque typeof es útil para identificar tipos primitivos y distinguir entre funciones y objetos genéricos, no proporciona detalles sobre el tipo específico de objetos como instancias de clases personalizadas, arrays, o fechas. Para obtener el nombre del constructor que creó la instancia del objeto, podemos utilizar constructor.name.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let numbers = [1, 2, 3];
+console.log(numbers.constructor.name); // "Array"
+
+let today = new Date();
+console.log(today.constructor.name); // "Date"
+
+class User {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+let user = new User("Bob", 25);
+console.log(user.constructor.name); // "User"
+```
+
+Es importante tener en cuenta que constructor.name puede no ser completamente fiable en entornos de producción donde el código puede ser minificado o ofuscado, ya que los nombres de los constructores pueden ser alterados.
+
+<Callout emoji="👀" type="error">
+  **OJO:** Sólo funciona en variables definidas (no undefined) y sólo en o
+  superiores.
+</Callout>
+
+## Referencia de una Variable a un Valor Primitivo y a un Valor Complejo
+
+En JavaScript, la comprensión de cómo las variables se asocian a valores primitivos y complejos es fundamental para entender cómo se manejan los datos dentro del lenguaje. Este concepto es crucial para operar con eficiencia y precisión en el desarrollo de aplicaciones web.
+
+### Valores Primitivos
+
+Los valores primitivos en JavaScript son datos que no poseen propiedades ni métodos. Estos incluyen tipos como number, string, boolean, undefined, null, symbol, y bigint. Una característica clave de los valores primitivos es que cuando asignas un valor primitivo a una variable, la variable accede directamente a ese valor. No hay una referencia o un objeto involucrado en este proceso. Esto se conoce como **asignación por valor**.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let x = 10;
+let y = x;
+
+// Modificar 'y' no afectará 'x'
+y = 20;
+
+console.log(x); // Muestra 10
+console.log(y); // Muestra 20
+```
+
+En este ejemplo, x y y son completamente independientes entre sí a pesar de que y fue inicialmente creada como una copia de x.
+
+**Gráfico**
+
+<div className="grid grid-cols-2 my-5 gap-5">
+  <div>
+
+    ```js copy filename="JavaScript"
+    let name = 'Jhoswe';
+    let age = 34;
+    ```
+
+  </div>
+  <table className="table-fixed w-full text-center">
+    <thead className="bg-sky-900 text-white text-sm">
+      <tr>
+        <th>Pila de Memoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      {[
+        {
+          tipoDeDato: "",
+        },
+        {
+          tipoDeDato: "",
+        },
+        {
+          tipoDeDato: "",
+        },
+        {
+          tipoDeDato: "age = 34",
+        },
+        {
+          tipoDeDato: "name = Jhoswe",
+        },
+      ].map((item) => (
+        <tr key={item.tipoDeDato}>
+          <td>{item.tipoDeDato}</td>
+        </tr>
+      ))}
+    </tbody>
+
+  </table>
+</div>
+
+<div className="grid grid-cols-2 my-5 gap-5">
+  <div>
+
+    ```js copy filename="JavaScript"
+    let name = 'Jhoswe';
+    let age = 34;
+    let person = {
+      name:'Genner',
+      age:25
+    }
+    ```
+
+  </div>
+  <table className="table-fixed w-full text-center">
+    <thead className="bg-sky-900 text-white text-sm">
+      <tr>
+        <th>Pila de Memoria</th>
+        <th>Pila de Objeto</th>
+      </tr>
+    </thead>
+    <tbody>
+      {[
+        {
+          tipoDeDato: "",
+        },
+        {
+          tipoDeDato: "",
+        },
+        {
+          tipoDeDato: "person",
+          tipoDeDato2: `{
+            name: "Genner",
+            age:25
+          }`,
+        },
+        {
+          tipoDeDato: "age = 34",
+        },
+        {
+          tipoDeDato: "name = Jhoswe",
+        },
+      ].map((item) => (
+        <tr key={item.tipoDeDato}>
+          <td>{item.tipoDeDato}</td>
+          <td>{item.tipoDeDato2}</td>
+        </tr>
+      ))}
+    </tbody>
+
+  </table>
+</div>
+
+En este caso person esta apilado en nuestra lista, pero a su vez sus datos se almacenan en otra pila, a la cual accederá a esta, por su referencia.
+
+<div className="grid grid-cols-2 my-5 gap-5">
+  <div>
+
+    ```js copy filename="JavaScript"
+    let name = 'Jhoswe';
+    let age = 34;
+    let person = {
+      name:'Genner',
+      age:25
+    },
+    let newName = name;
+    ```
+
+  </div>
+  <table className="table-fixed w-full text-center">
+    <thead className="bg-sky-900 text-white text-sm">
+      <tr>
+        <th>Pila de Memoria</th>
+        <th>Pila de Objeto</th>
+      </tr>
+    </thead>
+    <tbody>
+      {[
+        {
+          tipoDeDato: "",
+        },
+        {
+          tipoDeDato: "newName = Jhoswe",
+        },
+        {
+          tipoDeDato: "person",
+          tipoDeDato2: `{
+            name: "Genner",
+            age:25
+          }`,
+        },
+        {
+          tipoDeDato: "age = 34",
+        },
+        {
+          tipoDeDato: "name = Jhoswe",
+        },
+      ].map((item) => (
+        <tr key={item.tipoDeDato}>
+          <td>{item.tipoDeDato}</td>
+          <td>{item.tipoDeDato2}</td>
+        </tr>
+      ))}
+    </tbody>
+
+  </table>
+</div>
+
+En este caso ahora tenemos una nueva variable llamada newName el cual tendrá el valor que la variable name que en este caso es Jhoswe; Ojo que name sigue teniendo el valor de Jhoswe.
+
+<div className="grid grid-cols-2 my-5 gap-5">
+  <div>
+
+    ```js copy filename="JavaScript"
+    let name = 'Jhoswe';
+    let age = 34;
+    let person = {
+      name:'Genner',
+      age:25
+    },
+
+    let newName = name;
+    newName = 'Saul'
+    ```
+
+  </div>
+  <table className="table-fixed w-full text-center">
+    <thead className="bg-sky-900 text-white text-sm">
+      <tr>
+        <th>Pila de Memoria</th>
+        <th>Pila de Objeto</th>
+      </tr>
+    </thead>
+    <tbody>
+      {[
+        {
+          tipoDeDato: "",
+        },
+        {
+          tipoDeDato: "newName=Saul",
+        },
+        {
+          tipoDeDato: "person",
+          tipoDeDato2: `{
+            name: "Genner",
+            age:25
+          }`,
+        },
+        {
+          tipoDeDato: "age = 34",
+        },
+        {
+          tipoDeDato: "name = Jhoswe",
+        },
+      ].map((item) => (
+        <tr key={item.tipoDeDato}>
+          <td>{item.tipoDeDato}</td>
+          <td>{item.tipoDeDato2}</td>
+        </tr>
+      ))}
+    </tbody>
+
+  </table>
+</div>
+
+Ahora nosotros cambiamos el valor de newName a Sau, pero el valor de name seguirá siendo la misma de la original, es decir Jhoswe
+
+<div className="grid grid-cols-2 my-5 gap-5">
+  <div>
+
+    ```js copy filename="JavaScript"
+    let name = 'Jhoswe';
+    let age = 34;
+    let person = {
+      name:'Genner',
+      age:25
+    },
+
+    let newName = name;
+    newName = 'Saul'
+
+    let newPerson = person
+    ```
+
+  </div>
+  <table className="table-fixed w-full text-center">
+    <thead className="bg-sky-900 text-white text-sm">
+      <tr>
+        <th>Pila de Memoria</th>
+        <th>Pila de Objeto</th>
+      </tr>
+    </thead>
+    <tbody>
+      {[
+        {
+          tipoDeDato: "newPerson",
+          tipoDeDato2: `{
+            name: "Genner",
+            age:25
+          }`,
+        },
+        {
+          tipoDeDato: "newName = Saul",
+        },
+        {
+          tipoDeDato: "person",
+          tipoDeDato2: `{
+            name: "Genner",
+            age:25
+          }`,
+        },
+        {
+          tipoDeDato: "age = 34",
+        },
+        {
+          tipoDeDato: "name = Jhoswe",
+        },
+      ].map((item) => (
+        <tr key={item.tipoDeDato}>
+          <td>{item.tipoDeDato}</td>
+          <td>{item.tipoDeDato2}</td>
+        </tr>
+      ))}
+    </tbody>
+
+  </table>
+</div>
+
+Ahora newPerson apunta a la misma referencia de person, por lo que si hay algún cambio dentro del objeto de person o newPerson, este cambio lo tendrán ambos.
+
+### Valores Complejos
+
+Los valores complejos (también conocidos como objetos) incluyen object, array, function, entre otros. A diferencia de los valores primitivos, cuando asignas un objeto a una variable, lo que se guarda en la variable es una referencia al objeto, no el objeto en sí. Esto significa que si tienes varias variables apuntando al mismo objeto y modificas el objeto a través de una de ellas, el cambio es visible a través de todas las variables que referencian ese objeto. Esto se conoce como **asignación por referencia**.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let obj1 = { value: 10 };
+let obj2 = obj1;
+
+// Modificar 'obj2' afecta 'obj1'
+obj2.value = 20;
+
+console.log(obj1.value); // Muestra 20
+console.log(obj2.value); // Muestra 20
+```
+
+En este ejemplo, tanto obj1 como obj2 apuntan al mismo objeto en memoria. Cambiar una propiedad a través de obj2 altera el objeto al que también apunta obj1.
+
+### Importancia de Comprender Estas Diferencias
+
+Comprender la diferencia entre cómo se manejan los valores primitivos y los complejos es esencial por varias razones:
+
+- **Mutabilidad:**
+
+En JavaScript, los tipos primitivos como number, string, boolean, null, undefined, symbol, y bigint son inmutables. Esto significa que los valores contenidos en estas variables no pueden ser alterados después de su creación. Si necesitas modificar un valor primitivo, lo que realmente sucede es que se crea un nuevo valor primitivo y se asigna a la variable, mientras que el valor original permanece sin cambios.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let str = "Hello";
+str = str + " World"; // Aquí, "Hello World" es un nuevo string, no una modificación del original.
+```
+
+**Objetos Mutables**
+
+A diferencia de los primitivos, los objetos como Array, Object, y Function son mutables. Esto significa que sus contenidos o propiedades pueden ser cambiados después de ser creados. Si una variable almacena una referencia a un objeto, las modificaciones al contenido del objeto afectarán a todas las referencias a ese objeto.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let array = [1, 2, 3];
+array.push(4); // Modifica el array original añadiendo un elemento al final.
+```
+
+- **Gestión de Memoria:**
+
+Cuando se declara una variable en JavaScript y se le asigna un valor, el lenguaje gestiona automáticamente la memoria necesaria para almacenar ese valor. Para valores primitivos, la cantidad de memoria necesaria es fija y relativamente pequeña, mientras que para objetos, la memoria requerida puede variar considerablemente.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let num1 = 42; // Almacena 42 directamente en la memoria asignada a num1.
+let obj1 = { value: 42 }; // Crea un objeto en la memoria, y obj1 almacena una referencia a él.
+let obj2 = obj1; // obj2 no almacena otro objeto, sino una referencia al mismo objeto que obj1.
+```
+
+- **Rendimiento:**
+
+El manejo de objetos y sus referencias puede tener implicaciones significativas en el rendimiento, especialmente en aplicaciones grandes y complejas.
+
+- Asignación y Copia: La asignación de objetos y la copia de referencias son operaciones rápidas porque no implican duplicar el objeto subyacente. Sin embargo, la creación de objetos nuevos puede ser costosa en términos de tiempo y memoria.
+- Modificación de Objetos: Modificar objetos es eficiente en cuanto a que no requiere la creación de un nuevo objeto, pero si muchas referencias apuntan al mismo objeto, los cambios pueden tener efectos secundarios en partes no previstas del programa, lo que puede llevar a bugs o comportamientos inesperados.
+- Garbage Collection: JavaScript utiliza un recolector de basura para liberar memoria que ya no es accesible. La gestión de muchos objetos y referencias puede complicar el proceso de recolección de basura, potencialmente llevando a pausas o retrasos en la ejecución del programa.
+
+## Ejercicios
+
+A continuación, presento una serie de quizes, preguntas y ejercicios diseñados para ayudarte a consolidar tu comprensión sobre los tipos de datos en JavaScript que hemos discutido. Cada ejercicio incluye una solución para que puedas verificar tu trabajo.
+
+### Quizes
+
+<h4 className="font-medium mt-5">
+  ¿Qué tipo de dato devuelve typeof null en JavaScript?
+</h4>
+
+<p className="my-2">a) null</p>
+<p>b) undefined</p>
+<p className="my-2">c) object</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) "object"</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cuál es un tipo de dato primitivo en JavaScript?
+</h4>
+
+<p className="my-2">a) object</p>
+<p>b) number</p>
+<p className="my-2">b) array</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) number</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cuál operador se utiliza para determinar el tipo de una variable o valor en
+  JavaScript?
+</h4>
+
+<p className="my-2">a) typeof</p>
+<p>b) instanceof</p>
+<p className="my-2">c) type()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) typeof</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+    <h4 className="font-medium mt-5">
+      ¿Qué indica el valor undefined en JavaScript?
+    </h4>
+
+    <p className="my-2">a)  Que una variable ha sido declarada pero no tiene asignado ningún valor.</p>
+    <p>b) Que una variable no existe.</p>
+    <p className="my-2">c) Que una variable es nula.</p>
+
+    <Accordion type="single" collapsible>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Respuesta</AccordionTrigger>
+        <AccordionContent>a) Que una variable ha sido declarada pero no tiene asignado ningún valor.</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué tipo de datos se considera BigInt en JavaScript?
+</h4>
+
+<p className="my-2">a) Primitivo</p>
+<p>b) Compuesto</p>
+<p className="my-2">c) Objeto</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) Primitivo</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cuál de los siguientes es un tipo de dato compuesto en JavaScript?
+</h4>
+
+<p className="my-2">a) Symbol</p>
+<p>b) Array</p>
+<p className="my-2">c) Boolean</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) Array</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué devuelve constructor.name cuando se aplica a una instancia de una clase
+  personalizada en JavaScript?
+</h4>
+
+<p className="my-2">a) El nombre de la variable</p>
+<p>b) El nombre de la clase</p>
+<p className="my-2">c) El tipo de objeto</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) El nombre de la clase</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+    <h4 className="font-medium mt-5">¿Cuál es la diferencia principal entre los tipos primitivos y los compuestos en JavaScript?</h4>
+
+    <p className="my-2">a) Los primitivos son siempre números, y los compuestos son estructuras como arrays y objetos.</p>
+    <p>b) Los primitivos son inmutables y no pueden contener otros valores, mientras que los compuestos pueden incluir otros objetos y tipos primitivos.</p>
+    <p className="my-2">c) Los compuestos son siempre estáticos, mientras que los primitivos pueden cambiar.</p>
+
+    <Accordion type="single" collapsible>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Respuesta</AccordionTrigger>
+        <AccordionContent>b) Los primitivos son inmutables y no pueden contener otros valores, mientras que los compuestos pueden incluir otros objetos y tipos primitivos.</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+
+### Preguntas
+
+<h4 className="font-medium mt-5">
+  ¿Por qué es importante entender la diferencia entre tipos primitivos y
+  compuestos en JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Entender la diferencia es crucial porque afecta cómo se manejan la asignación y la manipulación de datos. Los tipos primitivos son inmutables y operan por valor, lo que significa que cuando asignas o pasas un tipo primitivo, se crea una copia del valor. Por otro lado, los tipos compuestos (objetos, arrays, etc.) operan por referencia, lo que significa que si pasas o asignas un objeto a otra variable, ambos referenciarán el mismo objeto en memoria. Esto afecta directamente a la gestión de la memoria, el comportamiento del programa y los bugs potenciales al modificar los datos involuntariamente a través de diferentes referencias.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Explica cómo puedes utilizar el operador typeof para mejorar la validación de
+  datos en una función.
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      El operador typeof es útil para asegurar que los datos pasados a una función cumplen con el tipo esperado, lo cual es esencial para prevenir errores de lógica y ejecución. Por ejemplo, si una función espera un número para realizar cálculos, puedes usar typeof para verificar que el argumento es un 'number' antes de proceder. Esto es especialmente útil en funciones que son expuestas públicamente o que manejan datos provenientes de fuentes externas.
+
+      ```js copy filename="JavaScript"
+      function calculateSquare(area) {
+        if (typeof area !== 'number') {
+          throw new TypeError('Expected a number');
+        }
+        return area * area;
+      }
+      ```
+
+        </AccordionContent>
+
+      </AccordionItem>
+    </Accordion>
+
+<h4 className="font-medium mt-5">
+  Describe una situación donde podrías preferir usar BigInt en lugar de Number.
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      BigInt es preferible cuando necesitas manejar números extremadamente grandes que superan el límite seguro para el tipo Number (Number.MAX_SAFE_INTEGER, es decir, 2^53 - 1). Un ejemplo práctico sería en aplicaciones financieras donde se manejan grandes sumas de dinero o cálculos que requieren alta precisión con grandes números enteros, como en criptografía o al trabajar con identificadores únicos de gran tamaño.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cómo afecta el tipo de dato undefined al flujo de control en tus scripts?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      El tipo de dato undefined generalmente indica que una variable ha sido declarada pero no inicializada. Esto puede llevar a errores si intentas realizar operaciones en variables que esperas que estén definidas. Además, en comparaciones, undefined es un valor falsy, lo que significa que puede causar que ciertas ramas de lógica condicional no se ejecuten como esperado si no se maneja correctamente.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cuál es el impacto de usar constructor.name en la depuración de aplicaciones
+  JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Usar constructor.name puede ser extremadamente útil en la depuración para identificar rápidamente el tipo de objeto con el que estás trabajando, especialmente en situaciones donde múltiples clases o constructores están involucrados. Esto puede ayudar a verificar que los objetos sean de la clase esperada, lo que es importante para la integridad del tipo en tiempo de ejecución. Sin embargo, su utilidad puede reducirse en producción si el código es minificado, ya que los nombres de los constructores pueden cambiar.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Explica la importancia de la inmutabilidad de los tipos primitivos.
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      La inmutabilidad de los tipos primitivos ayuda a prevenir efectos secundarios no deseados en funciones y métodos. Cuando pasas un tipo primitivo a una función, puedes estar seguro de que cualquier modificación a ese dato no afectará el valor original fuera de la función. Esto hace que el código sea más predecible y seguro, facilitando el razonamiento sobre el estado del programa y la depuración.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cómo verificarías si una variable es un array en JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Para verificar si una variable es un array, puedes utilizar el método Array.isArray() proporcionado por JavaScript, que devuelve true si la variable es un array y false en caso contrario.
+
+      ```js copy filename="JavaScript"
+      let fruits = ['apple', 'banana', 'cherry'];
+      console.log(Array.isArray(fruits)); // true
+      ```
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Discute cómo el manejo adecuado de los tipos de datos puede afectar el
+  rendimiento de una aplicación.
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Un manejo adecuado de los tipos de datos puede optimizar la utilización de la memoria y mejorar el tiempo de ejecución de las operaciones. Por ejemplo, usar tipos primitivos donde sea posible puede minimizar el uso de memoria en comparación con objetos más complejos. Además, evitar conversiones innecesarias de tipos (como de string a number repetidamente en un bucle) puede reducir la carga de procesamiento y mejorar la velocidad de ejecución.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cuáles son las consecuencias de no entender correctamente el tipo de dato
+  null en JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      No entender null puede llevar a errores de tipo "Cannot read property of null", especialmente si intentas acceder a propiedades o métodos de algo que esperabas que fuera un objeto pero que en realidad es null. Esto ocurre a menudo cuando los datos esperados no están disponibles o cuando las funciones fallan silenciosamente y retornan null en lugar de un objeto. Tratar correctamente null es esencial para prevenir fallos en tiempo de ejecución y para implementar comprobaciones de seguridad adecuadas en el código.
+
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Ejercicios
+
+<h4 className="font-medium my-5">
+  Define un objeto que describa un ticket de tren con las propiedades de
+  estación inicial, estación final y precio.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let ticket = {
+          from: "Madrid",
+          to: "Barcelona",
+          price: 40
+        };
+        console.log(`Ticket from ${ticket.from} to ${ticket.to} costs ${ticket.price} euros.`);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  Crea un array que contenga objetos de libros con propiedades de título, autor
+  y número de páginas.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let books = [
+        { title: "Speaking JavaScript", author: "Axel Rauschmayer", pages: 460 },
+        { title: "Programming JavaScript Applications", author: "Eric Elliott", pages: 254 },
+        { title: "Understanding ECMAScript 6", author: "Nicholas C. Zakas", pages: 352 }
+      ];
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>

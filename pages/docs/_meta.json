@@ -29,5 +29,15 @@
       "toc": true,
       "pagination": true
     }
+  },
+  "ciberseguridad": {
+    "title": "Curso de Ciberseguridad ",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": true,
+      "toc": true,
+      "pagination": true
+    }
   }
 }

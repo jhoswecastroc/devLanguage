@@ -339,7 +339,7 @@ El "scope" o ámbito de una variable se refiere a la región del programa donde 
 
 ### Tipos de Scope
 
-#### Global Scope
+**Global Scope**
 
 - Si una variable se declara fuera de cualquier función o bloque, se encuentra en el ámbito global. Esto significa que puede ser accesible desde cualquier parte del código que se ejecute después de su declaración.
 - El uso excesivo del ámbito global puede llevar a problemas de mantenimiento y a conflictos entre nombres de variables, especialmente en proyectos grandes.
@@ -352,7 +352,7 @@ function testFunction() {
 console.log(globalVar); // También imprime: Accessible everywhere
 ```
 
-#### Local Scope (Function Scope)
+**Local Scope (Function Scope)**
 
 Las variables declaradas dentro de una función tienen un scope local a esa función, lo que significa que solo pueden ser accesibles dentro de ella. Este ámbito protege a las variables de ser accesibles globalmente, lo que ayuda a evitar modificaciones no deseadas y conflictos.
 
@@ -365,7 +365,7 @@ testLocalScope();
 // console.log(localVar); // Error: localVar is not defined
 ```
 
-#### Block Scope
+**Block Scope**
 
 - Con la introducción de let y const en ES6, JavaScript ganó la capacidad de definir variables con ámbito de bloque, limitando su acceso al bloque en el que son declaradas, como dentro de bucles o condiciones.
 - Un bloque se define como cualquier sección de código encerrada entre llaves {}.

@@ -215,9 +215,24 @@ Dentro de las herramientas de desarrollo, puedes encontrar varias pestañas como
 
 La consola JavaScript es una herramienta integrada en las DevTools (Herramientas para Desarrolladores) de todos los navegadores modernos. Sirve como un entorno interactivo para ejecutar código JavaScript en tiempo real, inspeccionar variables, y monitorear el comportamiento de una página web. Es indispensable para el desarrollo, depuración, y diagnóstico de aplicaciones web.
 
+Un ejemplo claro de usar la consola por ejemplo es cuando tenemos un error en nuestro código, ya que este error se mostrará por la consola indicando el error y el número de linea en la cual se encuentra dicho error.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Si escribimos la letra 'a' en la nuestro editor:
+
+```js copy filename="JavaScript"
+a;
+```
+
+Y luego lanzamos nuestro código, en la consola del navegador nos mostrara el siguiente mensaje:
+
+`VM220980:1 Uncaught ReferenceError: a is not defined
+    at <anonymous>:1:1`
+
 ### Acceso y Funcionalidades de la Consola
 
-Para acceder a la consola en la mayoría de los navegadores, se utilizan atajos de teclado específicos o se navega a través del menú de herramientas para desarrolladores. Por ejemplo, en Google Chrome y Brave, se puede acceder presionando Ctrl+Shift+J en Windows/Linux o Cmd+Option+J en Mac o también F12.
+Para acceder a la consola en la mayoría de los navegadores, se utilizan atajos de teclado específicos o se navega a través del menú de herramientas -> Más Herramientas -> Herramientas del Desarrollador. Y si deseas hacerlo por los atajos de teclado, en Google Chrome y Brave, se puede acceder presionando Ctrl+Shift+J en Windows/Linux o Cmd+Option+J en Mac o también F12.
 
 <div className="flex justify-center my-5">
   <Image
@@ -231,7 +246,46 @@ Para acceder a la consola en la mayoría de los navegadores, se utilizan atajos 
 Una vez dentro, la consola ofrece varias funcionalidades clave:
 
 - **Ejecución de Código:** Permite probar fragmentos de código JavaScript de manera rápida.
-- **Registro de Información:** Utiliza comandos como console.log(), console.warn(), console.error() y otros para registrar información.
+- **Registro de Información:** Utiliza comandos como:
+
+      - console.table(): El método console.table() permite visualizar datos en forma de tabla en la consola del navegador. Es especialmente útil para mostrar arrays o objetos de manera organizada, facilitando la interpretación y comparación de datos complejos. Aquí tienes un ejemplo:
+
+      ```js copy filename="JavaScript"
+      const users = [
+      { name: "Alice", age: 25, email: "alice@example.com" },
+      { name: "Bob", age: 30, email: "bob@example.com" }
+
+  ];
+  console.table(users);
+
+  ````
+
+      - console.warn(): El método console.warn() se utiliza para emitir una advertencia en la consola. Las advertencias aparecen destacadas, generalmente en color amarillo, lo que ayuda a llamar la atención sobre posibles problemas en el código que no necesariamente son errores críticos pero que deberían revisarse. Por ejemplo:
+
+      ```js copy filename="JavaScript"
+      console.warn("Advertencia: El valor introducido no es válido.");
+      ```
+
+      Esta advertencia podría usarse para alertar sobre datos de entrada inesperados o valores que podrían causar un comportamiento inadecuado de la aplicación.
+
+      - console.info(): console.info() se emplea para imprimir mensajes informativos en la consola. En la mayoría de los navegadores, los mensajes aparecen con un icono de información. Es útil para proporcionar información adicional sobre el estado de la aplicación, diferenciando los mensajes de información general de otros registros como errores o advertencias. Aquí tienes un ejemplo:
+
+      ```js copy filename="JavaScript"
+      console.info("El proceso de sincronización ha comenzado a las 12:00 PM.");
+      ```
+
+      Este mensaje podría informar sobre el inicio de un proceso dentro de la aplicación.
+
+      - console.error(): El método console.error() se utiliza para mostrar mensajes de error en la consola. Los mensajes de error suelen aparecer en color rojo, lo cual es útil para resaltar problemas que necesitan ser corregidos y que podrían impedir el funcionamiento correcto de la aplicación. Aquí tienes un ejemplo:
+
+      ```js copy filename="JavaScript"
+      console.error("Error: No se pudo conectar con la base de datos.");
+      ```
+
+      Este mensaje de error podría indicar un fallo crítico que necesita atención inmediata, como un fallo en la conexión a la base de datos.
+
+  ````
+
 - **Diagnóstico de Errores:** Muestra errores y advertencias que ayudan a identificar problemas en el código.
 - **Inspección de Objetos:** Comandos como console.dir() permiten inspeccionar las propiedades de los objetos de manera detallada.
 
@@ -249,14 +303,58 @@ Estos comandos mostrarán textos y resultados de operaciones directamente en la 
 Para hacer la consola más interactiva y organizada, se pueden agregar estilos CSS a los mensajes o agrupar mensajes relacionados:
 
 ```js copy filename="JavaScript"
-console.log("%cMensaje colorido", "color: blue; font-size: large");
+const styles = "color: blue; font-size: large";
+
+console.log("%cMensaje colorido", styles);
+
 console.group("Detalles del Usuario");
 console.log("Nombre: Juan");
 console.log("Edad: 30");
 console.groupEnd();
 ```
 
-Esto permite una visualización más clara y estructurada de la información, especialmente útil en aplicaciones grandes donde se monitorean múltiples variables o procesos.
+El código anterior indica lo siguiente:
+
+1. Declaración de la constante styles:
+
+```js copy filename="JavaScript"
+const styles = "color: blue; font-size: large";
+```
+
+Aquí se declara una constante llamada styles que contiene una cadena de texto con estilos CSS. Esta cadena especifica que el texto debe ser de color azul (color: blue) y de tamaño grande (font-size: large).
+
+2. Impresión de un mensaje con estilo en la consola:
+
+```js copy filename="JavaScript"
+console.log("%cMensaje colorido", styles);
+```
+
+Esta línea utiliza console.log() para imprimir un mensaje en la consola. El uso de %c en la cadena de texto indica que los estilos CSS que siguen en el argumento (styles) deben aplicarse al texto que sigue inmediatamente después del %c, en este caso "Mensaje colorido". Esto resulta en que el texto "Mensaje colorido" se muestre en color azul y con un tamaño de fuente grande.
+
+3. Inicio de un grupo en la consola para organizar la salida:
+
+```js copy filename="JavaScript"
+console.group("Detalles del Usuario");
+```
+
+console.group() inicia un nuevo grupo en la consola, que puede ser expandido y colapsado. Esto es útil para agrupar varios mensajes relacionados bajo un encabezado común, en este caso "Detalles del Usuario". Todo lo que se imprima en la consola después de esta llamada y antes de console.groupEnd() será parte de este grupo.
+
+4. Impresión de detalles dentro del grupo:
+
+```js copy filename="JavaScript"
+console.log("Nombre: Juan");
+console.log("Edad: 30");
+```
+
+Estas dos líneas imprimen la información dentro del grupo que fue iniciado previamente. Muestran el nombre y la edad de una persona, respectivamente. El texto "Nombre: Juan" y "Edad: 30" aparecerá bajo el encabezado "Detalles del Usuario" en la consola.
+
+5. Cierre del grupo:
+
+```js copy filename="JavaScript"
+console.groupEnd();
+```
+
+console.groupEnd() cierra el grupo que fue iniciado con console.group(). Esto significa que cualquier salida posterior en la consola no será parte de este grupo, manteniendo la consola organizada y facilitando la visualización de diferentes secciones de salida por separado.
 
 **Métodos Especiales de la Consola**
 

@@ -1,9 +1,15 @@
 {
-  "requirements": "Requisitos",
+  "intro": {
+    "type": "separator",
+    "title": "Introducción a JavaScript"
+  },
   "que-es-javascript": "¿Qué es JavaScript?",
   "historia-javascript": "Historia de JavaScript",
   "como-funciona-javascript": "¿Cómo funciona JavaScript?",
   "entorno-desarrollo": "Entorno de Desarrollo",
   "introduccion-programacion": "Introducción a la Programación",
-  "estructura-datos-basicas": "Estructura de Datos Básicas"
+  "estructura-datos-basicas": "Estructura de Datos Básicas",
+  "tipos-datos": "Tipos de Datos",
+  "operadores": "Operadores",
+  "control-flujo": "Control de Flujo"
 }

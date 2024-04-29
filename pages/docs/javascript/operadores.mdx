@@ -1,0 +1,1407 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Steps } from "nextra/components";
+import { Callout } from "nextra-theme-docs";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
+
+# Operadores
+
+Los operadores en JavaScript son símbolos especiales o palabras clave que se utilizan para realizar operaciones entre variables y valores. Estos operadores son fundamentales para manipular datos, controlar el flujo del programa, y realizar cálculos matemáticos, entre otras funcionalidades. Los operadores en JavaScript se pueden clasificar en básicos y avanzados, cada uno adecuado para diferentes tipos de operaciones y escenarios de programación.
+
+## Operadores Básicos
+
+<table className="table-fixed my-5 w-full text-start">
+  <thead className="bg-sky-900 text-white text-sm">
+    <tr>
+      <th>Tipo de Operador</th>
+      <th>Descripción</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    {[
+      {
+        tipoDeDato: "Operadores de Asignación",
+        descripción:
+          "Asignan un valor a la variable izquierda desde la derecha.",
+        ejemplo: "=, +=, -=, *=, /=, %=",
+      },
+      {
+        tipoDeDato: "Operadores Aritméticos",
+        descripción: "Realizan operaciones matemáticas básicas.",
+        ejemplo: "+, -, *, /, %",
+      },
+      {
+        tipoDeDato: "Operadores de Comparación",
+        descripción: "Comparan dos valores y devuelven un booleano.",
+        ejemplo: "==, ===, !=, !==, >, <, >=, <=",
+      },
+      {
+        tipoDeDato: "Operadores de Unario",
+        descripción: "Comparan dos valores y devuelven un booleano.",
+        ejemplo: "++, --, +, -",
+      },
+      {
+        tipoDeDato: "Operadores de Strings",
+        descripción: "Comparan dos valores y devuelven un booleano.",
+        ejemplo: "+, +=",
+      },
+    ].map((item) => (
+      <tr key={item.tipoDeDato}>
+        <td>{item.tipoDeDato}</td>
+        <td>{item.descripción}</td>
+        <td>{item.ejemplo}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+### Operadores de Asignación
+
+Los operadores de asignación en JavaScript son fundamentales para almacenar valores en variables y constantes. El operador de asignación más básico es el signo igual =, que asigna el valor del lado derecho de la expresión al operando del lado izquierdo. Este operador es la piedra angular para trabajar con datos en JavaScript, permitiendo a los programadores inicializar y actualizar valores de manera eficiente.
+
+#### Tipos de Operadores de Asignación
+
+**Asignación Básica (=):** Este operador asigna directamente el valor de la derecha al operando de la izquierda. Es simple y directo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const name = "Alice";
+console.log(name); // Imprime: Alice
+```
+
+**Operadores de Asignación Compuestos:** Estos operadores combinan una operación aritmética, lógica o de otro tipo con una asignación, simplificando comúnmente las operaciones que actualizan el valor de una variable basándose en su valor actual.
+
+- **Suma y Asignación (+=):** Añade el valor derecho al valor izquierdo y asigna el resultado al operando izquierdo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let a = 10;
+a += 5; // Es equivalente a a = a + 5; ahora a es 15
+```
+
+- **Resta y Asignación (-=):** Resta el valor derecho del izquierdo y asigna el resultado al operando izquierdo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let b = 20;
+b -= 5; // Es equivalente a b = b - 5; ahora b es 15
+```
+
+- **Multiplicación y Asignación (\*=):** Multiplica el operando izquierdo por el derecho y asigna el resultado al operando izquierdo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let c = 5;
+c *= 3; // Es equivalente a c = c * 3; ahora c es 15
+```
+
+- **División y Asignación (/=):** Divide el operando izquierdo por el derecho y asigna el resultado al operando izquierdo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let d = 10;
+d /= 2; // Es equivalente a d = d / 2; ahora d es 5
+```
+
+- **Módulo y Asignación (%=):** Calcula el resto de la división del operando izquierdo por el derecho y asigna el resultado al operando izquierdo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let e = 23;
+e %= 5; // Es equivalente a e = e % 5; ahora e es 3
+```
+
+- **Exponenciación y Asignación (\*\*=):** Eleva el operando izquierdo a la potencia del derecho y asigna el resultado.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let f = 4;
+f **= 2; // Es equivalente a f = f ** 2; ahora f es 16
+```
+
+### Operadores Aritméticos
+
+Los operadores aritméticos son herramientas cruciales en JavaScript para realizar cálculos matemáticos. Desde operaciones simples como suma y resta hasta más complejas como exponenciación y módulo, estos operadores permiten a los desarrolladores manipular y evaluar datos numéricos de manera eficiente.
+
+#### Tipos de Operadores Aritméticos
+
+**Suma (+):** Este operador no solo realiza adiciones matemáticas, sino que también puede concatenar cadenas de texto si uno de los operandos es una cadena.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(5 + 3); // Salida: 8
+console.log("Hello" + " " + "World"); // Salida: "Hello World"
+```
+
+**Resta (-):** Utilizado para substraer el segundo operando del primero.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(10 - 4); // Salida: 6
+```
+
+**Multiplicación (\*):** Multiplica dos números.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(6 * 7); // Salida: 42
+```
+
+**División (/):** Divide el primer operando por el segundo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(8 / 2); // Salida: 4
+```
+
+**Módulo (%):** Devuelve el residuo de una división, a la vez el operador de módulo es particularmente útil en situaciones como determinar si un número es par o impar, o para obtener un índice cíclico en un arreglo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(10 % 3); // Salida: 1
+
+const numbers = [10, 20, 30, 40, 50, 60, 70, 80];
+for (let i = 0; i < numbers.length; i++) {
+  const mod = i % 2;
+  console.log(numbers[i], numbers[mod]); // Alterna entre 10 y 20
+}
+```
+
+**Exponenciación (\*\*):** Eleva el primer operando a la potencia del segundo. A la vez la exponenciación se usa a menudo en cálculos científicos y financieros, como calcular intereses compuestos o transformaciones de energía.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(2 ** 3); // Salida: 8
+
+const base = 2;
+const exponent = 5;
+console.log(base ** exponent); // Salida: 32
+console.log(Math.pow(base, exponent)); // Salida: 32 (método antiguo)
+```
+
+#### Importancia de los Operadores Aritméticos
+
+Los operadores aritméticos son esenciales para el manejo de cálculos en aplicaciones que requieren operaciones matemáticas, como análisis financiero, cálculos científicos, y en la lógica de juegos, por mencionar algunos ejemplos. Facilitan la implementación de funciones que dependen de cálculos precisos para operar correctamente.
+
+### Operadores de Comparación
+
+Los operadores de comparación en JavaScript son herramientas esenciales que evalúan la relación entre dos valores, devolviendo un valor booleano (true o false). Estos operadores son cruciales en la toma de decisiones en el flujo de un programa, permitiendo ejecutar diferentes acciones basadas en condiciones específicas.
+
+#### Tipos de Operadores de Comparación
+
+**Igual (==) y Estrictamente igual (===):**
+
+- == compara dos valores para igualdad, permitiendo la conversión de tipos (coerción).
+- === compara tanto el valor como el tipo, sin permitir la conversión de tipos.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(1 == "1"); // true, debido a la conversión de tipo
+console.log(1 === "1"); // false, no hay conversión de tipo
+```
+
+**No igual (!=) y Estrictamente no igual (!==):**
+
+- != verifica la desigualdad permitiendo la conversión de tipos.
+- !== verifica la desigualdad sin permitir la conversión de tipos.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(1 != "2"); // true, diferente después de la conversión
+console.log(1 !== "1"); // true, diferente tipo o valor
+```
+
+**Mayor o igual que (&gt;=) y Menor o igual que (&lt;=):**
+
+- Estos operadores comparan dos valores para determinar si uno es mayor o menor que el otro, o igual en el caso de los operadores que incluyen la igualdad.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(5 >= 3); // true, 5 es mayor que 3
+console.log(5 >= 5); // true, 5 es igual a 5
+console.log(3 <= 5); // true, 3 es menor que 5
+console.log(5 <= 5); // true, 5 es igual a 5
+```
+
+#### Uso Práctico de los Operadores de Comparación
+
+Los operadores de comparación son utilizados ampliamente en la lógica de control de flujo, como en estructuras condicionales (if, else if, switch) y bucles (while, for). Permiten a los desarrolladores escribir decisiones lógicas que pueden cambiar el curso de la ejecución del programa basándose en condiciones específicas.
+
+<h4 className="font-medium mt-5">Ejemplo en estructura condicional:</h4>
+
+```js copy filename="JavaScript"
+let age = 18;
+if (age >= 18) {
+  console.log("Puedes votar");
+} else {
+  console.log("No puedes votar");
+}
+```
+
+<h4 className="font-medium mt-5">Ejemplo en bucle:</h4>
+
+```js copy filename="JavaScript"
+for (let i = 1; i <= 5; i++) {
+  console.log(i); // Imprime los números del 1 al 5
+}
+```
+
+#### Consideraciones Importantes
+
+- Precisión en comparaciones: Al trabajar con tipos de datos diferentes, especialmente números y cadenas, es crucial entender cómo JavaScript maneja las conversiones implícitas para evitar resultados inesperados. Usar === y !== ayuda a asegurar comparaciones más precisas sin conversiones automáticas de tipo.
+- Comparación de objetos: Cuando se comparan objetos, JavaScript no compara los contenidos del objeto sino las referencias. Esto significa que dos objetos con el mismo contenido no serán iguales a menos que se refieran exactamente al mismo objeto.
+- NaN Comparisons: NaN es un valor especial en JavaScript que no es igual a nada, incluido sí mismo. Para verificar si un valor es NaN, se debe utilizar la función isNaN() en lugar de un operador de comparación.
+
+### Operador Unario
+
+Los operadores unarios en JavaScript son aquellos que actúan sobre un solo operando. A diferencia de los operadores binarios que requieren dos operandos para funcionar, los unarios son aplicados a un solo elemento para realizar diversas operaciones como incremento, decremento, negación, entre otros. Estos operadores son esenciales para manipulaciones simples pero frecuentes de valores dentro de un programa.
+
+#### Tipos de Operadores Unarios en JavaScript
+
+**Operador de Incremento (++):** Este operador aumenta el valor de su operando en uno. Puede ser aplicado como preincremento o postincremento, lo que afecta cuándo se actualiza el valor del operando en relación con el resto de la expresión.
+
+- **Preincremento (++variable):** Incrementa el valor antes de que el valor actual sea utilizado en la expresión.
+- **Postincremento (variable++):** Utiliza el valor actual en la expresión antes de incrementar el valor del operando.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let x = 3;
+console.log(x++); // Imprime 3, luego incrementa
+console.log(x); // Imprime 4
+console.log(++x); // Incrementa primero, luego imprime 5
+```
+
+**Operador de Decremento (--):** Funciona de manera similar al operador de incremento, pero reduce el valor del operando en uno.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let y = 5;
+console.log(y--); // Imprime 5, luego decrementa
+console.log(y); // Imprime 4
+console.log(--y); // Decrementa primero, luego imprime 3
+```
+
+**Operador Unario Positivo (+):** Intenta convertir el operando en un número.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let value = "5";
+console.log(+value); // Convierte "5" a 5 (número)
+```
+
+**Operador Unario Negativo (-):** Similar al positivo, pero además invierte el signo del número.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let value = "5";
+console.log(-value); // Convierte "5" a -5
+```
+
+#### Importancia y Uso de Operadores Unarios
+
+Los operadores unarios son vitales para realizar ajustes incrementales o decrementales, que son comunes en bucles y operaciones de conteo. También son útiles para forzar la conversión de tipos en situaciones donde se requiere que los valores cumplan con tipos específicos, como en comparaciones estrictas o cálculos matemáticos.
+
+<h4 className="font-medium mt-5">
+  Ejemplos Adicionales de Aplicaciones Prácticas
+</h4>
+
+- Control de bucles y condiciones:
+
+```js copy filename="JavaScript"
+for (let i = 0; i < 10; i++) {
+  console.log(i); // Usando postincremento para controlar el bucle
+}
+```
+
+- Conversión y verificación de tipos:
+
+```js copy filename="JavaScript"
+let input = "101";
+if (+input === 101) {
+  console.log("El input es numérico y vale 101");
+}
+```
+
+### Operadores de Strings
+
+En JavaScript, los operadores de strings se utilizan principalmente para manipular texto, siendo el más común el operador de concatenación (+). Este operador permite combinar dos o más strings en uno solo, facilitando la creación de mensajes dinámicos y la gestión de datos de texto. Además de la concatenación, el operador de asignación compuesta (+=) también juega un papel crucial en la manipulación de strings al permitir añadir texto adicional a una cadena existente de manera eficiente.
+
+#### Tipos de Operadores de Strings
+
+**Operador de Concatenación (+)**: El operador + es versátil en JavaScript porque, además de sumar números, concatena strings. Si cualquiera de los operandos es un string, JavaScript convierte el otro operando a string y luego los une.
+
+<h4 className="font-medium mt-5">Ejemplo en bucle:</h4>
+
+```js copy filename="JavaScript"
+let greetings = "Hi";
+console.log(greetings + " " + "Alice"); // Salida: "Hi Alice"
+
+let sentence = "Happy New Year ";
+let year = 2022;
+console.log(sentence + year); // Salida: "Happy New Year 2022"
+```
+
+Este operador es fundamental en situaciones donde se necesita formar strings a partir de valores variables, como datos de usuario o resultados de cálculos.
+
+**Operador de Asignación de Concatenación (+=):** El operador += combina la asignación y la concatenación en una sola operación, lo que simplifica el código al permitir añadir texto adicional a una variable existente sin necesidad de reasignarla explícitamente.
+
+<h4 className="font-medium mt-5">Ejemplo en bucle:</h4>
+
+```js copy filename="JavaScript"
+let message = "Happy New ";
+message += "Year ";
+message += 2023;
+console.log(message); // Salida: "Happy New Year 2023"
+```
+
+#### Consideraciones Importantes al Usar Operadores de Strings
+
+- **Coerción de Tipo:** JavaScript realiza una conversión de tipo automática cuando se usan operadores de strings con no strings. Entender cómo funciona esta conversión es crucial para evitar errores no deseados, especialmente en códigos complejos donde los tipos de datos pueden no ser evidentes.
+- **Rendimiento:** Usar + o += para concatenar grandes cantidades o muy frecuentemente puede afectar el rendimiento. En casos de concatenaciones múltiples, especialmente dentro de bucles, puede ser más eficiente usar métodos alternativos como arrays con .join() o plantillas literales.
+- **Legibilidad y Mantenimiento:** Las plantillas literales (\${}``) son una alternativa moderna que ofrece mayor legibilidad y facilidad de mantenimiento, especialmente cuando se incorporan múltiples variables y expresiones dentro de un string.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Las plantillas literales proporcionan una sintaxis más clara y flexible para trabajar con strings dinámicos, soportando interpolación de expresiones y múltiples líneas.
+
+```js copy filename="JavaScript"
+let user = "Alice";
+let points = 250;
+console.log(`Hello, ${user}. You have ${points} points.`);
+```
+
+## Operadores Avanzados
+
+<table className="table-fixed my-5 w-full text-start">
+  <thead className="bg-sky-900 text-white text-sm">
+    <tr>
+      <th>Tipo de Operador</th>
+      <th>Descripción</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    {[
+      {
+        tipoDeDato: "Operadores Lógicos",
+        descripción:
+          "Asignan un valor a la variable izquierda desde la derecha.",
+        ejemplo: "&&, ||",
+      },
+      {
+        tipoDeDato: "Operador Ternario",
+        descripción:
+          "Devuelve y si x es verdadero, de lo contrario devuelve z.",
+        ejemplo: "x ? y : z",
+      },
+      {
+        tipoDeDato: "Operador Nullish Coalescing",
+        descripción:
+          "Devuelve x si x no es null/undefined, de lo contrario devuelve y.",
+        ejemplo: "x ?? y",
+      },
+      {
+        tipoDeDato: "Asignación Lógica Nula",
+        descripción: "Asigna y a x si x es null/undefined.",
+        ejemplo: "x ??= y",
+      },
+      {
+        tipoDeDato: "Operador de Encadenamiento Opcional",
+        descripción: "Accede a la propiedad y de x si x no es null/undefined.",
+        ejemplo: "x?.y",
+      },
+      {
+        tipoDeDato: "Operador Lógico NOT",
+        descripción: "Invierte el valor booleano de x.",
+        ejemplo: "!x",
+      },
+    ].map((item) => (
+      <tr key={item.tipoDeDato}>
+        <td>{item.tipoDeDato}</td>
+        <td>{item.descripción}</td>
+        <td>{item.ejemplo}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+### Operadores Lógicos
+
+Los operadores lógicos en JavaScript permiten realizar operaciones booleanas, que son fundamentales para la toma de decisiones y el control del flujo en los programas. Estos operadores evalúan expresiones y devuelven un valor booleano (true o false) basado en la lógica de la operación.
+
+#### Tipos de Operadores de Strings
+
+**El Operador Lógico AND**: El operador AND (&&) es uno de los operadores lógicos más usados. Este operador realiza una operación lógica "y" entre dos valores booleanos. Si ambos valores son true, el resultado es true. Si uno o ambos valores son false, el resultado es false.
+
+- **Características del Operador AND**
+
+**Cortocircuito:** El AND utiliza la evaluación de cortocircuito, lo que significa que si la primera expresión es false, la segunda no se evalúa, ya que el resultado final no puede ser true.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(true && true); // Salida: true
+console.log(true && false); // Salida: false
+console.log(false && true); // Salida: false
+console.log(false && false); // Salida: false
+```
+
+- **Importancia de los Operadores Lógicos AND**
+
+El operador AND es crucial en la programación porque permite combinar múltiples condiciones en una sola expresión. Esto es especialmente útil en estructuras condicionales como if, while, y for, donde múltiples criterios deben ser verdaderos para que se ejecute un bloque de código.
+
+- **Aplicaciones Prácticas:**
+
+  - **Validaciones:** Se puede usar para validar que múltiples campos de un formulario sean correctos antes de enviarlo.
+  - **Control de Acceso:** En la autenticación y autorización, para asegurar que un usuario tenga los permisos necesarios antes de permitirle realizar una acción.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Supongamos que tienes una aplicación de gestión de eventos, y deseas verificar que un usuario esté registrado y haya verificado su email antes de permitirle crear un evento.
+
+```js copy filename="JavaScript"
+console.log(true && true); // Salida: true
+console.log(true && false); // Salida: false
+console.log(false && true); // Salida: false
+console.log(false && false); // Salida: false
+```
+
+- **Consideraciones al Usar el Operador AND**
+
+  - **Coerción de Tipo:** En JavaScript, los operadores lógicos AND no solo operan sobre valores booleanos. Si los operadores no son de tipo booleano, JavaScript intentará convertirlos a un valor booleano para evaluar la expresión.
+  - **Valores Falsy y Truthy:** Cualquier valor en JavaScript puede ser considerado true o false en contextos booleanos. Los valores como 0, null, undefined, NaN, y la cadena vacía "" son considerados falsy (falsos), mientras que otros valores son considerados truthy (verdaderos).
+
+**El Operador Lógico OR:** El operador OR lógico (||) es un operador binario que retorna true si al menos uno de sus operandos es verdadero. Este operador es esencial en la programación para ejecutar operaciones condicionales que requieren que al menos una de varias condiciones se cumpla para proceder.
+
+- **Características del Operador OR Lógico**
+
+- **Cortocircuito:** Similar al operador AND, el operador OR emplea la evaluación de cortocircuito. Si el primer operando evalúa a true, el resultado será true y el segundo operando no se evaluará, ya que el resultado de la expresión ya está determinado.
+- **Conversión a Booleano:** Si los operandos no son de tipo booleano, JavaScript intentará convertirlos a un valor booleano. Cualquier valor que no sea false, 0, "", null, undefined, o NaN se considera true.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Supongamos que tienes una aplicación de gestión de eventos, y deseas verificar que un usuario esté registrado y haya verificado su email antes de permitirle crear un evento.
+
+```js copy filename="JavaScript"
+console.log(true || true); // true
+console.log(true || false); // true
+console.log(false || true); // true
+console.log(false || false); // false
+console.log("" || "Texto"); // "Texto"
+console.log(0 || 1); // 1
+```
+
+Estos ejemplos ilustran cómo el operador OR puede ser usado para seleccionar el primer valor truthy encontrado en las expresiones. Esto es útil para asignar valores predeterminados o para realizar comprobaciones múltiples en una sola línea.
+
+- **Aplicaciones del Operador OR Lógico**
+
+  - **Establecimiento de Valores Predeterminados:** Es comúnmente usado para asignar un valor por defecto a una variable si el valor original es falsy (como undefined o null).
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let mySetting = userSetting || "Default Setting";
+console.log(mySetting); // Usará userSetting si es truthy, o 'Default Setting' si es falsy.
+```
+
+- **Control de Flujo Múltiple:** Utilizado en estructuras condicionales para ejecutar un bloque de código si alguna de varias condiciones es verdadera.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+if (isAdmin || isModerator) {
+  console.log("Acceso concedido al panel de control.");
+}
+```
+
+- **Evitar Errores por Valores Nulos o Indefinidos:** Ayuda a prevenir errores cuando se intenta acceder a propiedades de objetos que podrían no estar definidos.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let userName = (user && user.name) || "Visitante";
+console.log("Bienvenido, " + userName);
+```
+
+- **Consideraciones al Usar el Operador OR**
+
+  - **Coerción de Tipo:** Es crucial comprender cómo JavaScript maneja la coerción de tipo en operaciones lógicas para evitar resultados no deseados, especialmente cuando los operandos no son explícitamente booleanos.
+  - **Uso en Asignaciones:** Aunque es una forma conveniente de establecer valores predeterminados, hay que tener cuidado cuando se espera que valores falsy legítimos (como 0 o "" que pueden ser válidos en ciertos contextos) no se sobrescriban inadvertidamente.
+
+### Operador Ternario
+
+El operador ternario en JavaScript, también conocido como operador condicional, es una forma abreviada y eficiente de expresar una instrucción condicional simple. Es el único operador en JavaScript que utiliza tres operandos y se representa con los símbolos ? y :. La sintaxis básica es (condición) ? expresión1 : expresión2; donde expresión1 se evalúa si la condición es verdadera, y expresión2 se evalúa si la condición es falsa.
+
+<h4 className="font-medium mt-5">Ejemplos</h4>
+
+**Asignación Condicional Básica:**
+
+```js copy filename="JavaScript"
+let accessLevel = userAge >= 18 ? "adult" : "minor";
+console.log(accessLevel); // Muestra "adult" si userAge es 18 o más, "minor" si es menor.
+```
+
+**Operaciones con Resultados Condicionales:**
+
+```js copy filename="JavaScript"
+console.log(true ? "Correcto" : "Incorrecto"); // Muestra "Correcto"
+console.log(false ? "Correcto" : "Incorrecto"); // Muestra "Incorrecto"
+```
+
+En estos ejemplos, el operador ternario se utiliza para determinar qué cadena mostrar en la consola, dependiendo de la verdad de la condición dada (en este caso, simplemente true o false).
+
+#### Comparación con If-Else:
+
+**Sin operador ternario:**
+
+```js copy filename="JavaScript"
+let role;
+if (userName === "Admin") {
+  role = "Administrator";
+} else {
+  role = "Guest";
+}
+```
+
+**Con operador ternario:**
+
+```js copy filename="JavaScript"
+const role = userName === "Admin" ? "Administrator" : "Guest";
+```
+
+Este ejemplo ilustra cómo el operador ternario puede reemplazar estructuras if-else más largas y más complejas en casos donde solo se necesitan asignaciones o retornos simples.
+
+#### Ventajas del Operador Ternario
+
+- **Concisión:** Reduce el número de líneas de código necesarias para realizar operaciones condicionales simples.
+- **Claridad:** En casos apropiados, puede hacer el código más claro y fácil de seguir, especialmente cuando se usan condiciones sencillas.
+- **Versatilidad:** Se puede usar en cualquier lugar donde se requiera un valor basado en una condición, incluyendo asignaciones y retornos en funciones.
+
+#### Consideraciones al Utilizar el Operador Ternario
+
+- **Complejidad:** No se recomienda para condiciones muy complejas o anidaciones múltiples, ya que puede hacer el código difícil de leer y mantener.
+- **Legibilidad:** Aunque es útil para simplificar el código, su uso excesivo o inapropiado puede reducir la legibilidad. Es esencial mantener un equilibrio entre concisión y claridad.
+
+### Operador Nullish Coalescing
+
+El operador Nullish Coalescing (??) en JavaScript es un operador lógico que devuelve su operando del lado derecho cuando el operando del lado izquierdo es null o undefined, y de lo contrario devuelve el operando del lado izquierdo. Esta característica lo distingue significativamente del operador OR (||), que devuelve el operando del lado derecho si el operando del lado izquierdo es cualquier valor falsy, incluyendo 0, false, y "".
+
+#### Funcionamiento del Operador Nullish Coalescing
+
+Este operador es especialmente útil en casos donde los valores como 0, false y "" son considerados válidos y no deben ser reemplazados por valores predeterminados. Solo los valores null y undefined son considerados como gatillos para retornar el segundo operando.
+
+<h4 className="font-medium mt-5">Ejemplos</h4>
+
+```js copy filename="JavaScript"
+const nullValue = null;
+const undefinedValue = undefined;
+const falseValue = false;
+const zeroValue = 0;
+const emptyStringValue = "";
+
+// Ejemplos de Nullish Coalescing
+console.log(nullValue ?? "default"); // "default"
+console.log(undefinedValue ?? "default"); // "default"
+console.log(falseValue ?? "default"); // false
+console.log(zeroValue ?? "default"); // 0
+console.log(emptyStringValue ?? "default"); // ""
+
+// Comparación con el operador OR
+console.log(nullValue || "default"); // "default"
+console.log(undefinedValue || "default"); // "default"
+console.log(falseValue || "default"); // "default"
+console.log(zeroValue || "default"); // "default"
+console.log(emptyStringValue || "default"); // "default"
+```
+
+En estos ejemplos, se puede observar cómo el operador Nullish Coalescing solo cambia el valor cuando este es null o undefined, manteniendo otros valores "falsy" intactos, lo cual no sucede con el operador OR, que cambia cualquier valor falsy al valor por defecto.
+
+#### Aplicaciones Prácticas
+
+**Asignación de Valores Predeterminados:** Es muy útil para asignar valores predeterminados en configuraciones donde null o undefined son indicativos de la ausencia de valor, pero otros valores falsy como 0 o "" son válidos y significativos.
+
+<h4 className="font-medium mt-5">Ejemplos</h4>
+
+```js copy filename="JavaScript"
+const input = ""; // Entrada de un usuario para nombre de usuario, donde una cadena vacía es válida
+const username = input ?? "UsuarioAnónimo";
+console.log(username); // ""
+```
+
+**Uso en Configuraciones de Parámetros:** Ideal para funciones donde los parámetros opcionales no deben confundirse con valores nulos o indefinidos.
+
+<h4 className="font-medium mt-5">Ejemplos</h4>
+
+```js copy filename="JavaScript"
+function createGreeting(message, name) {
+  const greeting = message ?? "Hola";
+  const userName = name ?? "Amigo";
+  return `${greeting}, ${userName}!`;
+}
+
+console.log(createGreeting(undefined, "Marta")); // "Hola, Marta!"
+```
+
+#### Ventajas y Consideraciones
+
+- **Claridad y Precisión:** ?? proporciona una herramienta precisa para manejar null y undefined, permitiendo mantener otros valores falsy que pueden ser intencionales y significativos.
+- **Legibilidad Mejorada:** Reduce la necesidad de comprobaciones explícitas de null o undefined, simplificando el código.
+- **Compatibilidad:** Como es parte de ECMAScript 2020, es importante asegurarse de que todos los entornos donde se ejecutará el código lo soporten o usar herramientas de transpilación como Babel para entornos más antiguos.
+
+### Asignación Lógica Nula
+
+El operador de asignación lógica nula (??=) en JavaScript es una herramienta eficaz para asignar valores predeterminados a variables que contienen null o undefined. Este operador es una extensión del operador nullish coalescing (??), que permite realizar asignaciones condicionales basadas exclusivamente en si el valor actual de la variable es null o undefined.
+
+#### Sintaxis del Operador de Asignación Lógica Nula
+
+La sintaxis del operador ??= es directa y se utiliza de la siguiente manera:
+
+```js copy filename="JavaScript"
+variable ??= valor;
+```
+
+Esta operación es equivalente a escribir:
+
+```js copy filename="JavaScript"
+if (variable === null || variable === undefined) {
+  variable = valor;
+}
+```
+
+Este enfoque simplifica el código y mejora su legibilidad al eliminar la necesidad de estructuras condicionales explícitas para asignaciones básicas.
+
+<h4 className="font-medium mt-5">Ejemplos</h4>
+
+**Inicialización de Propiedades en Objetos:**
+
+Imaginemos una función que establece configuraciones predeterminadas para un objeto de configuración:
+
+```js copy filename="JavaScript"
+function configure(settings) {
+  settings.timeout ??= 1000;
+  settings.environment ??= "development";
+  return settings;
+}
+
+console.log(configure({ timeout: 1500 })); // { timeout: 1500, environment: 'development' }
+console.log(configure({})); // { timeout: 1000, environment: 'development' }
+```
+
+En este ejemplo, timeout y environment solo se asignan si no están previamente definidos o si son null.
+
+**Valores Predeterminados en Funciones:**
+
+Consideremos una función que necesita asegurar que ciertos parámetros opcionales tengan un valor por defecto:
+
+```js copy filename="JavaScript"
+function greet(name, greeting) {
+  greeting ??= "Hello";
+  console.log(`${greeting}, ${name}!`);
+}
+
+greet("Alice"); // "Hello, Alice!"
+greet("Bob", "Hi"); // "Hi, Bob!"
+```
+
+Aquí, el saludo predeterminado es "Hello", pero si se proporciona otro, se utiliza el valor proporcionado.
+
+#### Ventajas del Operador ??=
+
+- **Claridad:** Reduce la complejidad visual del código al eliminar la necesidad de condicionales explícitas para casos comunes de asignación.
+- **Eficiencia:** Minimiza errores al manejar valores null y undefined, asegurando que las variables tengan valores válidos antes de ser utilizadas.
+- **Consistencia:** Asegura que las variables sean inicializadas de manera coherente en toda la base de código.
+
+#### Consideraciones
+
+- **Compatibilidad:** Al ser una característica relativamente nueva (ECMAScript 2021), es esencial verificar la compatibilidad del entorno de ejecución o considerar el uso de herramientas como Babel para proyectos que necesiten soportar navegadores más antiguos.
+- **Sobrecarga:** Es importante no abusar de este operador, especialmente en situaciones donde otras formas de asignación o verificación sean más apropiadas o claras.
+
+### Operador de Encadenamiento Opcional
+
+El operador de encadenamiento opcional (?.) en JavaScript permite acceder a propiedades anidadas dentro de un objeto sin necesidad de verificar en cada nivel si el objeto es null o undefined. Si alguna parte de la cadena evaluada es null o undefined, el operador devuelve undefined en lugar de lanzar un error de tipo.
+
+<h4 className="font-medium mt-5">Ejemplos de Uso</h4>
+
+**Acceso a Propiedades de Objetos Anidados:**
+
+Supongamos que tienes un objeto que representa a un estudiante y quieres acceder a la información de su dirección, que puede no estar completamente definida:
+
+```js copy filename="JavaScript"
+let estudiante = {
+  nombre: "Luis",
+  curso: "Biología",
+  detalles: {
+    direccion: {
+      calle: "123 Calle Principal",
+      ciudad: "Ciudad Central",
+    },
+  },
+};
+
+console.log(estudiante.detalles?.direccion?.ciudad); // "Ciudad Central"
+console.log(estudiante.detalles?.contacto?.telefono); // undefined
+```
+
+Aquí, ?. permite acceder a ciudad de manera segura, y evita errores en caso de que contacto no esté definido.
+
+**Llamadas a Métodos Opcionales:**
+
+Si no estás seguro de que un objeto tiene un método específico, puedes invocarlo de manera segura usando ?.:
+
+```js copy filename="JavaScript"
+let taller = {
+  nombre: "Taller de Arte",
+  iniciarClase: function () {
+    console.log("Clase iniciada!");
+  },
+};
+
+taller.iniciarClase?.(); // "Clase iniciada!"
+taller.terminarClase?.(); // No ocurre nada, no se produce error
+```
+
+**Arrays y Acceso a Elementos:**
+
+También se puede usar para acceder a elementos de un array que puede no estar completamente definido:
+
+```js copy filename="JavaScript"
+let colores = ["rojo", "verde", "azul"];
+console.log(colores[3]?.toUpperCase()); // undefined
+```
+
+#### Ventajas del Encadenamiento Opcional
+
+- **Seguridad:** Reduce el riesgo de errores TypeError al intentar acceder a propiedades de null o undefined.
+- **Legibilidad:** El código es más limpio y claro, ya que evita tener que utilizar múltiples comprobaciones de null o undefined.
+- **Eficiencia:** Simplifica el código al eliminar la necesidad de múltiples condiciones para verificar la existencia de una cadena de propiedades o métodos.
+
+#### Consideraciones al Utilizar el Encadenamiento Opcional
+
+- **Compatibilidad:** Como es una característica de ECMAScript 2020, es importante asegurarse de que todos los entornos donde se ejecutará el código lo soportan, o considerar el uso de transpiladores como Babel.
+- **Sobreuso:** Aunque es tentador usar ?. para cada operación, su uso debe ser medido. No es sustituto de una buena lógica de programación y diseño de estructuras de datos.
+
+### Operador Lógico NOT
+
+El operador lógico NOT (!) es uno de los operadores unarios más básicos en JavaScript. Este operador se usa para invertir el valor de verdad de su operando, convirtiendo true en false y viceversa. Es fundamental en el manejo de condiciones lógicas, permitiendo a los programadores expresar negaciones de manera concisa y directa.
+
+#### Sintaxis del Operador NOT
+
+La sintaxis del operador NOT es simple: se coloca un signo de exclamación (!) directamente antes del operando sin ningún espacio. Por ejemplo:
+
+```js copy filename="JavaScript"
+!true; // Devuelve false
+!false; // Devuelve true
+```
+
+<h4 className="font-medium mt-5">Ejemplos de Uso</h4>
+
+**Inversión de Valores Booleanos:**
+
+```js copy filename="JavaScript"
+const isActive = false;
+console.log(!isActive); // Devuelve true, ya que isActive es false
+```
+
+**Uso en Condiciones:**
+
+El operador NOT es útil en estructuras condicionales para negar una condición:
+
+```js copy filename="JavaScript"
+const userLoggedIn = false;
+if (!userLoggedIn) {
+  console.log("Usuario no autenticado.");
+}
+```
+
+**Validación de Datos Nulos o Indefinidos:**
+
+Se emplea para verificar si una variable está definida o tiene un valor útil:
+
+```js copy filename="JavaScript"
+let user = null;
+if (!user) {
+  console.log("No se ha definido el usuario.");
+}
+```
+
+**Forzar Valor Booleano:**
+
+Usar doble NOT (!!) convierte cualquier valor a su equivalente booleano:
+
+```js copy filename="JavaScript"
+const value = 0;
+console.log(!!value); // Devuelve false, ya que 0 es un valor "falsy"
+```
+
+#### Importancia del Operador NOT
+
+- **Claridad en la Lógica:** Facilita la escritura de condiciones negativas de manera clara y directa.
+- **Conversión a Booleano:** !! es una forma concisa de convertir cualquier valor a su equivalente booleano, lo cual es útil para validaciones y condiciones.
+- **Control de Flujo:** Permite gestionar el flujo del programa en base a la presencia o ausencia de un valor específico.
+
+#### Consideraciones al Utilizar el Operador NOT
+
+- **Comprensión de Valores Falsy y Truthy:** Es esencial entender qué valores JavaScript considera true o false en contextos booleanos para usar efectivamente el operador NOT.
+- **Legibilidad:** Mientras que ! puede hacer el código más conciso, usarlo excesivamente o en contextos complicados puede reducir la legibilidad. Es importante mantener un equilibrio para asegurar que el código sea fácil de entender.
+
+## Ejercicios
+
+A continuación, presento una serie de quizes, preguntas y ejercicios diseñados para ayudarte a consolidar tu comprensión sobre los conceptos básicos de JavaScript que hemos discutido. Cada ejercicio incluye una solución para que puedas verificar tu trabajo.
+
+### Quizes
+
+<h4 className="font-medium mt-5">
+  ¿Qué operador se usa para concatenar dos strings en JavaScript?
+</h4>
+
+<p className="my-2">a) +</p>
+<p>b) &</p>
+<p className="mt-2">c) #</p>
+<p className="my-2">d) ||</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) +</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">¿Cuál es el resultado de true && false?</h4>
+
+<p className="my-2">a) true</p>
+<p>b) false</p>
+<p className="mt-2">b) null</p>
+<p className="my-2">d) D) undefined</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) false</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué operador se utiliza para comparar si dos valores son iguales en tipo y
+  valor?
+</h4>
+
+<p className="my-2">a) ==</p>
+<p>b) ===</p>
+<p className="mt-2">c) !=</p>
+<p className="my-2">d) !==</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) ===</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cuál es el uso del operador ternario en JavaScript?
+</h4>
+
+<p className="my-2">a) Realizar una suma rápida</p>
+<p>b) Reemplazar una estructura if-else</p>
+<p className="mt-2">c) Comparar tres valores a la vez</p>
+<p className="my-2">d) Ninguno de los anteriores</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) Reemplazar una estructura if-else</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué operador es utilizado para asignar un valor a una variable basándose en
+  la nulidad de otra?
+</h4>
+
+<p className="my-2">a) ||</p>
+<p>b) &&</p>
+<p className="mt-2">c) ??</p>
+<p className="my-2">d) !</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) ??</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">¿Qué resultado devuelve 10 ** 2?</h4>
+
+<p className="my-2">a) 100</p>
+<p>b) 20</p>
+<p className="mt-2">c) 102</p>
+<p className="my-2">d) 5</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) 100</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">¿Qué devuelve 5 * 3 + 4 * 2 en JavaScript?</h4>
+
+<p className="my-2">a) 70</p>
+<p>b) 38</p>
+<p className="mt-2">c) 23</p>
+<p className="my-2">d) 16</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) 23</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">¿Qué tipo de operador es ++ en JavaScript?</h4>
+
+<p className="my-2">a) Binario</p>
+<p>b) Unario</p>
+<p className="mt-2">c) Ternario</p>
+<p className="my-2">d) Lógico</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) Unario</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué sucede cuando se usa el operador &&= con un valor inicial de true y se
+  compara con false?
+</h4>
+
+<div className="my-2">a) true</div>
+<p>b) false</p>
+<p className="mt-2">c) null</p>
+<p className="my-2">d) undefined</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) false</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué valor devuelve la expresión 'cat' && 'dog'?
+</h4>
+
+<p className="my-2">a) cat</p>
+<p>b) dog</p>
+<p className="mt-2">c) true</p>
+<p className="my-2">d) false</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) dog </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### Preguntas
+
+<h4 className="font-medium mt-5">
+  ¿Cuál es la diferencia entre == y === en JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      == es el operador de igualdad, que compara dos valores después de convertirlos al mismo tipo (conversión de tipo implícita). === es el operador de igualdad estricta, que compara tanto el valor como el tipo sin convertirlos.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Explica cómo funciona el operador nullish coalescing (??).
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      El operador nullish coalescing (??) devuelve su operando derecho cuando el izquierdo es null o undefined, y el operando izquierdo en cualquier otro caso. Es útil para asignar valores predeterminados a variables que podrían ser null o undefined.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Menciona un caso de uso para el operador ternario.
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Un caso de uso común para el operador ternario es asignar un valor a una variable basado en una condición, como elegir entre dos colores para un mensaje de estado: let statusColor = errorCount > 0 ? "red" : "green";.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cómo puedes utilizar el operador &&= en un programa?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      El operador &&= se usa para asignar el valor del operando derecho a la variable si el valor actual de la variable es verdadero (true). Por ejemplo, isValid &&= user.isActive(); solo asignará user.isActive() a isValid si isValid es inicialmente true.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Por qué es útil el operador de encadenamiento opcional (?.)?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      El operador de encadenamiento opcional (?.) permite acceder a propiedades y métodos de un objeto sin lanzar un error si el objeto es null o undefined. Esto simplifica la verificación de objetos anidados sin usar múltiples condiciones if.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cuál es el resultado de utilizar el operador ! con un valor no booleano, como
+  !0?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      El operador ! convierte el valor a booleano utilizando las reglas de conversión falsy/truthy y luego lo niega. !0 se convierte primero en true porque 0 es un valor falsy, luego se niega a false.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Describe qué sucede cuando se utiliza el operador de asignación compuesta +=
+  con strings.
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      El operador += cuando se utiliza con strings concatena el segundo operando al primero y asigna el resultado al primer operando. Por ejemplo, let hello = "Hello, "; hello += "world!"; resultará en hello conteniendo "Hello, world!".
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Cómo puede el operador de asignación compuesta *= simplificar la manipulación
+  de datos numéricos en un bucle?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      El operador *= puede ser usado para actualizar el valor de una variable multiplicándola repetidamente por otro valor dentro de un bucle, como en un cálculo de interés compuesto o en la actualización de productos acumulativos.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  ¿Qué valor retorna el operador typeof cuando se evalúa un array?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      El operador typeof retorna "object" para arrays porque en JavaScript, los arrays son objetos especiales.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  Explique el efecto de utilizar el operador delete en un elemento de un array.
+  ¿Qué sucede con los índices del array?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Usar delete en un elemento de un array lo convierte en undefined pero no cambia el tamaño del array ni afecta los índices de los otros elementos. Esto puede crear "huecos" en el array, es decir, índices donde el valor es undefined.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Ejercicios
+
+<h4 className="font-medium my-5">
+  Escribe un código que use operadores de comparación para verificar si un
+  número está entre 10 y 20 inclusive, y retorna un mensaje apropiado.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let num = 15;
+        console.log(num >= 10 && num <= 20 ? "El número está dentro del rango." : "El número está fuera del rango.");
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  Utiliza los operadores lógicos para decidir entre tres posibles actividades
+  dependiendo de las condiciones climáticas. Las condiciones son: si está
+  soleado, ir al parque; si está lluvioso, ir al cine; y si está nevando,
+  quedarse en casa.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let clima = "lluvioso";
+        let actividad = clima === "soleado" ? "Ir al parque" :
+                        clima === "lluvioso" ? "Ir al cine" :
+                        clima === "nevando" ? "Quedarse en casa" : "Actividad desconocida";
+        console.log(actividad);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  Evalúa el siguiente código y explica el resultado de cada línea:
+</h4>
+
+<div>
+
+```js copy filename="JavaScript"
+let x = 5;
+console.log(x++); // ¿Qué muestra esto?
+console.log(++x); // ¿Y esto?
+console.log(x); // ¿Cuál es el valor final de x?
+```
+
+</div>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let x = 5;
+        console.log(x++);  // Muestra 5. Post-incremento: incrementa después de devolver el valor.
+        console.log(++x);  // Muestra 7. Pre-incremento: incrementa antes de devolver el valor.
+        console.log(x);    // Valor final de x es 7.
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  Simplifica las siguientes operaciones utilizando operadores de asignación
+  compuesta:
+</h4>
+
+<div>
+
+```js copy filename="JavaScript"
+let a = 10;
+a = a + 5;
+let b = 20;
+b = b * 4;
+let c = 50;
+c = c - 25;
+// Reescribe utilizando +=, *=, -=
+```
+
+</div>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let a = 10;
+        a += 5;
+        let b = 20;
+        b *= 4;
+        let c = 50;
+        c -= 25;
+        console.log(a);  // Muestra 15
+        console.log(b);  // Muestra 80
+        console.log(c);  // Muestra 25
+        // Las operaciones han sido simplificadas usando +=, *=, -=.
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  Dado el siguiente código, determina qué se imprime en la consola:
+</h4>
+
+<div>
+
+```js copy filename="JavaScript"
+console.log(false && "Dog");
+console.log(true || "Cat");
+console.log(!true && !false);
+// Explica el resultado de cada línea.
+```
+
+</div>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        console.log(false && "Dog");  // false, AND lógico, devuelve el primer valor falso encontrado.
+        console.log(true || "Cat");   // true, OR lógico, devuelve el primer valor verdadero encontrado.
+        console.log(!true && !false); // false, NOT invierte true a false y false a true, luego AND devuelve false.
+        // Explica que los operadores lógicos pueden devolver el último valor evaluado en su operación.
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
