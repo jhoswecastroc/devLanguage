@@ -5,89 +5,106 @@ import { Callout } from "nextra-theme-docs";
 
 # Introducción a la Programación
 
-La programación es el arte y la ciencia de crear software que ejecuta operaciones específicas o soluciona problemas. Es una habilidad esencial en el mundo moderno, donde la tecnología impregna todos los aspectos de nuestra vida. A través de la programación, podemos desarrollar aplicaciones, sistemas y herramientas que facilitan, mejoran o automatizan tareas y procesos. En este capítulo aprenderemos algunos temas que son fundamentales para tener un buen camino en la programación
+La programación es el arte y ciencia de comunicarse con una computadora. Es el proceso mediante el cual se le instruye a la computadora qué hacer mediante un conjunto de instrucciones o código. Los lenguajes de programación, como JavaScript, son herramientas que utilizamos para escribir estas instrucciones de una manera que la computadora pueda entender y ejecutar.
+
+Al programar, transformamos ideas abstractas en algoritmos y lógica que pueden ser procesados por la computadora. Esto incluye desde tareas simples, como calcular la suma de dos números, hasta operaciones complejas, como procesar datos de imagen o ejecutar algoritmos de aprendizaje automático.
 
 ## Comentarios de Código
 
-Los comentarios de código son anotaciones que se incluyen en el código fuente y que son completamente ignorados por los intérpretes o compiladores. Estos comentarios son cruciales para mejorar la legibilidad y mantenibilidad del código, proporcionando contexto o explicaciones sobre lo que el código está diseñado para hacer, especialmente en secciones que pueden no ser inmediatamente claras para alguien nuevo en el proyecto o para el propio desarrollador cuando revisa el código tiempo después.
+Los comentarios en el código son anotaciones que incluimos en el código fuente para explicar y clarificar el propósito de ciertos segmentos de código. Estos no afectan el funcionamiento del programa, pero son esenciales para que tanto el autor del código como otros programadores puedan entender rápidamente qué está sucediendo.
+
+Por ejemplo, considera el siguiente bloque de código en JavaScript:
+
+```js copy filename="JavaScript"
+// Calcula la suma de dos números
+let numeroUno = 5; // Primer número
+let numeroDos = 10; // Segundo número
+let suma = numeroUno + numeroDos; // Operación de suma
+console.log(suma); // Muestra el resultado
+```
+
+Aquí, cada línea de comentario explica lo que hace la línea de código correspondiente, facilitando su comprensión sin tener que descifrar la lógica detrás de cada operación.
+
+Los comentarios son particularmente útiles en proyectos grandes, donde complejas bases de código requieren claridad adicional para mantener y escalar el proyecto de manera eficiente.
 
 ### Tipos de Comentarios
 
-#### Comentario de Una Línea
+En JavaScript hay dos tipos principales de comentarios en JavaScript:
 
-Un comentario de una línea en JavaScript se inicia con dos barras diagonales (//). Todo el texto que sigue a estas barras hasta el final de la línea es ignorado por el intérprete de JavaScript, lo que significa que no tiene ningún impacto en la ejecución del programa.
+1. **Comentario de Una Línea**
+
+Los comentarios de una línea en JavaScript son una herramienta esencial para añadir notas explicativas en el código, sin afectar su ejecución. Se inician con dos barras diagonales (//) y continúan hasta el final de la línea. Cualquier texto que siga a estas dos barras en la misma línea es ignorado por el intérprete de JavaScript, lo que permite a los desarrolladores dejar clarificaciones o desactivar temporalmente partes del código.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Supongamos que estamos trabajando en un script para calcular la suma de números en un array. Podemos usar un comentario de una línea para explicar qué hace una línea de código específica o para desactivar temporalmente una parte del código para depuración:
+
+```js copy filename="JavaScript"
+let numeros = [1, 2, 3, 4, 5];
+let suma = 0;
+
+// Sumar cada número del array al total
+numeros.forEach((numero) => {
+  suma += numero; // Añade el número actual al total acumulado
+});
+
+console.log(suma); // Muestra la suma total en la consola
+```
+
+**Atajo de Teclado para Comentario de Una Línea**
+
+En muchos editores de código, como Visual Studio Code o Sublime Text, puedes comentar o descomentar rápidamente una línea de código utilizando un atajo de teclado. Por lo general, este atajo es Ctrl + / en sistemas Windows y Linux, o Cmd + / en macOS. Este atajo coloca automáticamente // al inicio de la línea en la que se encuentra el cursor, o lo quita si la línea ya está comentada.
+
+2. **Comentario de Múltiples Líneas**
+
+Los comentarios de múltiples líneas, también conocidos como comentarios de bloque, se delimitan usando /_ al inicio y _/ al final del comentario. Esta sintaxis permite que los comentarios abarquen varias líneas dentro del código sin necesidad de repetir indicadores de comentario en cada línea, a diferencia de los comentarios de una sola línea que requieren // al inicio de cada línea comentada.
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
-- Comentario al final de una línea de código:
-
-```js copy filename="JavaScript"
-let x = 45; // Asigna el valor 45 a la variable x
-```
-
-- Comentario antes de una línea de código:
-
-```js copy filename="JavaScript"
-// Incrementa x en 1
-x++;
-```
-
-- Desactivación temporal de código:
-
-```js copy filename="JavaScript"
-// x = x + 2; Este código está comentado y no se ejecutará
-```
-
-<h4 className="font-medium mt-5">Utilizando Atajos de Teclado para Comentar</h4>
-
-En la mayoría de los editores de código modernos, como Sublime Text o Visual Studio Code, puedes usar atajos de teclado para comentar rápidamente una línea de código. Este método es muy eficiente para comentar temporalmente partes del código:
-
-Windows/Linux: Usualmente Ctrl + / o Ctrl + `{`
-
-macOS: Comúnmente Cmd + / o Cmd + `{`
-
-Esta funcionalidad permite comentar o descomentar rápidamente secciones de código seleccionadas, facilitando las pruebas de diferentes fragmentos de código sin realizar cambios permanentes.
-
-#### Comentario de Múltiples Líneas
-
-Un comentario de múltiples líneas en JavaScript se inicia con /_ y termina con _/. Todo el texto encerrado entre estos delimitadores es ignorado por el intérprete de JavaScript, permitiendo a los desarrolladores insertar explicaciones detalladas o desactivar temporalmente bloques de código sin eliminarlos.
-
-<h4 className="font-medium mt-5">Ejemplo</h4>
+Supongamos que estás trabajando en una función que realiza múltiples operaciones y quieres explicar cada paso del proceso o simplemente deseas desactivar ciertas líneas para realizar pruebas:
 
 ```js copy filename="JavaScript"
 /*
-  Este es un comentario de múltiples líneas.
-  Aquí puedes explicar con detalle el propósito y funcionamiento
-  de la función o bloque de código que sigue a continuación.
+  Este bloque de código calcula el índice de masa corporal (IMC)
+  y determina la categoría de peso correspondiente.
+  Las líneas para calcular el peso ideal están desactivadas
+  para enfocarse en el IMC.
 */
-function calcularAreaRectangulo(ancho, alto) {
-  return ancho * alto; // Esta línea calcula el área del rectángulo.
+function calcularIMC(peso, altura) {
+  let imc = peso / (altura * altura);
+  console.log(`Tu IMC es ${imc}`);
+
+  /*
+  Desactivado para pruebas:
+  let pesoIdeal = 22.5 * (altura * altura);
+  console.log(`Tu peso ideal sería ${pesoIdeal}`);
+  */
 }
+
+calcularIMC(68, 1.65); // Llama a la función con ejemplo de peso y altura.
 ```
 
-Este comentario proporciona una explicación clara y detallada del propósito de la función calcularAreaRectangulo.
+**Atajo de Teclado para Comentario de Una Línea**
 
-<h4 className="font-medium mt-5">Utilizando Atajos de Teclado para Comentar</h4>
+En la mayoría de los editores de código modernos, como Visual Studio Code o Sublime Text, puedes utilizar atajos de teclado para comentar rápidamente bloques de código. Esto se logra seleccionando las líneas de código que deseas comentar y utilizando el atajo Ctrl + Shift + / o Shift + Alt + A en sistemas operativos Windows y Linux, o Cmd + Shift + / en macOS. Este atajo agregará /_ al inicio y _/ al final del bloque seleccionado, y haciendo el proceso inverso descomentarás el bloque.
 
-En la mayoría de los editores de código modernos, como Sublime Text o Visual Studio Code, puedes usar atajos de teclado para comentar rápidamente varias lineas de código. Primero debes seleccionar el código a comentar y después pulsar:
-
-Usualmente Shift + Alt + A
-
-Esta funcionalidad permite comentar o descomentar rápidamente secciones de código seleccionadas, facilitando las pruebas de diferentes fragmentos de código sin realizar cambios permanentes.
+Esta funcionalidad es invaluable para probar diferentes secciones de código durante la depuración o cuando deseas comparar el comportamiento del programa con y sin ciertos fragmentos de código ejecutándose.
 
 ### ¿Por Qué Comentar?
 
-Comentar en la programación es una práctica fundamental que va más allá de simplemente describir qué hace el código. Es esencial para la claridad, la colaboración y el mantenimiento a largo plazo de cualquier proyecto de software.
+Comentar el código es una práctica fundamental en la programación porque mejora la legibilidad y facilita la comprensión de lo que el código está destinado a realizar. Un código bien comentado ayuda no solo al creador original, sino también a cualquier otro desarrollador que pueda trabajar con el código en el futuro. Esto es especialmente útil en entornos donde el código debe ser mantenido a lo largo del tiempo o cuando se trabaja en equipo.
 
-1.**Claridad y Comprensión:** Los comentarios ayudan a explicar la intención detrás de un bloque de código, lo que puede ser crucial para entender la lógica compleja o las decisiones de diseño que no son inmediatamente obvias a través del código solo. 2. **Mantenimiento:** Un código bien comentado es mucho más fácil de mantener y actualizar. Cuando los desarrolladores regresan a un bloque de código meses o años después, los comentarios pueden actuar como una guía rápida para entender y modificar el código eficientemente. 3. **Colaboración:** En entornos donde múltiples desarrolladores trabajan en el mismo código, los comentarios son esenciales para asegurar que todos entiendan lo que está sucediendo, lo que facilita la colaboración y reduce los errores.
+Los comentarios permiten explicar el propósito de bloques de código complejos, decisiones de diseño importantes o el uso de algoritmos específicos que no son inmediatamente obvios. Además, pueden servir para marcar áreas del código que necesitan revisión o mejora, facilitando así la gestión de tareas pendientes dentro del propio entorno de desarrollo.
 
 ### Consejos para Comentar Efectivamente
 
-Comentar es una habilidad que se desarrolla con el tiempo y con la práctica. Aquí algunos consejos para maximizar la utilidad de los comentarios:
+1. **Comenta el Porqué, No el Qué:** Es más valioso explicar por qué se tomó una decisión particular o por qué se usa un determinado enfoque, en lugar de describir qué hace el código, que debería ser evidente. Esto proporciona claridad a cualquier persona que revise el código y ayuda a evitar malentendidos.
+2. **Evita Comentarios Obvios:** No desperdicies espacio comentando cosas que son completamente obvias para cualquier desarrollador con un mínimo de experiencia. Por ejemplo, no necesitas comentar qué hace una línea que claramente añade dos números.
+3. **Mantén los Comentarios Actualizados:** Un comentario desactualizado puede ser más perjudicial que no tener comentario alguno. Asegúrate de revisar y actualizar los comentarios cuando cambies el código relacionado.
+4. **Utiliza Comentarios para Segmentar el Código:** Puedes usar comentarios para dividir el código en secciones lógicas, lo que puede hacer que sea más fácil de seguir y organizar.
+5. **Documentación Técnica:** Utiliza herramientas como JSDoc para generar documentación técnica desde los comentarios. Esto es útil para generar automáticamente documentación de API que puede ser consultada por otros desarrolladores fácilmente.
 
-1.**Evita Comentar Lo Obvio:** Comentar debería ser una práctica para agregar valor explicando el "por qué" detrás de un código, no simplemente describir qué hace. Por ejemplo, evitar comentarios como // Incrementa x en 1 justo encima de x++. 2. **Se Conciso y Preciso:** Los comentarios deben ser breves y al punto. No es necesario escribir párrafos extensos en la mayoría de los casos; en cambio, un breve comentario que explique la intención o resuelva una posible confusión es más valioso. 3. **Mantén los Comentarios Actualizados:** Al igual que el código, los comentarios deben mantenerse actualizados. Un comentario desactualizado puede ser peor que no tener comentario alguno, ya que puede llevar a malinterpretaciones del código. 4. **Usa Comentarios para Explicar Complejidades:** Utiliza comentarios para explicar decisiones de diseño, casos especiales, o para describir por qué se optó por una solución no convencional o compleja. 5. **Nombrar Adecuadamente:** A menudo, un buen nombre para una variable o función puede eliminar la necesidad de un comentario explicativo. Si el nombre es descriptivo y claro, el código se vuelve autoexplicativo.
-
-<h4 className="font-medium mt-5">Ejemplos</h4>
+<h4 className="font-medium mt-5">Ejemplo</h4>
 
 ```js copy filename="JavaScript"
 // Correcto: Explica la razón detrás de la lógica, no solo qué hace el código.
@@ -99,100 +116,92 @@ let precioFinal = precioInicial - descuento; // Aplica descuento al precio inici
 let x = x + 1; // Incrementa x en 1
 ```
 
-En el primer ejemplo, los comentarios ayudan a entender por qué se realiza el cálculo, lo cual es especialmente útil en contextos donde los cálculos o las lógicas no son inmediatamente claros. En el segundo ejemplo, el comentario es redundante porque el código es suficientemente claro por sí solo.
-
-<Callout emoji="👀" type="default">
-  Comentar es un arte que balancea entre ofrecer suficiente información para
-  hacer el código comprensible sin sobrecargarlo con detalles innecesarios. Los
-  comentarios efectivos mejoran significativamente la legibilidad y la
-  mantenibilidad del código, facilitando el trabajo individual y en equipo.
-</Callout>
-
 ## Indentación de Código
 
-La indentación de código es una práctica esencial en la programación que no solo mejora la legibilidad del código, sino que también ayuda a organizar y estructurar el código de manera que sea fácil de seguir y entender. En algunos lenguajes de programación, como Python, la indentación incluso afecta la ejecución del código, pero en JavaScript, su importancia radica principalmente en la claridad visual y la organización.
+La indentación de código es una técnica esencial en la programación que consiste en añadir espacios o tabuladores al comienzo de las líneas de código para crear una jerarquía visual que facilita su lectura y comprensión. Esta práctica no solo mejora la estética del código, sino que también ayuda a entender la estructura y el flujo de ejecución del mismo, especialmente en bloques de código complejos.
 
 ### ¿Qué es la Indentación de Código?
 
-La indentación implica el uso de espacios o tabulaciones al comienzo de las líneas de código para denotar jerarquías de bloques de código, como funciones, bucles, condicionales, etc. Esta práctica no solo hace que el código sea estéticamente agradable, sino que también hace evidente la relación entre los bloques de código y sus estructuras de control envolventes.
-
-### Importancia de la Indentación Correcta
-
-1. **Claridad Visual:** La indentación ayuda a separar visualmente los bloques de código, facilitando la comprensión rápida de la estructura del programa. Permite a los desarrolladores identificar qué instrucciones pertenecen a qué bloques con un simple vistazo.
-2. **Mantenimiento:** Un código bien indentado es más fácil de modificar y mantener. Los nuevos desarrolladores o terceros pueden entender el flujo del programa y hacer cambios necesarios sin perturbar la estructura lógica del código.
-3. **Prevención de Errores:** Un adecuado uso de la indentación puede ayudar a prevenir errores lógicos en el código, especialmente en aquellos lenguajes donde la indentación define bloques de código.
-
-### Consejos para una Indentación Efectiva
-
-1. **Consistencia:** Elige entre usar espacios o tabulaciones y aplícalo de manera consistente a lo largo de todo el proyecto. La mayoría de los equipos de desarrollo tienen estándares definidos, como usar 2 o 4 espacios por nivel de indentación.
-2. **Herramientas Automatizadas:** Utiliza herramientas de formateo automático o linters, como Prettier o ESLint, que pueden configurarse para aplicar automáticamente una indentación consistente y otros estilos de código.
-3. **Leeribilidad sobre Compactación:** Evita la tentación de hacer el código excesivamente compacto. La legibilidad siempre debe ser una prioridad sobre la minimización del número de líneas de código.
+Indentar código significa desplazar bloques de texto hacia la derecha, separándolos del margen izquierdo para marcar diferencias jerárquicas en la estructura del código. Por ejemplo, el cuerpo de una función, los bucles, o las condiciones, se indentan para indicar que están contenidos dentro de una estructura mayor, facilitando así su identificación y la de su alcance.
 
 <h4 className="font-medium mt-5">Ejemplos</h4>
 
 ```js copy filename="JavaScript"
-function ejemploIndentacion() {
-  if (true) {
-    console.log("Este mensaje está correctamente indentado.");
-  }
-
-  for (let i = 0; i < 5; i++) {
-    if (i % 2 === 0) {
-      console.log(i, "es un número par.");
-    }
+function verificarAcceso(usuario) {
+  if (usuario.edad >= 18) {
+    console.log("Acceso concedido");
+  } else {
+    console.log("Acceso denegado");
   }
 }
 ```
 
-Este ejemplo demuestra cómo la indentación clara puede hacer que el flujo lógico del código sea obvio y fácil de seguir, con cada nuevo bloque de control claramente separado del anterior.
+### Tabuladores vs. Espacios
 
-<Callout emoji="👀" type="default">
-  La indentación de código es una de las primeras prácticas que los
-  desarrolladores aprenden, y su correcta aplicación tiene un impacto duradero
-  en la calidad y mantenibilidad del código. Al adherirse a un estilo
-  consistente y utilizando las herramientas adecuadas para mantener ese estilo,
-  los equipos pueden asegurar que su base de código sea accesible y fácil de
-  gestionar para todos los miembros actuales y futuros del equipo.
-</Callout>
+La decisión entre usar tabuladores o espacios para la indentación varía entre diferentes programadores y puede estar influenciada por las guías de estilo del proyecto. Algunos argumentan a favor de los espacios por su consistencia en diferentes entornos de desarrollo, mientras que otros prefieren tabuladores por ser más compactos.
+
+- **Espacios:** Permiten una consistencia visual en cualquier editor de texto, independientemente de su configuración.
+- **Tabuladores:** Pueden ser configurados para ocupar diferentes cantidades de espacio visual en distintos editores, pero pueden llevar a inconsistencias si no se manejan correctamente.
+
+### Importancia de la coherencia
+
+Mantener un estilo coherente de indentación es crucial, especialmente en proyectos con múltiples desarrolladores. Las guías de estilo suelen especificar si se debe usar tabuladores o espacios, así como la cantidad de estos últimos (comúnmente 2, 4 u 8 espacios por nivel de indentación).
+
+En herramientas como Visual Studio Code, puedes configurar el estilo de indentación y convertir automáticamente tabuladores a espacios para mantener la coherencia. Estos editores también ofrecen funcionalidades para visualizar espacios y tabuladores, lo cual puede ser activado para asegurar que se está cumpliendo con las normas del proyecto.
 
 ## Convenciones de Nombres
 
-Las convenciones de nombres son fundamentales en el desarrollo de software. Establecen cómo los programadores deben nombrar variables, funciones, clases, y otros identificadores en sus códigos. Seguir estas convenciones no solo mejora la legibilidad del código, sino que también facilita la colaboración entre desarrolladores y ayuda a mantener el código a largo plazo.
+Las convenciones de nombres en la programación son reglas o guías que los desarrolladores siguen para nombrar las variables, funciones, clases, y otros elementos del código de manera que se maximice la claridad y se minimice la ambigüedad sobre lo que el código hace. Estas convenciones ayudan a que el código sea intuitivo y accesible no solo para el propio desarrollador, sino también para cualquier otra persona que pueda trabajar con el código en el futuro.
 
 ### Importancia de las Convenciones de Nombres
 
-1. **Claridad:** Un buen nombre explica el propósito de una variable o función sin necesidad de comentarios adicionales.
-2. **Consistencia:** Usar un estilo coherente en todo el proyecto hace que el código sea más organizado y accesible.
-3. **Prevención de errores:** Nombres claros y descriptivos pueden prevenir errores de lógica al hacer evidente lo que se supone que debe hacer un bloque de código.
+1. **Legibilidad:** Un código bien nombrado es mucho más fácil de leer y entender. Cuando los nombres de las variables y funciones claramente indican qué contienen y qué hacen, el código se vuelve más autoexplicativo.
+2. **Mantenibilidad:** El mantenimiento del código se simplifica con buenas convenciones de nombres. Cuando regresas a un bloque de código meses después, o cuando un nuevo desarrollador revisa el código por primera vez, nombres claros y descriptivos pueden hacer una gran diferencia en la velocidad con la que uno puede entender y trabajar con el código.
+3. **Prevención de Errores:** Al utilizar nombres que reflejan claramente el propósito y el uso de una variable o función, se reducen los errores causados por malentendidos sobre el rol de ciertos elementos del código. Esto es especialmente importante en entornos de programación complejos donde múltiples componentes interactúan entre sí.
+4. **Facilita las Revisiones de Código:** Durante las revisiones de código, es más fácil discutir y analizar secciones del código que están claramente documentadas a través de sus nombres. Esto no solo acelera el proceso de revisión, sino que también mejora la calidad del feedback y las mejoras sugeridas.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Código con malas convenciones de nombres:
+
+```js copy filename="JavaScript"
+let a = 3.1416; // ¿Qué representa?
+function b(x) {
+  return x + a;
+} // Función poco clara
+
+console.log(b(10)); // Salida poco predecible sin contexto
+```
+
+Código con buenas convenciones de nombres:
+
+```js copy filename="JavaScript"
+let valorPi = 3.1416; // Nombre descriptivo
+function agregarPiAlNumero(numero) {
+  return numero + valorPi;
+} // Función descriptiva
+
+console.log(agregarPiAlNumero(10)); // El propósito de la llamada es claro
+```
+
+Este ejemplo demuestra cómo un buen sistema de nombres mejora la legibilidad y comprensión del código. Al asignar nombres significativos y descriptivos, cada línea de código contribuye a una comprensión más rápida y profunda de su funcionamiento y propósito.
 
 ### Consejos para Nombrar Efectivamente
 
-1. **Descriptivos:** Elige nombres que describan claramente la utilidad o el propósito del elemento. Por ejemplo, contarUsuariosActivos es más descriptivo que contador.
-2. **Concisos:** Aunque es importante ser descriptivo, también es crucial ser conciso. Evita nombres excesivamente largos que dificultan la lectura del código.
-3. **Consistentes:** Si eliges un estilo de nombramiento, úsalo de manera consistente a través de todo tu proyecto. Esto incluye decisiones sobre el uso de mayúsculas, minúsculas, y guiones bajos.
-4. **Evita nombres genéricos:** Nombres como data o info no proporcionan información suficiente sobre el contenido de la variable.
+Al escribir código, la elección de nombres para variables, funciones, clases y otros identificadores es más que una cuestión de preferencia personal; afecta directamente la claridad y mantenibilidad del código. A continuación, se presentan algunos consejos prácticos para nombrar efectivamente, seguidos de las convenciones de nombres más comunes en la industria.
+
+1. **Descriptivos pero Concisos:** Los nombres deben ser lo suficientemente descriptivos para que un nuevo lector pueda entender qué representa la variable o qué hace la función sin necesidad de comentarios adicionales. Sin embargo, deben evitar ser verborrágicos. Por ejemplo, enviarEmail es mejor que enviar.
+2. **Evitar Nombres Genéricos:** Nombres como data o info no aportan información sobre lo que contienen. Nombres como datosUsuario o configuracionVideo son preferibles.
+3. **Utilizar Nombres Pronunciables y Memorizables:** Esto facilita la discusión sobre el código en revisiones de código o discusiones en equipo. Por ejemplo, usar fechaCreacion en lugar de fechaCr.
+4. **Ser Consistente:** Usar el mismo patrón de nomenclatura en todo el proyecto. Si eliges camelCase para variables, úsalo en todo el código JavaScript.
 
 ### Convenciones Comunes de Nombres
 
-1. **camelCase:** Utilizada principalmente en JavaScript para variables y funciones. La primera letra es minúscula y las primeras letras de cada palabra subsecuente son mayúsculas, por ejemplo, miVariableImportante.
-2. **PascalCase:** Similar a camelCase pero la primera letra es mayúscula. Se usa comúnmente para clases y constructores, por ejemplo, ClaseImportante.
-3. **snake_case:** Las palabras se separan con guiones bajos y todo en minúsculas, común en lenguajes como Python, por ejemplo, mi_variable_importante.
-4. **UPPER_SNAKE_CASE:** Se usa generalmente para constantes en muchos lenguajes de programación, por ejemplo, CONSTANTE_IMPORTANTE.
+En JavaScript, como en cualquier otro lenguaje de programación, seguir convenciones de nombres coherentes y entendibles es crucial para la legibilidad y mantenibilidad del código. A continuación, detallamos las convenciones de nombres más comunes en JavaScript y proporcionamos ejemplos específicos para cada una, destacando su uso adecuado en diferentes contextos de programación.
 
-<h4 className="font-medium mt-5">Ejemplos</h4>
+1. **camelCase:** Es la convención más común en JavaScript para nombrar variables y funciones. En camelCase, la primera palabra se escribe en minúsculas y las siguientes palabras comienzan con mayúsculas.
 
-**Buenas Prácticas:**
-
-```js copy filename="JavaScript"
-let cuentaDeUsuario; // Bueno: claro y descriptivo
-const MAX_INTENTOS = 3; // Bueno: constante en mayúsculas
-function calcularImpuestoIngreso(ingreso) {
-  // Bueno: acción clara y parámetro descriptivo
-  return ingreso * 0.3;
-}
-```
-
-**Malas Prácticas:**
+<h4 className="font-medium mt-5">Ejemplo</h4>
 
 ```js copy filename="JavaScript"
 let x; // Malo: no informativo
@@ -202,3 +211,54 @@ function hacer(dato) {
   return dato * 2;
 }
 ```
+
+Esta convención ayuda a leer las variables y funciones como frases con múltiples palabras sin los espacios, facilitando la comprensión rápida del propósito de la variable o función.
+
+2. **PascalCase:** Utilizado principalmente para clases y constructores en JavaScript. Aquí, cada palabra comienza con una letra mayúscula, incluida la primera.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+class Usuario {
+  constructor(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+  }
+}
+```
+
+Distingue claramente las clases de las variables y funciones ordinarias, indicando que se pueden instanciar o que siguen un modelo de objeto.
+
+3. **UPPER_SNAKE_CASE:** Predominantemente usado para constantes que tienen un valor fijo y que no cambian a lo largo del tiempo en toda la aplicación. Todas las letras son mayúsculas y se separan por guiones bajos.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const MAXIMO_INTENTOS = 5;
+const URL_BASE = "http://api.ejemplo.com";
+```
+
+Este estilo es útil para destacar valores que son fundamentales en el sistema y que no deben modificarse después de su inicialización inicial, proporcionando una rápida identificación visual de estos valores importantes y fijos.
+
+3. **snake_case:** Menos común en JavaScript, pero puede ser usado ocasionalmente para variables locales dentro de funciones, especialmente en código que ha sido portado de otros lenguajes que utilizan esta convención, como Python.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function calcular_costo_base() {
+  let costo_inicial = 20;
+  return costo_inicial;
+}
+```
+
+Aunque no es típico, su uso puede ser adecuado en contextos donde el código interactúa con otros sistemas o bibliotecas que utilizan snake_case, ayudando a mantener la consistencia.
+
+3. **kebab-case:** No se utiliza en nombres de variables o funciones en JavaScript debido a que el guión medio se interpreta como un signo de resta. Sin embargo, es común en nombres de clases e identificadores en HTML y CSS.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+<div class="menu-principal"></div>
+```
+
+Aunque no se usa en el código JavaScript directamente, entender esta convención es crucial para trabajar de manera cohesiva con HTML y CSS.

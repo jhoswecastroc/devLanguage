@@ -3,224 +3,142 @@ import Link from "next/link";
 import { Steps } from "nextra/components";
 import { Callout } from "nextra-theme-docs";
 
-<div
-  className="flex justify-center text-center m-0 p-0 bg-[url('/assets/img/javascript.jpg')] bg-center bg-cover bg-no-repeat w-full h-[30vh]">
-  <div
-    className="bg-gradient-to-b from-yellow-500/75 to-slate-50/100 flex justify-center items-center w-full h-full flex-col gap-2">
-    <h1 className="text-black font-semibold text-[24px]">¿Qué es JavaScript?</h1>
-    <h3 className="text-black">Lenguaje de programación de la web</h3>
-    <div className="border-t w-[75%] border-black "></div>
+# JavaScript
 
-  </div>
-</div>
-
-<div className="text-start mt-10">
-
-¡Bienvenidos al fascinante mundo de JavaScript! Este lenguaje de programación no es solo una herramienta esencial para
-el desarrollo web, sino también una puerta de entrada a numerosas oportunidades en el vasto campo de la tecnología de
-la información. Si estás aquí, es porque estás listo para embarcarte en un viaje educativo que te permitirá no solo
-entender, sino también crear y manipular aplicaciones y programas utilizando JavaScript.
+JavaScript es un lenguaje de programación esencial en el ámbito del desarrollo web, conocido por su capacidad para añadir interactividad y dinámica a las páginas web. Originalmente fue desarrollado por Brendan Eich en 1995 mientras trabajaba para Netscape, con el objetivo de permitir a los desarrolladores de web hacer sus sitios más interactivos y reactivos a las acciones del usuario sin necesidad de recargar la página.
 
 ## ¿Qué es JavaScript?
 
-JavaScript, abreviado comúnmente como JS, es un lenguaje de programación dinámico que se utiliza para desarrollar
-elementos interactivos en sitios web. A diferencia de HTML que estructura el contenido y CSS que se ocupa del estilo,
-JavaScript introduce la interactividad, permitiendo a las páginas web responder a las acciones del usuario, actualizar
-contenido dinámicamente, animar imágenes, entre muchas otras cosas.
+JavaScript se caracteriza por ser un lenguaje de programación de alto nivel, interpretado y no compilado. Esto significa que el código se ejecuta en tiempo real sin la necesidad de un proceso de compilación previo, permitiendo una rápida ejecución y prueba de código. Funciona en el modelo de cliente-servidor, donde el navegador web actúa como cliente y puede interactuar con un servidor web en el fondo.
 
-Originalmente diseñado para "dar vida" a las páginas web, JavaScript ha evolucionado enormemente desde sus inicios.
-Hoy en día, es uno de los pilares de la web moderna, vital para la funcionalidad interactiva en prácticamente todos
-los sitios web que visitamos.
+A diferencia de otros lenguajes de programación que requieren un entorno de desarrollo específico, JavaScript puede ejecutarse en cualquier navegador web moderno gracias a su motor de JavaScript integrado. Esto lo hace accesible para un amplio rango de usuarios y desarrolladores, desde principiantes hasta profesionales que construyen aplicaciones complejas.
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
-Consideremos un ejemplo sencillo para demostrar la potencia de JavaScript en comparación con solo usar HTML y CSS.
-Imaginemos que necesitamos listar números del 1 al 500 en una página web:
-
-```html copy filename="HTML"
-<div id="numberList"></div>
-```
-
-Con HTML, tendríamos que escribir 500 líneas de código para listar cada número, lo cual sería extremadamente tedioso y
-ineficiente. Aquí es donde JavaScript brilla:
+Para entender cómo JavaScript puede interactuar con los usuarios de una página web, consideremos un ejemplo simple: una función de alerta que saluda a los usuarios cuando visitan un sitio.
 
 ```js copy filename="JavaScript"
-const container = document.getElementById("numberList");
-for (let i = 1; (i = 500); i++) {
-  const paragraph = document.createElement("p");
-  paragraph.textContent = `Número: ${i}`;
-  container.appendChild(paragraph);
+function mostrarSaludo() {
+  alert("¡Bienvenido a nuestra página web!");
 }
 ```
 
-En este simple ejemplo, JavaScript utiliza un bucle para generar automáticamente los números del 1 al 500,
-insertándolos en la página web como elementos de párrafo. Esto no solo ahorra tiempo y reduce el código necesario,
-sino que también hace que el proceso sea dinámico y fácilmente ajustable.
+Al llamar a mostrarSaludo(), JavaScript interrumpe lo que el usuario está haciendo y muestra un cuadro de diálogo con el mensaje "¡Bienvenido a nuestra página web!". Esta es una de las maneras más básicas de interactuar con el usuario, demostrando la capacidad de JavaScript para modificar dinámicamente la experiencia del usuario en tiempo real.
 
-Lenguaje de las Computadoras
+## El Lenguaje de las Máquinas
 
-En nuestro entorno cotidiano, estamos rodeados de computadoras, desde los teléfonos inteligentes que llevamos en
-nuestros bolsillos hasta los electrodomésticos en nuestros hogares y oficinas. Todas estas máquinas, aunque variadas
-en función y forma, requieren un método de comunicación que permita a los usuarios interactuar efectivamente con
-ellas. Este método es proporcionado por los lenguajes de programación, siendo JavaScript uno de los más prominentes en
-el ámbito de la web.
+En el mundo de la tecnología, donde los ordenadores son omnipresentes, es fundamental comprender cómo interactúan con los humanos y entre sí a través del lenguaje de las máquinas. Este conocimiento es crucial para cualquier programador y fundamenta la eficacia de la programación moderna.
 
-**Lenguajes Naturales vs. Lenguajes de Máquina**
+### ¿Qué es el Lenguaje de las Máquinas?
 
-Los seres humanos se comunican utilizando lenguajes naturales, que son ricos en matices y a menudo ambiguos. Sin
-embargo, estas características no son compatibles con las computadoras, que requieren instrucciones precisas y sin
-ambigüedades para funcionar correctamente. Los lenguajes de programación sirven como un puente entre la ambigüedad de
-los lenguajes naturales y la precisión del lenguaje de máquina, el cual es completamente binario y comprendido
-directamente por el hardware de la computadora.
+El lenguaje de las máquinas, también conocido como código máquina, es el nivel más básico de código que una computadora puede ejecutar directamente. Consiste en binario, una serie de ceros y unos que instruyen específicamente al hardware de la computadora. Este nivel de comunicación es vital porque es el único "idioma" que el procesador entiende directamente, sin necesidad de traducción.
 
-**De Lenguaje de Máquina a Lenguajes de Alto Nivel**
+### La Evolución de la Comunicación con Computadoras
 
-En los albores de la computación, los programadores usaban lenguajes de máquina o ensamblador, que son extremadamente
-precisos pero difíciles para los humanos de escribir y entender debido a su complejidad y proximidad al hardware. Para
-superar estas dificultades y hacer la programación más accesible, se desarrollaron lenguajes de alto nivel como
-JavaScript. Estos lenguajes abstraen muchos de los detalles técnicos del hardware, permitiendo a los programadores
-concentrarse más en resolver problemas lógicos y de diseño.
+En los albores de la informática, la interacción con computadoras se realizaba en código máquina directamente, lo que era un proceso tedioso y propenso a errores. La invención de lenguajes de programación de alto nivel, como JavaScript, permitió a los programadores escribir código de manera más intuitiva y cercana al lenguaje humano, que luego se traduce al lenguaje de máquina que puede entender y ejecutar la computadora.
 
-## JavaScript: Un Puente entre Humanos y Máquinas
+<h4 className="font-medium mt-5">Ejemplo</h4>
 
-JavaScript, en particular, ha sido diseñado para ser tanto estructurado como flexible, lo que lo hace accesible para
-principiantes mientras ofrece potentes funcionalidades para programadores experimentados. Originalmente desarrollado
-para añadir interactividad a las páginas web, JavaScript permite a los programadores escribir scripts que el navegador
-interpreta y ejecuta, permitiendo desde simples validaciones de formulario hasta la gestión de complejas interacciones
-dinámicas y manipulación del contenido en tiempo real.
+Consideremos un ejemplo simple en JavaScript, que ilustra cómo una operación de suma se traduce al lenguaje de las máquinas:
 
-Por ejemplo, considere un formulario web que solicita al usuario su edad y verifica que sea mayor de 18 años para
-acceder a un sitio web específico. Este es un simple script de JavaScript que podría usarse:
+```js copy filename="JavaScript"
+let suma = 1 + 2;
+```
+
+En este ejemplo:
+
+A nivel de máquina, esta operación involucraría varios pasos:
+
+1. Cargar el valor 1 en un registro del procesador.
+2. Cargar el valor 2 en otro registro.
+3. Ejecutar una instrucción de suma para estos dos registros.
+4. Almacenar el resultado en la memoria o en otro registro.
+
+## ¿Por qué estudiar JavaScript?
+
+JavaScript es un pilar fundamental en el desarrollo de aplicaciones web y móviles modernas. Su aprendizaje no solo abre la puerta a nuevas oportunidades profesionales, sino que también capacita a los desarrolladores para crear experiencias interactivas y dinámicas esenciales en la era digital.
+
+### Ubiquidad en la Web
+
+JavaScript es esencial para la interactividad en la mayoría de las páginas web. Aprender JavaScript permite a los desarrolladores implementar funciones complejas que mejoran la experiencia del usuario, desde formularios dinámicos hasta aplicaciones web completas que no requieren recargar la página para cada acción del usuario.
+
+### Flexibilidad y Versatilidad
+
+JavaScript es único en su capacidad para ejecutarse tanto en el cliente como en el servidor (Node.js), lo que permite a los desarrolladores usar un único lenguaje en toda la pila tecnológica. Esta flexibilidad reduce la curva de aprendizaje y aumenta la eficiencia del desarrollo.
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
 ```js copy filename="JavaScript"
-document.getElementById("submit-button").addEventListener("click", function () {
-  var age = document.getElementById("age-input").value;
-  if (age >= 18) {
-    alert("Acceso concedido.");
-  } else {
-    alert("Debes ser mayor de 18 años para acceder a este sitio.");
+document.getElementById("myForm").onsubmit = function () {
+  var nombre = document.getElementById("nameField").value;
+  if (nombre === "") {
+    alert("Por favor, introduce tu nombre.");
+    return false;
   }
-});
-```
-
-En este código, JavaScript interactúa directamente con los elementos HTML del formulario y proporciona retroalimentación inmediata al usuario. Este tipo de interacción es un ejemplo claro de cómo los lenguajes de programación como JavaScript permiten una comunicación efectiva entre los usuarios y las máquinas a través de interfaces comprensibles y accesibles.
-
-## Razones para Estudiar JavaScript
-
-JavaScript se destaca como un lenguaje esencial en el panorama tecnológico actual, ofreciendo numerosas ventajas que justifican su estudio y adopción por programadores de todos los niveles. A continuación, exploramos varias razones convincentes por las cuales aprender JavaScript es una decisión acertada.
-
-1. **Ubicuidad en la Web:** JavaScript es, sin exagerar, el lenguaje de programación de la web. Casi todas las páginas web modernas utilizan JavaScript en alguna medida para animar interfaces, gestionar interacciones del usuario, y realizar operaciones complejas en el navegador. Aprender JavaScript te capacita para influir directamente en la vasta mayoría de los sitios web del mundo, permitiéndote modificar y mejorar la experiencia del usuario de forma significativa.
-
-2. **Versatilidad:** La evolución de tecnologías como Node.js para el backend, React Native para desarrollo de aplicaciones móviles, y Electron para aplicaciones de escritorio ha permitido que JavaScript trascienda su uso tradicional en el navegador. Ahora es posible utilizar JavaScript para desarrollar en una amplia variedad de plataformas, ampliando enormemente el alcance de tus proyectos y habilidades.
-
-3. **Demanda del Mercado:** La demanda de desarrolladores de JavaScript continúa siendo alta. Dominar este lenguaje abre puertas a numerosas oportunidades de empleo en una gama diversa de industrias, desde startups innovadoras hasta grandes corporaciones tecnológicas. Las habilidades en JavaScript son esenciales para cualquiera que desee participar en el desarrollo web moderno o tecnologías de aplicaciones móviles.
-
-4. **Comunidad y Ecosistema:** JavaScript cuenta con una de las comunidades de programadores más grandes y activas del mundo. Esto se traduce en una abundancia de recursos, bibliotecas, y frameworks que facilitan tanto el aprendizaje como el desarrollo de proyectos. Además, encontrarás fácilmente soporte y colaboración para resolver problemas o para impulsar innovaciones.
-
-5. **Innovación Continua:** Aunque JavaScript es un lenguaje maduro, sigue evolucionando y adaptándose a las nuevas necesidades tecnológicas. La estandarización a través de ECMAScript asegura que nuevas características se añadan regularmente, permitiendo que el lenguaje crezca y se mantenga relevante frente a las cambiantes demandas de la industria.
-
-6. **Facilidad de Aprendizaje:** JavaScript es conocido por su sintaxis accesible y la capacidad de producir resultados inmediatos en un navegador web, lo que permite a los principiantes comenzar a experimentar y construir proyectos rápidamente. Esta inmediatez es gratificante y fomenta la continuación del aprendizaje, haciendo de JavaScript una excelente opción como primer lenguaje de programación.
-
-<h4 className="font-medium mt-5">Ejemplo</h4>
-
-Consideremos un ejemplo simple de JavaScript que demuestra su capacidad para interactuar con el usuario:
-
-```js copy filename="JavaScript"
-function greetUser() {
-  let userName = prompt("¿Cuál es tu nombre?");
-  alert(`¡Hola, ${userName}! Bienvenido a nuestro sitio web.`);
-}
-```
-
-## Características Clave de JavaScript
-
-JavaScript es un lenguaje de programación excepcionalmente poderoso y versátil, ampliamente reconocido por su capacidad para agregar interactividad a las páginas web. A lo largo de los años, ha evolucionado para incluir una serie de características que lo distinguen dentro del panorama del desarrollo de software.
-
-**Interpretado y Compilado Just-In-Time (JIT)**
-
-Una de las características fundamentales de JavaScript es que es un lenguaje interpretado. Esto significa que el código se ejecuta directamente sin la necesidad de un proceso de compilación previo, facilitando la iteración y el desarrollo rápidos. Sin embargo, para mejorar la eficiencia en tiempo de ejecución, muchos motores modernos de JavaScript implementan la compilación Just-In-Time (JIT), que compila el código JavaScript a bytecode casi al momento de su ejecución, optimizando así el rendimiento sin sacrificar la flexibilidad.
-
-<h4 className="font-medium mt-5">Ejemplo</h4>
-
-```js copy filename="JavaScript"
-console.log("Calculando...");
-let resultado = 0;
-for (let i = 0; i < 1000000; i++) {
-  resultado += i;
-}
-console.log("Resultado: " + resultado);
-```
-
-Este script calcula la suma de números hasta un millón directamente en el navegador, demostrando cómo JavaScript maneja las tareas de manera dinámica y eficiente gracias al JIT.
-
-**Dinámico y de Tipado Débil**
-
-JavaScript permite la creación y modificación de objetos en tiempo de ejecución y no exige que las variables sean declaradas con un tipo específico, característica conocida como tipado dinámico. Además, su naturaleza de tipado débil significa que las operaciones entre diferentes tipos pueden ocurrir sin errores explícitos, lo que proporciona una gran flexibilidad pero también requiere una atención cuidadosa para evitar bugs sutiles.
-
-<h4 className="font-medium mt-5">Ejemplo</h4>
-
-```js copy filename="JavaScript"
-let item = "Inicialmente una cadena";
-console.log(item); // Muestra: Inicialmente una cadena
-
-item = 100; // Reasignando a un número sin error
-console.log(item + 20); // Muestra: 120
-```
-
-**Orientación a Objetos (Basada en Prototipos)**
-
-A diferencia de lenguajes que utilizan clases para la programación orientada a objetos, JavaScript utiliza prototipos. Esta característica permite crear objetos que heredan propiedades y métodos de otros objetos sin la necesidad de definir clases de manera formal. Aunque ES6 introdujo la sintaxis de clases, esta es más una capa sintáctica sobre el modelo prototípico existente.
-
-<h4 className="font-medium mt-5">Ejemplo</h4>
-
-```js copy filename="JavaScript"
-const vehiculo = {
-  arrancar: function () {
-    console.log("Arrancando el motor...");
-  },
+  alert("Formulario enviado con éxito, " + nombre);
+  return true;
 };
-
-const coche = Object.create(vehiculo);
-coche.arrancar(); // Ejecuta el método arrancar heredado de vehiculo
 ```
 
-**Funciones de Primera Clase y Cierres (Closures)**
+Este código demuestra cómo JavaScript puede validar un formulario en tiempo real, mejorando la interacción sin necesidad de recargar la página.
 
-Las funciones en JavaScript son consideradas ciudadanos de primera clase, lo que significa que pueden ser asignadas a variables, pasadas como argumentos, y retornadas por otras funciones. Esta flexibilidad es crucial para técnicas como la programación funcional. Además, JavaScript soporta cierres, permitiendo a una función acceder a variables del ámbito en el que fue creada, incluso después de que el ámbito externo haya terminado.
+### Comunidad y Recursos
+
+La comunidad de JavaScript es una de las más activas y de mayor tamaño en el mundo del desarrollo de software. Los desarrolladores tienen acceso a un extenso ecosistema de frameworks y bibliotecas que facilitan el desarrollo de aplicaciones robustas y escalables.
+
+### Oportunidades de Carrera y Comunidad
+
+JavaScript no solo abre puertas en términos de capacidades técnicas, sino que también es una excelente inversión para la carrera profesional. La demanda de desarrolladores JavaScript es alta y sigue creciendo, ya que muchas empresas buscan mejorar sus sitios web y aplicaciones móviles. Además, JavaScript tiene una de las comunidades más grandes y activas, con una vasta cantidad de recursos de aprendizaje, bibliotecas, y frameworks disponibles, lo que facilita el inicio y la colaboración.
+
+## Características de JavaScript
+
+JavaScript es un lenguaje de programación dinámico que se ha convertido en un componente integral del desarrollo web. Su diseño flexible y características poderosas permiten a los desarrolladores construir interacciones complejas y aplicaciones tanto en el cliente como en el servidor. A continuación, exploramos las características clave que definen a JavaScript, presentadas de manera clara y profesional.
+
+### Interpretado
+
+JavaScript es un lenguaje interpretado, lo que significa que el código se ejecuta en tiempo real sin la necesidad de compilación previa. Esta característica permite una iteración rápida durante el desarrollo y una fácil implementación de cambios, haciendo de JavaScript una opción ideal para el desarrollo ágil de aplicaciones web. Además, la mayoría de los motores modernos de JavaScript utilizan la compilación Just-In-Time (JIT), lo que optimiza este proceso interpretativo al compilar fragmentos de código durante la ejecución, mejorando así el rendimiento sin perder la flexibilidad de ser interpretado.
+
+### Tipado Débil y Dinámico
+
+JavaScript permite un tipado dinámico que ofrece gran flexibilidad al permitir que las variables cambien de tipo. Por ejemplo, una variable puede comenzar siendo un número y luego reasignarse a una cadena, facilitando la escritura de código pero también requiriendo una atención cuidadosa para evitar errores.
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
 ```js copy filename="JavaScript"
-function crearSaludo(saludo) {
-  return function (nombre) {
-    console.log(saludo + ", " + nombre);
-  };
+let ejemplo = 42; // Ejemplo es un número
+ejemplo = "Hola mundo"; // Ahora ejemplo es una cadena
+```
+
+### Funciones de Primera Clase
+
+En JavaScript, las funciones son consideradas ciudadanos de primera clase, lo que permite utilizar funciones como valores, pasarlas como argumentos y retornarlas desde otras funciones. Este enfoque funcional permite patrones de diseño complejos y flexibles que son fundamentales en aplicaciones avanzadas.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function multiplicar(a, b) {
+  return a * b;
 }
 
-const saludoPersonal = crearSaludo("Hola");
-saludoPersonal("Marta"); // Muestra: Hola, Marta
+let operacion = multiplicar;
+alert(operacion(5, 3)); // Muestra 15
 ```
 
-En este ejemplo, crearSaludo retorna una función que recuerda el saludo especificado gracias a un cierre.
+### Ejecución Asíncrona y Eventos
 
-**Asincronía y Manejo de Eventos**
-
-El modelo de concurrencia de JavaScript se basa en un bucle de eventos, facilitando la construcción de aplicaciones que manejan múltiples eventos y operaciones asíncronas sin bloquear el flujo principal del programa. Esto es esencial para desarrollar interfaces de usuario responsivas y realizar operaciones como solicitudes de red.
+JavaScript maneja operaciones asíncronas mediante callbacks, promesas y async/await, facilitando la gestión de operaciones que pueden tardar tiempo sin bloquear la interfaz de usuario, como solicitudes de red o acceso a bases de datos.
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
 ```js copy filename="JavaScript"
-console.log("Primero");
-
-new Promise((resolve, reject) => {
-  setTimeout(() => resolve("Segundo"), 1000);
-}).then(console.log);
-
-console.log("Tercero");
+async function obtenerDatos() {
+  let respuesta = await fetch("https://api.ejemplo.com/datos");
+  let datos = await respuesta.json();
+  console.log(datos);
+}
+obtenerDatos();
 ```
 
-Este fragmento ilustra cómo JavaScript gestiona tareas asíncronas, imprimiendo "Primero", "Tercero" y, después de un segundo, "Segundo".
+### Objeto de Prototipo y Herencia Basada en Prototipos
 
-</div>
+A diferencia de muchos lenguajes que utilizan una herencia basada en clases, JavaScript emplea la herencia basada en prototipos. Cada objeto tiene un prototipo que hereda propiedades y métodos. Los objetos pueden ser extendidos y modificados dinámicamente, lo que proporciona una flexibilidad considerable en cómo se estructuran y modifican los datos.

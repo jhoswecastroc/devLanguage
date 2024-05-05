@@ -5,115 +5,69 @@ import { Callout } from "nextra-theme-docs";
 
 # ¿Cómo funciona Javascript?
 
-JavaScript ha evolucionado de ser un lenguaje centrado exclusivamente en navegadores a convertirse en una herramienta versátil capaz de operar en una multitud de plataformas. Esta adaptabilidad ha sido crucial para mantener su relevancia en un panorama tecnológico en constante cambio.
+JavaScript es un lenguaje de programación interpretado, esencial en el desarrollo web tanto en el cliente como en el servidor. Su funcionamiento se basa en la interpretación en tiempo real del código por parte de un motor JavaScript, como V8 de Chrome o SpiderMonkey de Firefox.
 
-## JavaScript en Diversos Entornos
+**Mecánica de Ejecución de JavaScript**
 
-### JavaScript en el Lado del Cliente
+1. **Interpretación:** Cuando se carga un script de JavaScript en un navegador, el motor del navegador lo interpreta. A diferencia de los lenguajes compilados, JavaScript se ejecuta directamente desde el código fuente sin necesidad de una compilación previa. Esto permite una rápida iteración y pruebas durante el desarrollo web.
+2. **Manipulación del DOM:** JavaScript interactúa con el Document Object Model (DOM) de una página web, permitiendo modificar elementos, responder a eventos y manipular estilos. El DOM es una representación estructurada de la página HTML que proporciona una interfaz programable para cambiar su contenido y estructura.
+3. **Eventos y Asincronía:** Los eventos son fundamentales en JavaScript para manejar acciones como clics, entrada de datos y otras interacciones del usuario. JavaScript también soporta operaciones asíncronas utilizando callbacks, promesas y async/await, lo que facilita realizar tareas como solicitudes de red sin bloquear la interfaz de usuario.
 
-Originalmente, JavaScript fue diseñado para ejecutarse en navegadores web y es allí donde más comúnmente se lo encuentra. Su función principal en este entorno es interactuar con el Document Object Model (DOM) para manipular páginas web de manera dinámica. Esto permite a los desarrolladores modificar el contenido, la estructura y el estilo de las páginas en tiempo real, respondiendo a las acciones del usuario.
+## Integración de JavaScript en Documentos HTML
 
-<h4 className="font-medium mt-5">Ejemplo</h4>
+JavaScript puede incorporarse en documentos HTML de diversas maneras, siendo una de las más comunes a través de scripts en línea o mediante la referencia a archivos externos. Este proceso permite a los navegadores no solo renderizar el contenido visual (HTML) y estilístico (CSS) de una página, sino también interactuar dinámicamente con estos elementos a través de JavaScript.
 
-```js copy filename="JavaScript"
-document.getElementById("demo").style.color = "red";
-```
+### Script en Línea
 
-Este script simple cambia el color del texto de un elemento con el ID "demo" a rojo, mostrando cómo JavaScript interactúa con el DOM para modificar estilos de forma dinámica.
-
-### JavaScript en el Navegador
-
-Dentro del navegador, el motor de JavaScript procesa y ejecuta el código. Este motor varía según el navegador (como V8 en Chrome o SpiderMonkey en Firefox) pero todos tienen la tarea común de interpretar el código JavaScript y permitir que interactúe con la página web.
+El script en línea implica escribir código JavaScript directamente dentro de un documento HTML, utilizando las etiquetas **&lt;script&gt;**. Este método permite una ejecución inmediata de scripts en el contexto de la página cargada, ideal para demostraciones rápidas o interacciones sencillas sin necesidad de gestionar múltiples archivos.
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
-```js copy filename="JavaScript"
-console.log("Hello, World!");
-```
-
-Este código imprime "Hello, World!" en la consola del navegador, una herramienta utilizada por desarrolladores para depurar y obtener información sobre su código JavaScript.
-
-### JavaScript en el Servidor: Node.js
-
-Node.js ha extendido el alcance de JavaScript al entorno del servidor, permitiendo a los desarrolladores usar JavaScript para construir aplicaciones de backend. Esto ha transformado a JavaScript de un lenguaje principalmente de frontend a uno de propósito general.
-
-<h4 className="font-medium mt-5">Ejemplo</h4>
-
-```js copy filename="JavaScript"
-const http = require("http");
-
-http
-  .createServer((req, res) => {
-    res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("Hola Mundo desde el servidor");
-  })
-  .listen(3000, () => {
-    console.log("Servidor corriendo en http://localhost:3000");
-  });
-```
-
-Este script crea un servidor web básico que responde con "Hola Mundo desde el servidor", demostrando cómo JavaScript puede ser usado en aplicaciones del lado del servidor.
-
-## Entornos de Desarrollo y Ejecución
-
-JavaScript se puede escribir y probar tanto en entornos en línea como locales:
-
-- **Entornos en Línea:** Plataformas como CodePen o JSFiddle permiten a los desarrolladores escribir, probar y compartir JavaScript directamente en un navegador.
-- **Entorno de Desarrollo Local:** Los desarrolladores pueden ejecutar JavaScript localmente incrustándolo dentro de documentos HTML. Esto se realiza colocando el código JavaScript entre etiquetas **`script`** o vinculándolo como un archivo externo. Este método permite que el navegador ejecute JavaScript en el contexto de una página web cargada localmente.
-
-<h4 className="font-medium mt-5">Ejemplo</h4>
-
-```js copy filename="HTML"
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Prueba de JavaScript</title>
-</head>
-<body>
-    <h1 id="demo">Texto de Ejemplo</h1>
-    <script>
-        document.getElementById("demo").innerHTML = "Texto cambiado por JavaScript!";
-    </script>
-</body>
-</html>
-```
-
-Este documento HTML contiene un script de JavaScript que cambia el contenido de un elemento **`h1`** cuando la página se carga en el navegador, ilustrando cómo JavaScript se ejecuta dentro del contexto de una página web.
-
-## Integración de JavaScript en HTML
-
-Integrar y ejecutar JavaScript en documentos HTML es fundamental para crear páginas web interactivas y dinámicas. Este proceso puede ser manejado de varias maneras, cada una adecuada para diferentes situaciones y necesidades de rendimiento.
-
-### Métodos de Incorporación de JavaScript en HTML
-
-La integración de JavaScript se realiza principalmente a través de la etiqueta **`script`**, que se puede utilizar de dos formas principales:
-
-1. **JavaScript Inline (Script en Línea):** Este método implica escribir código JavaScript directamente dentro de las etiquetas **`script`** en un documento HTML. Es útil para scripts pequeños o para funcionalidades específicas que no requieren un archivo separado.
-
-<h4 className="font-medium mt-5">Ejemplo</h4>
-
-```js copy filename="HTML"
-<html>
+```html copy filename="JavaScript"
+<!doctype html>
+<html lang="es">
   <head>
-    <title>Título de la página</title>
-    <script>console.log("¡Hola!");</script>
+    <meta charset="UTF-8" />
+    <title>Documento de Demostración</title>
+    <script>
+      // Este script se ejecuta tan pronto como se parsea, mostrando un saludo en la consola
+      console.log("¡Hola!");
+    </script>
   </head>
   <body>
-    <p>Ejemplo de texto.</p>
+    <p>Ejemplo de texto en el cuerpo del documento.</p>
+    <!-- Los scripts aquí pueden interactuar con elementos del DOM ya cargados -->
+    <script>
+      document.body.style.backgroundColor = "#f4f4f4"; // Cambia el color de fondo del documento
+    </script>
   </body>
 </html>
 ```
 
-Este ejemplo muestra cómo un simple console.log() se ejecuta directamente desde el HTML, ideal para demostraciones o funcionalidades rápidas.
+En este ejemplo, se demuestra cómo el script en línea puede afectar tanto a la carga inicial de la página (con un log en la consola) como a la interacción posterior con el DOM, modificando el estilo de la página tras su carga completa.
 
-2. **JavaScript Externo (Script Externo):** Utilizando el atributo src en la etiqueta **`script`**, se puede vincular a un archivo JavaScript externo. Este método es preferido para mantener el HTML limpio y organizar mejor el código, especialmente en proyectos más grandes.Ejemplo de JavaScript Externo:
+**Consideraciones de Uso**
+
+- **Mantenimiento:** Aunque los scripts en línea son rápidos de implementar, pueden complicar el mantenimiento del código, especialmente en proyectos grandes donde la separación del código fuente en archivos específicos (HTML, CSS, JS) facilita la gestión.
+- **Rendimiento:** Scripts en línea pueden afectar la velocidad de carga de la página, ya que el navegador debe interpretar el script mientras procesa el HTML.
+- **Seguridad:** Como ya se mencionó, la inyección directa de código JavaScript en HTML puede exponer vulnerabilidades XSS si no se maneja correctamente, especialmente cuando se incluye contenido dinámico basado en la entrada del usuario.
+
+### Script Externo
+
+Un script externo en JavaScript se refiere al método de integración de JavaScript en documentos HTML mediante el uso de archivos de script separados. Esta técnica no solo ayuda a mantener el código organizado, sino que también mejora la carga de páginas al permitir que los navegadores cachéen los scripts utilizados en múltiples páginas.
+
+**Uso del Atributo src**
+
+Para incorporar un script externo, se utiliza la etiqueta **&lt;script&gt;** con un atributo src que especifica la ruta del archivo de JavaScript. Este enfoque es ampliamente recomendado en el desarrollo web por varias razones, incluida la modularidad y la reutilización del código.
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
-```js copy filename="HTML"
-<html>
+```html copy filename="JavaScript"
+<!doctype html>
+<html lang="es">
   <head>
-    <title>Título de la página</title>
+    <meta charset="UTF-8" />
+    <title>Título de la Página</title>
     <script src="js/index.js"></script>
   </head>
   <body>
@@ -122,58 +76,135 @@ Este ejemplo muestra cómo un simple console.log() se ejecuta directamente desde
 </html>
 ```
 
-Aquí, el archivo index.js que se encuentra en la carpeta js contiene el código JavaScript, facilitando la reutilización del código y mejorando la mantenibilidad.
+En este ejemplo, el archivo index.js podría contener código JavaScript como el siguiente:
 
-### Ubicación de la Etiqueta **`script`**
-
-La posición de la etiqueta **`script`** dentro del documento HTML puede afectar significativamente la carga y ejecución del código:
-
-1. **En el `head`:** Colocar el script en el **`head`** del documento asegura que el JavaScript se cargue antes de cualquier contenido visual, lo cual es útil si el script debe preparar funciones o configuraciones antes de que el usuario interactúe con la página. Sin embargo, esto puede retrasar la visualización del contenido visible al usuario.
-
-<h4 className="font-medium mt-5">Ejemplo</h4>
-```js copy filename="HTML"
-<script src="js/miScript.js" defer></script>
+```js copy filename="JavaScript"
+// Archivo js/index.js
+console.log("Mensaje de bienvenida desde un script externo.");
 ```
 
-2. **Al final del `body`:** Situar el script dentro del **`body`** permite que el JavaScript se cargue mientras la página se está renderizando, lo que puede ser útil para scripts que necesitan interactuar con elementos del DOM ya cargados.
+Al cargar la página, el mensaje de bienvenida aparecerá en la consola del navegador, demostrando la efectividad de este método para ejecutar JavaScript.
+
+**Consideraciones de Uso**
+
+- **Rutas de Acceso:** Es crucial asegurarse de que la ruta especificada en el atributo src es correcta para evitar errores de carga.
+- **Dependencias de Carga:** El orden de carga de los scripts puede afectar la ejecución del JavaScript, especialmente si existen dependencias entre diferentes scripts.
+- **Seguridad de los Archivos:** Debe prestarse atención a la seguridad de los scripts externos, especialmente si se cargan desde servidores externos, para evitar problemas de seguridad como Cross-Site Scripting (XSS).
+
+## Ubicación de la Etiqueta &lt;script&gt;
+
+La ubicación de la etiqueta &lt;script&gt; en un documento HTML es crucial para determinar cuándo y cómo se carga y ejecuta el código JavaScript asociado. Esta etiqueta puede colocarse en varias partes del documento, y cada ubicación tiene implicaciones específicas en la carga y ejecución del script.
+
+### Ubicación en el &lt;head&gt;
+
+**¿Cómo descarga el archivo JavaScript?**
+
+Los scripts colocados en el &lt;head&gt; se cargan antes de que el navegador comience a renderizar la página. Esto significa que el navegador detendrá temporalmente el procesamiento del HTML para cargar y ejecutar el script.
+
+**Estado de la página**
+
+La página aún no está dibujada, lo cual puede hacer que el usuario perciba una demora si el script es grande o toma tiempo en cargar, porque nada se mostrará en pantalla hasta que el script se haya ejecutado completamente.
+
+### Ubicación en el &lt;body&gt;
+
+**¿Cómo descarga el archivo JavaScript?**
+
+Los scripts colocados dentro del cuerpo de la página (&lt;body&gt;) se cargan mientras el navegador dibuja la página. Esto implica que partes de la página pueden estar visibles y operativas mientras el script aún se está cargando.
+
+**Estado de la página**
+
+La página se dibuja hasta el punto donde se encuentra la etiqueta &lt;script&gt;. El renderizado del contenido posterior al script puede bloquearse hasta que el script se haya cargado y ejecutado.
+
+### Ubicación antes de &lt;/body&gt;
+
+**¿Cómo descarga el archivo JavaScript?**
+
+Colocar scripts justo antes del cierre de la etiqueta &lt;/body&gt; permite que todo el contenido HTML se cargue y muestre al usuario antes de que el navegador cargue y ejecute el script. Esto minimiza la percepción de carga ya que el usuario ve una página completamente dibujada mientras los scripts se procesan en segundo plano.
+
+**Estado de la página**
+
+La página está dibujada al 100%, lo que significa que todo el contenido HTML se ha cargado y está visible para el usuario.
+
+### Uso de los Atributos async y defer
+
+Estos atributos modifican cómo y cuándo se cargan los scripts externos sin bloquear el renderizado del resto de la página:
+
+- **async:** Con async, el script se carga de forma asíncrona con el resto del contenido de la página. Esto significa que el script se ejecuta inmediatamente después de ser descargado, sin esperar a que el documento HTML completo se haya cargado. Esto puede resultar útil para scripts que no dependen del DOM o de otros scripts.
+
+- **defer:** El atributo defer asegura que el script se ejecute solo después de que todo el documento HTML se haya cargado completamente, y en el orden en que aparecen en el documento. Es ideal para scripts que necesitan interactuar con el DOM completo o que dependen de otros scripts cargados en la misma página.
+
+Cada método de inclusión de scripts y cada atributo tiene sus propias ventajas, dependiendo de las necesidades específicas de rendimiento y comportamiento de la página. La elección correcta contribuye significativamente a una mejor experiencia del usuario al minimizar los tiempos de carga percibidos y maximizar la eficiencia del sitio web.
+
+## Ejecución de Código JavaScript
+
+La ejecución de código JavaScript en una página web se maneja a través del motor de JavaScript del navegador, que interpreta y ejecuta el código incluido en la página. El proceso de ejecución del código JavaScript es fundamental para entender cómo JavaScript interactúa con el HTML y el DOM (Document Object Model) para crear experiencias web dinámicas e interactivas. A continuación, exploraremos este proceso en detalle, incluyendo ejemplos prácticos para una mejor comprensión.
+
+### Ejecución de Código JavaScript: Desde un Servidor Remoto
+
+1. **Solicitud al Servidor**
+
+Cuando se ingresa una URL como https://ejemplo.com en el navegador, se inicia una serie de interacciones en red:
+
+- **Petición Inicial:** El navegador envía una solicitud al servidor asociado con la URL especificada. Esta solicitud incluye varios parámetros y encabezados que indican al servidor qué recursos se están solicitando.
+
+2. **Respuesta del Servidor**
+
+- **Respuesta del Servidor:** El servidor recibe la solicitud y procesa la información. Si la página existe y el servidor está configurado correctamente, responde enviando los archivos necesarios para construir la página web en el navegador del usuario. Estos archivos típicamente incluyen documentos HTML, hojas de estilo CSS, y archivos JavaScript.
+
+3. **Carga y Ejecución de JavaScript**
+
+- **Ejecución de Scripts:** Los scripts JavaScript pueden estar incrustados directamente entre las etiquetas **&lt;script&gt;** dentro del HTML, o ser referenciados externamente a través del atributo src. Los scripts incrustados se ejecutan inmediatamente después de ser leídos por el navegador, mientras que los scripts externos son descargados y ejecutados según el orden en que el navegador los procesa.
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
-```js copy filename="HTML"
-<script src="js/miScript.js"></script>
+Supongamos que el servidor de https://ejemplo.com sirve el siguiente archivo HTML:
+
+```html copy filename="JavaScript"
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Página de Ejemplo</title>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <h1>Contenido de la Página</h1>
+    <p>Este es un ejemplo de ejecución de script externo.</p>
+  </body>
+</html>
 ```
 
-3. **`Antes de </body>:`**
-   Colocar el script justo antes del cierre de **`/body`** es una práctica recomendada para los scripts que no necesitan ejecutarse inmediatamente, ya que permite que toda la página se cargue visualmente antes de que se cargue y ejecute el script. Esto mejora la velocidad de carga percibida por el usuario.
+- **Proceso de Carga:** El navegador descarga script.js y lo ejecuta tan pronto como es posible. Dependiendo de los atributos async o defer en la etiqueta **&lt;script&gt;**, la ejecución del script puede ser inmediata o después de que toda la página se haya cargado completamente.
 
-**Uso de Atributos async y defer**
+### Ejecución de Código JavaScript: Desde un Servidor Local
 
-Para un control más refinado sobre la carga y ejecución de scripts externos, se pueden utilizar los atributos async y defer en la etiqueta **`script`**:
+1. **Abrir Archivo Local**
 
-- **async:** El script se carga de forma asíncrona con el resto de la página y se ejecuta tan pronto como esté disponible, independientemente de si la página ha terminado de cargarse. Es útil para scripts que no dependen de otros scripts y no modifican el DOM.
-- **defer:** Los scripts se cargan de manera asíncrona pero se ejecutan solo después de que el documento HTML ha sido completamente parseado. Esto es ideal para scripts que necesitan acceder o modificar el DOM y asegura que no bloquearán la renderización de la página.
+- **Cargar HTML Localmente:** Si el usuario abre un archivo HTML almacenado en su computadora, el navegador lo procesa desde el disco local sin necesidad de enviar solicitudes a un servidor remoto.
+
+2. **Carga de Scripts Locales**
+
+Referencias Locales: Si el archivo HTML contiene etiquetas **&lt;script&gt;** que hacen referencia a archivos JavaScript locales, estos scripts se cargarán y ejecutarán en función de su ubicación y orden en el HTML.
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
-```js copy filename="HTML"
-<script src="js/index.js" defer></script>
+Consideremos el siguiente código local para un archivo index.html y su script asociado script.js:
+
+```html copy filename="JavaScript"
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Prueba Local</title>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <h1>Demostración de JavaScript Local</h1>
+  </body>
+</html>
 ```
 
-Este atributo garantiza que index.js se ejecute después de que toda la página esté disponible, optimizando la interacción inicial del usuario con la página.
+```js copy filename="JavaScript"
+// Contenido de script.js
+console.log("Ejecución de script local.");
+```
 
-### Ejecución de Código JavaScript
-
-Cuando un navegador carga una página que contiene JavaScript, el motor JavaScript del navegador procesa el script según su ubicación y atributos (async o defer). En un entorno de servidor, como con Node.js, JavaScript se ejecuta en el backend, gestionando la lógica del servidor y las respuestas a las solicitudes de los clientes.
-
-<h4 className="font-medium mt-5">
-  Ejemplo de Flujo de Ejecución de Código JavaScript:
-</h4>
-
-Supongamos que se accede a una página con JavaScript:
-
-1. El navegador solicita la página al servidor.
-2. El servidor envía el HTML, que incluye referencias a scripts JavaScript.
-3. El navegador procesa el HTML y, al encontrar una etiqueta **`script`**, pausa el parsing para descargar y ejecutar el script (a menos que tenga el atributo defer o async).
-4. Una vez que los scripts se han ejecutado, el navegador continúa procesando el resto de la página.
-
-Este flujo muestra cómo la ejecución de JavaScript está íntimamente ligada a la forma en que se carga y visualiza una página web, subrayando la importancia de una estrategia bien pensada para la integración de scripts en el diseño web.
+- **Proceso de Carga Local:** Cuando se abre index.html desde el sistema local del usuario, el navegador carga y ejecuta script.js ubicado en la misma carpeta.
