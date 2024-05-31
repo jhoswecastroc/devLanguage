@@ -12,13 +12,15 @@ import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 
 # Tipos de Datos
 
-En el mundo de la programación, y específicamente en JavaScript, entender los tipos de datos es fundamental para el manejo adecuado de la información dentro de nuestras aplicaciones. Los tipos de datos nos permiten categorizar la información y definir las operaciones que se pueden realizar con dichos datos.
+En JavaScript, los tipos de datos son fundamentales para el manejo y la manipulación de la información. Entender los tipos de datos y cómo clasificarlos es esencial para escribir programas efectivos y eficientes.
 
-## Clasificación de los Tipos de Datos en JavaScript
+## Definición de Tipos de Datos
 
-JavaScript es conocido por ser un lenguaje de programación con tipado dinámico, lo que significa que las variables no requieren una declaración de tipo de dato explícita y pueden cambiar de tipo. A pesar de esto, JavaScript define dos categorías principales de tipos de datos: primitivos y compuestos.
+Un tipo de dato en JavaScript define la naturaleza del valor que puede almacenar una variable. Los tipos de datos determinan qué operaciones se pueden realizar sobre los valores y cómo se almacenan en la memoria. JavaScript es un lenguaje de tipado débil y dinámico, lo que significa que el tipo de una variable puede cambiar durante la ejecución del programa y no necesita ser declarado explícitamente.
 
-### Tipos Primitivos
+### Clasificación de los Tipos de Datos
+
+En Javascript disponemos de los siguientes tipos de datos principales:
 
 <table className="table-fixed my-5 w-full text-start">
   <thead className="bg-sky-900 text-white text-sm">
@@ -32,36 +34,9 @@ JavaScript es conocido por ser un lenguaje de programación con tipado dinámico
     {[
       {
         tipoDeDato: "Number",
-        descripción: "Incluye tanto enteros como números decimales.",
+        descripción:
+          "Representa valores numéricos, incluidos enteros y de punto flotante.",
         ejemplo: "let age = 30;",
-      },
-      {
-        tipoDeDato: "String",
-        descripción: "Cadena de caracteres utilizada para representar texto.",
-        ejemplo: 'let name = "Alice";',
-      },
-      {
-        tipoDeDato: "Boolean",
-        descripción:
-          "Representa dos valores, verdadero (true) o falso (false).",
-        ejemplo: "let isActive = true;",
-      },
-      {
-        tipoDeDato: "Undefined",
-        descripción:
-          "Indica que una variable ha sido declarada pero aún no se le ha asignado un valor.",
-        ejemplo: "let result;",
-      },
-      {
-        tipoDeDato: "Null",
-        descripción:
-          "Representa la ausencia intencional de un valor de objeto.",
-        ejemplo: "let data = null;",
-      },
-      {
-        tipoDeDato: "Symbol",
-        descripción: "Proporciona claves únicas para propiedades de objetos.",
-        ejemplo: "let id = Symbol('id');",
       },
       {
         tipoDeDato: "BigInt",
@@ -69,42 +44,50 @@ JavaScript es conocido por ser un lenguaje de programación con tipado dinámico
           "Utilizado para almacenar números más grandes que el límite para un tipo Number.",
         ejemplo: "let bigNumber = 9007199254740991n;",
       },
-    ].map((item) => (
-      <tr key={item.tipoDeDato}>
-        <td>{item.tipoDeDato}</td>
-        <td>{item.descripción}</td>
-        <td>{item.ejemplo}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
-### Tipos Compuestos o Referencia
-
-<table className="table-fixed my-5 w-full text-start">
-  <thead className="bg-sky-900 text-white text-sm">
-    <tr>
-      <th>Tipo de Dato</th>
-      <th>Descripción</th>
-      <th>Ejemplo</th>
-    </tr>
-  </thead>
-  <tbody>
-    {[
+      {
+        tipoDeDato: "String",
+        descripción: "Representa secuencias de caracteres.",
+        ejemplo: 'let name = "Alice";',
+      },
+      {
+        tipoDeDato: "Boolean",
+        descripción: "Representa valores lógicos true o false.",
+        ejemplo: "let isActive = true;",
+      },
+      {
+        tipoDeDato: "Undefined",
+        descripción:
+          "Indica que una variable ha sido declarada pero no inicializada.",
+        ejemplo: "let result;",
+      },
+      {
+        tipoDeDato: "Null",
+        descripción: "Representa la ausencia intencional de un valor.",
+        ejemplo: "let data = null;",
+      },
+      {
+        tipoDeDato: "Symbol",
+        descripción:
+          "Representa un valor único e inmutable, a menudo usado como identificador único.",
+        ejemplo: "let id = Symbol('id');",
+      },
+      {
+        tipoDeDato: "Function",
+        descripción:
+          "Un tipo especial de objeto que se puede invocar para realizar una tarea.",
+        ejemplo: 'function greet() { console.log("Hello World!"); }',
+      },
       {
         tipoDeDato: "Object",
-        descripción: "Incluye objetos, arrays, funciones, y más.",
+        descripción:
+          "Representa una colección de propiedades, donde cada propiedad tiene un nombre y un valor.",
         ejemplo: 'let user = {name: "Alice", age: 25};',
       },
       {
         tipoDeDato: "Array",
-        descripción: "Lista ordenada de valores.",
+        descripción:
+          "Un tipo especial de objeto que representa una lista ordenada de valores.",
         ejemplo: "let numbers = [1, 2, 3, 4, 5];",
-      },
-      {
-        tipoDeDato: "Function",
-        descripción: "Bloques de código reutilizables.",
-        ejemplo: 'function greet() { console.log("Hello World!"); }',
       },
     ].map((item) => (
       <tr key={item.tipoDeDato}>
@@ -116,7 +99,7 @@ JavaScript es conocido por ser un lenguaje de programación con tipado dinámico
   </tbody>
 </table>
 
-## Importancia de los Tipos de Datos
+### Importancia de los Tipos de Datos
 
 Los diferentes tipos de datos en JavaScript permiten a los programadores realizar diversas operaciones y manipular datos de manera eficiente. Por ejemplo:
 
@@ -154,11 +137,11 @@ console.log("User:", user.name, "Age:", user.age); // Muestra información del u
   también en el rendimiento y la gestión de recursos dentro de la aplicación.
 </Callout>
 
-## ¿Qué Tipo de Dato Tiene?
+### ¿Qué Tipo de Dato Tiene?
 
 En JavaScript, es común necesitar identificar el tipo de dato de una variable, especialmente porque es un lenguaje de tipado dinámico donde el tipo de una variable puede cambiar. Para realizar esta tarea, JavaScript proporciona dos herramientas principales: el operador typeof y la propiedad constructor.name. Estas herramientas ayudan a los desarrolladores a comprender y manejar los datos con los que trabajan de manera más efectiva.
 
-### Operador typeof
+1. **Operador typeof**
 
 El operador typeof es una herramienta rápida y fácil para identificar el tipo básico de una variable. Es un operador unario, lo que significa que toma un solo operando y devuelve una cadena que describe el tipo de dato del valor. Aquí están los posibles valores que typeof puede retornar:
 
@@ -192,7 +175,7 @@ let calculateAge = function () {
 console.log(typeof calculateAge); // "function"
 ```
 
-### constructor.name
+2. **constructor.name**
 
 Aunque typeof es útil para identificar tipos primitivos y distinguir entre funciones y objetos genéricos, no proporciona detalles sobre el tipo específico de objetos como instancias de clases personalizadas, arrays, o fechas. Para obtener el nombre del constructor que creó la instancia del objeto, podemos utilizar constructor.name.
 
@@ -222,11 +205,11 @@ Es importante tener en cuenta que constructor.name puede no ser completamente fi
   superiores.
 </Callout>
 
-## Referencia de una Variable a un Valor Primitivo y a un Valor Complejo
+### Referencia de una Variable
 
 En JavaScript, la comprensión de cómo las variables se asocian a valores primitivos y complejos es fundamental para entender cómo se manejan los datos dentro del lenguaje. Este concepto es crucial para operar con eficiencia y precisión en el desarrollo de aplicaciones web.
 
-### Valores Primitivos
+1. **Valores Primitivos**
 
 Los valores primitivos en JavaScript son datos que no poseen propiedades ni métodos. Estos incluyen tipos como number, string, boolean, undefined, null, symbol, y bigint. Una característica clave de los valores primitivos es que cuando asignas un valor primitivo a una variable, la variable accede directamente a ese valor. No hay una referencia o un objeto involucrado en este proceso. Esto se conoce como **asignación por valor**.
 
@@ -518,7 +501,7 @@ Ahora nosotros cambiamos el valor de newName a Sau, pero el valor de name seguir
 
 Ahora newPerson apunta a la misma referencia de person, por lo que si hay algún cambio dentro del objeto de person o newPerson, este cambio lo tendrán ambos.
 
-### Valores Complejos
+2. **Valores Complejos**
 
 Los valores complejos (también conocidos como objetos) incluyen object, array, function, entre otros. A diferencia de los valores primitivos, cuando asignas un objeto a una variable, lo que se guarda en la variable es una referencia al objeto, no el objeto en sí. Esto significa que si tienes varias variables apuntando al mismo objeto y modificas el objeto a través de una de ellas, el cambio es visible a través de todas las variables que referencian ese objeto. Esto se conoce como **asignación por referencia**.
 
@@ -537,7 +520,7 @@ console.log(obj2.value); // Muestra 20
 
 En este ejemplo, tanto obj1 como obj2 apuntan al mismo objeto en memoria. Cambiar una propiedad a través de obj2 altera el objeto al que también apunta obj1.
 
-### Importancia de Comprender Estas Diferencias
+**Importancia de Comprender Estas Diferencias**
 
 Comprender la diferencia entre cómo se manejan los valores primitivos y los complejos es esencial por varias razones:
 
@@ -583,303 +566,1211 @@ El manejo de objetos y sus referencias puede tener implicaciones significativas 
 - Modificación de Objetos: Modificar objetos es eficiente en cuanto a que no requiere la creación de un nuevo objeto, pero si muchas referencias apuntan al mismo objeto, los cambios pueden tener efectos secundarios en partes no previstas del programa, lo que puede llevar a bugs o comportamientos inesperados.
 - Garbage Collection: JavaScript utiliza un recolector de basura para liberar memoria que ya no es accesible. La gestión de muchos objetos y referencias puede complicar el proceso de recolección de basura, potencialmente llevando a pausas o retrasos en la ejecución del programa.
 
-## Ejercicios
-
-A continuación, presento una serie de quizes, preguntas y ejercicios diseñados para ayudarte a consolidar tu comprensión sobre los tipos de datos en JavaScript que hemos discutido. Cada ejercicio incluye una solución para que puedas verificar tu trabajo.
-
-### Quizes
-
-<h4 className="font-medium mt-5">
-  ¿Qué tipo de dato devuelve typeof null en JavaScript?
-</h4>
-
-<p className="my-2">a) null</p>
-<p>b) undefined</p>
-<p className="my-2">c) object</p>
-
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>c) "object"</AccordionContent>
-  </AccordionItem>
-</Accordion>
-
-<h4 className="font-medium mt-5">
-  ¿Cuál es un tipo de dato primitivo en JavaScript?
-</h4>
-
-<p className="my-2">a) object</p>
-<p>b) number</p>
-<p className="my-2">b) array</p>
-
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>b) number</AccordionContent>
-  </AccordionItem>
-</Accordion>
-
-<h4 className="font-medium mt-5">
-  ¿Cuál operador se utiliza para determinar el tipo de una variable o valor en
-  JavaScript?
-</h4>
-
-<p className="my-2">a) typeof</p>
-<p>b) instanceof</p>
-<p className="my-2">c) type()</p>
-
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>a) typeof</AccordionContent>
-  </AccordionItem>
-</Accordion>
-
-    <h4 className="font-medium mt-5">
-      ¿Qué indica el valor undefined en JavaScript?
-    </h4>
-
-    <p className="my-2">a)  Que una variable ha sido declarada pero no tiene asignado ningún valor.</p>
-    <p>b) Que una variable no existe.</p>
-    <p className="my-2">c) Que una variable es nula.</p>
-
-    <Accordion type="single" collapsible>
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Respuesta</AccordionTrigger>
-        <AccordionContent>a) Que una variable ha sido declarada pero no tiene asignado ningún valor.</AccordionContent>
-      </AccordionItem>
-    </Accordion>
-
-<h4 className="font-medium mt-5">
-  ¿Qué tipo de datos se considera BigInt en JavaScript?
-</h4>
-
-<p className="my-2">a) Primitivo</p>
-<p>b) Compuesto</p>
-<p className="my-2">c) Objeto</p>
-
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>a) Primitivo</AccordionContent>
-  </AccordionItem>
-</Accordion>
-
-<h4 className="font-medium mt-5">
-  ¿Cuál de los siguientes es un tipo de dato compuesto en JavaScript?
-</h4>
-
-<p className="my-2">a) Symbol</p>
-<p>b) Array</p>
-<p className="my-2">c) Boolean</p>
-
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>b) Array</AccordionContent>
-  </AccordionItem>
-</Accordion>
-
-<h4 className="font-medium mt-5">
-  ¿Qué devuelve constructor.name cuando se aplica a una instancia de una clase
-  personalizada en JavaScript?
-</h4>
+## Number
 
-<p className="my-2">a) El nombre de la variable</p>
-<p>b) El nombre de la clase</p>
-<p className="my-2">c) El tipo de objeto</p>
+En JavaScript, los Number son uno de los tipos de datos básicos (tipos primitivos) que se utilizan para representar valores numéricos, tanto enteros como fracciones decimales. Vamos a explorar en detalle cómo funcionan y cómo se manejan en este lenguaje.
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>b) El nombre de la clase</AccordionContent>
-  </AccordionItem>
-</Accordion>
+**Declaración de Variables Numéricas**
 
-    <h4 className="font-medium mt-5">¿Cuál es la diferencia principal entre los tipos primitivos y los compuestos en JavaScript?</h4>
+Crear variables numéricas en JavaScript es muy sencillo. Se pueden declarar simplemente escribiendo el número literal o utilizando el constructor Number.
 
-    <p className="my-2">a) Los primitivos son siempre números, y los compuestos son estructuras como arrays y objetos.</p>
-    <p>b) Los primitivos son inmutables y no pueden contener otros valores, mientras que los compuestos pueden incluir otros objetos y tipos primitivos.</p>
-    <p className="my-2">c) Los compuestos son siempre estáticos, mientras que los primitivos pueden cambiar.</p>
+```js copy filename="JavaScript"
+// Notación literal (preferida)
+const numero = 4;
+const decimal = 15.8;
+const numeroLegible = 5_000_000;
 
-    <Accordion type="single" collapsible>
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Respuesta</AccordionTrigger>
-        <AccordionContent>b) Los primitivos son inmutables y no pueden contener otros valores, mientras que los compuestos pueden incluir otros objetos y tipos primitivos.</AccordionContent>
-      </AccordionItem>
-    </Accordion>
+// Notación con objetos (evitar)
+const numeroObjeto = new Number(4);
+const decimalObjeto = new Number(15.8);
+const letra = new Number("A");
+```
 
-### Preguntas
+En la mayoría de los casos, se prefiere la notación literal debido a su simplicidad y eficiencia. La notación con objetos es más tediosa y puede llevar a resultados inesperados, como la creación de objetos en lugar de valores primitivos.
 
-<h4 className="font-medium mt-5">
-  ¿Por qué es importante entender la diferencia entre tipos primitivos y
-  compuestos en JavaScript?
-</h4>
+**Manejo de Decimales y Separadores**
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
+En JavaScript, los números con decimales se representan utilizando un punto (.). Además, se puede usar el guión bajo (\_) como separador visual para hacer más legibles los números grandes.
 
-      Entender la diferencia es crucial porque afecta cómo se manejan la asignación y la manipulación de datos. Los tipos primitivos son inmutables y operan por valor, lo que significa que cuando asignas o pasas un tipo primitivo, se crea una copia del valor. Por otro lado, los tipos compuestos (objetos, arrays, etc.) operan por referencia, lo que significa que si pasas o asignas un objeto a otra variable, ambos referenciarán el mismo objeto en memoria. Esto afecta directamente a la gestión de la memoria, el comportamiento del programa y los bugs potenciales al modificar los datos involuntariamente a través de diferentes referencias.
+```js copy filename="JavaScript"
+const decimal = 123.45;
+const numeroGrande = 1_000_000;
 
-    </AccordionContent>
+console.log(decimal); // 123.45
+console.log(numeroGrande); // 1000000
+```
 
-  </AccordionItem>
-</Accordion>
+El guión bajo no afecta el valor numérico, simplemente mejora la legibilidad.
 
-<h4 className="font-medium mt-5">
-  Explica cómo puedes utilizar el operador typeof para mejorar la validación de
-  datos en una función.
-</h4>
+**Notación Científica y Diferentes Bases Numéricas**
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
+JavaScript permite representar números en diferentes bases numéricas y en notación científica, lo cual es útil para trabajar con números muy grandes o muy pequeños.
 
-      El operador typeof es útil para asegurar que los datos pasados a una función cumplen con el tipo esperado, lo cual es esencial para prevenir errores de lógica y ejecución. Por ejemplo, si una función espera un número para realizar cálculos, puedes usar typeof para verificar que el argumento es un 'number' antes de proceder. Esto es especialmente útil en funciones que son expuestas públicamente o que manejan datos provenientes de fuentes externas.
+```js copy filename="JavaScript"
+// Notación científica
+const grande = 1.23e5; // 123000
+const pequeño = 1.23e-5; // 0.0000123
 
-      ```js copy filename="JavaScript"
-      function calculateSquare(area) {
-        if (typeof area !== 'number') {
-          throw new TypeError('Expected a number');
-        }
-        return area * area;
-      }
-      ```
+// Diferentes bases numéricas
+const decimal = 255; // Decimal
+const hexadecimal = 0xff; // Hexadecimal
+const octal = 0o377; // Octal
+const binario = 0b11111111; // Binario
 
-        </AccordionContent>
+console.log(grande); // 123000
+console.log(pequeño); // 0.0000123
+console.log(hexadecimal); // 255
+console.log(octal); // 255
+console.log(binario); // 255
+```
 
-      </AccordionItem>
-    </Accordion>
+### Rango Seguro de Enteros
 
-<h4 className="font-medium mt-5">
-  Describe una situación donde podrías preferir usar BigInt en lugar de Number.
-</h4>
+En JavaScript, el manejo de números es crítico, especialmente cuando se trata de grandes cantidades o cálculos precisos. La representación estándar de números en JavaScript se hace mediante el formato de doble precisión de 64 bits IEEE 754, también conocido como coma flotante de doble precisión. Este formato permite un amplio rango de valores, pero con limitaciones importantes en términos de precisión y rango seguro.
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
+**Comprendiendo la Representación en Coma Flotante**
 
-      BigInt es preferible cuando necesitas manejar números extremadamente grandes que superan el límite seguro para el tipo Number (Number.MAX_SAFE_INTEGER, es decir, 2^53 - 1). Un ejemplo práctico sería en aplicaciones financieras donde se manejan grandes sumas de dinero o cálculos que requieren alta precisión con grandes números enteros, como en criptografía o al trabajar con identificadores únicos de gran tamaño.
+Los números en JavaScript, al almacenarse en formato de coma flotante, pueden no ser capaces de representar ciertos valores de manera exacta. Esto se debe a que el formato de coma flotante prioriza un amplio rango sobre la precisión absoluta en ciertos casos. Aunque puede manejar números extremadamente grandes o pequeños, el rango en el que los números se pueden representar de manera segura sin perder precisión es mucho más limitado.
 
-    </AccordionContent>
+**Constantes de Rango Seguro**
 
-  </AccordionItem>
-</Accordion>
+JavaScript define varias constantes para ayudar a los desarrolladores a entender los límites de la representación numérica segura:
 
-<h4 className="font-medium mt-5">
-  ¿Cómo afecta el tipo de dato undefined al flujo de control en tus scripts?
-</h4>
+- **Number.MAX_SAFE_INTEGER:** El entero positivo más grande que se puede representar de manera segura. Este valor es ${2^{53}-1}$, que es 9,007,199,254,740,991.
+- **Number.MIN_SAFE_INTEGER:** El entero negativo más grande (en valor absoluto) que se puede representar de manera segura. Este valor es −(${2^{53}-1}$).
+- **Number.MAX_VALUE:** El valor más grande que se puede representar en JavaScript, aproximadamente 1.79𝑒+308. No es recomendable para cálculos precisos ya que valores más allá del rango seguro pueden conducir a imprecisiones.
+- **Number.MIN_VALUE:** El valor más pequeño que se puede representar en JavaScript, que es aproximadamente 5𝑒−324. Es importante notar que este no es un negativo, sino el positivo más pequeño.
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
+**Utilizando Number.EPSILON**
 
-      El tipo de dato undefined generalmente indica que una variable ha sido declarada pero no inicializada. Esto puede llevar a errores si intentas realizar operaciones en variables que esperas que estén definidas. Además, en comparaciones, undefined es un valor falsy, lo que significa que puede causar que ciertas ramas de lógica condicional no se ejecuten como esperado si no se maneja correctamente.
+Number.EPSILON: Representa la diferencia más pequeña posible entre un número en JavaScript y el siguiente número representable más grande, que es ${2^{-52}}$. Es útil para cálculos que necesitan una precisión extremadamente alta y para evaluar la igualdad de números de punto flotante.
 
-    </AccordionContent>
+### Valores Infinitos
 
-  </AccordionItem>
-</Accordion>
+En JavaScript, existen dos constantes especiales para representar valores infinitos: Infinity y -Infinity. Estas constantes son útiles cuando necesitas trabajar con valores extremadamente grandes o pequeños, que no pueden ser representados de manera precisa dentro de los límites normales de los números en JavaScript.
 
-<h4 className="font-medium mt-5">
-  ¿Cuál es el impacto de usar constructor.name en la depuración de aplicaciones
-  JavaScript?
-</h4>
+**Constantes de Infinito**
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
+Las dos constantes que representan valores infinitos en JavaScript son:
 
-      Usar constructor.name puede ser extremadamente útil en la depuración para identificar rápidamente el tipo de objeto con el que estás trabajando, especialmente en situaciones donde múltiples clases o constructores están involucrados. Esto puede ayudar a verificar que los objetos sean de la clase esperada, lo que es importante para la integridad del tipo en tiempo de ejecución. Sin embargo, su utilidad puede reducirse en producción si el código es minificado, ya que los nombres de los constructores pueden cambiar.
+- **Number.POSITIVE_INFINITY** o **simplemente Infinity:** Representa el infinito positivo (+∞).
+- **Number.NEGATIVE_INFINITY** o **simplemente -Infinity:** Representa el infinito negativo (-∞).
 
-    </AccordionContent>
+```js copy filename="JavaScript"
+console.log(Number.POSITIVE_INFINITY); // Output: Infinity
+console.log(Number.NEGATIVE_INFINITY); // Output: -Infinity
+```
 
-  </AccordionItem>
-</Accordion>
+Estas constantes se comportan de la manera esperada en operaciones aritméticas:
 
-<h4 className="font-medium mt-5">
-  Explica la importancia de la inmutabilidad de los tipos primitivos.
-</h4>
+- Cualquier número positivo multiplicado por Infinity resulta en Infinity.
+- Cualquier número negativo multiplicado por Infinity resulta en -Infinity.
+- Dividir un número positivo por Infinity resulta en 0.
+- Dividir un número negativo por Infinity resulta en -0.
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
+### Comprobaciones Numéricas
 
-      La inmutabilidad de los tipos primitivos ayuda a prevenir efectos secundarios no deseados en funciones y métodos. Cuando pasas un tipo primitivo a una función, puedes estar seguro de que cualquier modificación a ese dato no afectará el valor original fuera de la función. Esto hace que el código sea más predecible y seguro, facilitando el razonamiento sobre el estado del programa y la depuración.
+En JavaScript, es fundamental realizar comprobaciones numéricas para asegurarse de que los valores se manejan de manera correcta y segura. Estas comprobaciones permiten verificar la naturaleza de las variables numéricas, como si son finitas, enteras o seguras. JavaScript proporciona varios métodos estáticos del objeto Number para realizar estas verificaciones.
 
-    </AccordionContent>
+**Verificar si un Valor es Finito**
 
-  </AccordionItem>
-</Accordion>
+El método Number.isFinite(number) se utiliza para comprobar si un valor es un número finito. Esta función devuelve true si el valor es finito y false si es infinito o no es un número.
 
-<h4 className="font-medium mt-5">
-  ¿Cómo verificarías si una variable es un array en JavaScript?
-</h4>
+```js copy filename="JavaScript"
+console.log(Number.isFinite(42)); // true
+console.log(Number.isFinite(551.3)); // true
+console.log(Number.isFinite(Infinity)); // false
+console.log(Number.isFinite(-Infinity)); // false
+console.log(Number.isFinite(NaN)); // false
+console.log(Number.isFinite("42")); // false
+```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
+En este ejemplo, Number.isFinite(42) devuelve true porque 42 es un número finito. Sin embargo, Number.isFinite(Infinity) devuelve false porque Infinity no es un número finito.
 
-      Para verificar si una variable es un array, puedes utilizar el método Array.isArray() proporcionado por JavaScript, que devuelve true si la variable es un array y false en caso contrario.
+**Verificar si un Valor es Entero**
 
-      ```js copy filename="JavaScript"
-      let fruits = ['apple', 'banana', 'cherry'];
-      console.log(Array.isArray(fruits)); // true
-      ```
+El método Number.isInteger(number) verifica si un valor es un número entero. Devuelve true si el valor es un entero y false si es un número decimal o no es un número.
 
-    </AccordionContent>
+```js copy filename="JavaScript"
+console.log(Number.isInteger(5)); // true
+console.log(Number.isInteger(4.6)); // false
+console.log(Number.isInteger(NaN)); // false
+console.log(Number.isInteger(Infinity)); // false
+console.log(Number.isInteger("5")); // false
+```
 
-  </AccordionItem>
-</Accordion>
+En este ejemplo, Number.isInteger(5) devuelve true porque 5 es un número entero, mientras que Number.isInteger(4.6) devuelve false porque 4.6 es un número decimal.
 
-<h4 className="font-medium mt-5">
-  Discute cómo el manejo adecuado de los tipos de datos puede afectar el
-  rendimiento de una aplicación.
-</h4>
+**Verificar si un Valor es un Entero Seguro**
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
+El método Number.isSafeInteger(number) verifica si un valor es un entero seguro. Un entero seguro es un número que se puede representar con precisión en JavaScript, sin riesgo de perder precisión debido al formato de coma flotante de 64 bits. El rango de enteros seguros está definido entre Number.MIN_SAFE_INTEGER y Number.MAX_SAFE_INTEGER.
 
-      Un manejo adecuado de los tipos de datos puede optimizar la utilización de la memoria y mejorar el tiempo de ejecución de las operaciones. Por ejemplo, usar tipos primitivos donde sea posible puede minimizar el uso de memoria en comparación con objetos más complejos. Además, evitar conversiones innecesarias de tipos (como de string a number repetidamente en un bucle) puede reducir la carga de procesamiento y mejorar la velocidad de ejecución.
+```js copy filename="JavaScript"
+console.log(Number.isSafeInteger(9007199254740991)); // true
+console.log(Number.isSafeInteger(9007199254740992)); // false
+console.log(Number.isSafeInteger(1e15)); // true
+console.log(Number.isSafeInteger(1e16)); // false
+console.log(Number.isSafeInteger(Infinity)); // false
+console.log(Number.isSafeInteger("9007199254740991")); // false
+```
 
-    </AccordionContent>
+En este ejemplo, Number.isSafeInteger(9007199254740991) devuelve true porque el valor está dentro del rango seguro, mientras que Number.isSafeInteger(9007199254740992) devuelve false porque excede el rango seguro.
 
-  </AccordionItem>
-</Accordion>
+**Comprobación en Algoritmos**
 
-<h4 className="font-medium mt-5">
-  ¿Cuáles son las consecuencias de no entender correctamente el tipo de dato
-  null en JavaScript?
-</h4>
+En algoritmos que manejan grandes cantidades de datos numéricos, es crucial asegurarse de que todos los valores utilizados sean válidos y seguros para evitar errores y resultados imprecisos.
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
+```js copy filename="JavaScript"
+function calcularSuma(numeros) {
+  let suma = 0;
+  for (const numero de numeros) {
+    if (!Number.isFinite(numero)) {
+      throw new Error("Número no finito en la lista.");
+    }
+    suma += numero;
+  }
+  if (!Number.isSafeInteger(suma)) {
+    throw new Error("La suma resultante no es un número seguro.");
+  }
+  return suma;
+}
 
-      No entender null puede llevar a errores de tipo "Cannot read property of null", especialmente si intentas acceder a propiedades o métodos de algo que esperabas que fuera un objeto pero que en realidad es null. Esto ocurre a menudo cuando los datos esperados no están disponibles o cuando las funciones fallan silenciosamente y retornan null en lugar de un objeto. Tratar correctamente null es esencial para prevenir fallos en tiempo de ejecución y para implementar comprobaciones de seguridad adecuadas en el código.
+try {
+  const numeros = [1000000000000000, 2000000000000000, 3000000000000000];
+  const suma = calcularSuma(numeros);
+  console.log("La suma es:", suma);
+} catch (error) {
+  console.error(error.message);
+}
+```
 
+En este ejemplo, se verifica que todos los números en la lista sean finitos antes de sumarlos, y se asegura de que la suma resultante sea un número seguro.
 
-    </AccordionContent>
+**Comparación de Números de Punto Flotante**
 
-  </AccordionItem>
-</Accordion>
+Al trabajar con números de punto flotante, las comparaciones directas pueden no ser precisas debido a los errores de redondeo. Es mejor usar un margen de error para las comparaciones.
+
+```js copy filename="JavaScript"
+function compararFlotantes(a, b) {
+  return Math.abs(a - b) < Number.EPSILON;
+}
+
+const num1 = 0.1 + 0.2;
+const num2 = 0.3;
+
+if (compararFlotantes(num1, num2)) {
+  console.log("Los números son iguales.");
+} else {
+  console.log("Los números no son iguales.");
+}
+```
+
+En este ejemplo, se usa Number.EPSILON para comparar los números de punto flotante con un margen de error muy pequeño, asegurando una comparación más precisa.
+
+### Representación Numérica
+
+En JavaScript, la representación numérica es fundamental para manejar adecuadamente los diversos formatos en los que se pueden presentar o requerir los números en aplicaciones web y de software. JavaScript ofrece varios métodos para manipular la presentación de números, permitiendo cambiar entre notación exponencial y notación de punto fijo, además de ajustar la precisión de los números.
+
+**Notación Exponencial**
+
+La notación exponencial es útil para representar números extremadamente grandes o pequeños de manera concisa. En JavaScript, se puede convertir un número a notación exponencial usando el método .toExponential(digits), donde digits es el número de decimales después del punto.
+
+```js copy filename="JavaScript"
+let numero = 123456;
+console.log(numero.toExponential(1)); // "1.2e+5"
+console.log(numero.toExponential(3)); // "1.235e+5"
+```
+
+Este método redondea el número a la cantidad especificada de dígitos decimales y lo muestra en formato exponencial.
+
+**Notación de Punto Fijo**
+
+La notación de punto fijo es otra forma de representar números, especificando el número de dígitos que se deben mostrar después del punto decimal. Esto se realiza con el método .toFixed(digits), que también redondea el número a la cantidad especificada de decimales.
+
+```js copy filename="JavaScript"
+let numeroFijo = 1.23456;
+console.log(numeroFijo.toFixed(1)); // "1.2"
+console.log(numeroFijo.toFixed(3)); // "1.235"
+```
+
+**Ajuste de Precisión**
+
+Para especificar el número total de dígitos significativos que debe tener un número, se puede utilizar el método .toPrecision(size). Este método ajusta la cantidad total de dígitos en un número, combinando dígitos enteros y decimales, y decide la mejor forma de mostrar el número (punto fijo o exponencial) basado en el tamaño especificado.
+
+```js copy filename="JavaScript"
+let numeroPrecision = 12345.6789;
+console.log(numeroPrecision.toPrecision(3)); // "1.23e+4"
+console.log(numeroPrecision.toPrecision(5)); // "12346"
+console.log(numeroPrecision.toPrecision(7)); // "12345.68"
+```
+
+Estos métodos proporcionan una flexibilidad considerable en cómo se presentan los números, permitiendo ajustes precisos para la visualización y manejo de datos numéricos en JavaScript. Si necesitas más recursos o información adicional para enriquecer esta sección, puedo buscar libros en PDF o textos académicos que sean útiles para expandir y mejorar nuestra explicación.
+
+### ¿Qué es NaN (Not A Number)?
+
+NaN, acrónimo de "Not A Number" (No es un Número), es un valor especial dentro del universo de JavaScript utilizado para indicar que un resultado numérico esperado no pudo ser obtenido. Aunque el nombre sugiere que no es un número, técnicamente, NaN pertenece al tipo de datos numérico en JavaScript. Este valor es único en comparación con otros valores numéricos, ya que no es igual a ningún otro valor, incluido sí mismo.
+
+**Propiedades de NaN**
+
+- **Tipo de dato numérico:** A pesar de su nombre, el tipo de NaN es number. Esto puede resultar confuso, pero es esencial para operaciones que esperan un tipo numérico aunque el resultado no sea definido matemáticamente.
+
+```js copy filename="JavaScript"
+console.log(typeof NaN); // "number"
+```
+
+- **Comparación única:** NaN no es comparable de forma directa con ningún otro valor, incluso con otro NaN. Esto significa que NaN === NaN y NaN == NaN resultan en false. La única forma de verificar de manera fiable si un valor es NaN es mediante Number.isNaN() o la función global isNaN().
+
+```js copy filename="JavaScript"
+console.log(NaN === NaN); // false
+console.log(Number.isNaN(NaN)); // true
+```
+
+**Generación de NaN**
+
+NaN puede resultar de operaciones que no tienen un resultado numérico lógico:
+
+- **Indeterminaciones matemáticas:** Como dividir cero entre cero.
+- **Operaciones inválidas:** Como sumar una cadena de texto no numérica a un número.
+- **Funciones matemáticas fuera de dominio:** Como calcular la raíz cuadrada de un número negativo en los reales.
+
+```js copy filename="JavaScript"
+console.log(0 / 0); // NaN
+console.log(Math.sqrt(-1)); // NaN
+console.log("texto" * 2); // NaN
+```
+
+**Métodos Relacionados con NaN**
+
+- **Number.isNaN():** Método estático que proporciona una verificación precisa de NaN sin forzar la conversión de tipo.
+
+```js copy filename="JavaScript"
+console.log(Number.isNaN("texto")); // false
+console.log(Number.isNaN(NaN)); // true
+```
+
+- **isNaN():** Función global que intenta convertir el argumento a número y verifica si el resultado es NaN. Puede dar resultados inesperados si la conversión es exitosa pero no deseada.
+
+```js copy filename="JavaScript"
+console.log(isNaN("123ABC")); // true, "123ABC" convierte a NaN
+```
+
+**Tratamiento de NaN en Operaciones**
+
+Cuando NaN participa en operaciones aritméticas, el resultado también será NaN, propagando así el error a través de cálculos sucesivos si no se maneja adecuadamente.
+
+```js copy filename="JavaScript"
+console.log(NaN + 10); // NaN
+console.log(NaN * 32); // NaN
+```
+
+**Uso Práctico de NaN**
+
+- **Validaciones:** NaN es útil para validar y manejar entradas que se suponen numéricas pero que podrían no serlo, especialmente en aplicaciones web donde las entradas del usuario son impredecibles.
+
+```js copy filename="JavaScript"
+function procesarEntrada(usuarioInput) {
+  const numero = parseFloat(usuarioInput);
+  if (Number.isNaN(numero)) {
+    return "La entrada debe ser numérica.";
+  }
+  return numero * 10;
+}
+
+console.log(procesarEntrada("abc")); // "La entrada debe ser numérica."
+console.log(procesarEntrada("10")); // 100
+```
+
+### Conversiones Numéricas en JavaScript
+
+En JavaScript, convertir diferentes tipos de datos a números es una operación fundamental, especialmente dado que JavaScript es un lenguaje de tipado dinámico donde las conversiones de tipos pueden no ser tan explícitas. Entender cómo manejar estas conversiones es crucial para realizar operaciones matemáticas correctamente y para procesar adecuadamente la entrada de datos.
+
+**Métodos para Convertir Texto a Números**
+
+JavaScript ofrece varios métodos y funciones para convertir cadenas y otros tipos de datos a números. Estos métodos incluyen:
+
+1. **Number.parseInt()**
+
+La función parseInt() en JavaScript es una herramienta esencial para convertir cadenas de texto en números enteros. Su utilidad se extiende especialmente en escenarios donde los datos no vienen tipificados, como es común en JavaScript, un lenguaje de tipado débil. Esto hace que parseInt() sea indispensable para preparar datos para operaciones matemáticas, conversiones de base numérica, entre otras necesidades.
+
+**Funcionamiento de parseInt**
+
+parseInt() analiza una cadena y devuelve un entero en la base especificada o en base decimal por defecto. Si el primer carácter no puede ser convertido a un número, devuelve NaN. Esto lo convierte en una herramienta poderosa y a la vez delicada que requiere atención en su uso para evitar resultados inesperados.
+
+**Sintaxis y Uso**
+
+La función parseInt() puede ser utilizada de dos maneras principales:
+
+- **parseInt(string):** Convierte string a un entero utilizando la base decimal.
+- **parseInt(string, base):** Convierte string a un entero utilizando la base especificada, donde base es el sistema numérico (de 2 a 36).
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(parseInt("10")); // 10, interpretado como base 10
+console.log(parseInt("10", 10)); // 10, explícitamente en base 10
+console.log(parseInt("10", 8)); // 8, interpretado como base 8
+console.log(parseInt("10", 16)); // 16, interpretado como base 16
+console.log(parseInt("1010", 2)); // 10, interpretado como binario
+```
+
+**Detalles de Implementación**
+
+- **Ignorar Caracteres No Numéricos:** parseInt() comienza a parsear desde el inicio de la cadena y continúa hasta que encuentra un carácter que no es válido en el sistema numérico especificado, en cuyo punto detiene el parseo y devuelve el número parseado hasta ese momento.
+
+```js copy filename="JavaScript"
+console.log(parseInt("123abc")); // 123
+console.log(parseInt("abc123")); // NaN, porque empieza con no numérico
+console.log(parseInt("70 kg", 10)); // 70
+```
+
+- **Manejo de Decimales:** Si la cadena representa un número decimal, parseInt() descartará cualquier fracción y devolverá solo la parte entera.
+
+```js copy filename="JavaScript"
+console.log(parseInt("123.45")); // 123
+console.log(parseInt("123.999")); // 123
+console.log(parseInt("0.99")); // 0
+```
+
+**Aplicaciones Prácticas de ParseInt()**
+
+- **Extracción de Números de Cadenas en Formatos de Datos:** A menudo, especialmente en aplicaciones web, los datos numéricos vienen incorporados en cadenas con unidades o etiquetas, donde parseInt() puede ser utilizado para extraer el número puro.
+
+```js copy filename="JavaScript"
+function extraerNumeroDeCadena(cadena) {
+  return parseInt(cadena);
+}
+
+console.log(extraerNumeroDeCadena("200px")); // 200
+console.log(extraerNumeroDeCadena("ID123")); // NaN, comienza con no numérico
+```
+
+- **Conversión de Bases Numéricas: parseInt()** es útil para convertir cadenas en diferentes bases a un número decimal, lo que es esencial en computación y electrónica.
+
+```js copy filename="JavaScript"
+function convertirBase(cadena, base) {
+  return parseInt(cadena, base);
+}
+
+console.log(convertirBase("ff", 16)); // 255
+console.log(convertirBase("110", 2)); // 6
+```
+
+<Callout emoji="👀" type="error">
+  **OJO:** Estos ejemplos subrayan la flexibilidad y potencia de parseInt() para
+  la conversión de cadenas a números enteros en JavaScript. Es una herramienta
+  vital para la manipulación y preparación de datos en un entorno no tipificado,
+  permitiendo realizar operaciones numéricas y técnicas efectivas con datos
+  inicialmente representados como cadenas.
+</Callout>
+
+2. **Number.parseFloat()**
+
+parseFloat() es una función en JavaScript diseñada específicamente para la conversión de cadenas a números de punto flotante. A diferencia de parseInt(), que solo devuelve la parte entera de un número, parseFloat() es capaz de mantener la precisión decimal, lo que es crucial para operaciones matemáticas que requieren exactitud en los decimales.
+
+**Funcionamiento de parseFloat**
+
+La función parseFloat() analiza una cadena desde el principio hasta que encuentra un carácter que no se puede interpretar como parte de un número. Si el primer carácter no puede ser convertido a un número, la función devuelve NaN.
+
+**Sintaxis y Uso**
+
+```js copy filename="JavaScript"
+parseFloat(string);
+```
+
+**string:** Cadena de caracteres que se desea convertir a un número de punto flotante.
+
+**Características Principales de ParseFloat()**
+
+1. **Retención de Decimales:** A diferencia de parseInt(), parseFloat() interpreta y retiene cualquier parte decimal del número, lo que la hace ideal para datos financieros, científicos y cualquier otro uso donde los decimales son necesarios.
+
+2. **Ignora Espacios Iniciales:** Los espacios blancos al inicio de la cadena son ignorados automáticamente por parseFloat().
+
+3. **Terminación al Encontrar un Carácter no Numérico:** Si parseFloat() encuentra un carácter que no puede formar parte de un número, detiene el análisis y devuelve el número formado hasta ese punto. Si no encuentra ningún carácter numérico al inicio, devuelve NaN.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(parseFloat("10.50")); // 10.5
+console.log(parseFloat("3.14159")); // 3.14159
+console.log(parseFloat("0.0314E+2")); // 3.14
+console.log(parseFloat("314e-2")); // 3.14
+console.log(parseFloat("  123.45")); // 123.45
+console.log(parseFloat("123.45kg")); // 123.45
+console.log(parseFloat("abc123.45")); // NaN, comienza con caracteres no numéricos
+```
+
+**Conversión entre Bases Numéricas**
+
+Las conversiones entre bases numéricas son fundamentales en muchas aplicaciones de programación, desde criptografía hasta manejo de permisos en sistemas operativos. JavaScript facilita estas conversiones a través de métodos incorporados como parseInt() para conversiones a decimal y toString() para convertir desde decimal a otras bases.
+
+1. ¿Qué es una Base Numérica?
+
+Una base numérica es el número de dígitos únicos, incluyendo el cero, que un sistema numérico utiliza para representar números. La más familiar para nosotros es la base decimal (base 10), pero otros sistemas como el binario (base 2), el octal (base 8) y el hexadecimal (base 16) son esenciales en computación.
+
+- **Conversión de Otras Bases a Decimal:** Para convertir un número de cualquier base a decimal, se utiliza parseInt(string, base), donde string es la representación en cadena del número y base es la base del número original.
+
+```js copy filename="JavaScript"
+// Binario a Decimal
+console.log(parseInt("11101", 2)); // 29
+
+// Octal a Decimal
+console.log(parseInt("31", 8)); // 25
+
+// Hexadecimal a Decimal
+console.log(parseInt("FF", 16)); // 255
+```
+
+- **Conversión desde Decimal a Otra Base:** Para convertir un número decimal a otra base, se usa el método number.toString(base). Este método devuelve una cadena que representa el número original en la base especificada.
+
+```js copy filename="JavaScript"
+// Decimal a Binario
+console.log((26).toString(2)); // "11010"
+
+// Decimal a Octal
+console.log((80).toString(8)); // "120"
+
+// Decimal a Hexadecimal
+console.log((245123).toString(16)); // "3bd83"
+```
+
+2. **Utilización de Prefijos en Literales Numéricos**
+
+JavaScript también soporta literales numéricos con prefijos que indican la base del número, lo cual simplifica la conversión automática a decimal durante la ejecución del código.
+
+```js copy filename="JavaScript"
+// Binario con prefijo 0b
+console.log(0b11101); // 29
+
+// Octal con prefijo 0o
+console.log(0o31); // 25
+
+// Hexadecimal con prefijo 0x
+console.log(0xff); // 255
+```
+
+**Aplicaciones Prácticas**
+
+1. **Validación de Entradas**
+
+Es común necesitar validar y convertir datos ingresados como cadenas a un formato numérico específico para cálculos o lógica de control.
+
+```js copy filename="JavaScript"
+function validarYConvertir(input, base) {
+  let numero = parseInt(input, base);
+  return isNaN(numero) ? "Entrada inválida" : numero;
+}
+
+console.log(validarYConvertir("11101", 2)); // 29
+console.log(validarYConvertir("XYZ", 16)); // 'Entrada inválida'
+```
+
+2. **Formateo y Presentación de Datos**
+
+Convertir números a diferentes bases puede ser útil para mostrar datos de manera que sean más comprensibles o relevantes para una aplicación específica, como mostrar permisos de archivos en notación octal o direcciones de memoria en hexadecimal.
+
+```js copy filename="JavaScript"
+function mostrarComoHexadecimal(numero) {
+  return numero.toString(16);
+}
+
+console.log(mostrarComoHexadecimal(255)); // "ff"
+```
+
+<Callout emoji="👀" type="error">
+  **OJO:** Estas técnicas subrayan cómo JavaScript maneja la conversión de
+  números entre diversas bases numéricas, proporcionando flexibilidad y potencia
+  para aplicaciones que necesitan manejar diferentes sistemas numéricos
+</Callout>
+
+### El objeto Math
+
+El objeto Math de JavaScript proporciona una serie de propiedades y métodos que facilitan la realización de tareas matemáticas. Este objeto no es un constructor y todos sus métodos son estáticos, accesibles directamente desde el objeto Math.
+
+**Constantes de Math**
+
+El objeto Math incluye varias constantes matemáticas útiles que pueden ser necesarias en diversas aplicaciones matemáticas:
+
+- **Math.E:** El número de Euler, la base de los logaritmos naturales, aproximadamente 2.718.
+- **Math.PI:** El número π, aproximadamente 3.14159, útil en cálculos geométricos y trigonométricos.
+- **Math.SQRT2:** La raíz cuadrada de 2, aproximadamente 1.414, útil en cálculos de geometría.
+- **Math.SQRT1_2:** La raíz cuadrada de 1/2, aproximadamente 0.707, también utilizada en cálculos geométricos.
+
+Estas constantes son esenciales para garantizar la precisión y facilitar el acceso a valores que de otro modo requerirían cálculos complicados o tablas de búsqueda.
+
+**Métodos Matemáticos de Math**
+
+Math proporciona una amplia gama de funciones que son fundamentales en casi todos los campos de la programación que requieren matemáticas, desde simples cálculos hasta operaciones complejas:
+
+1. **Método Math.abs(x)**
+
+El método Math.abs(x) en JavaScript es utilizado para obtener el valor absoluto de un número, x. El valor absoluto de un número es su valor sin considerar el signo. Por ejemplo, tanto para -5 como para 5, el valor absoluto es 5.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+Math.abs(-10); // Retorna 10
+Math.abs(5); // Retorna 5
+```
+
+Este método es especialmente útil en situaciones donde necesitas garantizar que estás trabajando con valores no negativos, como en cálculos de distancias o en algoritmos que requieren valores absolutos para su lógica.
+
+2. **Método Math.sign(x)**
+
+El método Math.sign(x) es usado para determinar el signo de un número que puede ser positivo, negativo o cero. Este método retorna 1 para números positivos, -1 para números negativos, y 0 para el número cero.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+Math.sign(-20); // Retorna -1
+Math.sign(20); // Retorna 1
+Math.sign(0); // Retorna 0
+```
+
+Math.sign es útil para ajustar la lógica de control en funciones y algoritmos donde el signo del número afecta el flujo del proceso o el resultado final, como en métodos de ordenamiento o en simulaciones físicas.
+
+3. **Método Math.exp(x)**
+
+Este método devuelve e elevado a la potencia de x, donde e es la base de los logaritmos naturales, aproximadamente igual a 2.71828. Este es un exponente constante utilizado en muchos cálculos en ciencias e ingeniería. La función es especialmente útil para cálculos en los que se necesita crecimiento exponencial o decaimiento, como modelar poblaciones o interés compuesto.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(Math.exp(1)); // Aproximadamente 2.71828
+console.log(Math.exp(0)); // 1
+console.log(Math.exp(-1)); // Aproximadamente 0.36788
+```
+
+4. **Método Math.expm1(x)**
+
+Math.expm1(x) es una función relacionada que calcula e elevado a la potencia de x, menos 1. Es decir, devuelve Math.exp(x) - 1. Esto es útil para cálculos que requieren alta precisión en rangos donde x es muy pequeño. Cuando x es pequeño, Math.exp(x) se acerca a 1 muy de cerca, y restar 1 de un número cercano a 1 puede llevar a una pérdida significativa de precisión. Math.expm1(x) maneja esto de manera más precisa.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(Math.expm1(1)); // Aproximadamente 1.71828
+console.log(Math.expm1(0)); // 0
+console.log(Math.expm1(-1)); // Aproximadamente -0.63212
+```
+
+5. **Método Math.max**
+
+Este método devuelve el mayor de los argumentos que recibe. Si alguno de los argumentos no es un número y no puede ser convertido en uno, devolverá NaN.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+Math.max(3, 1, 2); // Devuelve 3
+Math.max(-10, -20, -30); // Devuelve -10
+Math.max(0, 150, 30); // Devuelve 150
+Math.max(); // Devuelve -Infinity
+```
+
+Este método es especialmente útil cuando necesitas asegurar que un valor no caiga por debajo de un cierto mínimo o no exceda un cierto máximo al comparar dinámicamente múltiples valores.
+
+6. **Método Math.min**
+
+El método Math.min funciona de manera similar a Math.max pero devuelve el menor de los argumentos. Si no se proporcionan argumentos, devuelve Infinity, lo cual es útil para comparaciones cuando se inicializan variables en ciclos de optimización.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+Math.min(3, 1, 2); // Devuelve 1
+Math.min(-10, -20, -30); // Devuelve -30
+Math.min(0, 150, 30); // Devuelve 0
+Math.min(); // Devuelve Infinity
+```
+
+Estos métodos pueden ser extremadamente útiles en muchos contextos de programación, desde la optimización de rendimiento y la validación de datos, hasta su uso en algoritmos matemáticos y estadísticos.
+
+Por ejemplo, si estás desarrollando una función para encontrar el rango de valores en un conjunto de datos, puedes usar ambos métodos para determinar los límites superior e inferior del rango.
+
+```js copy filename="JavaScript"
+function calcularRango(valores) {
+  return Math.max(...valores) - Math.min(...valores);
+}
+
+// Uso de la función
+console.log(calcularRango([3, 7, 9, 1])); // Devuelve 8
+```
+
+Este código define una función calcularRango que calcula la diferencia entre el valor máximo y mínimo de un array de números, ilustrando una aplicación práctica de Math.max y Math.min para resolver problemas específicos en JavaScript.
+
+7. **Método Math.pow(base, exp)**
+
+El método Math.pow(base, exp) es una función incorporada en JavaScript que se utiliza para calcular una base elevada a la potencia de un exponente. Es fundamental en situaciones donde necesitas realizar cálculos de potenciación rápidos.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let resultadoPotencia = Math.pow(5, 3);
+console.log(resultadoPotencia); // Imprime 125
+```
+
+Este ejemplo muestra cómo elevar 5 a la potencia de 3. Este método es extremadamente útil en cálculos matemáticos que requieren exponenciación, como en cálculos financieros, computaciones científicas o incluso en algoritmos de gráficos.
+
+8. **Método Math.sqrt(x)**
+
+Por otro lado, Math.sqrt(x) calcula la raíz cuadrada de un número. Este método es esencial para operaciones que necesitan determinar la raíz cuadrada de un número, como en cálculos estadísticos, resolución de ecuaciones en física, o en algoritmos de machine learning para calcular distancias euclidianas.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let resultadoRaiz = Math.sqrt(144);
+console.log(resultadoRaiz); // Imprime 12
+```
+
+Este ejemplo demuestra la obtención de la raíz cuadrada de 144, resultando en 12. Es una herramienta vital en áreas donde la normalización o la estandarización de datos es requerida.
+
+9. **Método Math.cbrt(x)**
+
+El método Math.cbrt(x) calcula la raíz cúbica de un número x. Este método es útil cuando necesitas determinar el valor de un número elevado al cubo. Por ejemplo, si estás trabajando con volúmenes en un contexto geométrico o físico y conoces el volumen de un cubo, puedes usar Math.cbrt(x) para encontrar la longitud de los lados del cubo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Supongamos que estás calculando el tamaño de un contenedor cúbico que tiene un volumen de 27 metros cúbicos. Podrías usar Math.cbrt(27) para encontrar que cada lado del cubo mide 3 metros.
+
+```js copy filename="JavaScript"
+let volumen = 27;
+let lado = Math.cbrt(volumen);
+console.log(lado); // Output: 3
+```
+
+10. **Método Math.imul(a, b)**
+
+El método Math.imul(a, b) realiza una multiplicación de 32 bits de dos argumentos, a y b. Este método es particularmente útil para ciertas operaciones de bajo nivel que requieren precisión en la manipulación de enteros, como en gráficos computacionales o algoritmos que dependen de operaciones aritméticas exactas a nivel de bits.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Si estás desarrollando un juego y necesitas calcular posiciones de píxeles o manipular datos gráficos en el que cada operación cuenta para el rendimiento, Math.imul() puede ser crucial para asegurar que las operaciones sean eficientes y precisas.
+
+```js copy filename="JavaScript"
+let factor1 = 65536;
+let factor2 = 65536;
+let resultado = Math.imul(factor1, factor2);
+console.log(resultado); // Output depende de la arquitectura, posiblemente 0 debido a overflow
+```
+
+11. **Método Math.clz32(x)**
+
+El método Math.clz32() devuelve el número de ceros a la izquierda en la representación binaria de 32 bits de un número. clz32 significa "count leading zero bits in 32-bit binary representation." Este método es útil para determinar la cantidad de ceros que preceden a la parte significativa de un número. Es especialmente relevante en aplicaciones de bajo nivel que interactúan con datos binarios, donde la posición del primer bit significativo es importante.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(Math.clz32(1)); // 31, porque en binario 1 es 000...0001, con 31 ceros delante
+console.log(Math.clz32(1000)); // 22, porque en binario 1000 tiene 22 ceros al inicio
+console.log(Math.clz32(0)); // 32, un caso especial, todos son ceros
+```
+
+**Método Math.random()**
+
+El método Math.random() es una herramienta esencial en JavaScript para generar números pseudoaleatorios. Aquí, te proporciono una exploración detallada de cómo funciona y algunos ejemplos prácticos para utilizarlo eficazmente en diversos escenarios.
+
+- **Características del Método Math.random()**
+
+Math.random() genera un número flotante aleatorio en el rango de 0 (inclusive) hasta casi 1 (exclusivo), con hasta 16 decimales de precisión. Este comportamiento lo hace increíblemente útil para todo tipo de aplicaciones de programación que requieren elementos de aleatoriedad.
+
+- **Generación Básica de Números Aleatorios**
+
+La función Math.random() por sí sola simplemente devuelve un número entre 0 y 1. Esto es útil para simular probabilidades o para operaciones que requieren una selección aleatoria dentro de un rango muy limitado.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let randomNumber = Math.random();
+console.log(randomNumber);
+```
+
+- **Uso Avanzado: Generación de Números Enteros Aleatorios**
+
+Para utilizar Math.random() para generar un número entero dentro de un rango específico, se puede adaptar utilizando multiplicaciones y la función Math.floor() para redondear hacia abajo al número entero más cercano.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let randomInt = Math.floor(Math.random() * 5);
+console.log(randomInt);
+```
+
+- **Optimización de la Generación de Números Aleatorios**
+
+Para casos donde se necesita un redondeo más eficiente sin la sobrecarga de Math.floor(), puedes utilizar el operador de doble negación bitwise ~~, que es una forma rápida de descartar la parte decimal de un número:
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let quickRandomInt = ~~(Math.random() * 5);
+console.log(quickRandomInt);
+```
+
+Esta técnica es especialmente útil en entornos de alto rendimiento donde cada milisegundo de ejecución cuenta, como en juegos o aplicaciones gráficas intensivas.
+
+**Métodos de logaritmos**
+
+En JavaScript, el objeto Math proporciona métodos para cálculos matemáticos avanzados que incluyen varias funciones de logaritmos.
+
+1. **Math.log(x)**
+
+x. Este es un cálculo fundamental en muchos problemas matemáticos, especialmente en aquellos que involucran crecimiento exponencial o descomposición, como en finanzas para calcular intereses compuestos, en biología para modelar crecimiento de poblaciones, o en física para decaimiento radioactivo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+// Logaritmo natural de 10
+console.log(Math.log(10)); // Aproximadamente 2.3026
+```
+
+2. **Math.log10(x)**
+
+Por otro lado, Math.log10(x) calcula el logaritmo decimal (en base 10) de un número 𝑥. Este método es útil cuando necesitas determinar cuántas veces tienes que multiplicar 10 para llegar a 𝑥. Es común en ciencias para medir la acidez (pH), en ingeniería para decibelios en medidas de sonido, o en astronomía para escalas de magnitud estelar.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+// Logaritmo base 10 de 100
+console.log(Math.log10(100)); // Exactamente 2
+```
+
+3. **Math.log2(x)**
+
+El método Math.log2(x) calcula el logaritmo base 2 de un número 𝑥. Este cálculo es fundamental en campos como ciencias de la computación y tecnología de la información, donde los logaritmos base 2 se utilizan para determinar la eficiencia de algoritmos, especialmente aquellos que se dividen a la mitad progresivamente, como los algoritmos de búsqueda y ordenamiento.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Supongamos que necesitas determinar el número de niveles en una estructura de datos de árbol binario completo. Si tienes 𝑛 elementos, el número de niveles 𝐿 necesarios para almacenar estos elementos en un árbol binario es aproximadamente Math.log2(n) + 1.
+
+```js copy filename="JavaScript"
+function calcularNiveles(n) {
+  return Math.ceil(Math.log2(n) + 1);
+}
+console.log(calcularNiveles(1024)); // Resultado: 11
+```
+
+4. **Math.log1p(x)**
+
+Math.log1p(x) es particularmente útil para cálculos en los que
+𝑥 es muy pequeño y los resultados de log(1+𝑥) pueden ser inexactos debido a la precisión de punto flotante. Este método es ampliamente utilizado en análisis financiero, estadísticas y ciencias de la salud para modelos que dependen de crecimiento logarítmico o ajustes exponenciales.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+En estadísticas, Math.log1p(x) es crucial para transformar datos que incluyen valores cercanos a cero, lo cual es común en medidas de concentraciones químicas o biológicas en experimentos científicos.
+
+```js copy filename="JavaScript"
+function transformarDatos(dato) {
+  return Math.log1p(dato);
+}
+console.log(transformarDatos(0.000001)); // Resultado: un número muy pequeño cercano a 0.000001
+```
+
+**Métodos de redondeo**
+
+Como hemos visto anteriormente, es muy común necesitar métodos para redondear números y reducir el número de decimales o aproximar a una cifra concreta. Para ello, de forma nativa, Javascript proporciona los siguientes métodos de redondeo:
+
+1. **Math.round(x)**
+
+El método Math.round(x) se utiliza para redondear un número al entero más cercano. En el caso de números que están exactamente a mitad de camino entre dos enteros, sigue la regla del redondeo simétrico alejado de cero en la mayoría de los casos, lo que significa que redondea al entero más cercano con preferencia por un resultado positivo infinito en caso de empate.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Supongamos que queremos redondear algunos valores para comprender cómo funciona este método:
+
+```js copy filename="JavaScript"
+console.log(Math.round(0.9)); // Resultado: 1
+console.log(Math.round(1.2)); // Resultado: 1
+console.log(Math.round(1.5)); // Resultado: 2
+console.log(Math.round(1.95)); // Resultado: 2
+console.log(Math.round(-1.5)); // Resultado: -1
+```
+
+2. **Math.ceil(x)**
+
+El método Math.ceil(x), por otro lado, siempre redondea un número hacia arriba al próximo entero mayor, independientemente de la fracción. Esto es especialmente útil en situaciones donde necesitamos asegurar que un número sea redondeado hacia arriba para evitar subestimaciones en cálculos críticos, como dimensionamientos y contabilizaciones.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Veamos cómo Math.ceil(x) actúa sobre varios números:
+
+```js copy filename="JavaScript"
+console.log(Math.ceil(0.1)); // Resultado: 1
+console.log(Math.ceil(1.2)); // Resultado: 2
+console.log(Math.ceil(1.5)); // Resultado: 2
+console.log(Math.ceil(1.99)); // Resultado: 2
+console.log(Math.ceil(-1.5)); // Resultado: -1
+```
+
+3. **Math.floor(x)**
+
+El método Math.floor(x) redondea un número x hacia abajo, es decir, al entero más cercano menor que o igual a x. Este método es muy útil cuando necesitas eliminar cualquier fracción decimal de un número, especialmente en cálculos que requieren valores enteros como índices de matriz, iteraciones de bucle, entre otros.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Supongamos que estás implementando una función que distribuye ítems en diferentes categorías basadas en rangos de precios que aumentan en incrementos de 50. Usar Math.floor() puede ayudar a asignar un precio a la categoría correcta:
+
+```js copy filename="JavaScript"
+function categorizarPrecio(precio) {
+  return Math.floor(precio / 50);
+}
+
+console.log(categorizarPrecio(137)); // Imprime 2, correspondiente al rango de 100-149
+console.log(categorizarPrecio(49)); // Imprime 0, correspondiente al rango 0-49
+```
+
+4. **Math.fround(x)**
+
+El método Math.fround(x) devuelve la representación flotante de precisión simple más cercana de un número x. Esto es útil en contextos donde la precisión de doble punto flotante no es necesaria o donde operaciones de precisión simple pueden ser más rápidas dependiendo del hardware y el navegador.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+En aplicaciones gráficas o de simulación, a veces la precisión de doble punto no es requerida, y el uso de Math.fround() puede optimizar el rendimiento:
+
+```js copy filename="JavaScript"
+function calcularDistancia(velocidad, tiempo) {
+  return Math.fround(velocidad * tiempo);
+}
+
+console.log(calcularDistancia(0.1, 0.2)); // Resultado aproximado con precisión simple
+```
+
+5. **Math.trunc(x)**
+
+Por otro lado, Math.trunc(x) simplemente elimina la parte decimal de un número, sin importar si los decimales son mayores o menores que .5. Este método es esencial cuando simplemente deseas truncar un número para obtener su parte entera, sin realizar ningún tipo de redondeo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+// Truncando el número
+console.log(Math.trunc(3.95)); // Resultado: 3
+console.log(Math.trunc(4.75)); // Resultado: 4
+console.log(Math.trunc(-1.5)); // Resultado: -1
+```
+
+Aquí, Math.trunc() elimina los decimales de cualquier número proporcionado, lo que es especialmente notable en el caso de los números negativos, donde simplemente se descarta la parte decimal.
 
 ### Ejercicios
 
+A continuación, presento una serie de quizes, preguntas y ejercicios diseñados para ayudarte a consolidar tu comprensión sobre los tipos de datos en JavaScript que hemos discutido. Cada ejercicio incluye una solución para que puedas verificar tu trabajo.
+
+**Quizes**
+
+<h4 className="font-medium mt-5">
+  1. ¿Qué valor tiene Number.MAX_VALUE en JavaScript?
+</h4>
+
+<p className="my-2">a) ${2^{1024}}$</p>
+<p>b) El valor más grande posible que JavaScript puede representar</p>
+<p className="my-2">c) 1.7976931348623157×${10^{308}}$</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) 1.7976931348623157×${10^{308}}$</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">2. ¿Qué devuelve parseInt("7*6", 10)?</h4>
+
+<p className="my-2">a) 42</p>
+<p>b) 7</p>
+<p className="my-2">b) NaN</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) 7</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  3. ¿Qué método se utilizaría para convertir 123456789n a un número regular,
+  asumiendo que está dentro del rango seguro?
+</h4>
+
+<p className="my-2">a) BigInt.toNumber()</p>
+<p>b) Number()</p>
+<p className="my-2">c) No es posible convertir BigInt a Number</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) Number()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">4. ¿Qué resultado produce Math.round(4.7)?</h4>
+
+<p className="my-2">a) 4</p>
+<p>b) 5</p>
+<p className="my-2">c) 4.5</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) 5</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  5. ¿Cuál de las siguientes no es una representación válida de un número en
+  JavaScript?
+</h4>
+
+<p className="my-2">a) 0x1A</p>
+<p>b) 2e10</p>
+<p className="my-2">c) 000123</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) 000123</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  6. ¿Cómo generarías un número aleatorio entero entre 1 y 10?
+</h4>
+
+<p className="my-2">a) Math.floor(Math.random() * 10) + 1</p>
+<p>b) Math.ceil(Math.random() * 10)</p>
+<p className="my-2">c) Math.round(Math.random() * 10)</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) Math.floor(Math.random() * 10) + 1</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  7. ¿Qué método de BigInt se utilizaría para asegurar que un número sea tratado
+  como entero sin signo de 8 bits?
+</h4>
+
+<p className="my-2">a) BigInt.asIntN(8, value)</p>
+<p>b) BigInt.asUintN(8, value)</p>
+<p className="my-2">c) BigInt.toUint8(value)</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) BigInt.asUintN(8, value)</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">8. ¿Qué devuelve Math.log10(100)?</h4>
+
+<p className="my-2">a) 10</p>
+<p>b) 2</p>
+<p className="my-2">c) 1</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) 2</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  9. ¿Qué sucede cuando ejecutas Number.isNaN('NaN')?
+</h4>
+
+<p className="my-2">a) True</p>
+<p>b) False</p>
+<p className="my-2">c) TypeError</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) False</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  10. ¿Cuál de las siguientes es correcta para obtener la raíz cúbica de 27 en
+  JavaScript?
+</h4>
+
+<p className="my-2">a) Math.pow(27, 1/3)</p>
+<p>b) Math.sqrt(27)</p>
+<p className="my-2">c) Math.cbrt(27)</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) Math.cbrt(27)</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+**Preguntas**
+
+<h4 className="font-medium mt-5">
+  1. ¿Qué es Number.MAX_SAFE_INTEGER en JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Es la constante que representa el máximo valor entero seguro que JavaScript puede manejar sin perder precisión, equivalente a ${2^{53}-1}$
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  2. ¿Cuál es la diferencia entre Number y BigInt en JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Number maneja valores numéricos dentro de un cierto rango y con limitaciones de precisión, mientras que BigInt permite trabajar con enteros muy grandes más allá del rango seguro de Number.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  3. ¿Cómo se puede convertir un string a un número en JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Se puede utilizar parseInt() para obtener una representación entera, o parseFloat() para obtener un número con decimales.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  4. Explica el resultado de 0.1 + 0.2 === 0.3 en JavaScript.
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Esta expresión devuelve false debido a la imprecisión de la representación de números flotantes en JavaScript.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  5. ¿Qué método usarías para obtener el valor absoluto de un número en
+  JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Se usaría el método Math.abs().
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  6. ¿Cómo generas un número aleatorio entre 0 y 50 en JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Utilizando Math.random() multiplicado por 50 y luego aplicando Math.floor() al resultado para obtener un entero.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  7. ¿Qué sucede si intentas sumar un BigInt y un Number directamente?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      JavaScript lanzará un TypeError, ya que no permite operaciones directas entre BigInt y Number sin una conversión explícita.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  8. ¿Para qué se utiliza el método Number.isNaN() y cómo se diferencia de isNaN() global?
+
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Number.isNaN() es más estricto y solo devuelve true para el valor NaN. El isNaN() global convierte el argumento en un número, lo que puede llevar a resultados verdaderos para valores no numéricos que se comportan como NaN tras la conversión.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  9. ¿Cuál es la utilidad de Math.pow() y cómo se podría replicar su
+  funcionalidad con operadores en ES6 o superior?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Math.pow(a, b) eleva a a la potencia de b. En ES6, se puede replicar con el operador de exponenciación **, como en a ** b.
+
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  10. Explica la diferencia entre Math.floor() y Math.ceil().
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Math.floor() redondea hacia abajo, hacia el entero más cercano, mientras que Math.ceil() redondea hacia arriba, hacia el entero más cercano.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+**Desafíos**
+
 <h4 className="font-medium my-5">
-  Define un objeto que describa un ticket de tren con las propiedades de
-  estación inicial, estación final y precio.
+  1. Escribe un programa que calcule y muestre el área de un círculo con un
+  radio de 7 usando Math.PI.
 </h4>
 
 <div className="my-5">
@@ -898,12 +1789,9 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
       <div>
 
         ```js copy filename="JavaScript"
-        let ticket = {
-          from: "Madrid",
-          to: "Barcelona",
-          price: 40
-        };
-        console.log(`Ticket from ${ticket.from} to ${ticket.to} costs ${ticket.price} euros.`);
+        const radio = 7;
+        const area = Math.PI * radio ** 2;
+        console.log(area);
         ```
 
       </div>
@@ -913,8 +1801,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium my-5">
-  Crea un array que contenga objetos de libros con propiedades de título, autor
-  y número de páginas.
+  2. Genera un número aleatorio entre 50 y 100.
 </h4>
 
 <div className="my-5">
@@ -933,11 +1820,8 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
       <div>
 
         ```js copy filename="JavaScript"
-        let books = [
-        { title: "Speaking JavaScript", author: "Axel Rauschmayer", pages: 460 },
-        { title: "Programming JavaScript Applications", author: "Eric Elliott", pages: 254 },
-        { title: "Understanding ECMAScript 6", author: "Nicholas C. Zakas", pages: 352 }
-      ];
+        const aleatorio = Math.floor(Math.random() * 51) + 50;
+        console.log(aleatorio);
         ```
 
       </div>
@@ -945,3 +1829,1392 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 
   </AccordionItem>
 </Accordion>
+
+<h4 className="font-medium my-5">
+  3. Utiliza BigInt para calcular ${2^{128}}$ sin perder precisión.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        const resultado = 2n ** 128n;
+        console.log(resultado.toString());
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  4. Redondea 6.25 a la unidad más cercana usando Math.round().
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        const redondeado = Math.round(6.25);
+        console.log(redondeado);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  5. Convierte "123.456" en un número entero.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        const numero = parseInt("123.456");
+        console.log(numero);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  6. Verifica si 9007199254740991 es un entero seguro en JavaScript.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        const esSeguro = Number.isSafeInteger(9007199254740991);
+        console.log(esSeguro);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">7. Calcula el logaritmo base 10 de 1000.</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        const log10 = Math.log10(1000);
+        console.log(log10);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  8. Usa Math.ceil() para redondear 7.004 al entero más alto.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        const redondeoAlto = Math.ceil(7.004);
+        console.log(redondeoAlto);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  9. Determina el máximo y el mínimo de los números 4, 19, 8, 1 y 4 usando
+  Math.max() y Math.min().
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        const maximo = Math.max(4, 19, 8, 1, 4);
+        const minimo = Math.min(4, 19, 8, 1, 4);
+        console.log(`Máximo: ${maximo}, Mínimo: ${minimo}`);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  10. Convierte 123456789123456789n (BigInt) a un tipo Number, si es seguro
+  hacerlo.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        const bigNumber = 123456789123456789n;
+        let convertedNumber;
+        if (bigNumber <= Number.MAX_SAFE_INTEGER) {
+          convertedNumber = Number(bigNumber);
+        } else {
+          console.log('Conversión no segura');
+        }
+        console.log(convertedNumber);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## BigInt
+
+BigInt es un tipo de dato en JavaScript diseñado para manejar números enteros extremadamente grandes que sobrepasan los límites del tipo de dato Number. Con BigInt, puedes realizar operaciones matemáticas precisas con grandes enteros sin temor a perder precisión, lo cual es crucial en áreas como la criptografía, la ciencia de datos y cualquier aplicación que requiera manejar grandes números.
+
+**Características de BigInt**
+
+- **Creación:** Para crear un BigInt, puedes añadir n al final de un número entero literal o usar el constructor BigInt() para convertir un Number o string a un BigInt.
+- **Precisión:** BigInt permite representar y operar con números enteros más grandes que el límite de 2^53 - 1, que es el valor máximo seguro que JavaScript puede representar con el tipo Number.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+// Crear un BigInt utilizando la notación literal
+let largeNumber = 1234567890123456789012345678901234567890n;
+
+// Crear un BigInt a partir de un string
+let fromString = BigInt("1234567890123456789012345678901234567890");
+
+// Operaciones aritméticas con BigInt
+console.log(largeNumber + fromString); // Suma de BigInts
+```
+
+**Operaciones con BigInt**
+
+Dado que BigInt es un tipo diferente, no puedes mezclar operaciones directamente entre BigInt y Number. Cualquier operación matemática debe realizarse entre valores del mismo tipo, es decir, o entre BigInts o entre Numbers.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const firstBigNumber = 9007199254740991n;
+const secondBigNumber = 10n;
+
+// Operación válida: sumando BigInts
+console.log(firstBigNumber + secondBigNumber); // 9007199254741001n
+
+// Operación inválida: sumando BigInt y Number
+// console.log(firstBigNumber + 10);  // Error
+```
+
+### Mezcla de Tipos de Datos
+
+En JavaScript, mezclar diferentes tipos de datos, especialmente BigInt y Number, puede ser complejo y requiere un entendimiento detallado para evitar errores y pérdida de precisión. A continuación, se profundiza en cómo manejar estos casos y las precauciones que se deben tomar.
+
+**Conversiones y Operaciones entre BigInt y Number**
+
+- **Operaciones Directas:** JavaScript no permite operaciones directas entre BigInt y Number sin una conversión explícita. Intentar realizar una operación entre estos dos tipos sin convertir uno de ellos resultará en un error.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+// Intento de suma directa entre BigInt y Number
+// const result = 5n + 5;  // Error: Cannot mix BigInt and other types
+```
+
+- **Conversiones Apropiadas:** Para realizar operaciones entre BigInt y Number, uno de los tipos debe ser convertido explícitamente al otro. Sin embargo, cada conversión tiene implicaciones que deben ser consideradas cuidadosamente para evitar pérdida de datos o precisión.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+// Conversión de Number a BigInt y suma
+const numberBigInt = BigInt(5) + 5n; // 10n, conversión segura si el Number es exacto
+
+// Conversión de BigInt a Number y suma
+const bigIntNumber = 5 + Number(5n); // 10, seguro mientras BigInt esté dentro del rango seguro de Number
+```
+
+**Implicaciones de las Conversiones**
+
+- **Pérdida de Precisión:** Convertir BigInt a Number puede llevar a pérdida de precisión si el BigInt es mayor que el valor máximo seguro que Number puede representar (Number.MAX_SAFE_INTEGER).
+
+- **Errores en Tiempo de Ejecución:** Convertir Number a BigInt puede ser problemático si el Number ha perdido precisión debido a su tamaño o cálculos previos.
+
+**Comparación de BigInt y Number**
+
+- **Comparación Estricta (===):** Devuelve false siempre que se comparen BigInt y Number, incluso si los valores numéricos son iguales, debido a la diferencia en tipos de datos.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(5n === 5); // false, tipos diferentes
+```
+
+- **Comparación de Igualdad (==):** Permite una conversión de tipos implícita y podría devolver true si los valores numéricos son iguales.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(5n == 5); // true, valor numérico igual
+```
+
+**Conversiones a String**
+
+- **Conversión de BigInt a String:** Utilizar String() o .toString() sobre un BigInt elimina la n al final y proporciona una representación en forma de cadena del número.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+console.log(String(2n ** 53n)); // "9007199254740992"
+console.log((2n ** 53n).toString()); // "9007199254740992"
+```
+
+### Métodos de BigInt
+
+BigInt en JavaScript ofrece capacidades únicas para manejar números extremadamente grandes, incluso más allá de los límites de los números enteros normales. Entre sus herramientas, destacan los métodos .asIntN() y .asUintN(), que permiten manipular BigInts a nivel de bits con precisión controlada. Estos métodos son fundamentales cuando necesitamos implementar operaciones de bit a bit con un número específico de bits, asegurando así que el comportamiento en envolturas o truncamientos sea predecible y correcto.
+
+**Método .asIntN()**
+
+El método .asIntN(bits, bigNumber) ajusta el número bigNumber a una cantidad específica de bits, interpretando el resultado como un entero con signo. Este método es crucial cuando trabajamos con sistemas que requieren una cantidad fija de bits y pueden tener valores negativos.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+// Representación de enteros con signo usando 2 bits
+console.log(BigInt.asIntN(2, -3n)); // Resultado: representa incorrectamente -3 como 1n debido a la truncación
+console.log(BigInt.asIntN(2, -2n)); // Resultado: -2n (10 en binario)
+console.log(BigInt.asIntN(2, 1n)); // Resultado: 1n (01 en binario)
+console.log(BigInt.asIntN(2, 3n)); // Resultado: -1n (representa 3 incorrectamente como -1 debido a la envoltura)
+```
+
+**Método .asUintN()**
+
+Por otro lado, .asUintN(bits, bigNumber) también ajusta bigNumber a bits especificados, pero lo interpreta como un entero sin signo. Este método es ideal para casos en los que todos los valores deben ser no negativos y es crucial evitar la interpretación de signos.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+// Representación de enteros sin signo usando 2 bits
+console.log(BigInt.asUintN(2, -1n)); // Resultado: 3n (interpreta -1 como 3, lo cual es incorrecto sin contexto adecuado)
+console.log(BigInt.asUintN(2, 2n)); // Resultado: 2n (10 en binario)
+console.log(BigInt.asUintN(2, 4n)); // Resultado: 0n (representa 4 como 0 debido a la envoltura)
+```
+
+### Ejercicios
+
+A continuación, presento una serie de quizes, preguntas y ejercicios diseñados para ayudarte a consolidar tu comprensión sobre los tipos de datos en JavaScript que hemos discutido. Cada ejercicio incluye una solución para que puedas verificar tu trabajo.
+
+**Quizes**
+
+<h4 className="font-medium mt-5">
+  1. ¿Qué método usarías para convertir un BigInt a un tipo Number, asumiendo
+  que el valor está dentro del rango seguro?
+</h4>
+
+<p className="my-2">a) A) Number.toBigInt()</p>
+<p>b) BigInt.toNumber()</p>
+<p className="my-2">c) Number()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) Number()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  2. ¿Qué sucede si intentas sumar 10n y 5 directamente en JavaScript?
+</h4>
+
+<p className="my-2">a) Devuelve 15n</p>
+<p>b) Lanza un TypeError</p>
+<p className="my-2">b) Devuelve 15</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) Lanza un TypeError</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  3. ¿Cuál es el resultado de comparar 10n === 10?
+</h4>
+
+<p className="my-2">a) true</p>
+<p>b) false</p>
+<p className="my-2">c) TypeError</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) false</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+**Preguntas**
+
+<h4 className="font-medium mt-5">
+  1. ¿Qué representa BigInt en JavaScript y por qué es necesario?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      BigInt es un tipo de dato en JavaScript diseñado para manejar enteros muy grandes que superan el valor máximo seguro de Number. Es necesario para realizar operaciones precisas con números grandes, especialmente en contextos como la criptografía o el procesamiento de grandes volúmenes de datos.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  2. ¿Cómo se crea un BigInt a partir de un número literal?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Para crear un BigInt a partir de un número literal, se añade n al final del número. Por ejemplo, 123n.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  3. ¿Es posible realizar operaciones mixtas entre BigInt y Number directamente?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      No, JavaScript no permite operaciones directas entre BigInt y Number debido a diferencias en su precisión y representación. Las operaciones deben realizarse convirtiendo explícitamente uno de los tipos al otro.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+**Desafíos**
+
+<h4 className="font-medium my-5">
+  1. Escribe un script que use BigInt para calcular ${2^{100}}$ sin perder precisión.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        const result = 2n ** 100n;
+        console.log(result);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  2. Convierte el BigInt 123456789012345678901234567890n a un Number y verifica
+  si la conversión es segura.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        const bigIntValue = 123456789012345678901234567890n;
+        if (bigIntValue <= BigInt(Number.MAX_SAFE_INTEGER)) {
+            const numberValue = Number(bigIntValue);
+            console.log(numberValue);
+        } else {
+            console.log("Conversión no segura");
+        }
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  3. Realiza una operación de suma entre dos BigInt y muestra el resultado.
+</h4>
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        const bigIntOne = 1000000000000000000000000n;
+        const bigIntTwo = 2000000000000000000000000n;
+        const sum = bigIntOne + bigIntTwo;
+        console.log(sum);
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## String
+
+En programación, un string es una secuencia de caracteres utilizada para representar texto. Los strings en JavaScript son un tipo de dato primitivo y se utilizan ampliamente para almacenar y manipular datos textuales. Un string puede contener letras, números, símbolos y espacios, y se define utilizando comillas simples ('), comillas dobles ("), o backticks (`).
+
+```js copy filename="JavaScript"
+let stringSimple = "Hola, mundo";
+let stringDoble = "Hola, mundo";
+let stringBackticks = `Hola, mundo`;
+```
+
+**Creación y Asignación de Strings**
+
+Los strings se pueden asignar a variables de varias maneras, ya sea utilizando la notación literal (comillas simples o dobles) o la notación mediante el constructor String. Sin embargo, la notación literal es la preferida debido a su simplicidad y eficiencia.
+
+```js copy filename="JavaScript"
+// Notación literal (preferida)
+let saludo = "Hola a todos";
+let mensaje = "Bienvenido a JavaScript";
+
+// Notación mediante el constructor (menos común)
+let saludoConstructor = new String("Hola a todos");
+let mensajeConstructor = new String("Bienvenido a JavaScript");
+```
+
+**Características de los Strings**
+
+- **Inmutabilidad:** Los strings en JavaScript son inmutables, lo que significa que una vez creados, no pueden ser modificados. Cualquier operación que parezca modificar un string en realidad crea un nuevo string.
+
+```js copy filename="JavaScript"
+let original = "Hola";
+let modificado = original + ", mundo";
+console.log(original); // 'Hola'
+console.log(modificado); // 'Hola, mundo'
+```
+
+- **Tipo de dato primitivo:** Los strings son uno de los tipos de datos primitivos en JavaScript, junto con números, booleanos, null, undefined, y símbolos.
+
+- **Uso de Unicode:** JavaScript utiliza Unicode para representar caracteres, lo que permite incluir caracteres de casi todos los idiomas y muchos símbolos especiales.
+
+**Escapando Caracteres en Strings**
+
+Para incluir caracteres especiales dentro de un string, como comillas, saltos de línea o tabulaciones, se utilizan secuencias de escape con una barra invertida (\):
+
+```js copy filename="JavaScript"
+let comillasSimples = "It's a beautiful day";
+let comillasDobles = 'He said, "Hello"';
+let saltoLinea = "Primera línea\nSegunda línea";
+let tabulacion = "Columna1\tColumna2";
+console.log(comillasSimples); // "It's a beautiful day"
+console.log(comillasDobles); // "He said, "Hello""
+console.log(saltoLinea);
+// Primera línea
+// Segunda línea
+console.log(tabulacion); // "Columna1  Columna2"
+```
+
+**Concatenación de Strings**
+
+Puedes unir (concatenar) dos o más strings utilizando el operador + o el operador +=. Esto es útil para crear nuevos strings a partir de otros existentes:
+
+```js copy filename="JavaScript"
+let parte1 = "Hola";
+let parte2 = "mundo";
+let completo = parte1 + " " + parte2;
+console.log(completo); // "Hola mundo"
+
+parte1 += ", cómo estás?";
+console.log(parte1); // "Hola, cómo estás?"
+```
+
+**Uso de Literales de Plantilla**
+
+Las plantillas literales (template literals) son una característica de ES6 que permite crear strings complejos de manera más legible y manejable. Usan backticks (`) en lugar de comillas y permiten la interpolación de variables y expresiones mediante la sintaxis ${}:
+
+```js copy filename="JavaScript"
+let nombre = "Ana";
+let edad = 25;
+let presentacion = `Me llamo ${nombre} y tengo ${edad} años.`;
+console.log(presentacion); // "Me llamo Ana y tengo 25 años."
+```
+
+**Interpolación de Variables**
+
+La interpolación de variables en JavaScript es una técnica introducida en ECMAScript 6 (ES6) que permite insertar variables y expresiones directamente dentro de un string, haciendo que el código sea más legible y fácil de escribir. Esta técnica utiliza los template literals, que son delimitados por backticks (`) en lugar de comillas simples (') o dobles (").
+
+1. **Template Literals**
+
+Como vimos anteriormente a los template literals, estos también permiten crear strings que incluyen variables y expresiones embebidas utilizando la sintaxis \$\{expresion}. Esta forma de crear strings ofrece varias ventajas:
+
+- **Interpolación de variables y expresiones:** Puedes insertar variables y resultados de expresiones directamente en el string.
+- **Strings multilínea:** Facilita la creación de strings que abarcan múltiples líneas sin necesidad de caracteres de escape.
+- **Inclusión de comillas:** Permite usar comillas simples y dobles dentro del string sin necesidad de escaparlas.
+
+2. **Interpolación Básica de Variables**
+
+Para insertar una variable en un template literal, se utiliza la sintaxis \$\{variable} dentro de los backticks. JavaScript evaluará la variable y la insertará en el string resultante.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let nombre = "Jhoswe";
+let saludo = `Hola, ${nombre}!`;
+console.log(saludo); // "Hola, Jhoswe!"
+```
+
+En este ejemplo, la variable nombre se inserta directamente en el string saludo.
+
+3. **Interpolación de Expresiones**
+
+Además de variables, también se pueden insertar expresiones dentro de los template literals. Las expresiones se evaluarán y el resultado se incluirá en el string.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let a = 5;
+let b = 10;
+let suma = `${a} + ${b} = ${a + b}`;
+console.log(suma); // "5 + 10 = 15"
+```
+
+En este ejemplo, las expresiones \$\{a}, \$\{b}, y \$\{a + b} se evalúan y sus resultados se incluyen en el string suma.
+
+4. **Strings Multilínea**
+
+Los template literals facilitan la creación de strings que abarcan múltiples líneas sin necesidad de caracteres de escape como \n.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let mensaje = `Querido Jhoswe,
+
+Espero que estés bien. Este es un mensaje
+multilínea que se ve muy legible y claro.
+
+Saludos,
+Pepue`;
+console.log(mensaje);
+```
+
+Este string multilínea se define simplemente utilizando backticks y saltos de línea.
+
+5. **Incluir Comillas dentro de Template Literals**
+
+Los template literals permiten incluir comillas simples y dobles sin necesidad de escaparlas, lo cual facilita la construcción de strings con diferentes tipos de comillas.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let frase = `Ella dijo, "JavaScript es genial" y yo estuve de acuerdo.`;
+console.log(frase); // "Ella dijo, "JavaScript es genial" y yo estuve de acuerdo."
+```
+
+En este caso, las comillas dobles se incluyen directamente dentro del string delimitado por backticks.
+
+6. **Usos Avanzados de Template Literals**
+
+6.1. **Interpolación en HTML:** Los template literals son ideales para crear plantillas de HTML dinámico. Permiten insertar variables y expresiones directamente en el código HTML, lo que facilita la creación de contenido dinámico.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let titulo = "Bienvenido";
+let contenido = `<div>
+    <h1>${titulo}</h1>
+    <p>Este es un ejemplo de interpolación de variables en HTML.</p>
+</div>`;
+document.body.innerHTML = contenido;
+```
+
+6.2. **Funciones y Template Literals:** Los template literals pueden ser utilizados dentro de funciones para crear contenido dinámico basado en los argumentos de la función.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function crearBoton(clase, texto) {
+  return `<button class="${clase}">${texto}</button>`;
+}
+
+let botonPrimario = crearBoton("btn-primario", "Aceptar");
+let botonAdvertencia = crearBoton("btn-advertencia", "Eliminar");
+console.log(botonPrimario); // "<button class="btn-primario">Aceptar</button>"
+console.log(botonAdvertencia); // "<button class="btn-advertencia">Eliminar</button>"
+```
+
+### Propiedades de un String
+
+En JavaScript, los strings tienen varias propiedades importantes que permiten obtener información sobre el string y manipularlo de diversas maneras. A continuación, exploramos estas propiedades en detalle.
+
+1. **Propiedad length**
+
+La propiedad length es la más utilizada y la única propiedad fundamentalmente importante de un string. Devuelve el número de caracteres en el string, incluyendo espacios, signos de puntuación y caracteres especiales.
+
+**Características de la propiedad length**
+
+- Es de solo lectura: no puedes modificar la longitud de un string directamente a través de esta propiedad.
+- Devuelve un valor numérico que representa el total de caracteres en el string.
+- Se puede acceder a ella directamente desde cualquier string sin necesidad de guardarlo en una variable.
+
+```js copy filename="JavaScript"
+let ejemplo = "JavaScript";
+console.log(ejemplo.length); // 10
+```
+
+2. **Propiedad constructor**
+
+La propiedad constructor devuelve una referencia a la función que creó la instancia del objeto String. En JavaScript, todas las instancias de string son creadas por la función String.
+
+**Características de la propiedad constructor**
+
+- Es útil para verificar el tipo de un objeto.
+- Permite crear nuevas instancias de objetos String.
+- Se hereda de Object.
+
+```js copy filename="JavaScript"
+let saludo = "Hola, mundo";
+console.log(saludo.constructor); // function String() { [native code] }
+```
+
+3. **Propiedad prototype**
+
+La propiedad prototype permite agregar nuevas propiedades y métodos a todos los objetos String. Esto es útil cuando se desea extender la funcionalidad de los strings en todas las instancias.
+
+**Características de la propiedad prototype**
+
+- Permite extender la funcionalidad de los strings.
+- Los métodos y propiedades añadidos a String.prototype estarán disponibles para todas las instancias de string.
+- Es una característica poderosa para personalizar y ampliar las capacidades de los strings.
+
+```js copy filename="JavaScript"
+String.prototype.despedir = function () {
+  return "Adiós, " + this;
+};
+```
+
+4. **Propiedad \_\_proto\_\_**
+
+La propiedad **proto** es una referencia al prototipo del objeto, del cual hereda propiedades y métodos. Aunque es accesible, no es recomendable modificar **proto** directamente. En su lugar, se deben utilizar métodos como Object.getPrototypeOf() y Object.setPrototypeOf().
+
+**Características de la propiedad \_\_proto\_\_**
+
+- Permite acceder al prototipo del objeto.
+- Se utiliza principalmente para inspección y depuración.
+- Modificar **proto** directamente no es una práctica recomendada debido a posibles problemas de rendimiento y mantenimiento del código.
+
+```js copy filename="JavaScript"
+let saludo = "Hola, mundo";
+console.log(saludo.__proto__ === String.prototype); // true
+```
+
+**Acceso a un Carácter**
+
+En JavaScript, los strings son secuencias de caracteres, y a menudo es necesario acceder a un carácter específico dentro de un string. Existen varias formas de lograr esto, cada una con sus propias características y usos. A continuación, se detallan los métodos más comunes para acceder a un carácter en un string.
+
+**Acceso mediante Índices**
+
+Los strings en JavaScript se comportan como arrays de caracteres, lo que permite acceder a un carácter específico utilizando la notación de corchetes ([]) con un índice. Los índices en JavaScript comienzan en 0, por lo que el primer carácter de un string tiene el índice 0, el segundo el índice 1, y así sucesivamente.
+
+**Características de este método**
+
+- **Acceso Directo:** Permite acceder directamente a cualquier carácter dentro del string utilizando su posición.
+- **Inmutabilidad:** Aunque puedes acceder a caracteres individuales, no puedes modificar un carácter directamente utilizando esta notación debido a que los strings en JavaScript son inmutables.
+- **Índice fuera de rango:** Si intentas acceder a un índice que no existe, no se lanzará un error, pero obtendrás undefined.
+
+```js copy filename="JavaScript"
+let saludo = "Hola, mundo";
+console.log(saludo[0]); // "H"
+console.log(saludo[7]); // "u"
+console.log(saludo[10]); // "o"
+console.log(saludo[20]); // undefined
+```
+
+### Posiciones y substrings
+
+Antes de profundizar en los métodos, es importante entender dos conceptos clave:
+
+1. **Substring:** Un substring es una subcadena de texto, es decir, una secuencia de caracteres que forma parte de un string más grande. Por ejemplo, en el string "Hola amigos", la subcadena "amigos" es un substring.
+
+2. **Posición o Índice:** La posición o índice es un número que representa el lugar donde se encuentra un carácter en el string, comenzando desde 0. Por ejemplo, en el string "Hola amigos", el carácter 'a' en "amigos" está en la posición 5.
+
+```js copy filename="JavaScript"
+"Hola amigos";
+0123456789;
+```
+
+**Obtener la Posición o Índice de un Carácter**
+
+Para encontrar la posición o índice de un carácter dentro de un string, JavaScript ofrece varios métodos.
+
+1. **Carácter en cierta posición**
+
+**Método .charAt(pos)**
+
+El método .charAt(pos) devuelve el carácter en la posición especificada dentro de un string. Es útil para acceder a caracteres individuales, especialmente en versiones antiguas de JavaScript donde la notación de corchetes ([]) no es compatible.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.charAt(pos);
+```
+
+**pos:** La posición (índice) del carácter que se desea obtener. El índice comienza en 0.
+
+- **Características del Método .charAt(pos)**
+
+  - **Compatibilidad:** Es compatible con versiones más antiguas de JavaScript.
+  - **Valor de retorno:** Devuelve una cadena de longitud 1 (un solo carácter) que se encuentra en la posición especificada.
+  - **Índice fuera de rango:** Si el índice está fuera del rango del string, devuelve una cadena vacía ("").
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let texto = "JavaScript";
+console.log(texto.charAt(0)); // "J"
+console.log(texto.charAt(4)); // "S"
+console.log(texto.charAt(9)); // "t"
+console.log(texto.charAt(10)); // ""
+```
+
+En este ejemplo, charAt se usa para obtener los caracteres en las posiciones 0, 4 y 9 del string "JavaScript". También muestra cómo se comporta cuando el índice está fuera del rango del string, devolviendo una cadena vacía.
+
+2. **Posición de cierto carácter**
+
+En JavaScript, localizar la posición de un carácter o subcadena específica dentro de un string es una tarea común. Los métodos .indexOf(text) y .indexOf(text, from) son herramientas esenciales para realizar estas búsquedas. A continuación, explicaremos en detalle cómo funcionan estos métodos y cómo utilizarlos de manera efectiva.
+
+**Método .indexOf(text)**
+
+El método .indexOf(text) busca la primera aparición de una subcadena dentro de un string y devuelve el índice correspondiente. Si no se encuentra la subcadena, devuelve -1. Este método es útil cuando necesitas saber si una subcadena específica está presente en un string y, de ser así, en qué posición se encuentra.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.indexOf(searchValue);
+```
+
+**searchValue:** La subcadena que se desea buscar dentro del string.
+
+- **Características de .indexOf(text)**
+
+  - **Devuelve el índice:** El índice de la primera aparición del searchValue en el string.
+  - **Retorno de -1:** Si el searchValue no se encuentra, se devuelve -1.
+  - **Sensible a mayúsculas y minúsculas:** La búsqueda distingue entre mayúsculas y minúsculas.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let texto = "JavaScript es genial";
+let posicion = texto.indexOf("Script"); // 4
+console.log(posicion); // 4
+
+let noEncontrado = texto.indexOf("script"); // -1 (debido a la sensibilidad a mayúsculas y minúsculas)
+console.log(noEncontrado); // -1
+```
+
+En este ejemplo, indexOf busca la subcadena "Script" dentro del string "JavaScript es genial", devolviendo el índice 4. Si se busca "script" (en minúsculas), se devuelve -1 porque la búsqueda es sensible a mayúsculas y minúsculas.
+
+**Método .indexOf(text, from)**
+
+El método .indexOf(text, from) es una extensión de .indexOf(text) que permite especificar un índice desde el cual comenzar la búsqueda. Esto es útil cuando necesitas buscar la subcadena a partir de una posición específica dentro del string, proporcionando mayor control y flexibilidad.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.indexOf(searchValue, fromIndex);
+```
+
+**searchValue:** La subcadena que se desea buscar dentro del string.
+**fromIndex:** La posición desde la cual se desea comenzar la búsqueda. El valor por defecto es 0.
+
+- **Características de .indexOf(text, from)**
+
+- **Devuelve el índice:** El índice de la primera aparición del searchValue en el string, comenzando desde fromIndex.
+- **Retorno de -1:** Si el searchValue no se encuentra, se devuelve -1.
+- **Sensible a mayúsculas y minúsculas:** La búsqueda distingue entre mayúsculas y minúsculas.
+- **Permite especificar el punto de inicio:** La búsqueda comienza desde el índice fromIndex, proporcionando mayor flexibilidad.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let texto = "JavaScript es genial. JavaScript es versátil.";
+let primeraPosicion = texto.indexOf("JavaScript"); // 0
+console.log(primeraPosicion); // 0
+
+let segundaPosicion = texto.indexOf("JavaScript", 15); // 22
+console.log(segundaPosicion); // 22
+```
+
+En este ejemplo, indexOf busca la subcadena "JavaScript" dentro del string "JavaScript es genial. JavaScript es versátil.". La primera búsqueda comienza desde el inicio del string, devolviendo el índice 0. La segunda búsqueda comienza desde el índice 15, devolviendo el índice 23.
+
+3. **Posición desde el Final**
+
+En JavaScript, los métodos .lastIndexOf(text) y .lastIndexOf(text, from) se utilizan para buscar la última aparición de un carácter o subcadena dentro de un string, comenzando la búsqueda desde el final del string. Estos métodos son útiles para encontrar la posición de la última ocurrencia de un carácter o subcadena específica, lo que puede ser esencial en muchas operaciones de manipulación de texto.
+
+**Método .lastIndexOf(text)**
+
+El método .lastIndexOf(text) busca la última aparición de una subcadena dentro de un string y devuelve el índice correspondiente. Si no se encuentra la subcadena, devuelve -1. Este método es particularmente útil cuando necesitas encontrar la posición de la última ocurrencia de una subcadena específica en un string.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.lastIndexOf(searchValue);
+```
+
+**searchValue:** La subcadena que se desea buscar dentro del string.
+
+- **Características de .lastIndexOf(text)**
+
+  - **Devuelve el índice:** El índice de la última aparición del searchValue en el string.
+  - **Retorno de -1:** Si el searchValue no se encuentra, se devuelve -1.
+  - **Sensible a mayúsculas y minúsculas:** La búsqueda distingue entre mayúsculas y minúsculas.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let texto = "JavaScript es genial. JavaScript es versátil.";
+let ultimaPosicion = texto.lastIndexOf("JavaScript");
+console.log(ultimaPosicion); // 22
+
+let noEncontrado = texto.lastIndexOf("script");
+console.log(noEncontrado); // -1
+```
+
+En este ejemplo, lastIndexOf busca la subcadena "JavaScript" dentro del string "JavaScript es genial. JavaScript es versátil.", devolviendo el índice 23. Si se busca "script" (en minúsculas), se devuelve -1 porque la búsqueda es sensible a mayúsculas y minúsculas.
+
+**Método .lastIndexOf(text, from)**
+
+El método .lastIndexOf(text, from) permite especificar un índice desde el cual comenzar la búsqueda hacia atrás. Esto proporciona mayor control y flexibilidad, permitiendo encontrar la última aparición de una subcadena comenzando desde una posición específica dentro del string.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.lastIndexOf(searchValue, fromIndex);
+```
+
+**searchValue:** La subcadena que se desea buscar dentro del string.
+**fromIndex:** La posición desde la cual se desea comenzar la búsqueda hacia atrás. El valor por defecto es la longitud del string menos uno.
+
+- **Características de .lastIndexOf(text, from)**
+
+  - **Devuelve el índice:** El índice de la última aparición del searchValue en el string, comenzando desde fromIndex.
+  - **Retorno de -1:** Si el searchValue no se encuentra, se devuelve -1.
+  - **Sensible a mayúsculas y minúsculas:** La búsqueda distingue entre mayúsculas y minúsculas.
+  - **Permite especificar el punto de inicio:** La búsqueda comienza desde el índice fromIndex hacia atrás, proporcionando mayor flexibilidad.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let texto = "JavaScript es genial. JavaScript es versátil.";
+let ultimaPosicionDesde = texto.lastIndexOf("es", 11);
+console.log(ultimaPosicionDesde); // 11
+
+let ultimaPosicionCompleta = texto.lastIndexOf("es", texto.length - 1);
+console.log(ultimaPosicionCompleta); // 33
+```
+
+Análisis del Ejemplo 1:
+
+String: "JavaScript es genial. JavaScript es versátil."
+Subcadena Buscada (text): "es"
+Punto de Inicio (from): 11
+En este ejemplo, el método .lastIndexOf("es", 11) busca la subcadena "es" empezando desde el índice 11 y moviéndose hacia atrás (hacia el inicio del string).
+
+La búsqueda comienza desde el índice 11 y encuentra "es" justo en esa posición, que es parte de la palabra "es" en la frase "JavaScript es genial."
+Por lo tanto, el método devuelve 11, que es el índice donde comienza la subcadena "es" encontrada al realizar la búsqueda hacia atrás desde el índice 11.
+
+Análisis del Ejemplo 2:
+
+String: "JavaScript es genial. JavaScript es versátil."
+Subcadena Buscada (text): "es"
+Punto de Inicio (from): texto.length - 1 (que es 43 - 1 = 42)
+En este caso, el método .lastIndexOf("es", 42) inicia la búsqueda de la subcadena "es" desde el índice 42, que es el último índice del string.
+
+La búsqueda se realiza hacia atrás desde el final del string.
+Encuentra la subcadena "es" en la parte "es" de la palabra "versátil" hacia el final del string.
+El índice donde comienza esta subcadena es 33, que es el resultado devuelto por el método.
+
+**Obtener Fragmentos (Substrings)**
+
+Javascript también posee una serie de métodos mediante los cuales podemos crear substrings formados por un fragmento del original.
+
+1. **Repetir cadena de texto**
+
+**Método .repeat(num)**
+
+El método .repeat(num) devuelve un nuevo string que contiene la concatenación del string original repetido num veces. Este método es útil para generar patrones repetitivos, crear rellenos o simplemente repetir contenido.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.repeat(count);
+```
+
+**count:** Un número entero que indica cuántas veces se repetirá el string. Debe ser un valor mayor o igual a 0.
+
+- **Características de .repeat(num)**
+
+  - **Devuelve un nuevo string:** El string original se repite count veces, y el resultado es un nuevo string.
+  - **Parámetro count:** Debe ser un número entero. Si es un número decimal, se redondeará hacia abajo.
+  - **Valor count negativo o infinito:** Lanza un RangeError.
+  - **Valor count igual a 0:** Devuelve una cadena vacía.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let saludo = "Hola";
+let repetido = saludo.repeat(3);
+console.log(repetido); // "HolaHolaHola"
+
+let relleno = "*".repeat(5);
+console.log(relleno); // "*****"
+
+let vacio = "JavaScript".repeat(0);
+console.log(vacio); // ""
+```
+
+En este ejemplo, el método repeat se utiliza para repetir el string "Hola" tres veces, creando el string "HolaHolaHola". También se usa para generar un relleno de asteriscos y para demostrar que repetir un string 0 veces resulta en una cadena vacía.
+
+2. **Fragmento de texto (substring)**
+
+**Método .substring(start, end)**
+
+El método .substring(start, end) se utiliza para extraer partes de un string. Devuelve una nueva cadena que contiene los caracteres desde el índice start hasta, pero sin incluir, el índice end. Si end se omite, extrae hasta el final del string.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.substring(start, end);
+```
+
+**start:** El índice del primer carácter que se incluirá en la subcadena.
+**end (opcional):** El índice del primer carácter que no se incluirá en la subcadena. Si se omite, substring extraerá caracteres desde start hasta el final del string.
+
+- **Características**
+
+  - **Indices positivos:** Ambos índices deben ser números no negativos.
+  - **Intercambio de índices:** Si start es mayor que end, los valores se intercambian.
+  - **Ajuste de límites:** Los valores fuera del rango del string se ajustan al inicio o al final del string.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let texto = "Submarino";
+let subcadena1 = texto.substring(3); // "marino"
+let subcadena2 = texto.substring(3, 5); // "ma"
+let subcadena3 = texto.substring(5, 3); // "ma" (intercambio de índices)
+console.log(subcadena1); // "marino"
+console.log(subcadena2); // "ma"
+console.log(subcadena3); // "ma"
+```
+
+**Extraer desde un índice específico:** En el ejemplo texto.substring(3), se extraen los caracteres desde el índice 3 hasta el final del string.
+
+**Extraer entre dos índices:** En el ejemplo texto.substring(3, 5), se extraen los caracteres desde el índice 3 hasta el 5, sin incluir el carácter en el índice 5.
+
+**Intercambio de índices:** En el ejemplo texto.substring(5, 3), como el primer índice es mayor que el segundo, el método intercambia los valores y extrae los caracteres desde el índice 3 hasta el 5.
+
+**Método .substr(start, size)**
+
+El método .substr(start, size) devuelve una nueva cadena de texto que contiene los caracteres de la cadena original comenzando desde el índice start y extendiéndose por size caracteres.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.substr(start, size);
+```
+
+**start:** El índice del primer carácter que se incluirá en la subcadena. Puede ser negativo para contar desde el final del string.
+**size (opcional):** El número de caracteres que se incluirán en la subcadena. Si se omite, substr extraerá caracteres desde start hasta el final del string.
+
+- **Características**
+
+  - **Inicio negativo:** Si start es negativo, la posición se cuenta desde el final del string.
+  - **Longitud positiva:** size debe ser un número positivo. Si es 0 o negativo, se devuelve una cadena vacía.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let texto = "Submarino";
+let subcadena1 = texto.substr(3); // "marino"
+let subcadena2 = texto.substr(3, 5); // "marin"
+let subcadena3 = texto.substr(-3); // "ino"
+let subcadena4 = texto.substr(-3, 2); // "in"
+console.log(subcadena1); // "marino"
+console.log(subcadena2); // "marin"
+console.log(subcadena3); // "ino"
+console.log(subcadena4); // "in"
+```
+
+**Extraer desde un índice específico:** En el ejemplo texto.substr(3), se extraen los caracteres desde el índice 3 hasta el final del string.
+
+**Extraer una cantidad específica de caracteres:** En el ejemplo texto.substr(3, 5), se extraen 5 caracteres comenzando desde el índice 3.
+
+**Inicio negativo:** En el ejemplo texto.substr(-3), se extraen los caracteres desde el tercer índice desde el final del string hasta el final.
+
+**Inicio negativo con tamaño específico:** En el ejemplo texto.substr(-3, 2), se extraen 2 caracteres comenzando desde el tercer índice desde el final del string.
+
+**Método .slice(start, end)**
+
+El método .slice(start, end) devuelve una nueva cadena de texto que contiene los caracteres de la cadena original desde el índice start hasta, pero sin incluir, el índice end. Funciona de manera similar a substring, pero admite índices negativos.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.slice(start, end);
+```
+
+**start:** El índice del primer carácter que se incluirá en la subcadena. Puede ser negativo para contar desde el final del string.
+**end (opcional):** El índice del primer carácter que no se incluirá en la subcadena. Si se omite, slice extraerá caracteres desde start hasta el final del string. Puede ser negativo para contar desde el final del string.
+
+- **Características**
+
+  - **Inicio y fin negativos:** Ambos índices pueden ser negativos, contando desde el final del string.
+  - **No intercambia índices:** Si start es mayor que end, no intercambia los valores, sino que devuelve una cadena vacía.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let texto = "Submarino";
+let subcadena1 = texto.slice(3); // "marino"
+let subcadena2 = texto.slice(3, 5); // "ma"
+let subcadena3 = texto.slice(-3); // "ino"
+let subcadena4 = texto.slice(-6, -3); // "Submar"
+console.log(subcadena1); // "marino"
+console.log(subcadena2); // "ma"
+console.log(subcadena3); // "ino"
+console.log(subcadena4); // "mar"
+```
+
+**Extraer desde un índice específico:** En el ejemplo texto.slice(3), se extraen los caracteres desde el índice 3 hasta el final del string.
+
+**Extraer entre dos índices:** En el ejemplo texto.slice(3, 5), se extraen los caracteres desde el índice 3 hasta el 5, sin incluir el carácter en el índice 5.
+
+**Inicio negativo:** En el ejemplo texto.slice(-3), se extraen los caracteres desde el tercer índice desde el final del string hasta el final.
+
+**Inicio y fin negativos:** En el ejemplo texto.slice(-6, -3), se extraen los caracteres desde el noveno índice desde el final del string hasta el tercer índice desde el final.
+
+**Dividir un texto en partes (array)**
+
+El método .split() en JavaScript ofrece una flexibilidad considerable para dividir strings en arrays utilizando separadores específicos. Este método se puede aplicar de varias maneras, dependiendo de si el separador es una cadena fija, una expresión regular, o si se establece un límite en la cantidad de splits. Profundicemos en los detalles técnicos y las variantes de este método para entender mejor su aplicación y comportamiento en diferentes contextos.
+
+- **División con Texto Fijo**
+
+Cuando se utiliza una cadena fija como separador, .split() divide el string en cada punto donde encuentra esta cadena.
+
+**Método .split(text)**
+
+Cuando utilizas .split(text) sin un segundo parámetro, divides el string original en tantos elementos como ocurrencias del separador haya en el string. Este método es útil para descomponer un string en un array basado en un delimitador fijo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const poem = "The quick brown fox jumps over the lazy dog";
+const words = poem.split(" ");
+console.log(words);
+```
+
+const poem = "The quick brown fox jumps over the lazy dog";
+const words = poem.split(" ");
+console.log(words);
+
+**.split(text, limit)**
+
+El parámetro limit controla el número máximo de elementos que serán incluidos en el array resultante. Si el número de divisiones producidas por el separator es mayor que limit, las subdivisiones adicionales son descartadas.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const data = "apple,orange,banana,pear,grape";
+const limitedItems = data.split(",", 3);
+console.log(limitedItems);
+```
+
+Aquí, limitedItems será ["apple", "orange", "banana"]. Aunque hay más elementos que podrían ser extraídos, el limit de 3 asegura que solo los tres primeros sean incluidos.
+
+**.split(regexp)**
+
+Utilizar expresiones regulares como el separator permite un control más refinado sobre cómo se divide el string. Puedes especificar un patrón que puede no ser un substring fijo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const complexData = "word1, word2: word3; word4. word5";
+const parts = complexData.split(/[\s,;:.]+/);
+console.log(parts);
+```
+
+En este caso, parts será ["word1", "word2", "word3", "word4", "word5"]. La expresión regular /[\s,;:.]+/ indica que el string debe dividirse en cualquier punto donde uno o más espacios, comas, puntos y comas, dos puntos o puntos se encuentren.
+
+**.split(regexp, limit)**
+
+Combinar una expresión regular con un limit te permite dividir un string según un patrón complejo, pero también controlar cuántos substrings quieres extraer, lo cual es útil para evitar procesamiento innecesario.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const message =
+  "This is a sentence. This is another sentence. And yet another one.";
+const firstTwoSentences = message.split(/[.!?]\s/, 2);
+console.log(firstTwoSentences);
+```
+
+Aquí, firstTwoSentences será ["This is a sentence", "This is another sentence"]. La división se realiza en puntos, signos de exclamación o interrogación seguidos de un espacio, pero se limita a las dos primeras sentencias.
+
+- **Detalles Adicionales sobre .split() y Caracteres Especiales**
+
+Es importante destacar que si el separator es una cadena vacía, el resultado es un array de caracteres individuales del string. Esto es particularmente útil para tareas como la inversión de un string o la realización de operaciones en cada carácter.
+
+<h4 className="font-medium mt-5">Ejemplo Avanzado</h4>
+
+```js copy filename="JavaScript"
+const message =
+  "This is a sentence. This is another sentence. And yet another one.";
+const firstTwoSentences = message.split(/[.!?]\s/, 2);
+console.log(firstTwoSentences);
+```
+
+Este script divide word en caracteres, los invierte y luego los une de nuevo, resultando en "sdrawkcab".
+
+### Buscar y Reemplazar
+
+En JavaScript, las operaciones de búsqueda y reemplazo son fundamentales para manipular cadenas de texto. Estas operaciones permiten identificar subcadenas específicas dentro de una cadena mayor y, si es necesario, reemplazarlas con una nueva subcadena. Esto es extremadamente útil en muchas aplicaciones web, como la validación de formularios, la limpieza de datos de entrada, o simplemente la transformación de textos según las necesidades del usuario.
+
+🔍Verificar(🔍): Este es el más sencillo de los tres métodos. Sólo comprueba si existe un fragmento de texto. 🕵️‍♀️ Buscar (🔍 🕵️‍♀️): busca un fragmento de texto y devuelve información sobre el texto encontrado (ubicación, texto...). 🔁 Reemplazar (🔍 🕵️‍♀️ 🔁): busca y reemplaza texto. En general, es más caro.
+
+**Método .startsWith()**
+
+El método .startsWith() en JavaScript se utiliza para determinar si una cadena de texto comienza con los caracteres especificados, devolviendo true si es así y false de lo contrario. Es fundamental en situaciones donde es necesario validar los inicios de las cadenas, como códigos de productos, protocolos en URLs, o simplemente condiciones de formato.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.startsWith(searchString, position);
+```
+
+**searchString:** La subcadena que se busca al comienzo del string principal.
+**position (opcional):** La posición en la cadena desde la cual se debe empezar a buscar. El valor por defecto es 0, lo que implica que la búsqueda comienza desde el inicio del string.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Consideremos algunos ejemplos que ilustran cómo se utiliza .startsWith() en diferentes contextos:
+
+```js copy filename="JavaScript"
+const str1 = "Buenos días, mundo!";
+console.log(str1.startsWith("Buenos")); // true
+
+const str2 = "JavaScript es genial";
+console.log(str2.startsWith("Script", 4)); // true
+
+const filename = "reporte_final.doc";
+console.log(filename.startsWith("reporte")); // true
+```
+
+- En el primer ejemplo, se verifica si el string "Buenos días, mundo!" comienza con la subcadena "Buenos", lo cual es verdadero.
+- En el segundo ejemplo, "JavaScript es genial" se verifica si comienza con "Script" empezando desde el índice 4, mostrando cómo se puede ajustar el punto de inicio de la búsqueda.
+- El tercer ejemplo verifica si el nombre de archivo comienza con "reporte", algo común en la validación de formatos de archivo o en sistemas de manejo de documentos.
+
+**Método .endsWith(text, to)**
+
+El método .endsWith() es utilizado para determinar si una cadena de texto termina con los caracteres de otra cadena especificada, devolviendo true si es así, y false en caso contrario. Este método es particularmente útil cuando necesitas asegurarte de que un string cumple con ciertos criterios al final, como extensiones de archivo o ciertas terminaciones en idiomas programáticos o humanos.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.endsWith(searchString, length);
+```
+
+**searchString:** La cadena que se buscará al final del string.
+**length (opcional):** Si se especifica, se trata el string como si tuviera exactamente este número de caracteres (esencialmente, ajusta el string a este tamaño antes de realizar la búsqueda).
+
+<h4 className="font-medium mt-5">Ejemplo Avanzado</h4>
+
+```js copy filename="JavaScript"
+const file = "example.txt";
+console.log(file.endsWith(".txt")); // true
+
+const greeting = "Hello world!";
+console.log(greeting.endsWith("world", 11)); // true
+```
+
+En el primer ejemplo, se verifica si el nombre del archivo termina en .txt, útil para manipulación de archivos. En el segundo ejemplo, se verifica si la cadena "Hello world!" termina con "world" cuando se consideran los primeros 11 caracteres, demostrando cómo el parámetro de longitud puede alterar el resultado.
+
+**Método .includes(text, from)**
+
+El método .includes() permite verificar si una cadena contiene otra subcadena dentro de ella, devolviendo true si la encuentra, y false si no. Este método es insustituible en la búsqueda de contenido dentro de un string, y su capacidad para iniciar la búsqueda desde un índice específico lo hace muy versátil.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.includes(searchString, position);
+```
+
+**searchString:** La subcadena que se buscará dentro del string.
+**position (opcional):** El índice desde donde comenzar la búsqueda dentro del string. Por defecto es 0.
+
+<h4 className="font-medium mt-5">Ejemplo Avanzado</h4>
+
+```js copy filename="JavaScript"
+const phrase = "Finding substrings in strings";
+console.log(phrase.includes("sub")); // true
+
+const message = "Case sensitive search";
+console.log(message.includes("case")); // false
+console.log(message.includes("case", 5)); // true
+```
+
+En estos ejemplos, el método .includes() demuestra su utilidad para encontrar subcadenas. El segundo ejemplo también resalta la sensibilidad a mayúsculas y minúsculas del método, y cómo el inicio de la búsqueda puede afectar el resultado.
+
+**Búsqueda de Cadenas**
