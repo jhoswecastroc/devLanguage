@@ -3217,4 +3217,1230 @@ console.log(message.includes("case", 5)); // true
 
 En estos ejemplos, el método .includes() demuestra su utilidad para encontrar subcadenas. El segundo ejemplo también resalta la sensibilidad a mayúsculas y minúsculas del método, y cómo el inicio de la búsqueda puede afectar el resultado.
 
-**Búsqueda de Cadenas**
+### Búsqueda de Cadenas
+
+La búsqueda de cadenas de texto es una operación fundamental en la programación. Permite localizar posiciones específicas, verificar la existencia de patrones y mucho más. En JavaScript, uno de los métodos más poderosos para realizar estas búsquedas es .search(), que utiliza expresiones regulares (regex).
+
+**Método .search(regexp)**
+
+El método .search() busca una coincidencia entre una expresión regular y el string sobre el que se aplica. Devuelve el índice de la primera coincidencia o -1 si no se encuentra ninguna coincidencia. Es una herramienta esencial cuando se necesita comprobar la presencia de patrones complejos dentro de un string.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.search(regexp);
+```
+
+**regexp:** Una expresión regular que describe el patrón a buscar.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const text = "JavaScript es un lenguaje de programación versátil.";
+const position = text.search(/lenguaje/);
+console.log(position); // 17
+```
+
+En este ejemplo, la palabra "lenguaje" se encuentra en la posición 14 del string.
+
+**Método .match(regexp)**
+
+El método .match() se utiliza para obtener todas las coincidencias de una expresión regular en una cadena. Devuelve un array que contiene las coincidencias encontradas o null si no se encuentra ninguna coincidencia.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.match(regexp);
+```
+
+**regexp:** Una expresión regular que describe el patrón a buscar.
+
+- **Características**
+
+  - Si la expresión regular no tiene el flag global (g), .match() devolverá solo la primera coincidencia y algunos detalles adicionales.
+  - Si la expresión regular tiene el flag global (g), .match() devolverá todas las coincidencias encontradas.
+
+<h4 className="font-medium mt-5">Ejemplo sin el flag global</h4>
+
+```js copy filename="JavaScript"
+const text = "JavaScript es maravilloso. JavaScript es potente.";
+const result = text.match(/JavaScript/);
+console.log(result); // ["JavaScript", index: 0, input: "JavaScript es maravilloso. JavaScript es potente.", groups: undefined]
+```
+
+En este caso, .match() devuelve la primera coincidencia junto con su posición en el string y otros detalles.
+
+<h4 className="font-medium mt-5">Ejemplo con el flag global</h4>
+
+```js copy filename="JavaScript"
+const text = "JavaScript es maravilloso. JavaScript es potente.";
+const result = text.match(/JavaScript/g);
+console.log(result); // ["JavaScript", "JavaScript"]
+```
+
+Aquí, al usar el flag global (g), .match() devuelve todas las ocurrencias de "JavaScript" en un array.
+
+**Método .matchAll(regexp)**
+
+El método .matchAll() es una versión más reciente y avanzada de .match(). Devuelve un iterador que produce todas las coincidencias completas, incluidas las subcadenas capturadas. Requiere el flag global (g) en la expresión regular.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.matchAll(regexp);
+```
+
+- **Características**
+
+Devuelve un iterador de todas las coincidencias encontradas, lo que es útil para manejar grandes conjuntos de datos de manera eficiente.
+Incluye detalles completos de cada coincidencia, incluidos los grupos de captura.
+
+<h4 className="font-medium mt-5">Ejemplo con el flag global</h4>
+
+```js copy filename="JavaScript"
+const text = "JavaScript es maravilloso. JavaScript es potente.";
+const matches = text.matchAll(/JavaScript/g);
+
+for (const match of matches) {
+  console.log(match); // ["JavaScript", index: 0, input: "JavaScript es maravilloso. JavaScript es potente.", groups: undefined]
+  // ["JavaScript", index: 27, input: "JavaScript es maravilloso. JavaScript es potente.", groups: undefined]
+}
+```
+
+En este ejemplo, el iterador produce todas las coincidencias una por una.
+
+### Reemplazar cadenas de texto
+
+Reemplazar cadenas de texto es una tarea fundamental en la manipulación de strings en JavaScript. Los métodos .replace() y .replaceAll() son esenciales para estas operaciones, permitiendo tanto reemplazos simples como complejos con expresiones regulares.
+
+**Método .replace(text, newText)**
+
+El método .replace() se utiliza para reemplazar la primera coincidencia de una subcadena o una expresión regular dentro de un string. Su uso es bastante versátil, permitiendo realizar reemplazos básicos y también más avanzados mediante el uso de expresiones regulares.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.replace(searchValue, newValue);
+```
+
+**searchValue:** La subcadena o expresión regular que se va a buscar en el string.
+**newValue:** La subcadena que reemplazará la primera coincidencia de searchValue.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const saludo = "Hola mundo";
+const nuevoSaludo = saludo.replace("mundo", "amigo");
+console.log(nuevoSaludo); // "Hola amigo"
+```
+
+En este ejemplo, la primera aparición de "mundo" se reemplaza por "amigo". Esto es útil para situaciones donde solo necesitas cambiar la primera instancia de una palabra o frase.
+
+<h4 className="font-medium mt-5">Ejemplo usando expresiones regulares</h4>
+
+```js copy filename="JavaScript"
+const frase = "El color es rojo. El color es verde.";
+const nuevaFrase = frase.replace(/color/, "tono");
+console.log(nuevaFrase); // "El tono es rojo. El color es verde."
+```
+
+Aquí, se utiliza una expresión regular para buscar la primera aparición de "color" y reemplazarla por "tono". Las expresiones regulares ofrecen una manera poderosa de buscar patrones dentro de un string.
+
+<h4 className="font-medium mt-5">Ejemplo de reemplazo con función</h4>
+
+```js copy filename="JavaScript"
+const texto = "Hola mundo";
+const nuevoTexto = texto.replace("mundo", (match) => `amigo (${match})`);
+console.log(nuevoTexto); // "Hola amigo (mundo)"
+```
+
+En este caso, en lugar de simplemente proporcionar un string para reemplazar, se usa una función. La función recibe como argumento la coincidencia encontrada y devuelve el nuevo valor. Esto permite generar reemplazos dinámicos basados en el contenido original.
+
+**Método .replaceAll(text, newText)**
+
+El método .replaceAll() se utiliza para reemplazar todas las coincidencias de una subcadena específica o una expresión regular dentro de un string. Es especialmente útil cuando necesitas modificar múltiples apariciones de un texto en una sola operación.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.replaceAll(searchValue, newValue);
+```
+
+**searchValue:** La subcadena o expresión regular que se va a buscar en el string.
+**newValue:** La subcadena que reemplazará todas las coincidencias de searchValue.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const saludo = "Hola mundo mundo";
+const nuevoSaludo = saludo.replaceAll("mundo", "amigo");
+console.log(nuevoSaludo); // "Hola amigo amigo"
+```
+
+En este caso, todas las apariciones de "mundo" se reemplazan por "amigo". Esto es muy útil cuando necesitas asegurarte de que todas las instancias de un texto específico se cambien.
+
+<h4 className="font-medium mt-5">Ejemplo usando expresiones regulares</h4>
+
+```js copy filename="JavaScript"
+const frase = "El color es rojo. El color es verde.";
+const nuevaFrase = frase.replaceAll(/color/g, "tono");
+console.log(nuevaFrase); // "El tono es rojo. El tono es verde."
+```
+
+Aquí, se usa una expresión regular global (/color/g) para encontrar todas las apariciones de "color" y reemplazarlas por "tono". Las expresiones regulares globales son potentes para realizar reemplazos en todo el string.
+
+<h4 className="font-medium mt-5">Ejemplo de reemplazo con función</h4>
+
+```js copy filename="JavaScript"
+const frase = "Contar: 1, 2, 3, 4";
+const nuevaFrase = frase.replaceAll(/\d/g, (match) => `(${match})`);
+console.log(nuevaFrase); // "Contar: (1), (2), (3), (4)"
+```
+
+Aquí, se utiliza una función para envolver cada dígito encontrado en paréntesis. La función de reemplazo recibe el valor encontrado y devuelve el nuevo valor, permitiendo una transformación compleja y dinámica del string original.
+
+### Modificar Cadenas de Texto
+
+Modificar cadenas de texto es una operación esencial en cualquier lenguaje de programación. JavaScript proporciona varios métodos para transformar cadenas de texto. Vamos a detallar cada uno de estos métodos con ejemplos prácticos para que puedas entender cómo y cuándo utilizarlos.
+
+**Método .toLowerCase()**
+
+El método .toLowerCase() se utiliza para convertir todos los caracteres de una cadena a minúsculas. Esto puede ser particularmente útil cuando necesitamos normalizar el texto para comparaciones o búsquedas insensibles a mayúsculas y minúsculas.
+
+- **Funcionamiento**
+
+.toLowerCase() recorre cada carácter de la cadena original y, si encuentra una letra mayúscula, la convierte en minúscula. La cadena original no se modifica; en su lugar, se devuelve una nueva cadena con todos los caracteres en minúsculas.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.toLowerCase();
+```
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Imagina que tienes un formulario donde el usuario puede ingresar su dirección de correo electrónico, y quieres asegurarte de que la comparación sea insensible a mayúsculas y minúsculas.
+
+```js copy filename="JavaScript"
+const emailInput = "Usuario@Dominio.Com";
+const normalizedEmail = emailInput.toLowerCase();
+console.log(normalizedEmail); // "usuario@dominio.com"
+```
+
+**Método `.toUpperCase()**
+
+El método .toUpperCase() se utiliza para convertir todos los caracteres de una cadena a mayúsculas. Este método es útil para enfatizar texto o para asegurar consistencia en la presentación de datos.
+
+- **Funcionamiento**
+
+.toUpperCase() recorre cada carácter de la cadena original y, si encuentra una letra minúscula, la convierte en mayúscula. La cadena original no se modifica; en su lugar, se devuelve una nueva cadena con todos los caracteres en mayúsculas.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.toUpperCase();
+```
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Imagina que tienes una cadena que quieres usar como título en una página web y quieres asegurarte de que se muestre en mayúsculas.
+
+```js copy filename="JavaScript"
+const title = "bienvenidos a mi sitio web";
+const upperTitle = title.toUpperCase();
+console.log(upperTitle); // "BIENVENIDOS A MI SITIO WEB"
+```
+
+**Método .padStart(size, text)**
+
+El método .padStart() rellena la cadena actual con otra cadena hasta que la longitud resultante alcanza la longitud dada. Este método es útil para formatear datos, como números o fechas, de manera uniforme.
+
+-**Funcionamiento**
+
+.padStart() añade caracteres al inicio de la cadena original hasta que se alcanza la longitud especificada. Si la longitud especificada es menor o igual a la longitud de la cadena original, la cadena se devuelve sin cambios.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.padStart(targetLength [, padString])
+```
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Para mostrar números siempre con al menos dos dígitos, se puede utilizar .padStart().
+
+```js copy filename="JavaScript"
+const num = "5";
+const paddedNum = num.padStart(2, "0");
+console.log(paddedNum); // "05"
+```
+
+Si tienes identificadores que deben tener un formato fijo de longitud, .padStart() puede ser muy útil.
+
+```js copy filename="JavaScript"
+const id = "123";
+const formattedId = id.padStart(6, "0");
+console.log(formattedId); // "000123"
+```
+
+**Método .padEnd(size, text)**
+
+El método .padEnd() funciona de manera similar a .padStart(), pero añade caracteres al final de la cadena. Este método es útil para alinear texto en una presentación tabular o para crear strings con un formato específico.
+
+- **Funcionamiento**
+
+.padEnd() añade caracteres al final de la cadena original hasta que se alcanza la longitud especificada. Si la longitud especificada es menor o igual a la longitud de la cadena original, la cadena se devuelve sin cambios.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.padEnd(targetLength [, padString])
+```
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Para alinear nombres en una presentación tabular, puedes utilizar .padEnd().
+
+```js copy filename="JavaScript"
+const name = "Ana";
+const paddedName = name.padEnd(10, " ");
+console.log(paddedName); // "Ana       "
+```
+
+Si necesitas que las descripciones de productos tengan una longitud fija para alineación, .padEnd() es útil.
+
+```js copy filename="JavaScript"
+const description = "Laptop";
+const paddedDescription = description.padEnd(15, ".");
+console.log(paddedDescription); // "Laptop........"
+```
+
+**Método .trimStart()**
+
+El método .trimStart() elimina los espacios en blanco al inicio de un string. Este método no modifica el string original, sino que devuelve una nueva cadena sin los espacios iniciales.
+
+- **Funcionamiento**
+
+El método .trimStart() opera sobre una instancia de cadena y elimina cualquier espacio en blanco (incluidos espacios, tabs, etc.) desde el comienzo de la cadena hasta que encuentra el primer carácter no blanco. Este método es particularmente útil cuando se trata de entradas de usuario, donde los espacios en blanco adicionales pueden introducir errores o inconsistencias.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.trimStart();
+```
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let text = "   Hola Mundo";
+let trimmedText = text.trimStart();
+console.log(trimmedText); // "Hola Mundo"
+```
+
+En este ejemplo, trimmedText contiene "Hola Mundo" sin los espacios iniciales.
+
+```js copy filename="JavaScript"
+let text = "\t\tJavaScript";
+let trimmedText = text.trimStart();
+console.log(trimmedText); // "JavaScript"
+```
+
+Aquí, los caracteres de tabulación (\t) al inicio de la cadena text se eliminan.
+
+**Método .trimEnd()**
+
+El método .trimEnd() elimina los espacios en blanco al final de un string. Similar a .trimStart(), este método devuelve una nueva cadena sin los espacios finales.
+
+- **Funcionamiento**
+
+El método .trimEnd() se encarga de eliminar los espacios en blanco desde el final de la cadena hasta encontrar el primer carácter no blanco. Esto es útil para limpiar datos que pueden tener espacios adicionales al final, asegurando que las comparaciones y manipulaciones de cadenas sean precisas.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.trimEnd();
+```
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let text = "Hola Mundo   ";
+let trimmedText = text.trimEnd();
+console.log(trimmedText); // "Hola Mundo"
+```
+
+En este caso, trimmedText resulta en "Hola Mundo" sin los espacios finales.
+
+```js copy filename="JavaScript"
+let text = "JavaScript\t\t";
+let trimmedText = text.trimEnd();
+console.log(trimmedText); // "JavaScript"
+```
+
+Aquí, los caracteres de tabulación (\t) al final de la cadena text se eliminan.
+
+**Método .trim()**
+
+El método .trim() elimina los espacios en blanco tanto al inicio como al final de un string. Este método es una combinación de .trimStart() y .trimEnd(), proporcionando una solución completa para limpiar los espacios en blanco de los extremos de una cadena.
+
+- **Sintaxis**
+
+```js copy filename="JavaScript"
+string.trim();
+```
+
+- **Funcionamiento**
+
+El método .trim() es el más completo de los tres, ya que se ocupa de eliminar todos los espacios en blanco tanto al principio como al final de una cadena. Esto es extremadamente útil en una variedad de situaciones, desde la limpieza de datos de entrada hasta la normalización de cadenas para comparaciones y almacenamiento.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let text = "   Hola Mundo   ";
+let trimmedText = text.trim();
+console.log(trimmedText); // "Hola Mundo"
+```
+
+En este ejemplo, trimmedText contiene "Hola Mundo" sin los espacios en blanco al inicio y al final.
+
+```js copy filename="JavaScript"
+let text = "\t\tJavaScript\t\t";
+let trimmedText = text.trim();
+console.log(trimmedText); // "JavaScript"
+```
+
+Aquí, tanto los caracteres de tabulación (\t) al inicio como al final de la cadena text se eliminan.
+
+### Ejercicios
+
+A continuación, presento una serie de quizes, preguntas y ejercicios diseñados para ayudarte a consolidar tu comprensión sobre los tipos de datos en JavaScript que hemos discutido. Cada ejercicio incluye una solución para que puedas verificar tu trabajo.
+
+**Quizes**
+
+<h4 className="font-medium mt-5">
+  1. ¿Cuál será el resultado de la siguiente expresión?: " Hello World
+  ".trimStart();
+</h4>
+
+<p className="my-2">a) "Hello World "</p>
+<p>b) " Hello World"</p>
+<p className="my-2">c) "Hello World"</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) "Hello World "</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  2. ¿Qué método utilizarías para verificar si una cadena contiene la palabra
+  "JavaScript"?
+</h4>
+
+<p className="my-2">a) .indexOf()</p>
+<p>b) .includes()</p>
+<p className="my-2">c) .search()</p>
+<p className="mb-2">d) Todas las anteriores</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>d) Todas las anteriores</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  3. ¿Cuál será el resultado de la siguiente expresión?: "12345".slice(1, 3);
+</h4>
+
+<p className="my-2">a) 12</p>
+<p>b) 234</p>
+<p className="my-2">c) 23</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) 23</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  4. ¿Qué método se utiliza para convertir una cadena a minúsculas?
+</h4>
+
+<p className="my-2">a) .toLowerCase()</p>
+<p>b) .toUpperCase()</p>
+<p className="my-2">c) .toLocaleLowerCase()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) .toLowerCase()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  5. ¿Cuál será el resultado de la siguiente expresión?: " JavaScript
+  ".trimEnd();
+</h4>
+
+<p className="my-2">a) " JavaScript"</p>
+<p>b) "JavaScript "</p>
+<p className="my-2">c) "JavaScript"</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) " JavaScript"</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  6. ¿Qué método devuelve el índice de la primera ocurrencia de una subcadena?
+</h4>
+
+<p className="my-2">a) .search()</p>
+<p>b) .indexOf()</p>
+<p className="my-2">c) .find()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) .indexOf()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  7. ¿Cuál será el resultado de la siguiente expresión?: "Learning JavaScript".includes("Java");
+
+</h4>
+
+<p className="my-2">a) true</p>
+<p>b) false</p>
+<p className="my-2">c) undefined</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) true</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  8. ¿Cuál será el resultado de la siguiente expresión?: "Hello".charAt(0);
+</h4>
+
+<p className="my-2">a) H</p>
+<p>b) e</p>
+<p className="my-2">c) o</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) H</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  9. ¿Qué método se utiliza para dividir una cadena en un array de subcadenas
+  basadas en un separador?
+</h4>
+
+<p className="my-2">a) .join()</p>
+<p>b) .split()</p>
+<p className="my-2">c) .slice()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) .split()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  10. ¿Cuál será el resultado de la siguiente expresión?: "JavaScript".substring(4, 10);
+
+</h4>
+
+<p className="my-2">a) Java</p>
+<p>b) Script</p>
+<p className="my-2">c) Scrip</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) Scrip</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+**Preguntas**
+
+<h4 className="font-medium mt-5">
+  1. ¿Qué método se utiliza para eliminar espacios en blanco al inicio de una
+  cadena?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      .trimStart()
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  2. ¿Cuál es la diferencia entre .includes() y .indexOf()?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      .includes() devuelve true o false si una cadena contiene una subcadena específica, mientras que .indexOf() devuelve el índice de la primera ocurrencia de la subcadena o -1 si no se encuentra.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  3. ¿Cómo se puede convertir una cadena a mayúsculas?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Usando el método .toUpperCase()
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  4. ¿Qué método se utiliza para verificar si una cadena comienza con una
+  subcadena específica?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      .startsWith()
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  5. ¿Cuál es el propósito del método .slice() en cadenas de texto?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Extraer una sección de una cadena y devolverla como una nueva cadena, sin modificar la original.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  6. ¿Cómo puedes dividir una cadena en un array de subcadenas?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Usando el método .split()
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  7. ¿Qué método se utiliza para eliminar espacios en blanco tanto al inicio
+  como al final de una cadena?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      .trim()
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  8. ¿Cuál es la diferencia entre .substring() y .substr()?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      .substring(start, end) devuelve una parte de la cadena entre start y end, mientras que .substr(start, length) devuelve una parte de la cadena desde start y con una longitud específica length.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  9. ¿Cómo se puede reemplazar una subcadena en una cadena por otra subcadena?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Usando el método .replace()
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  10. ¿Qué método se utiliza para eliminar espacios en blanco al final de una
+  cadena?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      .trimEnd()
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+**Desafíos**
+
+<h4 className="font-medium my-5">
+  1. Eliminar espacios en blanco al inicio y al final de una cadena.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "   Hola Mundo   ";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "   Hola Mundo   ";
+        let trimmedText = text.trim();
+        console.log(trimmedText); // "Hola Mundo"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  2. Verificar si una cadena contiene una subcadena específica.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "Aprendiendo JavaScript es divertido";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "Aprendiendo JavaScript es divertido";
+        let contains = text.includes("JavaScript");
+        console.log(contains); // true
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">3. Convertir una cadena a mayúsculas.</h4>
+
+```js copy filename="JavaScript"
+let text = "hola mundo";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "hola mundo";
+        let upperText = text.toUpperCase();
+        console.log(upperText); // "HOLA MUNDO"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  4. Reemplazar una subcadena en una cadena por otra subcadena.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "Me gusta programar en Java";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "Me gusta programar en Java";
+        let newText = text.replace("Java", "JavaScript");
+        console.log(newText); // "Me gusta programar en JavaScript"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">5. Extraer una parte de una cadena.</h4>
+
+```js copy filename="JavaScript"
+let text = "Aprendiendo JavaScript";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "Aprendiendo JavaScript";
+        let part = text.slice(12, 22);
+        console.log(part); // "JavaScript"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  6. Eliminar espacios en blanco al inicio de una cadena.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "   Hola Mundo";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "   Hola Mundo";
+        let trimmedText = text.trimStart();
+        console.log(trimmedText); // "Hola Mundo"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  7. Eliminar espacios en blanco al final de una cadena.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "Hola Mundo   ";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "Hola Mundo   ";
+        let trimmedText = text.trimEnd();
+        console.log(trimmedText); // "Hola Mundo"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  8. Dividir una cadena en un array de subcadenas.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "rojo,azul,verde";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "rojo,azul,verde";
+        let colors = text.split(",");
+        console.log(colors); // ["rojo", "azul", "verde"]
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  9. Obtener el carácter en una posición específica de una cadena.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "JavaScript";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "JavaScript";
+        let char = text.charAt(4);
+        console.log(char); // "S"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">10. Convertir una cadena a minúsculas.</h4>
+
+```js copy filename="JavaScript"
+let text = "HOLA MUNDO";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "HOLA MUNDO";
+        let lowerText = text.toLowerCase();
+        console.log(lowerText); // "hola mundo"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Boolean
+
+En JavaScript, un Boolean es un tipo de dato primitivo que puede tener uno de dos valores posibles: true o false. Estos valores se utilizan principalmente para tomar decisiones en el flujo del programa, como en declaraciones condicionales y bucles. Veamos más detalladamente cómo funcionan y cómo se utilizan los Booleanos en JavaScript.
+
+### Creación de Booleanos
+
+Puedes crear valores Booleanos directamente utilizando las palabras clave true y false:
+
+```js copy filename="JavaScript"
+let isDataValid = true;
+let isStringTooLong = false;
+```
+
+También puedes obtener valores Booleanos como resultado de evaluaciones lógicas o comparaciones:
+
+```js copy filename="JavaScript"
+let isGreater = 10 > 5; // true
+let isEqual = 10 === 10; // true
+let isLesser = 5 < 3; // false
+```
+
+**Uso de Booleanos en Condicionales**
+
+Los valores Booleanos son fundamentales en las estructuras de control, como las declaraciones if, que permiten ejecutar bloques de código basándose en condiciones:
+
+```js copy filename="JavaScript"
+let isLoggedIn = true;
+
+if (isLoggedIn) {
+  console.log("User is logged in.");
+} else {
+  console.log("User is not logged in.");
+}
+```
+
+En este ejemplo, si isLoggedIn es true, se ejecutará el primer bloque de código. Si es false, se ejecutará el bloque en el else.
+
+**Operadores Lógicos**
+
+JavaScript proporciona varios operadores lógicos que se pueden usar para manipular valores Booleanos:
+
+- **NOT (!):** Invierte el valor de un Booleano.
+- **AND (&&):** Devuelve true si ambos operandos son true.
+- **OR (||):** Devuelve true si al menos uno de los operandos es true.
+
+```js copy filename="JavaScript"
+let isAdmin = false;
+let isMember = true;
+
+console.log(!isAdmin); // true
+console.log(isAdmin && isMember); // false
+console.log(isAdmin || isMember); // true
+```
+
+### Booleanos y Conversión Implícita
+
+JavaScript convierte implícitamente otros tipos de datos a Booleanos en contextos lógicos. Los siguientes valores se consideran falsy (se convierten a false):
+
+- false
+- 0
+- "" (cadena vacía)
+- null
+- undefined
+- NaN (Not-a-Number)
+
+Cualquier otro valor se considera truthy (se convierte a true)
+
+<h4 className="font-medium mt-5">Ejemplo de Conversión Implícita</h4>
+
+```js copy filename="JavaScript"
+if (0) {
+  console.log("This won't be logged.");
+}
+
+if ("hello") {
+  console.log("This will be logged.");
+}
+```
+
+## Undefined
+
+En JavaScript, undefined es un tipo de dato primitivo que indica que una variable no ha sido asignada a un valor. Es uno de los valores más comunes que encontrarás y es fundamental comprender cómo y cuándo aparece para manejar correctamente los datos y evitar errores en el código.
+
+El tipo undefined tiene un único valor: undefined. Este es el valor por defecto que se asigna a una variable declarada pero no inicializada.
+
+```js copy filename="JavaScript"
+let miVariable;
+console.log(typeof miVariable); // "undefined"
+```
+
+En este caso, miVariable es declarada pero no se le asigna ningún valor, por lo que su tipo y su valor son undefined.
+
+### Asignación de undefined
+
+Aunque es posible asignar explícitamente undefined a una variable, generalmente se recomienda usar null para denotar la ausencia intencional de un valor. Usar undefined explícitamente puede llevar a confusiones, ya que también es el valor por defecto de variables no inicializadas.
+
+```js copy filename="JavaScript"
+console.log(typeof variableNoDeclarada); // "undefined"
+console.log(variableNoDeclarada); // Uncaught ReferenceError: variableNoDeclarada is not defined
+```
+
+Este comportamiento puede ser útil para verificar la existencia de variables en el entorno global sin causar errores.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let miVariable = 10;
+miVariable = undefined;
+console.log(typeof miVariable); // "undefined"
+```
+
+## Null
+
+En JavaScript, null es un tipo de dato primitivo que representa la ausencia intencional de cualquier valor de objeto. Este valor es utilizado para indicar que una variable que normalmente contendría un objeto está actualmente vacía.
+
+El valor null se asigna intencionalmente a una variable para denotar que no tiene valor. Es una forma explícita de decir que la variable está vacía. A diferencia de undefined, que es el valor por defecto para las variables que han sido declaradas pero no inicializadas, null se utiliza para indicar deliberadamente la falta de un valor.
+
+```js copy filename="JavaScript"
+let emptyValue = null;
+console.log(emptyValue); // null
+```
+
+En este ejemplo, emptyValue se inicializa explícitamente con null para indicar que está vacía.
+
+**Diferencia entre null y undefined**
+
+Aunque null y undefined pueden parecer similares, tienen significados distintos:
+
+- **null:** Asignado intencionalmente para indicar ausencia de valor.
+- **undefined:** Valor predeterminado para variables declaradas pero no inicializadas.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let variableA = null;
+let variableB;
+
+console.log(variableA); // null
+console.log(variableB); // undefined
+```
+
+En este caso, variableA ha sido asignada explícitamente con null, mientras que variableB no ha sido inicializada, resultando en undefined.
+
+### Propiedades y Comportamiento de null
+
+- **Tipo de Dato:** Aunque null es un valor primitivo, el operador typeof devuelve "object" cuando se aplica a null, lo cual es un error histórico en JavaScript.
+
+```js copy filename="JavaScript"
+let variable = null;
+console.log(typeof variable); // "object"
+```
+
+- **Comparaciones:** null es igual a sí mismo y a undefined (con el operador ==), pero no es estrictamente igual a undefined (con el operador ===).
+
+```js copy filename="JavaScript"
+console.log(null == undefined); // true
+console.log(null === undefined); // false
+```

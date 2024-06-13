@@ -92,53 +92,127 @@ JavaScript no solo abre puertas en términos de capacidades técnicas, sino que 
 
 ## Características de JavaScript
 
-JavaScript es un lenguaje de programación dinámico que se ha convertido en un componente integral del desarrollo web. Su diseño flexible y características poderosas permiten a los desarrolladores construir interacciones complejas y aplicaciones tanto en el cliente como en el servidor. A continuación, exploramos las características clave que definen a JavaScript, presentadas de manera clara y profesional.
+JavaScript es un lenguaje de programación fundamental en el desarrollo web moderno, caracterizado por su flexibilidad y potencia. A continuación, se detallan las características clave que definen a JavaScript, destacando su relevancia y utilidad en diversas aplicaciones.
 
-### Interpretado
+### Lenguaje de Alto Nivel
 
-JavaScript es un lenguaje interpretado, lo que significa que el código se ejecuta en tiempo real sin la necesidad de compilación previa. Esta característica permite una iteración rápida durante el desarrollo y una fácil implementación de cambios, haciendo de JavaScript una opción ideal para el desarrollo ágil de aplicaciones web. Además, la mayoría de los motores modernos de JavaScript utilizan la compilación Just-In-Time (JIT), lo que optimiza este proceso interpretativo al compilar fragmentos de código durante la ejecución, mejorando así el rendimiento sin perder la flexibilidad de ser interpretado.
-
-### Tipado Débil y Dinámico
-
-JavaScript permite un tipado dinámico que ofrece gran flexibilidad al permitir que las variables cambien de tipo. Por ejemplo, una variable puede comenzar siendo un número y luego reasignarse a una cadena, facilitando la escritura de código pero también requiriendo una atención cuidadosa para evitar errores.
+JavaScript es un lenguaje de alto nivel, lo que significa que está diseñado para ser fácil de leer y escribir, acercándose más al lenguaje humano que al código máquina. Esta característica facilita el desarrollo y la comprensión del código.
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
 ```js copy filename="JavaScript"
-let ejemplo = 42; // Ejemplo es un número
-ejemplo = "Hola mundo"; // Ahora ejemplo es una cadena
+let saludo = "Hola Mundo";
+console.log(saludo);
 ```
 
-### Funciones de Primera Clase
+En este ejemplo, el código es fácil de leer y entender: declara una variable y muestra un mensaje.
 
-En JavaScript, las funciones son consideradas ciudadanos de primera clase, lo que permite utilizar funciones como valores, pasarlas como argumentos y retornarlas desde otras funciones. Este enfoque funcional permite patrones de diseño complejos y flexibles que son fundamentales en aplicaciones avanzadas.
+### Interpretado y de Tipado Débil
+
+JavaScript es un lenguaje interpretado, ejecutando el código línea por línea sin necesidad de compilación previa. Además, es de tipado débil, permitiendo que las variables cambien de tipo dinámicamente.
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
 ```js copy filename="JavaScript"
-function multiplicar(a, b) {
-  return a * b;
+let numero = 5; // numérico
+numero = "cinco"; // se convierte en cadena
+```
+
+La variable numero cambia de un tipo numérico a una cadena sin generar errores.
+
+### Orientado a Objetos
+
+JavaScript soporta la programación orientada a objetos (POO), permitiendo la creación de objetos con propiedades y métodos.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function Persona(nombre) {
+  this.nombre = nombre;
+  this.saludar = function () {
+    console.log("Hola, mi nombre es " + this.nombre);
+  };
 }
-
-let operacion = multiplicar;
-alert(operacion(5, 3)); // Muestra 15
+let persona1 = new Persona("Ana");
+persona1.saludar(); // "Hola, mi nombre es Ana"
 ```
 
-### Ejecución Asíncrona y Eventos
+Este ejemplo muestra una función constructora y la creación de un objeto Persona.
 
-JavaScript maneja operaciones asíncronas mediante callbacks, promesas y async/await, facilitando la gestión de operaciones que pueden tardar tiempo sin bloquear la interfaz de usuario, como solicitudes de red o acceso a bases de datos.
+### Asincronía
+
+JavaScript puede manejar operaciones asincrónicas, lo cual es crucial para tareas que dependen de I/O, como solicitudes de red.
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
 ```js copy filename="JavaScript"
-async function obtenerDatos() {
-  let respuesta = await fetch("https://api.ejemplo.com/datos");
-  let datos = await respuesta.json();
-  console.log(datos);
-}
-obtenerDatos();
+setTimeout(function () {
+  console.log("Esto se muestra después de 2 segundos");
+}, 2000);
 ```
 
-### Objeto de Prototipo y Herencia Basada en Prototipos
+La función setTimeout demuestra la capacidad asincrónica de JavaScript.
 
-A diferencia de muchos lenguajes que utilizan una herencia basada en clases, JavaScript emplea la herencia basada en prototipos. Cada objeto tiene un prototipo que hereda propiedades y métodos. Los objetos pueden ser extendidos y modificados dinámicamente, lo que proporciona una flexibilidad considerable en cómo se estructuran y modifican los datos.
+### Dinámico y Flexible
+
+JavaScript es altamente flexible, permitiendo cambios en estructuras durante el tiempo de ejecución. Las variables pueden cambiar de tipo y las estructuras de los objetos pueden modificarse.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let objeto = {};
+objeto.nombre = "JavaScript"; // Añadiendo una propiedad al objeto
+```
+
+Inicialmente, objeto es un objeto vacío al que se le añade dinámicamente una propiedad.
+
+### Compatibilidad con el Navegador
+
+JavaScript es compatible con todos los navegadores modernos, siendo una parte esencial de la experiencia web.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Cualquier script de JavaScript puede ejecutarse en navegadores sin necesidad de herramientas adicionales.
+
+### Isomorfismo
+
+El isomorfismo en JavaScript se refiere a la capacidad de ejecutar el mismo código tanto en el servidor (con Node.js) como en el navegador.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function calcularSuma(a, b) {
+  return a + b;
+}
+// Este código puede ejecutarse tanto en un servidor Node.js como en un navegador.
+```
+
+### Eventos y Manipulación del DOM
+
+JavaScript puede responder a eventos del usuario y manipular el Document Object Model (DOM) de una página web.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+document.getElementById("miBoton").addEventListener("click", function () {
+  alert("Botón clickeado");
+});
+```
+
+Este código añade una respuesta al evento de clic en un botón.
+
+### Soporte a Funciones de Primera Clase
+
+En JavaScript, las funciones son tratadas como valores de primera clase, lo que significa que pueden ser asignadas a variables, pasadas como argumentos o retornadas por otras funciones.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function saludar(nombre) {
+  return "Hola " + nombre;
+}
+let miSaludo = saludar;
+console.log(miSaludo("Ana")); // "Hola Ana"
+```
+
+Aquí, saludar es una función que se asigna a la variable miSaludo.
