@@ -572,21 +572,36 @@ En JavaScript, los Number son uno de los tipos de datos básicos (tipos primitiv
 
 **Declaración de Variables Numéricas**
 
-Crear variables numéricas en JavaScript es muy sencillo. Se pueden declarar simplemente escribiendo el número literal o utilizando el constructor Number.
+JavaScript permite la creación de variables numéricas de manera sencilla y flexible. Existen dos formas principales de declarar números: utilizando la notación literal y el constructor Number. A continuación, se presentan ambas técnicas junto con ejemplos prácticos para comprender su uso y diferencias.
+
+- **Notación Literal (Preferida)**
+
+La notación literal es la forma más común y recomendada para declarar variables numéricas en JavaScript debido a su simplicidad y eficiencia. Para declarar un número, simplemente se escribe el valor numérico directamente:
 
 ```js copy filename="JavaScript"
-// Notación literal (preferida)
 const numero = 4;
 const decimal = 15.8;
 const numeroLegible = 5_000_000;
+```
 
-// Notación con objetos (evitar)
+**numero** es un número entero.
+**decimal** es un número con parte decimal.
+**numeroLegible** es un número grande con guiones bajos para mejorar la legibilidad, introducido en ECMAScript 2021.
+
+- **Notación con Objetos (Evitar)**
+
+Aunque es posible declarar números utilizando el constructor Number, esta práctica es menos común y generalmente desaconsejada debido a su complejidad y posibles resultados inesperados. Al utilizar el constructor Number, se crean objetos en lugar de valores primitivos, lo cual puede llevar a comportamientos no deseados:
+
+```js copy filename="JavaScript"
 const numeroObjeto = new Number(4);
 const decimalObjeto = new Number(15.8);
 const letra = new Number("A");
 ```
 
-En la mayoría de los casos, se prefiere la notación literal debido a su simplicidad y eficiencia. La notación con objetos es más tediosa y puede llevar a resultados inesperados, como la creación de objetos en lugar de valores primitivos.
+**numeroObjeto y decimalObjeto** crean objetos Number.
+**letra** intenta convertir la cadena "A" en un número, resultando en NaN (Not A Number).
+
+La notación literal es preferida no solo por su claridad y simplicidad, sino también porque evita la creación innecesaria de objetos, lo que puede optimizar el rendimiento del código.
 
 **Manejo de Decimales y Separadores**
 
@@ -898,10 +913,12 @@ parseInt() analiza una cadena y devuelve un entero en la base especificada o en 
 
 **Sintaxis y Uso**
 
-La función parseInt() puede ser utilizada de dos maneras principales:
+```js copy filename="JavaScript"
+parseInt(string, base);
+```
 
-- **parseInt(string):** Convierte string a un entero utilizando la base decimal.
-- **parseInt(string, base):** Convierte string a un entero utilizando la base especificada, donde base es el sistema numérico (de 2 a 36).
+- **string:** Convierte string a un entero utilizando la base decimal.
+- **string, base:** Convierte string a un entero utilizando la base especificada, donde base es el sistema numérico (de 2 a 36).
 
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
@@ -1003,7 +1020,7 @@ console.log(parseFloat("abc123.45")); // NaN, comienza con caracteres no numéri
 
 Las conversiones entre bases numéricas son fundamentales en muchas aplicaciones de programación, desde criptografía hasta manejo de permisos en sistemas operativos. JavaScript facilita estas conversiones a través de métodos incorporados como parseInt() para conversiones a decimal y toString() para convertir desde decimal a otras bases.
 
-1. ¿Qué es una Base Numérica?
+1. **¿Qué es una Base Numérica?**
 
 Una base numérica es el número de dígitos únicos, incluyendo el cero, que un sistema numérico utiliza para representar números. La más familiar para nosotros es la base decimal (base 10), pero otros sistemas como el binario (base 2), el octal (base 8) y el hexadecimal (base 16) son esenciales en computación.
 
@@ -1020,7 +1037,11 @@ console.log(parseInt("31", 8)); // 25
 console.log(parseInt("FF", 16)); // 255
 ```
 
-- **Conversión desde Decimal a Otra Base:** Para convertir un número decimal a otra base, se usa el método number.toString(base). Este método devuelve una cadena que representa el número original en la base especificada.
+- **Conversión desde Decimal a Otra Base:** Para convertir un número decimal a otra base, se usa el método number.toString(base). El método toString() en JavaScript tiene dos propósitos principales:
+
+  - **Conversión a Cadenas de Texto:** Objetos a Cadenas: Convierte cualquier objeto en una cadena de texto que representa ese objeto. Este es el uso genérico del método toString() y es útil para generar representaciones legibles de objetos para la depuración o visualización.
+
+  - **Conversión de Números a Diferentes Bases:** Números a Cadenas en Diferentes Bases: Cuando se aplica a números, toString(base) convierte el número a una cadena que representa el número en la base especificada (entre 2 y 36). Este uso es particularmente útil en programación, criptografía, y otras áreas que requieren trabajar con diferentes sistemas numéricos.
 
 ```js copy filename="JavaScript"
 // Decimal a Binario
@@ -1540,23 +1561,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
   </AccordionItem>
 </Accordion>
 
-<h4 className="font-medium mt-5">
-  7. ¿Qué método de BigInt se utilizaría para asegurar que un número sea tratado
-  como entero sin signo de 8 bits?
-</h4>
-
-<p className="my-2">a) BigInt.asIntN(8, value)</p>
-<p>b) BigInt.asUintN(8, value)</p>
-<p className="my-2">c) BigInt.toUint8(value)</p>
-
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>b) BigInt.asUintN(8, value)</AccordionContent>
-  </AccordionItem>
-</Accordion>
-
-<h4 className="font-medium mt-5">8. ¿Qué devuelve Math.log10(100)?</h4>
+<h4 className="font-medium mt-5">7. ¿Qué devuelve Math.log10(100)?</h4>
 
 <p className="my-2">a) 10</p>
 <p>b) 2</p>
@@ -1570,7 +1575,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium mt-5">
-  9. ¿Qué sucede cuando ejecutas Number.isNaN('NaN')?
+  8. ¿Qué sucede cuando ejecutas Number.isNaN('NaN')?
 </h4>
 
 <p className="my-2">a) True</p>
@@ -1585,7 +1590,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium mt-5">
-  10. ¿Cuál de las siguientes es correcta para obtener la raíz cúbica de 27 en
+  9. ¿Cuál de las siguientes es correcta para obtener la raíz cúbica de 27 en
   JavaScript?
 </h4>
 
@@ -1619,23 +1624,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium mt-5">
-  2. ¿Cuál es la diferencia entre Number y BigInt en JavaScript?
-</h4>
-
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
-
-      Number maneja valores numéricos dentro de un cierto rango y con limitaciones de precisión, mientras que BigInt permite trabajar con enteros muy grandes más allá del rango seguro de Number.
-
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-<h4 className="font-medium mt-5">
-  3. ¿Cómo se puede convertir un string a un número en JavaScript?
+  2. ¿Cómo se puede convertir un string a un número en JavaScript?
 </h4>
 
 <Accordion type="single" collapsible>
@@ -1651,7 +1640,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium mt-5">
-  4. Explica el resultado de 0.1 + 0.2 === 0.3 en JavaScript.
+  3. Explica el resultado de 0.1 + 0.2 === 0.3 en JavaScript.
 </h4>
 
 <Accordion type="single" collapsible>
@@ -1667,7 +1656,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium mt-5">
-  5. ¿Qué método usarías para obtener el valor absoluto de un número en
+  4. ¿Qué método usarías para obtener el valor absoluto de un número en
   JavaScript?
 </h4>
 
@@ -1684,7 +1673,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium mt-5">
-  6. ¿Cómo generas un número aleatorio entre 0 y 50 en JavaScript?
+  5. ¿Cómo generas un número aleatorio entre 0 y 50 en JavaScript?
 </h4>
 
 <Accordion type="single" collapsible>
@@ -1700,23 +1689,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium mt-5">
-  7. ¿Qué sucede si intentas sumar un BigInt y un Number directamente?
-</h4>
-
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
-
-      JavaScript lanzará un TypeError, ya que no permite operaciones directas entre BigInt y Number sin una conversión explícita.
-
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-<h4 className="font-medium mt-5">
-  8. ¿Para qué se utiliza el método Number.isNaN() y cómo se diferencia de isNaN() global?
+  6. ¿Para qué se utiliza el método Number.isNaN() y cómo se diferencia de isNaN() global?
 
 </h4>
 
@@ -1733,7 +1706,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium mt-5">
-  9. ¿Cuál es la utilidad de Math.pow() y cómo se podría replicar su
+  7. ¿Cuál es la utilidad de Math.pow() y cómo se podría replicar su
   funcionalidad con operadores en ES6 o superior?
 </h4>
 
@@ -1751,7 +1724,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium mt-5">
-  10. Explica la diferencia entre Math.floor() y Math.ceil().
+  8. Explica la diferencia entre Math.floor() y Math.ceil().
 </h4>
 
 <Accordion type="single" collapsible>
@@ -1831,37 +1804,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium my-5">
-  3. Utiliza BigInt para calcular ${2^{128}}$ sin perder precisión.
-</h4>
-
-<div className="my-5">
-  <Editor
-    height="10vh"
-    theme="vs-dark"
-    defaultLanguage="javascript"
-    defaultValue="// Escribe aquí tu código JavaScript"
-  />
-</div>
-
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
-      <div>
-
-        ```js copy filename="JavaScript"
-        const resultado = 2n ** 128n;
-        console.log(resultado.toString());
-        ```
-
-      </div>
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-<h4 className="font-medium my-5">
-  4. Redondea 6.25 a la unidad más cercana usando Math.round().
+  3. Redondea 6.25 a la unidad más cercana usando Math.round().
 </h4>
 
 <div className="my-5">
@@ -1891,7 +1834,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium my-5">
-  5. Convierte "123.456" en un número entero.
+  4. Convierte "123.456" en un número entero.
 </h4>
 
 <div className="my-5">
@@ -1921,7 +1864,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium my-5">
-  6. Verifica si 9007199254740991 es un entero seguro en JavaScript.
+  5. Verifica si 9007199254740991 es un entero seguro en JavaScript.
 </h4>
 
 <div className="my-5">
@@ -1950,7 +1893,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
   </AccordionItem>
 </Accordion>
 
-<h4 className="font-medium my-5">7. Calcula el logaritmo base 10 de 1000.</h4>
+<h4 className="font-medium my-5">6. Calcula el logaritmo base 10 de 1000.</h4>
 
 <div className="my-5">
   <Editor
@@ -1979,7 +1922,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium my-5">
-  8. Usa Math.ceil() para redondear 7.004 al entero más alto.
+  7. Usa Math.ceil() para redondear 7.004 al entero más alto.
 </h4>
 
 <div className="my-5">
@@ -2009,7 +1952,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </Accordion>
 
 <h4 className="font-medium my-5">
-  9. Determina el máximo y el mínimo de los números 4, 19, 8, 1 y 4 usando
+  8. Determina el máximo y el mínimo de los números 4, 19, 8, 1 y 4 usando
   Math.max() y Math.min().
 </h4>
 
@@ -2032,43 +1975,6 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
         const maximo = Math.max(4, 19, 8, 1, 4);
         const minimo = Math.min(4, 19, 8, 1, 4);
         console.log(`Máximo: ${maximo}, Mínimo: ${minimo}`);
-        ```
-
-      </div>
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-<h4 className="font-medium my-5">
-  10. Convierte 123456789123456789n (BigInt) a un tipo Number, si es seguro
-  hacerlo.
-</h4>
-
-<div className="my-5">
-  <Editor
-    height="10vh"
-    theme="vs-dark"
-    defaultLanguage="javascript"
-    defaultValue="// Escribe aquí tu código JavaScript"
-  />
-</div>
-
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Respuesta</AccordionTrigger>
-    <AccordionContent>
-      <div>
-
-        ```js copy filename="JavaScript"
-        const bigNumber = 123456789123456789n;
-        let convertedNumber;
-        if (bigNumber <= Number.MAX_SAFE_INTEGER) {
-          convertedNumber = Number(bigNumber);
-        } else {
-          console.log('Conversión no segura');
-        }
-        console.log(convertedNumber);
         ```
 
       </div>
@@ -2421,19 +2327,33 @@ let stringDoble = "Hola, mundo";
 let stringBackticks = `Hola, mundo`;
 ```
 
-**Creación y Asignación de Strings**
+**Declaración de Variables de Tipo String**
 
-Los strings se pueden asignar a variables de varias maneras, ya sea utilizando la notación literal (comillas simples o dobles) o la notación mediante el constructor String. Sin embargo, la notación literal es la preferida debido a su simplicidad y eficiencia.
+JavaScript proporciona dos formas principales de crear variables de tipo string: utilizando la notación literal y el constructor String. La notación literal es la más recomendada debido a su simplicidad y eficiencia. A continuación, se detallan ambas técnicas junto con ejemplos prácticos.
+
+- **Notación Literal (Preferida)**
+
+La notación literal para strings en JavaScript es la forma más común y preferida de declarar variables de texto. Simplemente se encierran los caracteres entre comillas simples ('), comillas dobles ("), o backticks (`).
 
 ```js copy filename="JavaScript"
-// Notación literal (preferida)
-let saludo = "Hola a todos";
-let mensaje = "Bienvenido a JavaScript";
-
-// Notación mediante el constructor (menos común)
-let saludoConstructor = new String("Hola a todos");
-let mensajeConstructor = new String("Bienvenido a JavaScript");
+const texto1 = "¡Hola a todos!";
+const texto2 = "Otro mensaje de texto";
+const texto3 = `Este es un string con backticks`;
 ```
+
+**texto1** y **texto2** son ejemplos de strings utilizando comillas simples y dobles, respectivamente.
+**texto3** es un string utilizando backticks, permitiendo la interpolación de variables y multilineas.
+
+- **Notación con Objetos (Evitar)**
+
+Aunque es posible crear strings utilizando el constructor String, esta práctica es menos común y generalmente desaconsejada debido a su complejidad y posible confusión. Utilizar new String() crea un objeto en lugar de un valor primitivo, lo cual puede llevar a comportamientos inesperados.
+
+```js copy filename="JavaScript"
+const texto1 = new String("¡Hola a todos!");
+const texto2 = new String("Otro mensaje de texto");
+```
+
+En este ejemplo, **texto1** y **texto2** son objetos String, no valores primitivos, lo cual puede complicar comparaciones y otras operaciones.
 
 **Características de los Strings**
 
@@ -2445,8 +2365,6 @@ let modificado = original + ", mundo";
 console.log(original); // 'Hola'
 console.log(modificado); // 'Hola, mundo'
 ```
-
-- **Tipo de dato primitivo:** Los strings son uno de los tipos de datos primitivos en JavaScript, junto con números, booleanos, null, undefined, y símbolos.
 
 - **Uso de Unicode:** JavaScript utiliza Unicode para representar caracteres, lo que permite incluir caracteres de casi todos los idiomas y muchos símbolos especiales.
 
@@ -2610,9 +2528,18 @@ La propiedad length es la más utilizada y la única propiedad fundamentalmente 
 - Se puede acceder a ella directamente desde cualquier string sin necesidad de guardarlo en una variable.
 
 ```js copy filename="JavaScript"
-let ejemplo = "JavaScript";
-console.log(ejemplo.length); // 10
+let str = "java script language";
+console.log(str.length); // 20
 ```
+
+<div className="flex justify-center my-5">
+  <Image
+    src="/assets/img/length.png"
+    alt="Elemento en HTML"
+    width={750}
+    height={750}
+  />
+</div>
 
 2. **Propiedad constructor**
 
@@ -2722,14 +2649,23 @@ string.charAt(pos);
 <h4 className="font-medium mt-5">Ejemplo</h4>
 
 ```js copy filename="JavaScript"
-let texto = "JavaScript";
-console.log(texto.charAt(0)); // "J"
-console.log(texto.charAt(4)); // "S"
-console.log(texto.charAt(9)); // "t"
-console.log(texto.charAt(10)); // ""
+let str = "java script language";
+console.log(texto.charAt(0)); // "j"
+console.log(texto.charAt(4)); // " "
+console.log(texto.charAt(9)); // "p"
+console.log(texto.charAt(10)); // "t"
 ```
 
 En este ejemplo, charAt se usa para obtener los caracteres en las posiciones 0, 4 y 9 del string "JavaScript". También muestra cómo se comporta cuando el índice está fuera del rango del string, devolviendo una cadena vacía.
+
+<div className="flex justify-center my-5">
+  <Image
+    src="/assets/img/charAt.png"
+    alt="Elemento en HTML"
+    width={750}
+    height={750}
+  />
+</div>
 
 2. **Posición de cierto carácter**
 
@@ -3046,6 +2982,15 @@ console.log(subcadena4); // "mar"
 
 **Inicio y fin negativos:** En el ejemplo texto.slice(-6, -3), se extraen los caracteres desde el noveno índice desde el final del string hasta el tercer índice desde el final.
 
+<div className="flex justify-center my-5">
+  <Image
+    src="/assets/img/slice.png"
+    alt="Elemento en HTML"
+    width={750}
+    height={750}
+  />
+</div>
+
 **Dividir un texto en partes (array)**
 
 El método .split() en JavaScript ofrece una flexibilidad considerable para dividir strings en arrays utilizando separadores específicos. Este método se puede aplicar de varias maneras, dependiendo de si el separador es una cadena fija, una expresión regular, o si se establece un límite en la cantidad de splits. Profundicemos en los detalles técnicos y las variantes de este método para entender mejor su aplicación y comportamiento en diferentes contextos.
@@ -3128,13 +3073,22 @@ console.log(firstTwoSentences);
 
 Este script divide word en caracteres, los invierte y luego los une de nuevo, resultando en "sdrawkcab".
 
+<div className="flex justify-center my-5">
+  <Image
+    src="/assets/img/split.png"
+    alt="Elemento en HTML"
+    width={750}
+    height={750}
+  />
+</div>
+
 ### Buscar y Reemplazar
 
 En JavaScript, las operaciones de búsqueda y reemplazo son fundamentales para manipular cadenas de texto. Estas operaciones permiten identificar subcadenas específicas dentro de una cadena mayor y, si es necesario, reemplazarlas con una nueva subcadena. Esto es extremadamente útil en muchas aplicaciones web, como la validación de formularios, la limpieza de datos de entrada, o simplemente la transformación de textos según las necesidades del usuario.
 
 🔍Verificar(🔍): Este es el más sencillo de los tres métodos. Sólo comprueba si existe un fragmento de texto. 🕵️‍♀️ Buscar (🔍 🕵️‍♀️): busca un fragmento de texto y devuelve información sobre el texto encontrado (ubicación, texto...). 🔁 Reemplazar (🔍 🕵️‍♀️ 🔁): busca y reemplaza texto. En general, es más caro.
 
-**Método .startsWith()**
+**Método .startsWith(text, from)**
 
 El método .startsWith() en JavaScript se utiliza para determinar si una cadena de texto comienza con los caracteres especificados, devolviendo true si es así y false de lo contrario. Es fundamental en situaciones donde es necesario validar los inicios de las cadenas, como códigos de productos, protocolos en URLs, o simplemente condiciones de formato.
 
@@ -4444,3 +4398,1659 @@ console.log(typeof variable); // "object"
 console.log(null == undefined); // true
 console.log(null === undefined); // false
 ```
+
+## Funciones
+
+En JavaScript, una función es un bloque de código diseñado para realizar una tarea específica. Este bloque de código se define una vez y puede ser ejecutado o "llamado" en cualquier momento, a menudo varias veces, lo que permite la reutilización del código y una mejor organización del programa. Las funciones son una parte fundamental de la programación en JavaScript y se utilizan para modularizar el código, mejorar la legibilidad, y permitir la reutilización.
+
+**¿Por qué usar funciones?**
+
+Las funciones son esenciales en JavaScript por varias razones:
+
+- **Reutilización del Código:** Permiten escribir un conjunto de instrucciones una vez y reutilizarlas varias veces. Esto reduce la cantidad de código duplicado y facilita la implementación de cambios.
+
+- **Modularidad:** Ayudan a descomponer el código en bloques lógicos más pequeños y manejables. Cada función puede representar una unidad de funcionalidad específica, lo que facilita el mantenimiento y la comprensión del código.
+
+- **Abstracción:** Simplifican el código al ocultar sus detalles internos y exponer solo lo necesario para su uso. Los usuarios de una función no necesitan conocer su implementación interna, solo necesitan saber cómo llamarla y qué parámetros requiere.
+
+- **Mantenibilidad:** Facilitan el mantenimiento y actualización del código. Al tener la lógica encapsulada en funciones, los cambios se pueden realizar en un solo lugar y afectar a todas las llamadas a la función.
+
+### Partes de una Función
+
+Las funciones en JavaScript se componen de varias partes clave que determinan cómo se definen y cómo se comportan.
+
+1. **Palabra clave function**
+
+La palabra clave function se utiliza para declarar una función. Indica a JavaScript que estás definiendo una función.
+
+```js copy filename="JavaScript"
+function miFuncion() {
+  // Cuerpo de la función
+}
+```
+
+2. **Nombre de la Función**
+
+El nombre de la función sigue a la palabra clave function. Debe ser único dentro de su alcance y describir lo que hace la función. Los nombres de funciones deben seguir las reglas de nombramiento de variables en JavaScript, como empezar con una letra, guion bajo (\_), o signo de dólar ($).
+
+```js copy filename="JavaScript"
+function calcularArea() {
+  // Cuerpo de la función
+}
+```
+
+3. **Parámetros de la Función**
+
+Los parámetros de función en JavaScript son fundamentales para la flexibilidad y reutilización del código. Permiten pasar información a las funciones para que puedan operar sobre datos específicos sin depender de variables globales.
+
+Los parámetros son variables que se pasan a la función y se definen dentro de los paréntesis después del nombre de la función. Estos parámetros actúan como variables locales dentro de la función. La forma en que se definen y utilizan puede influir significativamente en cómo se escribe y mantiene el código.
+
+```js copy filename="JavaScript"
+function sumar(a, b) {
+  return a + b;
+}
+```
+
+En este ejemplo, a y b son parámetros de la función sumar.
+
+**Nombre de los Parámetros**
+
+Los parámetros se definen en la lista de parámetros de la función, dentro de los paréntesis que siguen al nombre de la función. Los nombres de los parámetros deben seguir las mismas reglas de nomenclatura que las variables en JavaScript.
+
+```js copy filename="JavaScript"
+function sumar(a, b) {
+  return a + b;
+}
+```
+
+**Tipos de Parámetros**
+
+- **Parámetros Fijos:** Son los parámetros básicos y más comunes. Se definen en la declaración de la función y se espera que se proporcionen durante la llamada a la función. Cada parámetro actúa como una variable local dentro de la función. Los valores que se pasan a estos parámetros durante la llamada a la función se denominan argumentos.
+
+Los parámetros fijos son ideales cuando se sabe exactamente cuántos argumentos necesitará la función y esos argumentos son siempre necesarios para la ejecución de la función.
+
+```js copy filename="JavaScript"
+function sumar(a, b) {
+  return a + b;
+}
+```
+
+- **Parámetros por Defecto:** Permiten establecer valores predeterminados para los parámetros. Si no se proporciona un argumento durante la llamada a la función, se utiliza el valor por defecto especificado. Esta característica es útil para crear funciones más flexibles que pueden ser llamadas con menos argumentos sin causar errores.
+
+Los parámetros por defecto son introducidos en ECMAScript 2015 (ES6) y permiten definir funciones que pueden manejar una variedad de situaciones sin requerir múltiples sobrecargas de funciones. Esto simplifica el código y mejora la legibilidad.
+
+```js copy filename="JavaScript"
+function saludar(nombre = "Invitado") {
+  console.log("Hola, " + nombre);
+}
+```
+
+En este ejemplo, si no se proporciona un argumento para nombre, se utilizará "Invitado".
+
+- **Parámetros Rest (Rest Parameters):** Los parámetros Rest permiten representar un número indefinido de argumentos como un array. Se declaran con tres puntos seguidos (...) seguidos de un nombre de parámetro. Esto es útil cuando no se sabe cuántos argumentos serán pasados a la función o cuando se desea tratar un número variable de argumentos como un array.
+
+Los parámetros Rest son especialmente útiles en situaciones donde se necesita trabajar con una cantidad variable de datos. Por ejemplo, se pueden utilizar en funciones que realizan operaciones matemáticas en un número indefinido de números o en funciones que combinan múltiples entradas en una sola salida.
+
+La sintaxis de los parámetros Rest no solo simplifica el manejo de múltiples argumentos, sino que también mejora la legibilidad del código al dejar claro que la función puede aceptar un número variable de argumentos. Además, los parámetros Rest siempre deben ser el último parámetro en la lista de parámetros de la función, lo que garantiza que todos los argumentos adicionales se agruparán en el array de Rest.
+
+```js copy filename="JavaScript"
+function sumar(...numeros) {
+  return numeros.reduce((a, b) => a + b, 0);
+}
+```
+
+En este ejemplo, numeros es un array que contiene todos los argumentos pasados a la función, permitiendo realizar operaciones sobre un número variable de argumentos. La función reduce se utiliza para sumar todos los elementos del array numeros.
+
+- **Argumentos Nombrados (Objetos como Parámetros):** En lugar de una lista de parámetros, se puede pasar un objeto con propiedades nombradas. Esto es útil cuando una función tiene muchos parámetros, mejorando la legibilidad y flexibilidad. Los argumentos nombrados permiten pasar parámetros de manera más clara y ordenada, especialmente cuando se trabaja con funciones que requieren muchos argumentos o cuando algunos de esos argumentos son opcionales.
+
+Los argumentos nombrados también permiten la desestructuración de objetos, una característica introducida en ECMAScript 2015 (ES6), que facilita el acceso a las propiedades del objeto directamente dentro del cuerpo de la función. Esto hace que el código sea más conciso y fácil de leer.
+
+```js copy filename="JavaScript"
+function configurar({ velocidad = 5, altura = 10 }) {
+  console.log(`Velocidad: ${velocidad}, Altura: ${altura}`);
+}
+configurar({ altura: 20, velocidad: 3 });
+```
+
+En este ejemplo, el objeto pasado como argumento define de manera clara y flexible los parámetros de la función. Si no se proporcionan ciertos valores, se utilizan los valores predeterminados especificados en la declaración de la función.
+
+4. **Cuerpo de la Función**
+
+El cuerpo de la función está encerrado entre llaves {} y contiene las instrucciones que se ejecutarán cuando la función sea llamada. El cuerpo puede contener declaraciones de variables, operaciones, llamadas a otras funciones y cualquier otra lógica necesaria para realizar la tarea de la función.
+
+```js copy filename="JavaScript"
+function saludar(nombre) {
+  console.log("Hola " + nombre);
+}
+```
+
+En este ejemplo, el cuerpo de la función saludar contiene una llamada a console.log que imprime un mensaje de saludo.
+
+5. **Declaración return (Opcional)**
+
+La sentencia return en JavaScript se utiliza dentro de una función para finalizar su ejecución y especificar un valor para ser devuelto al código que llamó a la función. Esta sentencia es esencial para controlar el flujo de una función y facilitar la comunicación entre la función y el resto del programa.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function sumar(a, b) {
+  return a + b; // Devolvemos la suma de a y b al exterior
+  console.log("Suma realizada."); // Este código nunca se ejecutará
+}
+
+// Ejecución
+const resultado = sumar(5, 5); // Se guarda 10 en la variable resultado
+console.log("Resultado =", resultado); // Mostramos el resultado por consola
+```
+
+En este ejemplo, la función sumar devuelve la suma de los dos parámetros y finaliza su ejecución en la línea del return. La línea console.log("Suma realizada."); no se ejecutará porque return termina la función inmediatamente.
+
+**Características de la Sentencia return**
+
+- **Finalización de la Función:** Cuando se ejecuta return, la función termina inmediatamente. Cualquier código que se encuentre después de return dentro de la función no se ejecutará.
+
+- **Devolver un Valor:** return puede ser seguido por un valor o una expresión. Este valor se devuelve al código que invocó la función. Si no se especifica un valor después de return, o si la función no tiene una sentencia return, la función devuelve undefined.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function obtenerMaximo(a, b) {
+  if (a > b) {
+    return a;
+  } else {
+    return b;
+  }
+}
+let maximo = obtenerMaximo(5, 10); // maximo es 10
+console.log("Máximo =", maximo);
+```
+
+En este ejemplo, la función obtenerMaximo devuelve el valor mayor entre a y b.
+
+**Uso en la Lógica de la Función**
+
+return no solo devuelve un valor, sino que también puede ser usado para controlar el flujo de la función basado en ciertas condiciones. Esto permite tener múltiples sentencias return en diferentes partes de una función, cada una bajo una condición diferente.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function clasificarEdad(edad) {
+  if (edad < 18) {
+    return "Menor";
+  }
+  return "Adulto";
+}
+let clasificacion = clasificarEdad(16); // clasificacion es "Menor"
+console.log("Clasificación =", clasificacion);
+```
+
+Aquí, la función clasificarEdad devuelve "Menor" si la edad es menor a 18, y "Adulto" en caso contrario.
+
+**La Declaración return en Funciones**
+
+Las funciones que han sido llamadas ejecutan una secuencia de instrucciones contenidas en su cuerpo. La palabra clave return permite que la función finalice exactamente donde aparece y devuelva un valor específico al lugar donde fue llamada.
+
+```js copy filename="JavaScript"
+function showMsg() {
+  console.log("message 1");
+  return;
+  console.log("message 2"); // Esta línea nunca se ejecutará
+}
+showMsg(); // -> "message 1"
+```
+
+En este ejemplo, showMsg muestra solo "message 1" y luego termina debido al return.
+
+### Creación de Funciones en JavaScript
+
+En JavaScript, hay varias formas de crear funciones:
+
+1. **Declaración de Función**
+
+La declaración de función es la forma más común y tradicional de definir una función en JavaScript. Esta técnica utiliza la palabra clave function, seguida del nombre de la función, una lista de parámetros encerrados entre paréntesis y el cuerpo de la función delimitado por llaves {}.
+
+- **Sintaxis:**
+
+```js copy filename="JavaScript"
+function nombreDeLaFuncion(parámetros) {
+  // Cuerpo de la función
+}
+```
+
+- **Características:**
+
+Hoisting: Las declaraciones de función son elevadas al comienzo de su contexto de ejecución, permitiendo que las funciones sean llamadas antes de ser declaradas en el código. Esto es debido al comportamiento del motor de JavaScript, que primero registra todas las declaraciones de funciones y luego ejecuta el resto del código.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+saludar(); // 'Hola'
+
+function saludar() {
+  return "Hola";
+}
+```
+
+2. **Expresión de Función**
+
+Una expresión de función define una función dentro de una expresión. Las funciones definidas de esta manera pueden ser anónimas o tener un nombre. Las expresiones de función no son elevadas, por lo que solo están disponibles después de que se ha evaluado la expresión.
+
+- **Sintaxis:**
+
+```js copy filename="JavaScript"
+const nombreDeLaFuncion = function (parámetros) {
+  // Cuerpo de la función
+};
+```
+
+- **Características:**
+
+  - **Funciones Anónimas:** Las expresiones de función pueden ser anónimas, es decir, no tienen nombre, lo que es útil para funciones que se utilizan una sola vez.
+  - **Asignación a Variables:** Se pueden asignar a variables, lo que permite almacenarlas y ejecutarlas posteriormente.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const saludo = function () {
+  return "Hola";
+};
+
+saludo(); // 'Hola'
+```
+
+3. **Constructor de Función**
+
+El constructor Function crea un nuevo objeto Function. Los parámetros del constructor se proporcionan como cadenas, seguidas por el cuerpo de la función también como una cadena.
+
+- **Sintaxis:**
+
+```js copy filename="JavaScript"
+const nombreDeLaFuncion = new Function("parámetros", "cuerpo de la función");
+```
+
+- **Características:**
+
+Uso Raro: Este método es raro y generalmente no se recomienda debido a problemas de rendimiento y seguridad.
+Cadenas como Código: El cuerpo de la función y los parámetros se pasan como cadenas, lo cual puede ser menos eficiente y seguro.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const saludar = new Function("return 'Hola';");
+
+saludar(); // 'Hola'
+```
+
+### Llamada o Ejecución de la Función
+
+Una vez que una función ha sido definida, se puede ejecutar (o "llamar") en cualquier momento. La llamada de una función ejecuta el código definido en su cuerpo.
+
+1. **Llamar una Función Simple**
+
+Para llamar a una función, se utiliza su nombre seguido de paréntesis.
+
+- **Sintaxis:**
+
+```js copy filename="JavaScript"
+nombreDeLaFuncion();
+```
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function saludar() {
+  console.log("Hola, Mundo!");
+}
+
+saludar(); // Ejecuta la función 'saludar' y muestra "Hola, Mundo!"
+```
+
+2. **Llamar una Función con Parámetros**
+
+Si una función tiene parámetros, se pueden pasar argumentos cuando se llama a la función. Los argumentos son los valores reales que se pasan a la función.
+
+- **Sintaxis:**
+
+```js copy filename="JavaScript"
+nombreDeLaFuncion(argumento1, argumento2, ...);
+```
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function saludar(nombre) {
+  console.log("Hola, " + nombre);
+}
+
+saludar("Jhoswe"); // Muestra "Hola, Jhoswe"
+```
+
+3. **Almacenar y Usar el Valor Devuelto**
+
+Cuando una función devuelve un valor usando la declaración return, ese valor puede ser almacenado en una variable para su uso posterior.
+
+- **Sintaxis:**
+
+```js copy filename="JavaScript"
+const resultado = nombreDeLaFuncion(argumentos);
+```
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function sumar(a, b) {
+  return a + b;
+}
+
+const resultado = sumar(3, 4); // Almacena el valor devuelto (7) en la variable 'resultado'
+```
+
+- **Características de la declaración return:**
+
+Terminación de la Función: La declaración return termina la ejecución de la función y especifica un valor para ser devuelto al llamador.
+Valor Devuelto: Si se omite return, la función devuelve undefined de manera predeterminada.
+
+### Variables Locales
+
+Las variables locales en JavaScript son aquellas que se declaran dentro del cuerpo de una función. Estas variables solo existen y son accesibles dentro de la función en la que se declaran. Al finalizar la ejecución de la función, estas variables se destruyen y su valor se pierde.
+
+**Características de las Variables Locales:**
+
+- **Alcance Limitado:** Las variables locales solo son accesibles dentro de la función en la que se declaran.
+- **Declaración con let y var:**
+
+  - Las variables declaradas con let son locales dentro del bloque de código delimitado por llaves {}.
+  - Las variables declaradas con var son locales dentro del bloque de la función en la que se declaran.
+
+- **Evita Conflictos de Nombres:** Al usar variables locales, se evita que el nombre de la variable interfiera con otras variables en diferentes partes del programa.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function calcularPromedio(notas) {
+  let suma = 0; // Variable local
+  for (let i = 0; i < notas.length; i++) {
+    suma += notas[i];
+  }
+  let promedio = suma / notas.length; // Otra variable local
+  return promedio;
+}
+
+const notas = [10, 8, 9, 7, 10];
+console.log(calcularPromedio(notas)); // 8.8
+```
+
+En este ejemplo, suma y promedio son variables locales a la función calcularPromedio y no pueden ser accedidas desde fuera de esta función.
+
+### Shadowing (Sombreado de Variables)
+
+El shadowing ocurre cuando una variable local dentro de una función tiene el mismo nombre que una variable en un ámbito superior (global o de función externa). La variable local "sombrea" a la variable del ámbito superior, haciendo que dentro de la función, solo sea accesible la variable local.
+
+**Características del Shadowing:**
+
+- **Parámetros de Función:** Los parámetros de la función se tratan como variables locales y pueden sombrear variables globales o variables en un ámbito externo con el mismo nombre.
+- **Variables Locales:** Las variables locales pueden sombrear variables globales o variables en un ámbito externo con el mismo nombre.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let a = 100,
+  b = 200,
+  c = 300;
+
+function ejemploShadowing(a) {
+  let b = 10;
+  console.log(a); // Parámetro a (sombreado)
+  console.log(b); // Variable local b (sombreado)
+  console.log(c); // Variable global c (no sombreada)
+}
+
+ejemploShadowing(1);
+// 1 (valor del parámetro a)
+// 10 (valor de la variable local b)
+// 300 (valor de la variable global c)
+
+console.log(a); // 100 (valor global)
+console.log(b); // 200 (valor global)
+console.log(c); // 300 (valor global)
+```
+
+En este ejemplo, la variable a pasada como parámetro y la variable b declarada dentro de la función sombrean a las variables globales con los mismos nombres.
+
+### Recursion
+
+La recursión es una técnica de programación donde una función se llama a sí misma directa o indirectamente para resolver un problema. Esta técnica es especialmente útil para problemas que pueden dividirse en subproblemas más pequeños del mismo tipo.
+
+**Definición de la Recursión**
+
+La recursión es un método de resolución de problemas en el cual la solución a un problema depende de soluciones a instancias más pequeñas del mismo problema. Los problemas que se resuelven mediante la recursión suelen tener dos componentes clave:
+
+- **Caso Base:** Una condición que termina la recursión.
+- **Llamada Recursiva:** Una llamada a la misma función con un subproblema más pequeño.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+**El factorial de un número**
+
+El factorial de un número
+𝑛 (denotado como 𝑛!) se define como el producto de todos los enteros positivos desde 1 hasta 𝑛. Formalmente:
+
+𝑛!=𝑛×(𝑛−1)×(𝑛−2)×...×2×1
+
+En la definición recursiva, esto puede ser escrito como:
+
+𝑛!=𝑛×(𝑛−1)!
+
+Con la condición base:
+
+0!=1
+
+```js copy filename="JavaScript"
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+```
+
+En esta implementación, la función factorial se llama a sí misma con
+𝑛−1 hasta que 𝑛 es igual a 0. Cuando 𝑛 es 0, la función devuelve 1, lo que finaliza la cadena de llamadas recursivas.
+
+<div className="flex justify-center my-5">
+  <Image
+    src="/assets/img/factorial.png"
+    alt="Elemento en HTML"
+    width={750}
+    height={750}
+  />
+</div>
+
+**Secuencia de Fibonacci**
+
+La secuencia de Fibonacci es otra serie que puede ser definida recursivamente. Cada número en la secuencia es la suma de los dos anteriores. Formalmente:
+
+𝐹(0)=0
+𝐹(1)=1
+𝐹(𝑛)=𝐹(𝑛−1)+𝐹(𝑛−2)
+
+Implementación en JavaScript:
+
+```js copy filename="JavaScript"
+function fibonacci(n) {
+  if (n <= 1) {
+    return n;
+  } else {
+    return fibonacci(n - 1) + fibonacci(n - 2);
+  }
+}
+```
+
+En este caso, la función fibonacci se llama a sí misma dos veces para calcular los dos números anteriores en la secuencia, hasta que alcanza las condiciones base
+
+**Consideraciones sobre Recursión**
+
+- **Eficiencia:** La recursión puede ser menos eficiente que la iteración en términos de tiempo y uso de memoria debido a la sobrecarga de las llamadas a funciones.
+- **Llamadas anidadas:** En la recursión, cada llamada a la función se apila hasta que se alcanza el caso base. Esto puede llevar a problemas de desbordamiento de pila si la recursión es demasiado profunda.
+- **Problemas adecuados:** La recursión es ideal para problemas que tienen una estructura repetitiva o que se pueden dividir fácilmente en subproblemas más pequeños.
+
+### Funciones como Primeras Clases
+
+En JavaScript, las funciones son miembros de primera clase, lo que significa que pueden ser tratadas como cualquier otro dato. Esto incluye ser asignadas a variables, pasadas como argumentos a otras funciones, y retornadas desde funciones.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function operacion(func, primero, segundo) {
+  return func(primero, segundo);
+}
+
+const sumar = function (a, b) {
+  return a + b;
+};
+
+const resultado = operacion(sumar, 10, 20);
+```
+
+En este ejemplo, operacion toma una función func y dos argumentos primero y segundo. Luego llama a func con estos argumentos. La función sumar se pasa como argumento a operacion.
+
+### Funciones Anónimas
+
+Las funciones anónimas, también conocidas como funciones lambda, son un tipo de funciones que se declaran sin un nombre y se asignan a una variable. Estas funciones son comunes en JavaScript, especialmente cuando se pasan como argumentos a otras funciones, permitiendo un código más conciso y legible.
+
+**¿Qué Son las Funciones Anónimas?**
+
+Una función anónima se declara sin un nombre de función y se asigna a una variable. Estas funciones se pueden utilizar haciendo referencia a la variable en la que se almacenan.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+// Función anónima "saludo"
+const saludo = function () {
+  return "Hola";
+};
+
+console.log(saludo); // ƒ () { return 'Hola'; }
+console.log(saludo()); // 'Hola'
+```
+
+En este ejemplo, la función anónima que devuelve "Hola" se asigna a la variable saludo. La función puede ser invocada utilizando saludo().
+
+**Expresiones de Función Nombradas y Anónimas**
+
+Las expresiones de función pueden ser nombradas o anónimas. Una expresión de función nombrada incluye un nombre, lo que puede ser útil para la depuración y la recursión. En contraste, las funciones anónimas no tienen un nombre explícito.
+
+<h4 className="font-medium mt-5">Ejemplo de Expresión de Función Nombrada</h4>
+
+```js copy filename="JavaScript"
+const factorial = function fact(n) {
+  return n <= 1 ? 1 : n * fact(n - 1);
+};
+console.log(factorial(5)); // 120
+```
+
+En este ejemplo, fact es el nombre de la función utilizado dentro de la función para llamarse a sí misma recursivamente. La función se asigna a la variable factorial.
+
+### Callbacks
+
+En JavaScript, un callback es una función que se pasa como argumento a otra función y se ejecuta dentro de esa función externa. Los callbacks permiten que una función tome decisiones o ejecute tareas adicionales que no se conocen hasta que se llama a la función externa. Este concepto es fundamental para la programación asíncrona, aunque también se usa en contextos síncronos.
+
+Imagina que una función es como un chef que cocina un plato. Un callback sería como una receta específica que el chef puede seguir en algún momento durante la preparación del plato. La receta puede cambiar dependiendo de qué plato el chef quiera cocinar.
+
+**¿Por Qué Usar Callbacks?**
+
+Los callbacks son esenciales porque:
+
+- **Promueven la reutilización del código:** Podemos crear funciones genéricas que pueden ser configuradas o extendidas con callbacks.
+- **Facilitan la programación asíncrona:** Permiten que el código responda a eventos sin bloquear el flujo principal del programa.
+- **Aumentan la flexibilidad:** Las funciones pueden aceptar diferentes comportamientos a través de callbacks.
+
+**Callbacks Síncronos**
+
+Un callback síncrono es un callback que se ejecuta inmediatamente dentro de la función que lo recibe, respetando el flujo natural del código. Esto significa que el callback se ejecuta tan pronto como se llega a su punto de invocación en la secuencia del código.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Imaginemos que tenemos una función que simplemente imprime un mensaje, y otra función que toma una función como argumento y la ejecuta. Aquí hay un ejemplo básico:
+
+```js copy filename="JavaScript"
+// Definición de una función callback
+const imprimirMensaje = function () {
+  console.log("Callback ejecutado.");
+};
+
+// Definición de una función que recibe un callback
+const ejecutarCallback = function (callback) {
+  console.log("Inicio de la función principal.");
+  callback(); // Aquí se ejecuta el callback
+  console.log("Fin de la función principal.");
+};
+
+// Llamada a la función principal pasando el callback como argumento
+ejecutarCallback(imprimirMensaje);
+```
+
+En este caso, ejecutarCallback toma imprimirMensaje como argumento y lo ejecuta. La salida será:
+
+```js copy filename="JavaScript"
+Inicio de la función principal.
+Callback ejecutado.
+Fin de la función principal.
+```
+
+Esto muestra que el callback se ejecuta en el lugar donde fue invocado, siguiendo el flujo del código.
+
+**Uso de Funciones Anónimas como Callbacks**
+
+A veces, los callbacks son funciones anónimas, lo que significa que se definen en el momento de pasarlas como argumentos y no tienen un nombre específico. Esto es útil para tareas rápidas y específicas:
+
+```js copy filename="JavaScript"
+const ejecutarCallback = function (callback) {
+  console.log("Inicio de la función principal.");
+  callback(); // Se ejecuta el callback
+  console.log("Fin de la función principal.");
+};
+
+// Uso de una función anónima como callback
+ejecutarCallback(function () {
+  console.log("Callback anónimo ejecutado.");
+});
+```
+
+Aquí, la función anónima que imprime "Callback anónimo ejecutado." se pasa directamente como argumento a ejecutarCallback.
+
+- **Aplicaciones y Beneficios de los Callbacks Síncronos**
+
+1. **Modularidad:** Los callbacks permiten dividir el código en módulos más pequeños y manejables. Cada función puede enfocarse en una sola tarea, haciendo el código más claro y fácil de mantener.
+
+```js copy filename="JavaScript"
+const validarUsuario = function (usuario, callback) {
+  if (usuario.edad >= 18) {
+    callback(true);
+  } else {
+    callback(false);
+  }
+};
+
+const mostrarResultado = function (esValido) {
+  if (esValido) {
+    console.log("El usuario es válido.");
+  } else {
+    console.log("El usuario no es válido.");
+  }
+};
+
+const usuario = { nombre: "Carlos", edad: 20 };
+validarUsuario(usuario, mostrarResultado);
+```
+
+En este ejemplo, validarUsuario toma un objeto usuario y una función callback (mostrarResultado). Dependiendo de la edad del usuario, la función callback se invoca con true o false.
+
+2. **Flexibilidad:** Las funciones pueden comportarse de manera diferente según el callback que se les pase. Esto permite que una sola función realice múltiples tareas basadas en las necesidades del momento.
+
+3. **Reutilización del Código:** Los callbacks permiten reutilizar funciones en diferentes contextos sin necesidad de duplicar el código.
+
+**Callbacks Asíncronos**
+
+Los callbacks asíncronos son una herramienta fundamental en JavaScript, especialmente cuando se trata de manejar operaciones que no se completan instantáneamente. Estas operaciones pueden incluir solicitudes de red, temporizadores, o cualquier otra tarea que deba realizarse fuera del flujo normal de ejecución. A continuación, se presenta una definición completa de los callbacks asíncronos, detallando su funcionamiento, importancia y cómo se utilizan en el contexto de JavaScript.
+
+Un callback asíncrono es una función que se pasa como argumento a otra función y que se ejecuta después de que se haya completado una operación asíncrona. A diferencia de los callbacks síncronos, los callbacks asíncronos no se ejecutan inmediatamente después de ser llamados. En su lugar, se programan para ejecutarse en el futuro, una vez que la operación asíncrona haya finalizado.
+
+- **Importancia de los Callbacks Asíncronos**
+
+1. **Manejo de Tareas Asíncronas:** Permiten que las tareas que toman tiempo, como las solicitudes HTTP, las operaciones de E/S (entrada/salida) y los temporizadores, no bloqueen el hilo principal de ejecución.
+2. **Interactividad del Usuario:** Mejoran la experiencia del usuario al permitir que la interfaz siga respondiendo mientras se realizan operaciones de fondo.
+3. **Eficiencia:** Ayudan a aprovechar mejor los recursos del sistema al permitir que múltiples operaciones se realicen en paralelo.
+
+- **Funcionamiento de los Callbacks Asíncronos**
+
+Cuando se invoca una operación asíncrona, se pasa un callback que se ejecutará una vez que la operación haya terminado. Durante el tiempo en que la operación asíncrona está en progreso, el motor de JavaScript puede continuar ejecutando otras instrucciones. Una vez que la operación finaliza, el callback se coloca en la cola de tareas (event loop) y se ejecuta cuando el hilo principal está libre.
+
+**Funciones setTimeout y setInterval**
+
+Las funciones setTimeout y setInterval son ejemplos comunes de cómo se manejan los callbacks asíncronos en JavaScript. Ambas funciones permiten ejecutar código después de un cierto período de tiempo, pero difieren en su comportamiento:
+
+- **setTimeout**
+
+La función setTimeout se usa cuando se desea realizar una acción después de un retraso específico. Toma dos argumentos: una función de callback y el tiempo en milisegundos después del cual se debe ejecutar el callback.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function mostrarMensaje() {
+  console.log("Este mensaje aparece después de 2 segundos");
+}
+
+setTimeout(mostrarMensaje, 2000);
+console.log("Este mensaje aparece inmediatamente");
+```
+
+<h4 className="font-medium mt-5">Salida</h4>
+
+```js copy filename="JavaScript"
+Este mensaje aparece inmediatamente
+Este mensaje aparece después de 2 segundos
+```
+
+En este ejemplo, mostrarMensaje se ejecuta después de un retraso de 2000 milisegundos (2 segundos). Mientras tanto, el mensaje "Este mensaje aparece inmediatamente" se imprime sin esperar.
+
+- **setInterval**
+
+La función setInterval ejecuta una función repetidamente a intervalos regulares. Toma dos argumentos: una función de callback y el intervalo de tiempo en milisegundos entre cada ejecución del callback.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+function mostrarHora() {
+  console.log(new Date().toLocaleTimeString());
+}
+
+setInterval(mostrarHora, 1000);
+```
+
+En este ejemplo, mostrarHora se ejecutará cada 1000 milisegundos (1 segundo), mostrando la hora actual en la consola.
+
+**La Evolución de los Callbacks en JavaScript**
+
+En los primeros días de JavaScript, los callbacks eran la principal forma de manejar operaciones asíncronas. Sin embargo, a medida que el lenguaje y las aplicaciones han evolucionado, se han desarrollado nuevas herramientas y técnicas para mejorar la gestión de la asincronía, reducir la complejidad y mejorar la legibilidad del código. Vamos a explorar por qué los callbacks han caído en desuso en favor de estas nuevas herramientas y profundizar en el tema del "callback hell".
+
+- **¿Por Qué Ya No Son Recomendables los Callbacks?**
+
+1. **Complejidad y Legibilidad:** El uso intensivo de callbacks puede llevar a un código que es difícil de leer y mantener. A medida que las funciones se anidan unas dentro de otras, el código se desplaza hacia la derecha, creando una estructura piramidal conocida como "callback hell".
+
+El "callback hell" es un término que se refiere a la situación en la que se anidan múltiples callbacks unos dentro de otros, creando un código difícil de leer y mantener. Veamos un ejemplo típico de callback hell:
+
+```js copy filename="JavaScript"
+doSomething(function (result) {
+  doSomethingElse(result, function (newResult) {
+    doAnotherThing(newResult, function (finalResult) {
+      console.log(finalResult);
+    });
+  });
+});
+```
+
+A medida que se anidan más y más callbacks, el código se vuelve más profundo y difícil de seguir. Esto no solo afecta la legibilidad, sino que también complica el manejo de errores y la lógica de flujo.
+
+2. **Manejo de Errores:** Los callbacks pueden complicar el manejo de errores. Cada callback debe incluir su propia lógica de manejo de errores, lo que puede resultar en duplicación de código y potenciales omisiones.
+
+3. **Encadenamiento y Composición:** Los callbacks no se prestan bien a la composición y el encadenamiento de operaciones asíncronas. Cada nueva operación asíncrona requiere un nuevo nivel de anidamiento, lo que aumenta la complejidad del código.
+
+4. **Promesas y Async/Await:** Las promesas y la sintaxis async/await han sido introducidas en JavaScript para resolver estos problemas. Ofrecen una forma más clara y manejable de manejar la asincronía, con mejor soporte para el manejo de errores y una estructura de código más lineal y legible.
+
+### Funciones Autoejecutables (IIFE)
+
+Las funciones autoejecutables, conocidas como IIFE (Immediately Invoked Function Expressions), son funciones que se ejecutan inmediatamente después de ser definidas. Estas funciones son útiles para crear un ámbito léxico independiente, evitando la contaminación del ámbito global y proporcionando un encapsulamiento de variables y lógica.
+
+\*\*Sintaxis Básica:
+
+```js copy filename="JavaScript"
+(function () {
+  console.log("Esta es una función autoejecutable");
+})();
+```
+
+En este ejemplo, la función anónima está encerrada entre paréntesis y seguida por (), lo que hace que se ejecute inmediatamente después de ser creada. Esto permite que todo el código dentro de la función permanezca en un ámbito separado del ámbito global.
+
+**IIFE con Parámetros:**
+
+Las IIFE también pueden aceptar parámetros, permitiendo pasar valores a la función en el momento de su ejecución.
+
+```js copy filename="JavaScript"
+(function (nombre) {
+  console.log(`¡Hola, ${nombre}!`);
+})("Pepue");
+```
+
+En este ejemplo, la función autoejecutable recibe un parámetro nombre y lo utiliza para mostrar un saludo personalizado.
+
+**Devolución de Valores desde una IIFE**
+
+Si una IIFE devuelve un valor, este valor puede ser almacenado en una variable para su uso posterior.
+
+```js copy filename="JavaScript"
+const mensaje = (function (nombre) {
+  return `¡Hola, ${nombre}!`;
+})("Pepue");
+
+console.log(mensaje); // ¡Hola, Pepue!
+```
+
+Aquí, la variable mensaje almacena el valor devuelto por la función autoejecutable, que en este caso es un saludo personalizado.
+
+### Clausuras (Closures)
+
+En JavaScript, una clausura se define como una función que "encierra" variables en su propio ámbito y que pueden continuar existiendo incluso después de que la función haya terminado de ejecutarse. Esto significa que una clausura retiene una referencia al ámbito en el que fue creada, lo que le permite acceder a esas variables incluso después de que el contexto en el que se creó haya finalizado.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Consideremos el siguiente ejemplo para entender cómo funcionan las clausuras:
+
+```js copy filename="JavaScript"
+function crearContador() {
+  let contador = 0;
+  return function incrementar() {
+    contador++;
+    return contador;
+  };
+}
+
+const contador1 = crearContador();
+console.log(contador1()); // 1
+console.log(contador1()); // 2
+
+const contador2 = crearContador();
+console.log(contador2()); // 1
+console.log(contador2()); // 2
+```
+
+En este ejemplo:
+
+- \*\*La función crearContador define una variable local contador y devuelve una función incrementar que incrementa y devuelve el valor de contador.
+- La función crearContador se ejecuta dos veces, creando dos instancias diferentes de la clausura incrementar.
+- Cada instancia de incrementar tiene su propio ámbito cerrado sobre la variable contador.
+
+**Ámbitos y Clausuras**
+
+Una clausura en JavaScript retiene referencias al ámbito en el que fue creada, no solo a las variables que estaban en ese ámbito en ese momento. Esto significa que si las variables en el ámbito cerrado cambian, las clausuras que retienen referencias a ese ámbito verán esos cambios.
+
+```js copy filename="JavaScript"
+function crearSaludador(saludo) {
+  return function (nombre) {
+    console.log(`${saludo}, ${nombre}`);
+  };
+}
+
+const saludarHola = crearSaludador("Hola");
+const saludarAdios = crearSaludador("Adiós");
+
+saludarHola("Pepue"); // Hola, Pepue
+saludarAdios("Pepue"); // Adiós, Pepue
+```
+
+En este ejemplo:
+
+- La función crearSaludador toma un argumento saludo y devuelve una nueva función que toma un argumento nombre.
+- Las funciones saludarHola y saludarAdios son clausuras que retienen una referencia a sus respectivos saludos.
+
+**Clausuras y Variables Privadas**
+
+Las clausuras también son útiles para crear variables privadas. Dado que las variables definidas dentro de una función no son accesibles desde fuera de esa función, las clausuras pueden utilizarse para encapsular datos.
+
+```js copy filename="JavaScript"
+function crearContador() {
+  let contador = 0;
+  return {
+    incrementar: function () {
+      contador++;
+      return contador;
+    },
+    decrementar: function () {
+      contador--;
+      return contador;
+    },
+    obtenerValor: function () {
+      return contador;
+    },
+  };
+}
+
+const contador = crearContador();
+console.log(contador.incrementar()); // 1
+console.log(contador.incrementar()); // 2
+console.log(contador.decrementar()); // 1
+console.log(contador.obtenerValor()); // 1
+```
+
+En este ejemplo:
+
+- La función crearContador devuelve un objeto con métodos que manipulan la variable contador.
+- La variable contador no es accesible directamente desde fuera de la función, proporcionando una forma de encapsulación.
+
+**Beneficios y Usos de las Clausuras**
+
+- Encapsulación de Datos: Permiten crear variables privadas.
+- Mantenimiento del Estado: Son útiles para funciones que necesitan recordar el estado entre ejecuciones.
+- Callbacks y Eventos: Se utilizan ampliamente en programación asincrónica y manejo de eventos.
+
+**Consideraciones sobre el Uso de Clausuras**
+
+- **Consumo de Memoria:** Las clausuras pueden consumir más memoria que las funciones normales porque retienen referencias a su ámbito.
+- **Posibles Problemas de Rendimiento:** En aplicaciones de alto rendimiento, es importante gestionar correctamente las clausuras para evitar problemas de rendimiento y fugas de memoria.
+
+### Funciones Flecha (Arrow Functions)
+
+Las Arrow functions, también conocidas como funciones flecha o "fat arrow functions", son una sintaxis más concisa para escribir funciones en JavaScript introducida en ECMAScript 6 (ES6). Estas funciones aportan varias ventajas que facilitan la escritura de código más limpio y comprensible.
+
+**Definición Básica**
+
+Una función flecha se define utilizando la sintaxis =>, eliminando la necesidad de la palabra clave function. Aquí tienes un ejemplo básico comparando una función tradicional con una función flecha:
+
+```js copy filename="JavaScript"
+// Función tradicional
+const suma = function (a, b) {
+  return a + b;
+};
+
+// Función flecha
+const sumaFlecha = (a, b) => {
+  return a + b;
+};
+```
+
+**Sintaxis Simplificada**
+
+Las funciones flecha permiten simplificar aún más la sintaxis cuando el cuerpo de la función contiene una sola expresión. En este caso, se pueden omitir las llaves ({}) y la palabra clave return. La expresión se evalúa y su resultado se devuelve automáticamente.
+
+```js copy filename="JavaScript"
+const sumaFlechaSimple = (a, b) => a + b;
+```
+
+Esto hace que las funciones flecha sean especialmente útiles para operaciones simples y rápidas.
+
+**Parámetros en Funciones Flecha**
+
+Dependiendo del número de parámetros, la sintaxis de las funciones flecha puede variar:
+
+1. **Sin Parámetros**
+
+Cuando una función flecha no tiene parámetros, se utilizan paréntesis vacíos:
+
+```js copy filename="JavaScript"
+const saludar = () => "Hola";
+```
+
+2. **Un Solo Parámetro**
+
+Si la función flecha tiene un solo parámetro, se pueden omitir los paréntesis:
+
+```js copy filename="JavaScript"
+const cuadrado = (n) => n * n;
+```
+
+3. **Múltiples Parámetros**
+
+Para funciones con múltiples parámetros, los paréntesis son necesarios:
+
+```js copy filename="JavaScript"
+const multiplicar = (a, b) => a * b;
+```
+
+**Retorno de Valores**
+
+- **Funciones de Una Sola Línea**
+
+En funciones flecha con una sola línea de código, el return se añade implícitamente. Es decir, no es necesario escribir return porque el resultado de esa única expresión se devuelve automáticamente.
+
+```js copy filename="JavaScript"
+const sumaFlechaSimple = (a, b) => a + b; // Devuelve a + b automáticamente
+```
+
+- **Funciones con Múltiples Líneas**
+
+En funciones flecha con múltiples líneas de código, es necesario usar llaves {} y la palabra clave return para devolver un valor.
+
+```js copy filename="JavaScript"
+const sumaCompleja = (a, b) => {
+  const resultado = a + b;
+  return resultado; // Necesitamos return aquí
+};
+```
+
+**Limitaciones de las Funciones Flecha**
+
+- **Sin Binding de arguments**
+
+Las funciones flecha no tienen la palabra clave arguments, lo que significa que no puedes acceder a los argumentos de la función como lo harías en una función tradicional. Si necesitas acceder a arguments, puedes usar el operador rest (...).
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const sumarTodo = (...args) => args.reduce((acc, curr) => acc + curr, 0);
+```
+
+### this en JavaScript
+
+En JavaScript, la palabra clave this puede ser un concepto complicado debido a su comportamiento dependiente del contexto. Para entender completamente cómo funciona this, es importante conocer el ámbito léxico y las diferentes maneras en que puede ser vinculado (binding) a través de varias técnicas, como el uso de funciones flecha (arrow functions) y la instancia de objetos con new.
+
+**this en JavaScript**
+
+La palabra clave this se refiere a un contexto de ejecución particular. El valor de this depende de cómo se invoque la función en la que se usa. Este contexto cambiante de this puede ser tanto una ventaja como una fuente de confusión.
+
+**Vinculación (Binding)**
+
+La vinculación de this ayuda a asociar los identificadores (variables, nombres de funciones) con el contexto de ejecución actual. Existen varios tipos de vinculaciones:
+
+1. **Vinculación Léxica (Lexical Binding) con Arrow Functions**
+
+Las arrow functions, introducidas en ECMAScript 6 (ES6), no tienen su propio this. En cambio, heredan this del contexto en el que fueron definidas. Este comportamiento se llama vinculación léxica.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+class Persona {
+  constructor(nombre) {
+    this.nombre = nombre;
+  }
+
+  saludar() {
+    console.log(`Hola, mi nombre es ${this.nombre}`);
+  }
+
+  retrasarSaludo() {
+    setTimeout(() => {
+      console.log(`Hola, mi nombre es ${this.nombre}`);
+    }, 1000);
+  }
+}
+
+const persona = new Persona("Juan");
+persona.saludar(); // Hola, mi nombre es Juan
+persona.retrasarSaludo(); // Hola, mi nombre es Juan (después de 1 segundo)
+```
+
+### Ejercicios
+
+A continuación, presento una serie de quizes, preguntas y ejercicios diseñados para ayudarte a consolidar tu comprensión sobre los tipos de datos en JavaScript que hemos discutido. Cada ejercicio incluye una solución para que puedas verificar tu trabajo.
+
+**Quizes**
+
+<h4 className="font-medium mt-5">1. ¿Qué es una función anónima?</h4>
+
+<p className="my-2">a) Una función sin parámetros.</p>
+<p>b) Una función sin cuerpo.</p>
+<p className="my-2">c) Una función sin nombre.</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) Una función sin nombre.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  2. ¿Qué hace la palabra clave return en una función?
+</h4>
+
+<p className="my-2">a) Finaliza la función y devuelve un valor.</p>
+<p>b) Declara una variable local.</p>
+<p className="my-2">c) Llama a otra función.</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      a) Finaliza la función y devuelve un valor.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  3. ¿Cuál es la sintaxis correcta para una arrow function que suma dos números?
+</h4>
+
+<p className="my-2">a) `const sumar = (a, b) => { return a + b; }`</p>
+<p>b) `const sumar = (a, b) => a + b;`</p>
+<p className="my-2">c) `const sumar => (a, b) { return a + b; }`</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) `const sumar = (a, b) => a + b;`</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">4. ¿Qué es una closure en JavaScript?</h4>
+
+<p className="my-2">a) Una función autoejecutable.</p>
+<p>b) Una función que encapsula variables en su propio ámbito.</p>
+<p className="my-2">c) Una función que devuelve otra función.</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      b) Una función que encapsula variables en su propio ámbito.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  5. ¿Cuál es el valor de this en una arrow function?
+</h4>
+
+<p className="my-2">a) El objeto global.</p>
+<p>b) El objeto que invoca la función.</p>
+<p className="my-2">c) El contexto léxico donde se definió.</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) El contexto léxico donde se definió.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">6. ¿Qué es una función autoejecutable?</h4>
+
+<p className="my-2">a) Una función que se llama a sí misma.</p>
+<p>b) Una función que se ejecuta tan pronto como se define.</p>
+<p className="my-2">c) Una función que se define dentro de otra función.</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      b) Una función que se ejecuta tan pronto como se define.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  7. ¿Cuál de las siguientes opciones es una función flecha válida con un solo
+  parámetro?
+</h4>
+
+<p className="my-2">a) `(param) => { return param * 2; }`</p>
+<p>b) `param => param * 2`</p>
+<p className="mt-2">c) `(param) => param * 2`</p>
+<p className="my-2">d) Todas las anteriores.</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>d) Todas las anteriores.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">8. ¿Qué hace el método call en JavaScript?</h4>
+
+<p className="my-2">a) Llama a una función con un valor específico de this.</p>
+<p>b) Declara una variable local.</p>
+<p className="my-2">c) Crea una nueva función.</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      a) Llama a una función con un valor específico de this.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+**Preguntas**
+
+<h4 className="font-medium mt-5">
+  1. ¿Cuál es la diferencia entre una función declarada y una función por
+  expresión?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Una función declarada utiliza la palabra clave function seguida por el nombre de la función y se eleva (hoisted) al comienzo de su contexto de ejecución. Una función por expresión es una función asignada a una variable y no se eleva.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  2. ¿Qué es una función flecha y cómo se diferencia de una función tradicional?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Una función flecha es una sintaxis más corta para definir funciones utilizando =>. Las funciones flecha no tienen su propio this, arguments, super ni new.target, y su this se define léxicamente.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  3. ¿Qué es una closure en JavaScript y para qué se usa?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Una closure es una función que recuerda el ámbito en el que fue creada, permitiéndole acceder a variables de ese ámbito incluso después de que la función externa haya terminado de ejecutarse. Se usa para encapsular datos y crear funciones con estado.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  4. ¿Cómo se declara y se llama a una función autoejecutable?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Una función autoejecutable se declara encerrando la función en paréntesis y añadiendo otro par de paréntesis al final para ejecutarla inmediatamente. Ejemplo:
+
+      ```js copy filename="JavaScript"
+      (function() {
+        console.log("Hola, mundo");
+      })();
+      ```
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  5. ¿Cuál es el propósito del método .slice() en cadenas de texto?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Extraer una sección de una cadena y devolverla como una nueva cadena, sin modificar la original.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  6. ¿Cómo puedes dividir una cadena en un array de subcadenas?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Usando el método .split()
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  7. ¿Qué método se utiliza para eliminar espacios en blanco tanto al inicio
+  como al final de una cadena?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      .trim()
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  8. ¿Cuál es la diferencia entre .substring() y .substr()?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      .substring(start, end) devuelve una parte de la cadena entre start y end, mientras que .substr(start, length) devuelve una parte de la cadena desde start y con una longitud específica length.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  9. ¿Cómo se puede reemplazar una subcadena en una cadena por otra subcadena?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Usando el método .replace()
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  10. ¿Qué método se utiliza para eliminar espacios en blanco al final de una
+  cadena?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      .trimEnd()
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+**Desafíos**
+
+<h4 className="font-medium my-5">
+  1. Eliminar espacios en blanco al inicio y al final de una cadena.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "   Hola Mundo   ";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "   Hola Mundo   ";
+        let trimmedText = text.trim();
+        console.log(trimmedText); // "Hola Mundo"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  2. Verificar si una cadena contiene una subcadena específica.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "Aprendiendo JavaScript es divertido";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "Aprendiendo JavaScript es divertido";
+        let contains = text.includes("JavaScript");
+        console.log(contains); // true
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">3. Convertir una cadena a mayúsculas.</h4>
+
+```js copy filename="JavaScript"
+let text = "hola mundo";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "hola mundo";
+        let upperText = text.toUpperCase();
+        console.log(upperText); // "HOLA MUNDO"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  4. Reemplazar una subcadena en una cadena por otra subcadena.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "Me gusta programar en Java";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "Me gusta programar en Java";
+        let newText = text.replace("Java", "JavaScript");
+        console.log(newText); // "Me gusta programar en JavaScript"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">5. Extraer una parte de una cadena.</h4>
+
+```js copy filename="JavaScript"
+let text = "Aprendiendo JavaScript";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "Aprendiendo JavaScript";
+        let part = text.slice(12, 22);
+        console.log(part); // "JavaScript"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  6. Eliminar espacios en blanco al inicio de una cadena.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "   Hola Mundo";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "   Hola Mundo";
+        let trimmedText = text.trimStart();
+        console.log(trimmedText); // "Hola Mundo"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  7. Eliminar espacios en blanco al final de una cadena.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "Hola Mundo   ";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "Hola Mundo   ";
+        let trimmedText = text.trimEnd();
+        console.log(trimmedText); // "Hola Mundo"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  8. Dividir una cadena en un array de subcadenas.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "rojo,azul,verde";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "rojo,azul,verde";
+        let colors = text.split(",");
+        console.log(colors); // ["rojo", "azul", "verde"]
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  9. Obtener el carácter en una posición específica de una cadena.
+</h4>
+
+```js copy filename="JavaScript"
+let text = "JavaScript";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "JavaScript";
+        let char = text.charAt(4);
+        console.log(char); // "S"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">10. Convertir una cadena a minúsculas.</h4>
+
+```js copy filename="JavaScript"
+let text = "HOLA MUNDO";
+```
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        let text = "HOLA MUNDO";
+        let lowerText = text.toLowerCase();
+        console.log(lowerText); // "hola mundo"
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>

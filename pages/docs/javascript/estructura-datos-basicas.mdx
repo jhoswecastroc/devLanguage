@@ -113,6 +113,22 @@ const PI = 3.14159; // Debe ser inicializada en su declaración
 
 Cada una de estas declaraciones prepara el terreno para que la variable correspondiente sea utilizada en operaciones subsecuentes dentro del programa, almacenando datos que pueden ser tan simples como un número o tan complejos como un objeto de configuración.
 
+<Callout emoji="👀" type='default'>
+
+También podemos declarar varias variables al mismo tiempo, a esto se llama Declaración Multiple, en donde se declaran múltiples variables en una sola línea, separadas por comas.
+
+Esto aumenta la compacidad del código, pero puede afectar a la legibilidad si se abusa de ella, por ello hay que saber cuando usarlo.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let x = 1,
+  y = 2,
+  z = 3;
+```
+
+</Callout>
+
 **Importancia de Elegir la Palabra Clave Adecuada**
 
 - **Flexibilidad y Seguridad:** let y const ofrecen un mejor control sobre donde y como las variables afectan al programa, reduciendo los errores en tiempo de ejecución debido a colisiones o modificaciones no intencionadas de variables.
@@ -317,7 +333,7 @@ El uso de const es un pilar en el desarrollo JavaScript moderno por su claridad 
 
 ## Scope
 
-El scope o alcance en JavaScript es fundamental para entender cómo se gestionan y acceden las variables a lo largo de un programa. Este concepto determina dónde las variables son accesibles dentro del código.
+El scope, ámbito o alcance en JavaScript es fundamental para entender cómo se gestionan y acceden las variables a lo largo de un programa. Este concepto determina dónde las variables son accesibles dentro del código.
 
 El scope se refiere a la región del código donde una variable es accesible. JavaScript define principalmente dos tipos de scope: global y local. Cada función crea un nuevo scope local por defecto, donde las variables declaradas dentro de la función no pueden ser accedidas fuera de ella. Este diseño ayuda a evitar conflictos de nombres y mantiene el código más limpio y organizado.
 
@@ -899,7 +915,7 @@ A continuación, presento una serie de quizes, preguntas y ejercicios diseñados
 </h4>
 
 <p className="my-2">a) No pueden retornar valores</p>
-<p>b) Pueden contener otras funciones</p>
+<p>b) No pueden contener otras funciones</p>
 <p className="my-2">c) Pueden contener otras funciones</p>
 
 <Accordion type="single" collapsible>
