@@ -6054,3 +6054,2081 @@ let text = "HOLA MUNDO";
 
   </AccordionItem>
 </Accordion>
+
+## Objetos
+
+En JavaScript, un objeto es una colección de propiedades, y una propiedad es una asociación entre un nombre (o clave) y un valor. Los valores de las propiedades pueden ser de cualquier tipo de datos, incluyendo otros objetos. Los objetos permiten organizar y estructurar datos complejos de manera eficiente y son fundamentales para el desarrollo de aplicaciones en JavaScript.
+
+Los objetos en JavaScript son similares a los registros en otros lenguajes de programación, ya que agrupan múltiples valores (llamados propiedades) bajo un único nombre. Esta capacidad de agrupar datos relacionados hace que los objetos sean extremadamente útiles para modelar entidades del mundo real y para organizar información de manera estructurada.
+
+Cada objeto puede tener una cantidad arbitraria de propiedades, y estas propiedades pueden ser dinámicamente añadidas o eliminadas en cualquier momento. Esta flexibilidad es una de las características más poderosas de los objetos en JavaScript.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const coche = {
+  marca: "Toyota",
+  modelo: "Corolla",
+  año: 2021,
+};
+```
+
+En este ejemplo, el objeto coche tiene tres propiedades: marca, modelo y año, cada una con su correspondiente valor. Este objeto podría representar un coche en un sistema de gestión de inventario.
+
+### Declaración de un objeto
+
+Existen varias formas de declarar un objeto en JavaScript. Aquí se presentan las más comunes:
+
+- **Notación de objeto literal**
+
+La forma más sencilla y común de crear un objeto es utilizando la notación de objeto literal, que se define mediante llaves {}. La notación literal es preferida por su simplicidad y legibilidad.
+
+```js copy filename="JavaScript"
+const persona = {
+  nombre: "Juan",
+  edad: 30,
+  ciudad: "Lima",
+};
+```
+
+En este ejemplo, el objeto persona tiene tres propiedades: nombre, edad y ciudad, cada una con su correspondiente valor. Este objeto podría representar una persona en una aplicación de gestión de contactos.
+
+- **Utilizando el constructor Object:**
+
+Otra forma de crear un objeto es utilizando el constructor Object. Esta forma es menos común y generalmente no se recomienda a menos que haya una razón específica para utilizarla.
+
+```js copy filename="JavaScript"
+const persona = new Object();
+persona.nombre = "Juan";
+persona.edad = 30;
+persona.ciudad = "Lima";
+```
+
+En este ejemplo, se crea un objeto vacío utilizando new Object() y luego se añaden las propiedades nombre, edad y ciudad.
+
+- **Creación con Object.create()**
+
+Object.create permite crear un nuevo objeto con un objeto prototipo específico. Este método es útil cuando se desea crear un objeto que herede propiedades y métodos de otro objeto.
+
+```js copy filename="JavaScript"
+const prototipoPersona = {
+  saludar: function () {
+    console.log(`Hola, mi nombre es ${this.nombre}`);
+  },
+};
+
+const persona = Object.create(prototipoPersona);
+persona.nombre = "Juan";
+persona.edad = 30;
+persona.ciudad = "Lima";
+```
+
+En este ejemplo, persona hereda el método saludar del prototipoPersona. Esto permite utilizar el método saludar en el objeto persona.
+
+- **Usando funciones constructoras**
+
+Otra forma común de crear objetos en JavaScript es utilizando funciones constructoras. Estas funciones actúan como plantillas para crear objetos con propiedades y métodos definidos.
+
+```js copy filename="JavaScript"
+function Persona(nombre, edad, ciudad) {
+  this.nombre = nombre;
+  this.edad = edad;
+  this.ciudad = ciudad;
+}
+
+const persona1 = new Persona("Juan", 30, "Lima");
+const persona2 = new Persona("Ana", 25, "Cusco");
+```
+
+En este ejemplo, Persona es una función constructora que define las propiedades nombre, edad y ciudad. Se crean dos instancias del objeto Persona, persona1 y persona2, cada una con sus propios valores para las propiedades.
+
+### Propiedades de un objeto
+
+Las propiedades de un objeto son pares clave-valor. La clave es una cadena de texto que identifica la propiedad, y el valor puede ser cualquier tipo de datos, incluyendo números, cadenas, funciones, otros objetos, etc. Esta flexibilidad permite almacenar datos complejos y relacionados de manera organizada.
+
+1. **Acceder a las propiedades**
+
+Se puede acceder a las propiedades de un objeto utilizando la notación de punto (.) o la notación de corchetes ([]).
+
+- **Notación de punto:**
+
+```js copy filename="JavaScript"
+console.log(persona.nombre); // Acceso con notación de punto
+```
+
+- **Notación de corchetes:**
+
+```js copy filename="JavaScript"
+console.log(persona["edad"]); // Acceso con notación de corchetes
+```
+
+La notación de punto es más común y preferida por su simplicidad y legibilidad. Sin embargo, la notación de corchetes es útil en situaciones donde la clave de la propiedad es dinámica o contiene caracteres que no son válidos en un identificador de JavaScript, como espacios o caracteres especiales.
+
+<h4 className="font-medium mt-5">
+  Ejemplo de acceso a propiedades con notación de corchetes
+</h4>
+
+```js copy filename="JavaScript"
+const libro = {
+  titulo: "El Quijote",
+  autor: "Miguel de Cervantes",
+  "año de publicación": 1605,
+};
+
+console.log(libro["titulo"]); // El Quijote
+console.log(libro["año de publicación"]); // 1605
+```
+
+En este ejemplo, se utiliza la notación de corchetes para acceder a las propiedades titulo y año de publicación, ya que año de publicación contiene espacios, y con la notación de punto no podríamos acceder a este, de hecho si lo hiciéramos, este nos arrojaría un error.
+
+2. **Modificar propiedades**
+
+Las propiedades de un objeto se pueden modificar simplemente asignando un nuevo valor a la propiedad existente.
+
+```js copy filename="JavaScript"
+persona.nombre = "Carlos";
+persona["edad"] = 35;
+```
+
+Modificar las propiedades de un objeto es una operación fundamental en JavaScript. Permite actualizar los datos almacenados en el objeto sin necesidad de crear un nuevo objeto. Esta operación es común en aplicaciones dinámicas donde los datos cambian frecuentemente.
+
+3. **Eliminar propiedades**
+
+Para eliminar una propiedad de un objeto, se utiliza el operador delete.
+
+```js copy filename="JavaScript"
+delete persona.ciudad;
+```
+
+Eliminar una propiedad de un objeto es útil para liberar memoria o para remover datos que ya no son necesarios. Esta operación es importante para mantener el objeto limpio y evitar almacenar información obsoleta o innecesaria.
+
+4. **Añadir propiedades**
+
+Se pueden añadir nuevas propiedades a un objeto en cualquier momento después de su creación, utilizando la notación de punto o de corchetes.
+
+- **Añadir propiedades con notación de punto:**
+
+```js copy filename="JavaScript"
+persona.profesion = "Ingeniero";
+```
+
+- **Añadir propiedades con notación de corchetes:**
+
+```js copy filename="JavaScript"
+persona["nacionalidad"] = "Peruana";
+```
+
+Añadir propiedades a un objeto permite extender su funcionalidad y almacenar nueva información sin modificar la estructura original del objeto. Esta operación es muy útil en aplicaciones donde los datos pueden evolucionar con el tiempo.
+
+5. **Acceso dinámico a propiedades**
+
+En algunos casos, es posible que necesitemos acceder a las propiedades de un objeto de manera dinámica, es decir, utilizando una variable para especificar el nombre de la propiedad.
+
+```js copy filename="JavaScript"
+let propiedad = "nombre";
+console.log(persona[propiedad]); // Muestra "Carlos"
+```
+
+Este enfoque es útil cuando los nombres de las propiedades no son conocidos hasta el tiempo de ejecución. Permite crear programas más flexibles y adaptables, ya que el acceso a las propiedades se puede determinar en función de condiciones o entradas del usuario.
+
+6. **Propiedades calculadas**
+
+JavaScript permite definir propiedades de objeto con nombres calculados en tiempo de ejecución utilizando la sintaxis de corchetes en la definición del objeto.
+
+```js copy filename="JavaScript"
+let propiedad = "edad";
+const persona = {
+  nombre: "Carlos",
+  [propiedad]: 35,
+};
+
+console.log(persona.edad); // Muestra 35
+```
+
+Esta característica permite una mayor flexibilidad en la creación de objetos, especialmente cuando se trabaja con nombres de propiedades dinámicos. Las propiedades calculadas facilitan la generación de nombres de propiedades basados en variables u otras expresiones.
+
+7. **Verificación de existencia de propiedades**
+
+Antes de acceder a una propiedad, es a menudo útil verificar si la propiedad existe en el objeto. Esto se puede hacer utilizando el operador in o el método hasOwnProperty.
+
+- **Operador in:**
+
+```js copy filename="JavaScript"
+if ("profesion" in persona) {
+  console.log(persona.profesion);
+} else {
+  console.log("La propiedad 'profesion' no existe en el objeto.");
+}
+```
+
+- **Método hasOwnProperty:**
+
+```js copy filename="JavaScript"
+if (persona.hasOwnProperty("profesion")) {
+  console.log(persona.profesion);
+} else {
+  console.log("La propiedad 'profesion' no existe en el objeto.");
+}
+```
+
+Estas técnicas ayudan a evitar errores al intentar acceder a propiedades que pueden no existir en el objeto. Verificar la existencia de propiedades es una buena práctica para asegurar que el código sea robusto y maneje correctamente las situaciones en las que una propiedad no esté presente.
+
+8. **Enumeración de propiedades**
+
+En JavaScript, es posible enumerar todas las propiedades de un objeto utilizando un bucle for...in. Este bucle itera sobre todas las propiedades enumerables del objeto.
+
+```js copy filename="JavaScript"
+for (let clave in persona) {
+  console.log(`${clave}: ${persona[clave]}`);
+}
+```
+
+El bucle for...in recorre todas las propiedades enumerables, incluyendo las heredadas. Para enumerar solo las propiedades propias del objeto, se puede combinar con hasOwnProperty.
+
+```js copy filename="JavaScript"
+for (let clave in persona) {
+  if (persona.hasOwnProperty(clave)) {
+    console.log(`${clave}: ${persona[clave]}`);
+  }
+}
+```
+
+Enumerar las propiedades de un objeto es útil para inspeccionar y trabajar con todas las propiedades de un objeto de manera dinámica. Permite iterar sobre las propiedades y realizar operaciones en cada una de ellas, como mostrar sus valores, modificarlas o eliminarlas.
+
+### Métodos de un objeto
+
+En JavaScript, los métodos son funciones que se asocian a los objetos como propiedades. Un método es una propiedad de un objeto cuyo valor es una función. Los métodos permiten que los objetos no solo almacenen datos, sino que también realicen acciones relacionadas con esos datos.
+
+1. **Definición de un método**
+
+Los métodos se pueden definir al crear el objeto utilizando la notación de objeto literal, o se pueden añadir después de que el objeto haya sido creado.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const persona = {
+  nombre: "Juan",
+  saludar: function () {
+    console.log(`Hola, mi nombre es ${this.nombre}`);
+  },
+};
+
+persona.saludar(); // Salida: Hola, mi nombre es Juan
+```
+
+En este ejemplo, persona es un objeto que tiene una propiedad saludar, que es una función. Esta función puede acceder a otras propiedades del objeto utilizando la palabra clave this.
+
+- **Añadir un método a un objeto existente**
+
+```js copy filename="JavaScript"
+const coche = {
+  marca: "Toyota",
+  modelo: "Corolla",
+};
+
+coche.mostrarDetalles = function () {
+  return `${this.marca} ${this.modelo}`;
+};
+
+console.log(coche.mostrarDetalles()); // Salida: Toyota Corolla
+```
+
+En este ejemplo, se añade el método mostrarDetalles al objeto coche después de su creación. Este método devuelve una cadena que incluye la marca y el modelo del coche.
+
+2. **El método toString()**
+
+El método toString() es un método predeterminado de todos los objetos en JavaScript. Este método devuelve una cadena de texto que representa el objeto. La representación predeterminada de toString() para un objeto genérico es [object Object], pero se puede sobrescribir para proporcionar una representación más útil y específica del objeto.
+
+- **Uso del método toString() por defecto**
+
+```js copy filename="JavaScript"
+const objeto = {};
+console.log(objeto.toString()); // Salida: [object Object]
+```
+
+En este ejemplo, la salida de objeto.toString() es la representación genérica [object Object].
+
+- **Sobrescribir el método toString()**
+
+Para proporcionar una representación más útil del objeto, se puede sobrescribir el método toString() dentro del objeto:
+
+```js copy filename="JavaScript"
+const coche = {
+  marca: "Toyota",
+  modelo: "Corolla",
+  año: 2021,
+  toString: function () {
+    return `${this.marca} ${this.modelo} (${this.año})`;
+  },
+};
+
+console.log(coche.toString()); // Salida: Toyota Corolla (2021)
+```
+
+En este ejemplo, el método toString() se ha sobrescrito para devolver una cadena de texto que incluye la marca, el modelo y el año del coche.
+
+- **Creando nuestro propio toString**
+
+Crear un método toString() personalizado permite definir cómo se debe representar un objeto en formato de cadena. Esta práctica es útil para la depuración y la presentación de objetos en interfaces de usuario.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Supongamos que queremos crear un objeto persona que incluya un método toString() personalizado:
+
+```js copy filename="JavaScript"
+const persona = {
+  nombre: "Ana",
+  apellido: "Gómez",
+  edad: 28,
+  ciudad: "Lima",
+  toString: function () {
+    return `${this.nombre} ${this.apellido}, ${this.edad} años, vive en ${this.ciudad}`;
+  },
+};
+
+console.log(persona.toString()); // Salida: Ana Gómez, 28 años, vive en Lima
+```
+
+En este ejemplo, el método toString() devuelve una cadena de texto que incluye el nombre, apellido, edad y ciudad de la persona, proporcionando una representación clara y concisa del objeto.
+
+<h4 className="font-medium mt-5">Otro ejemplo</h4>
+
+Supongamos que tenemos un objeto curso que representa un curso académico:
+
+```js copy filename="JavaScript"
+const curso = {
+  titulo: "Introducción a la Programación",
+  profesor: "Carlos Pérez",
+  duracion: "10 semanas",
+  estudiantes: ["Juan", "Ana", "Luis", "María"],
+  toString: function () {
+    return `Curso: ${this.titulo}\nProfesor: ${this.profesor}\nDuración: ${this.duracion}\nEstudiantes: ${this.estudiantes.join(", ")}`;
+  },
+};
+
+console.log(curso.toString());
+/*
+Curso: Introducción a la Programación
+Profesor: Carlos Pérez
+Duración: 10 semanas
+Estudiantes: Juan, Ana, Luis, María
+*/
+```
+
+En este ejemplo, el método toString() del objeto curso devuelve una cadena de texto que incluye el título del curso, el nombre del profesor, la duración y la lista de estudiantes, proporcionando una visión detallada del curso.
+
+- **Consideraciones adicionales sobre toString()**
+
+El método toString() es invocado automáticamente en ciertos contextos, como cuando se concatena un objeto con una cadena de texto, o cuando se pasa un objeto a funciones que esperan una cadena de texto.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const producto = {
+  nombre: "Laptop",
+  precio: 1500,
+  toString: function () {
+    return `${this.nombre} cuesta $${this.precio}`;
+  },
+};
+
+console.log("Detalles del producto: " + producto); // Salida: Detalles del producto: Laptop cuesta $1500
+```
+
+En este ejemplo, el método toString() del objeto producto se invoca automáticamente cuando el objeto se concatena con una cadena de texto, proporcionando una representación legible del objeto.
+
+El método toString() es una herramienta poderosa para controlar cómo se representa un objeto en formato de cadena. Sobrescribir toString() permite crear representaciones personalizadas que pueden ser útiles para la depuración, la presentación de datos y la interacción con usuarios.
+
+### ¿Qué es JSON?
+
+JSON (JavaScript Object Notation) es un formato ligero de intercambio de datos que es fácil de leer y escribir para los humanos y fácil de analizar y generar para las máquinas. JSON se basa en una colección de pares clave-valor, similar a la sintaxis de los objetos en JavaScript, lo que lo hace especialmente conveniente para los desarrolladores web.
+
+JSON es ampliamente utilizado en aplicaciones web para transmitir datos entre el cliente y el servidor. Su estructura sencilla y su compatibilidad nativa con JavaScript lo convierten en el formato de elección para el intercambio de datos en aplicaciones modernas.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+{
+  "nombre": "Juan",
+  "edad": 30,
+  "ciudad": "Lima",
+  "habilidades": ["JavaScript", "HTML", "CSS"]
+}
+```
+
+En este ejemplo, tenemos un objeto JSON que representa a una persona con propiedades nombre, edad, ciudad y habilidades. Cada propiedad tiene un valor asociado, que puede ser un número, una cadena de texto, un booleano, un objeto o un array.
+
+**Características de JSON**
+
+- **Propiedades entrecomilladas:** En JSON, todas las claves de las propiedades deben estar entre comillas dobles.
+- **Tipos de datos soportados:** JSON soporta tipos de datos como cadenas de texto, números, booleanos, objetos, arrays y null.
+- **Compatibilidad:** JSON es independiente del lenguaje, lo que significa que puede ser utilizado en cualquier lenguaje de programación que soporte el formato JSON.
+- **No admite funciones:** A diferencia de los objetos en JavaScript, JSON no admite funciones como valores de propiedades.
+
+**¿Cómo utilizar JSON?**
+
+JSON se utiliza principalmente para el intercambio de datos entre un cliente y un servidor. En JavaScript, hay dos métodos principales para trabajar con JSON:
+
+1. **JSON.stringify():** Convierte un objeto de JavaScript en una cadena JSON.
+2. **JSON.parse():** Convierte una cadena JSON en un objeto de JavaScript.
+
+Estos métodos permiten convertir datos entre los formatos JSON y JavaScript, lo que facilita la transmisión y manipulación de datos en aplicaciones web.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Supongamos que tenemos un objeto JavaScript que representa a una persona:
+
+```js copy filename="JavaScript"
+const persona = {
+  nombre: "Ana",
+  edad: 25,
+  ciudad: "Cusco",
+  habilidades: ["Python", "Django", "JavaScript"],
+};
+```
+
+Para enviar este objeto a un servidor, necesitamos convertirlo a una cadena JSON utilizando JSON.stringify():
+
+```js copy filename="JavaScript"
+const jsonString = JSON.stringify(persona);
+console.log(jsonString);
+// Salida: {"nombre":"Ana","edad":25,"ciudad":"Cusco","habilidades":["Python","Django","JavaScript"]}
+```
+
+Luego, podemos enviar jsonString al servidor como parte de una solicitud HTTP.
+
+1. **Convertir un objeto a JSON**
+
+Para convertir un objeto de JavaScript a una cadena JSON, se utiliza el método JSON.stringify(). Este método toma un objeto como argumento y devuelve una cadena JSON.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const persona = {
+  nombre: "Ana",
+  edad: 25,
+  ciudad: "Cusco",
+  habilidades: ["Python", "Django", "JavaScript"],
+};
+
+const jsonString = JSON.stringify(persona);
+console.log(jsonString);
+// Salida: {"nombre":"Ana","edad":25,"ciudad":"Cusco","habilidades":["Python","Django","JavaScript"]}
+```
+
+En este ejemplo, el objeto persona se convierte en una cadena JSON utilizando JSON.stringify(). La cadena resultante puede ser enviada a un servidor o almacenada para su uso posterior.
+
+- **Filtrado de propiedades al convertir a JSON**
+
+JSON.stringify() también permite especificar un array de propiedades que se deben incluir en la cadena JSON resultante. Esto es útil para filtrar propiedades innecesarias.
+
+```js copy filename="JavaScript"
+const persona = {
+  nombre: "Ana",
+  edad: 25,
+  ciudad: "Cusco",
+  habilidades: ["Python", "Django", "JavaScript"],
+};
+
+const jsonString = JSON.stringify(persona, ["nombre", "ciudad"]);
+console.log(jsonString);
+// Salida: {"nombre":"Ana","ciudad":"Cusco"}
+```
+
+En este ejemplo, solo las propiedades nombre y ciudad se incluyen en la cadena JSON resultante.
+
+- **Formateo de la salida JSON**
+
+JSON.stringify() también permite especificar un número de espacios para la indentación, lo que facilita la lectura de la salida JSON.
+
+```js copy filename="JavaScript"
+const persona = {
+  nombre: "Ana",
+  edad: 25,
+  ciudad: "Cusco",
+  habilidades: ["Python", "Django", "JavaScript"],
+};
+
+const jsonString = JSON.stringify(persona, null, 2);
+console.log(jsonString);
+/*
+Salida:
+{
+  "nombre": "Ana",
+  "edad": 25,
+  "ciudad": "Cusco",
+  "habilidades": [
+    "Python",
+    "Django",
+    "JavaScript"
+  ]
+}
+*/
+```
+
+En este ejemplo, la salida JSON está formateada con una indentación de 2 espacios, lo que la hace más legible.
+
+2. **Convertir JSON a objeto**
+
+Para convertir una cadena JSON a un objeto de JavaScript, se utiliza el método JSON.parse(). Este método toma una cadena JSON como argumento y devuelve un objeto de JavaScript.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const jsonString =
+  '{"nombre":"Ana","edad":25,"ciudad":"Cusco","habilidades":["Python","Django","JavaScript"]}';
+
+const persona = JSON.parse(jsonString);
+console.log(persona);
+// Salida: {nombre: "Ana", edad: 25, ciudad: "Cusco", habilidades: Array(3)}
+```
+
+En este ejemplo, la cadena JSON jsonString se convierte en un objeto de JavaScript utilizando JSON.parse(). El objeto resultante puede ser manipulado como cualquier otro objeto de JavaScript.
+
+- **Manejo de errores al convertir JSON a objeto**
+
+Es importante manejar posibles errores al analizar JSON, ya que una cadena JSON malformada provocará un error. Se recomienda envolver JSON.parse() en un bloque try-catch para manejar estos errores de manera adecuada.
+
+```js copy filename="JavaScript"
+const jsonString =
+  '{"nombre":"Ana","edad":25,"ciudad":"Cusco","habilidades":["Python","Django","JavaScript"]}';
+
+try {
+  const persona = JSON.parse(jsonString);
+  console.log(persona);
+} catch (error) {
+  console.error("Error al analizar JSON:", error);
+}
+```
+
+En este ejemplo, se utiliza un bloque try-catch para manejar posibles errores durante el análisis del JSON.
+
+3. **Leyendo JSON externo**
+
+En aplicaciones web, es común obtener datos en formato JSON desde un servidor. Para leer JSON externo, se puede utilizar la API Fetch de JavaScript, que proporciona una forma sencilla de hacer solicitudes HTTP.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Supongamos que tenemos un servidor que devuelve la siguiente respuesta JSON en la URL https://api.example.com/datos:
+
+```js copy filename="JavaScript"
+{
+  "usuarios": [
+    {"nombre": "Juan", "edad": 30},
+    {"nombre": "Ana", "edad": 25},
+    {"nombre": "Luis", "edad": 28}
+  ]
+}
+```
+
+Podemos leer estos datos en JavaScript utilizando Fetch:
+
+```js copy filename="JavaScript"
+fetch("https://api.example.com/datos")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    // Salida: {usuarios: Array(3)}
+    data.usuarios.forEach((usuario) => {
+      console.log(`Nombre: ${usuario.nombre}, Edad: ${usuario.edad}`);
+    });
+  })
+  .catch((error) => console.error("Error:", error));
+```
+
+En este ejemplo, se hace una solicitud HTTP GET a https://api.example.com/datos utilizando fetch(). La respuesta se convierte en un objeto JavaScript utilizando response.json(). Luego, se itera sobre la lista de usuarios y se imprime su nombre y edad.
+
+### Desestructuración de Objetos
+
+La desestructuración de objetos es una característica introducida en ES6 (ECMAScript 2015) que permite extraer valores de un objeto y asignarlos a variables de manera concisa y legible. Esta técnica es especialmente útil cuando se trabaja con objetos complejos y se necesita acceder a varias propiedades a la vez.
+
+- **Sintaxis básica de desestructuración**
+
+La sintaxis básica para desestructurar un objeto consiste en rodear los nombres de las propiedades con llaves {} y asignarlas a las variables correspondientes.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+Supongamos que tenemos el siguiente objeto:
+
+```js copy filename="JavaScript"
+const persona = {
+  nombre: "Juan",
+  edad: 30,
+  ciudad: "Lima",
+};
+
+const { nombre, edad, ciudad } = persona;
+console.log(nombre); // Juan
+console.log(edad); // 30
+console.log(ciudad); // Lima
+```
+
+En este ejemplo, las propiedades nombre, edad y ciudad del objeto persona se extraen y se asignan a variables con el mismo nombre.
+
+- **Asignar a variables con nombres diferentes**
+
+Si deseas asignar las propiedades del objeto a variables con nombres diferentes, puedes hacerlo utilizando la sintaxis propiedad: nuevoNombre.
+
+```js copy filename="JavaScript"
+const persona = {
+  nombre: "Juan",
+  edad: 30,
+  ciudad: "Lima",
+};
+
+const { nombre: firstName, edad: age, ciudad: city } = persona;
+console.log(firstName); // Juan
+console.log(age); // 30
+console.log(city); // Lima
+```
+
+En este ejemplo, nombre se asigna a la variable firstName, edad a age, y ciudad a city.
+
+- **Valores predeterminados**
+
+Es posible establecer valores predeterminados para las variables en caso de que las propiedades no existan en el objeto. Esto es útil para evitar undefined.
+
+```js copy filename="JavaScript"
+const persona = {
+  nombre: "Juan",
+  ciudad: "Lima",
+};
+
+const { nombre, edad = 25, ciudad } = persona;
+console.log(nombre); // Juan
+console.log(edad); // 25 (valor predeterminado)
+console.log(ciudad); // Lima
+```
+
+En este ejemplo, la variable edad toma el valor predeterminado de 25 porque la propiedad edad no existe en el objeto persona.
+
+### Estructuras Anidadas
+
+Las estructuras anidadas en JavaScript permiten que los objetos y arreglos contengan otros objetos y arreglos en su interior. Esta capacidad es crucial para representar datos complejos y jerárquicos de manera organizada.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const empresa = {
+  nombre: "TechCorp",
+  direccion: {
+    calle: "Av. Principal",
+    numero: 100,
+    ciudad: "Lima",
+  },
+  empleados: [
+    { nombre: "Juan", edad: 30, puesto: "Desarrollador" },
+    { nombre: "Ana", edad: 25, puesto: "Diseñadora" },
+    { nombre: "Luis", edad: 28, puesto: "Project Manager" },
+  ],
+};
+
+console.log(empresa.nombre); // TechCorp
+console.log(empresa.direccion.ciudad); // Lima
+console.log(empresa.empleados[0].nombre); // Juan
+```
+
+En este ejemplo, el objeto empresa contiene un objeto direccion y un arreglo empleados, que a su vez contiene objetos con información sobre los empleados.
+
+- **Accediendo a Estructuras Anidadas**
+
+Para acceder a propiedades de objetos anidados, se utiliza la notación de punto.
+
+```js copy filename="JavaScript"
+const { direccion } = empresa;
+console.log(direccion.calle); // Av. Principal
+
+const {
+  direccion: { ciudad },
+} = empresa;
+console.log(ciudad); // Lima
+```
+
+- **Desestructuración de propiedades anidadas**
+
+La desestructuración de propiedades anidadas facilita el acceso directo a propiedades en niveles más profundos de la estructura del objeto.
+
+```js copy filename="JavaScript"
+const {
+  empleados: [primerEmpleado, , tercerEmpleado],
+} = empresa;
+console.log(primerEmpleado.nombre); // Juan
+console.log(tercerEmpleado.nombre); // Luis
+
+const {
+  empleados: [{ nombre: primerNombre }, { nombre: segundoNombre }],
+} = empresa;
+console.log(primerNombre); // Juan
+console.log(segundoNombre); // Ana
+```
+
+En este ejemplo, se extraen directamente los nombres de los empleados del arreglo empleados dentro del objeto empresa.
+
+### Desestructuración (rest)
+
+La desestructuración con el operador de reposo (rest) permite extraer y agrupar el resto de las propiedades de un objeto o los elementos de un arreglo que no se desestructuran explícitamente.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const usuario = {
+  nombre: "Carlos",
+  edad: 27,
+  ciudad: "Arequipa",
+  profesion: "Ingeniero",
+};
+
+const { nombre, ...resto } = usuario;
+console.log(nombre); // Carlos
+console.log(resto); // { edad: 27, ciudad: "Arequipa", profesion: "Ingeniero" }
+```
+
+Aquí, nombre se extrae del objeto usuario y el resto de las propiedades se agrupan en el objeto resto.
+
+- **Desestructuración de arreglos con rest**
+
+```js copy filename="JavaScript"
+const numeros = [1, 2, 3, 4, 5];
+
+const [primero, segundo, ...resto] = numeros;
+console.log(primero); // 1
+console.log(segundo); // 2
+console.log(resto); // [3, 4, 5]
+```
+
+En este ejemplo, los dos primeros elementos del arreglo numeros se extraen en las variables primero y segundo, y el resto de los elementos se almacenan en el arreglo resto.
+
+- **Parámetros Desestructurados**
+
+En JavaScript, la desestructuración de parámetros es una técnica que permite extraer propiedades de un objeto directamente en la lista de parámetros de una función. Esta técnica hace que el código sea más claro y fácil de mantener, ya que puedes trabajar directamente con las propiedades que necesitas en lugar de acceder a ellas a través del objeto completo.
+
+<h4 className="font-medium mt-5">
+  Ejemplo sin Desestructuración de Parámetros
+</h4>
+
+Vamos a comenzar con un ejemplo sin usar la desestructuración de parámetros:
+
+```js copy filename="JavaScript"
+const user = {
+  name: "Sara",
+  role: "developer",
+  points: 120,
+};
+
+function displayInfo(data) {
+  const badges = "🏅".repeat(data.points / 30);
+  return `Name: ${data.name} (${data.role}) ${badges}`;
+}
+
+console.log(displayInfo(user)); // "Name: Sara (developer) 🏅🏅🏅🏅"
+```
+
+En este ejemplo, la función displayInfo recibe un objeto data y accede a sus propiedades name, role y points utilizando la notación de puntos (data.name, data.role, data.points). Si bien esto funciona, puede ser más verboso y menos claro, especialmente cuando se tienen muchas propiedades.
+
+<h4 className="font-medium mt-5">
+  Ejemplo con Desestructuración de Parámetros
+</h4>
+
+**Parámetros desestructurados con valores predeterminados**
+
+Ahora vamos a reescribir la función displayInfo utilizando la desestructuración de parámetros:
+
+```js copy filename="JavaScript"
+const user = {
+  name: "Sara",
+  role: "developer",
+  points: 120,
+};
+
+function displayInfo({ name, role, points }) {
+  const badges = "🏅".repeat(points / 30);
+  return `Name: ${name} (${role}) ${badges}`;
+}
+
+console.log(displayInfo(user)); // "Name: Sara (developer) 🏅🏅🏅🏅"
+```
+
+En este ejemplo, la función displayInfo desestructura directamente las propiedades name, role y points del objeto user en la lista de parámetros. Esto hace que el código dentro de la función sea más claro y conciso, ya que puedes trabajar directamente con las variables name, role y points sin tener que referenciar data repetidamente.
+
+- **Parámetros desestructurados con valores predeterminados**
+
+Puedes proporcionar valores predeterminados para los parámetros desestructurados en una función, lo que asegura que siempre haya un valor disponible, incluso si algunas propiedades están ausentes o el objeto está vacío.
+
+```js copy filename="JavaScript"
+function crearUsuario({ nombre = "Anónimo", edad = 18 } = {}) {
+  return `Usuario: ${nombre}, Edad: ${edad}`;
+}
+
+console.log(crearUsuario({ nombre: "Pedro" })); // Usuario: Pedro, Edad: 18
+console.log(crearUsuario()); // Usuario: Anónimo, Edad: 18
+```
+
+En este ejemplo, la función crearUsuario usa valores predeterminados para nombre y edad, asegurando que siempre haya un valor disponible, incluso si algunas propiedades están ausentes o el objeto está vacío.
+
+- **Desestructuración de parámetros anidados**
+
+Puedes desestructurar objetos anidados directamente en la lista de parámetros de una función, lo que simplifica el acceso a propiedades profundas.
+
+```js copy filename="JavaScript"
+function mostrarDireccion({ direccion: { calle, numero, ciudad } }) {
+  console.log(`Calle: ${calle}`);
+  console.log(`Número: ${numero}`);
+  console.log(`Ciudad: ${ciudad}`);
+}
+
+const persona = {
+  nombre: "Elena",
+  direccion: {
+    calle: "Av. Central",
+    numero: 456,
+    ciudad: "Trujillo",
+  },
+};
+
+mostrarDireccion(persona);
+/* Salida:
+Calle: Av. Central
+Número: 456
+Ciudad: Trujillo
+*/
+```
+
+En este ejemplo, mostrarDireccion desestructura el objeto direccion anidado dentro del objeto persona directamente en sus parámetros, extrayendo las propiedades calle, numero y ciudad.
+
+- **Desestructuración en funciones con rest**
+
+Puedes combinar la desestructuración con el operador rest en funciones para capturar las propiedades restantes del objeto pasado como argumento.
+
+```js copy filename="JavaScript"
+function mostrarUsuario({ nombre, edad, ...resto }) {
+  console.log(`Nombre: ${nombre}`);
+  console.log(`Edad: ${edad}`);
+  console.log(`Otros datos:`, resto);
+}
+
+const usuario = {
+  nombre: "Miguel",
+  edad: 35,
+  profesion: "Doctor",
+  ciudad: "Cusco",
+};
+
+mostrarUsuario(usuario);
+/* Salida:
+Nombre: Miguel
+Edad: 35
+Otros datos: { profesion: 'Doctor', ciudad: 'Cusco' }
+*/
+```
+
+En este ejemplo, la función mostrarUsuario extrae las propiedades nombre y edad del objeto usuario y agrupa el resto de las propiedades en el objeto resto.
+
+### Clonación y Reestructuración de Objetos o Elementos
+
+En JavaScript, es común tener que clonar y reestructurar objetos para evitar la mutación de datos originales cuando realizamos cambios en sus copias. Existen varias técnicas para copiar y reestructurar datos, cada una con sus propias ventajas y limitaciones. A continuación, se detallan estos conceptos y técnicas para clonación y reestructuración de objetos en JavaScript.
+
+**Copia por Valor**
+
+La copia por valor se realiza con tipos de datos primitivos como números (number), cadenas de texto (string), booleanos (boolean), null, undefined, symbol y bigint. Cuando se copia un valor primitivo, se crea una nueva variable que contiene el mismo valor que la variable original, pero en una ubicación de memoria diferente. Cambiar el valor de la nueva variable no afecta al valor de la original.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let originalValue = 42;
+let copy = originalValue;
+
+copy = 55;
+
+console.log(originalValue); // 42
+console.log(copy); // 55
+```
+
+En el ejemplo anterior, copy contiene una copia independiente del valor de originalValue. Modificar copy no cambia originalValue.
+
+**Copia por Referencia**
+
+La copia por referencia se utiliza para los tipos de datos no primitivos, como objetos (object) y arreglos (array). En lugar de crear una copia independiente del objeto, la copia por referencia crea un nuevo enlace que apunta al mismo objeto en memoria. Esto significa que si se modifica la copia, también se modifica el original.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let originalObject = { name: "Alice" };
+let copy = originalObject;
+
+copy.name = "Bob";
+
+console.log(originalObject.name); // Bob
+console.log(copy.name); // Bob
+```
+
+En este ejemplo, originalObject y copy apuntan al mismo objeto en memoria. Modificar copy también modifica originalObject.
+
+- **Clonación Superficial y Profunda**
+
+Clonación Superficial (Shallow Clone): Copia solo el primer nivel del objeto. Las propiedades que son objetos o arreglos siguen siendo referencias al objeto original.
+
+Clonación Profunda (Deep Clone): Copia todos los niveles del objeto, creando nuevas instancias de todos los objetos y arreglos dentro del objeto original.
+
+**Técnicas de Clonación**
+
+- **Operador Spread (...)**
+
+El operador spread realiza una clonación superficial de un objeto. Esto significa que solo se copia el primer nivel de propiedades del objeto. Si el objeto contiene propiedades que son a su vez objetos o arreglos, estas propiedades seguirán apuntando al objeto o arreglo original.
+
+```js copy filename="JavaScript"
+let original = {
+  name: "Carlos",
+  age: 35,
+  address: {
+    city: "Lima",
+    street: "Av. Siempre Viva",
+  },
+};
+
+let shallowCopy = { ...original };
+
+shallowCopy.name = "Luis";
+shallowCopy.address.street = "Av. Los Pinos";
+
+console.log(original.name); // Carlos
+console.log(original.address.street); // Av. Los Pinos
+console.log(shallowCopy.name); // Luis
+console.log(shallowCopy.address.street); // Av. Los Pinos        // Bob
+```
+
+- **Object.assign()**
+
+El método Object.assign() también realiza una clonación superficial. Este método copia las propiedades de uno o más objetos a un objeto destino.
+
+```js copy filename="JavaScript"
+let original = {
+  name: "Carlos",
+  age: 35,
+  address: { city: "Lima", street: "Av. Siempre Viva" },
+};
+let shallowCopy = Object.assign({}, original);
+
+shallowCopy.name = "Luis";
+shallowCopy.address.street = "Av. Los Pinos";
+
+console.log(original.name); // Carlos
+console.log(original.address.street); // Av. Los Pinos
+console.log(shallowCopy.name); // Luis
+console.log(shallowCopy.address.street); // Av. Los Pinos
+```
+
+- **JSON.parse() y JSON.stringify()**
+
+Para realizar una clonación profunda, se pueden usar JSON.parse() y JSON.stringify(). Esta técnica convierte el objeto a una cadena JSON y luego lo parsea de nuevo a un nuevo objeto. Sin embargo, esta técnica tiene limitaciones: no copia métodos, no copia elementos del DOM, y no puede manejar funciones u objetos no serializables.
+
+```js copy filename="JavaScript"
+let original = {
+  name: "Carlos",
+  age: 35,
+  address: {
+    city: "Lima",
+    street: "Av. Siempre Viva",
+  },
+  greet: function () {
+    console.log("Hello!");
+  },
+};
+
+let deepCopy = JSON.parse(JSON.stringify(original));
+
+deepCopy.name = "Luis";
+deepCopy.address.street = "Av. Los Pinos";
+
+console.log(original.name); // Carlos
+console.log(original.address.street); // Av. Siempre Viva
+console.log(deepCopy.name); // Luis
+console.log(deepCopy.address.street); // Av. Los Pinos
+```
+
+- **Librerías como Lodash**
+
+Para clonaciones profundas más complejas, se pueden usar librerías como lodash que proporcionan funciones avanzadas para clonar objetos.
+
+```js copy filename="JavaScript"
+const _ = require("lodash");
+
+let original = {
+  name: "Carlos",
+  age: 35,
+  address: {
+    city: "Lima",
+    street: "Av. Siempre Viva",
+  },
+  hobbies: ["reading", "travelling"],
+};
+
+let deepCopy = _.cloneDeep(original);
+
+deepCopy.name = "Luis";
+deepCopy.address.street = "Av. Los Pinos";
+deepCopy.hobbies.push("cooking");
+
+console.log(original.name); // Carlos
+console.log(original.address.street); // Av. Siempre Viva
+console.log(original.hobbies); // ["reading", "travelling"]
+console.log(deepCopy.name); // Luis
+console.log(deepCopy.address.street); // Av. Los Pinos
+console.log(deepCopy.hobbies); // ["reading", "travelling", "cooking"]
+```
+
+- **structuredClone()**
+
+JavaScript también ofrece el método structuredClone() para crear copias profundas de objetos y arreglos sin necesidad de usar librerías externas. Este método es nativo del lenguaje y maneja una gran variedad de tipos de datos, aunque tiene limitaciones similares a JSON.parse() y JSON.stringify() respecto a funciones y elementos del DOM.
+
+```js copy filename="JavaScript"
+let original = {
+  name: "Carlos",
+  age: 35,
+  address: {
+    city: "Lima",
+    street: "Av. Siempre Viva",
+  },
+  hobbies: ["reading", "travelling"],
+};
+
+let deepCopy = structuredClone(original);
+
+deepCopy.name = "Luis";
+deepCopy.address.street = "Av. Los Pinos";
+deepCopy.hobbies.push("cooking");
+
+console.log(original.name); // Carlos
+console.log(original.address.street); // Av. Siempre Viva
+console.log(original.hobbies); // ["reading", "travelling"]
+console.log(deepCopy.name); // Luis
+console.log(deepCopy.address.street); // Av. Los Pinos
+console.log(deepCopy.hobbies); // ["reading", "travelling", "cooking"]
+```
+
+**Reestructurando Nuevos Objetos**
+
+La reestructuración de objetos implica crear nuevos objetos a partir de otros existentes, combinando propiedades y valores de diferentes maneras. Esto se puede hacer fácilmente utilizando el operador spread (...), introducido en ES6.
+
+- **Creando un Nuevo Objeto a partir de Otro**
+
+El operador spread permite copiar todas las propiedades de un objeto a otro de manera concisa.
+
+```js copy filename="JavaScript"
+const persona = {
+  nombre: "Juan",
+  edad: 30,
+  ciudad: "Lima",
+};
+
+const nuevaPersona = { ...persona, profesion: "Ingeniero" };
+console.log(nuevaPersona);
+// Salida: { nombre: 'Juan', edad: 30, ciudad: 'Lima', profesion: 'Ingeniero' }
+```
+
+En este ejemplo, se crea un nuevo objeto nuevaPersona copiando todas las propiedades de persona y añadiendo una nueva propiedad profesion.
+
+- **Combinando Múltiples Objetos**
+
+El operador spread también se puede utilizar para combinar múltiples objetos en uno solo.
+
+```js copy filename="JavaScript"
+const datosPersonales = {
+  nombre: "Ana",
+  edad: 28,
+};
+
+const direccion = {
+  ciudad: "Cusco",
+  calle: "Av. Los Incas",
+};
+
+const personaCompleta = { ...datosPersonales, ...direccion };
+console.log(personaCompleta);
+// Salida: { nombre: 'Ana', edad: 28, ciudad: 'Cusco', calle: 'Av. Los Incas' }
+```
+
+En este ejemplo, se combinan los objetos datosPersonales y direccion en un nuevo objeto personaCompleta que contiene todas las propiedades de ambos objetos.
+
+- **Reestructuración Selectiva**
+
+También es posible seleccionar y combinar propiedades específicas de varios objetos para crear un nuevo objeto.
+
+```js copy filename="JavaScript"
+const usuario = {
+  id: 1,
+  nombre: "Carlos",
+  edad: 34,
+};
+
+const detalles = {
+  email: "carlos@example.com",
+  ciudad: "Lima",
+};
+
+const usuarioDetallado = {
+  id: usuario.id,
+  nombre: usuario.nombre,
+  ...detalles,
+};
+
+console.log(usuarioDetallado);
+// Salida: { id: 1, nombre: 'Carlos', email: 'carlos@example.com', ciudad: 'Lima' }
+```
+
+En este ejemplo, el objeto usuarioDetallado combina propiedades seleccionadas del objeto usuario con todas las propiedades del objeto detalles.
+
+### Iteradores de Objetos
+
+En JavaScript, un iterador es una herramienta que permite recorrer una estructura de datos, elemento por elemento. Los iteradores son fundamentales para manipular y acceder a los datos en objetos de manera eficiente. En JavaScript, los objetos no son iterables por naturaleza como los arrays, pero existen métodos que facilitan su iteración: Object.keys(), Object.values(), y Object.entries().
+
+**Object.keys(obj)**
+
+Devuelve un array con las claves (propiedades) enumerables de un objeto obj.
+
+- **Uso de Object.keys()**
+
+El método Object.keys() se utiliza para obtener un array de las claves de un objeto. Este array puede ser iterado utilizando cualquier método de iteración de arrays, como forEach, map, o un bucle for...of.
+
+```js copy filename="JavaScript"
+const usuario = {
+  nombre: "Carlos",
+  edad: 30,
+  ciudad: "Lima",
+};
+
+const keys = Object.keys(usuario);
+console.log(keys); // ["nombre", "edad", "ciudad"]
+
+keys.forEach((key) => {
+  console.log(key); // "nombre", "edad", "ciudad"
+});
+```
+
+**Object.values(obj)**
+
+Devuelve un array con los valores de las propiedades enumerables de un objeto obj.
+
+- **Uso de Object.values()**
+
+El método Object.values() devuelve un array con los valores de las propiedades de un objeto. Este método es útil para acceder y manipular los valores directamente.
+
+```js copy filename="JavaScript"
+const usuario = {
+  nombre: "Carlos",
+  edad: 30,
+  ciudad: "Lima",
+};
+
+const values = Object.values(usuario);
+console.log(values); // ["Carlos", 30, "Lima"]
+
+values.forEach((value) => {
+  console.log(value); // "Carlos", 30, "Lima"
+});
+```
+
+**Object.entries(obj)**
+
+Devuelve un array de arrays, donde cada sub-array contiene un par [key, value] de las propiedades enumerables de un objeto obj.
+
+- **Uso de Object.entries()**
+
+El método Object.entries() devuelve un array de pares [clave, valor] del objeto. Cada elemento del array es un array con dos elementos: la clave y el valor correspondientes.
+
+```js copy filename="JavaScript"
+const usuario = {
+  nombre: "Carlos",
+  edad: 30,
+  ciudad: "Lima",
+};
+
+const entries = Object.entries(usuario);
+console.log(entries); // [["nombre", "Carlos"], ["edad", 30], ["ciudad", "Lima"]]
+
+entries.forEach(([key, value]) => {
+  console.log(`${key}: ${value}`); // "nombre: Carlos", "edad: 30", "ciudad: Lima"
+});
+```
+
+**Convertir un Objeto a Array**
+
+Como vimos anteriormente cuando usamos los métodos Object.keys(obj), Object.values(obj), y Object.entries(obj), estos automáticamente nos devuelven un array en donde podemos encontrar lo que necesitamos de nuestros objetos, es decir:
+
+- Con el método Object.keys() obtenemos un de las claves (propiedades, índices, keys) del objeto.
+- Con el método Object.values() obtenemos un de los valores de las claves anteriores, en el mismo orden.
+- Con el método Object.entries() obtenemos un de entradas. Cada entrada es un del par clave-valor, es decir, la propiedad del objeto original y su valor correspondiente.
+
+**Convertir un Array a Objeto**
+
+Convertir un array a un objeto implica crear un objeto a partir de los elementos del array. Esto es especialmente útil cuando se trabaja con datos que se presentan inicialmente como arrays pero se necesita manipularlos como objetos.
+
+- **Convertir un Array de Pares Clave-Valor a un Objeto**
+
+Usando Object.fromEntries(), se puede convertir un array de pares [key, value] en un objeto.
+
+```js copy filename="JavaScript"
+const entriesArray = [
+  ["nombre", "Carlos"],
+  ["edad", 30],
+  ["ciudad", "Lima"],
+];
+
+const usuario = Object.fromEntries(entriesArray);
+console.log(usuario); // { nombre: "Carlos", edad: 30, ciudad: "Lima" }
+```
+
+- **Convertir un Array de Valores a un Objeto con Claves Numéricas**
+
+```js copy filename="JavaScript"
+const values = ["Carlos", 30, "Lima"];
+
+const objeto = {};
+values.forEach((value, index) => {
+  objeto[index] = value;
+});
+
+console.log(objeto); // { 0: "Carlos", 1: 30, 2: "Lima" }
+```
+
+- **Convertir un Array de Claves y un Array de Valores a un Objeto**
+
+```js copy filename="JavaScript"
+const keys = ["nombre", "edad", "ciudad"];
+const values = ["Carlos", 30, "Lima"];
+
+const usuario = {};
+keys.forEach((key, index) => {
+  usuario[key] = values[index];
+});
+
+console.log(usuario); // { nombre: "Carlos", edad: 30, ciudad: "Lima" }
+```
+
+### Agrupar Datos por Criterio
+
+En JavaScript, agrupar datos por un criterio específico es una tarea común, especialmente cuando se trabaja con colecciones de objetos. Agrupar permite reorganizar los datos para facilitar su análisis o procesamiento posterior. JavaScript ofrece métodos modernos para hacer esto de manera eficiente, como Object.groupBy() y Map.groupBy(), además de técnicas más tradicionales.
+
+**El Método Object.groupBy()**
+
+El método Object.groupBy() agrupa los elementos de un array basado en un criterio definido por una función de callback. Devuelve un objeto cuyas propiedades son los diferentes grupos creados a partir del criterio.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const users = [
+  { name: "Alice", type: "admin", color: "blue" },
+  { name: "Bob", type: "user", color: "green" },
+  { name: "Charlie", type: "admin", color: "blue" },
+  { name: "Dave", type: "user", color: "green" },
+];
+
+const usersByType = Object.groupBy(users, (user) => user.type);
+console.log(usersByType);
+/*
+{
+  admin: [
+    { name: "Alice", type: "admin", color: "blue" },
+    { name: "Charlie", type: "admin", color: "blue" }
+  ],
+  user: [
+    { name: "Bob", type: "user", color: "green" },
+    { name: "Dave", type: "user", color: "green" }
+  ]
+}
+*/
+```
+
+**El Método Map.groupBy()**
+
+El método Map.groupBy() funciona de manera similar a Object.groupBy(), pero devuelve un Map en lugar de un objeto. Esto puede ser útil cuando se necesita la funcionalidad adicional que ofrece Map, como la preservación del orden de inserción.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const usersByColor = Map.groupBy(users, (user) => user.color);
+console.log(usersByColor);
+/*
+Map {
+  "blue" => [
+    { name: "Alice", type: "admin", color: "blue" },
+    { name: "Charlie", type: "admin", color: "blue" }
+  ],
+  "green" => [
+    { name: "Bob", type: "user", color: "green" },
+    { name: "Dave", type: "user", color: "green" }
+  ]
+}
+*/
+```
+
+Para convertir el Map en un objeto, se puede utilizar Object.fromEntries():
+
+```js copy filename="JavaScript"
+const usersByColorObj = Object.fromEntries(usersByColor);
+console.log(usersByColorObj);
+/*
+{
+  blue: [
+    { name: "Alice", type: "admin", color: "blue" },
+    { name: "Charlie", type: "admin", color: "blue" }
+  ],
+  green: [
+    { name: "Bob", type: "user", color: "green" },
+    { name: "Dave", type: "user", color: "green" }
+  ]
+}
+*/
+```
+
+**Agrupar por Criterio (Legacy)**
+
+Antes de la introducción de estos métodos modernos, era común usar técnicas más manuales para agrupar datos. Una forma tradicional es usar Array.prototype.reduce() para construir el objeto agrupado.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+const groupByTypeLegacy = users.reduce((result, user) => {
+  const key = user.type;
+  if (!result[key]) {
+    result[key] = [];
+  }
+  result[key].push(user);
+  return result;
+}, {});
+
+console.log(groupByTypeLegacy);
+/*
+{
+  admin: [
+    { name: "Alice", type: "admin", color: "blue" },
+    { name: "Charlie", type: "admin", color: "blue" }
+  ],
+  user: [
+    { name: "Bob", type: "user", color: "green" },
+    { name: "Dave", type: "user", color: "green" }
+  ]
+}
+*/
+```
+
+### Ejercicios
+
+A continuación, presento una serie de quizes, preguntas y ejercicios diseñados para ayudarte a consolidar tu comprensión sobre los tipos de datos en JavaScript que hemos discutido. Cada ejercicio incluye una solución para que puedas verificar tu trabajo.
+
+**Quizes**
+
+<h4 className="font-medium mt-5">
+  1. ¿Qué método de JavaScript devuelve un array con las claves de un objeto?
+</h4>
+
+<p className="my-2">a) Object.keys()</p>
+<p>b) Object.values()</p>
+<p className="my-2">c) Object.entries()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) Object.keys()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  2. ¿Cuál de los siguientes métodos convierte un objeto en un array de pares
+  clave-valor?
+</h4>
+
+<p className="my-2">a) A. Object.keys()</p>
+<p>b) Object.values()</p>
+<p className="my-2">c) Object.entries()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) Object.entries()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  3. ¿Qué método se utiliza para convertir un array de pares clave-valor en un
+  objeto?
+</h4>
+
+<p className="my-2">a) Object.fromEntries()</p>
+<p>b) Object.entries()</p>
+<p className="my-2">c) Object.values()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) Object.fromEntries()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  4. ¿Cómo se llama la técnica que crea una nueva variable con el mismo valor
+  que otra variable primitiva en una ubicación diferente en memoria?
+</h4>
+
+<p className="my-2">a) Copia por referencia</p>
+<p>b) Copia por valor</p>
+<p className="my-2">c) Clonación superficial</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) Copia por valor</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  5. ¿Qué método moderno de JavaScript permite realizar una clonación profunda
+  de objetos complejos, incluyendo arrays anidados?
+</h4>
+
+<p className="my-2">a) Object.assign()</p>
+<p>b) JSON.stringify()</p>
+<p className="my-2">c) structuredClone()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) structuredClone()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  6. ¿Cuál de los siguientes métodos se utiliza para agrupar elementos de un
+  array en un objeto basado en un criterio específico?
+</h4>
+
+<p className="my-2">a) Array.prototype.map()</p>
+<p>b) Object.groupBy()</p>
+<p className="my-2">c) Object.fromEntries()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) Object.groupBy()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  7. ¿Cuál es la técnica recomendada para realizar una clonación superficial de
+  un objeto en JavaScript?
+</h4>
+
+<p className="my-2">a) Object.assign()</p>
+<p>b) JSON.stringify()</p>
+<p className="mt-2">c) structuredClone()</p>
+<p className="my-2">d) Array.prototype.map()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>a) Object.assign()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  8. ¿Qué método convierte los valores de un objeto en un array?
+</h4>
+
+<p className="my-2">a) Object.keys()</p>
+<p>b) Object.values()</p>
+<p className="my-2">c) Object.entries()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>b) Object.values()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  9. ¿Qué método devuelve un nuevo objeto creado a partir de un array de pares
+  clave-valor?
+</h4>
+
+<p className="my-2">a) Object.keys()</p>
+<p>b) Object.entries()</p>
+<p className="my-2">c) Object.fromEntries()</p>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>c) Object.fromEntries()</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+**Preguntas**
+
+<h4 className="font-medium mt-5">
+  1. ¿Qué diferencias existen entre la copia por valor y la copia por referencia
+  en JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Copia por valor: Se aplica a tipos de datos primitivos (number, string, boolean, null, undefined, symbol, bigint). Se crea una nueva variable con el mismo valor que la original en una ubicación diferente en memoria.
+      Copia por referencia: Se aplica a tipos de datos complejos (objects, arrays). La nueva variable no tiene su propia copia del valor sino una referencia al mismo objeto en memoria, por lo que cambios en la copia afectan al original y viceversa.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  2. ¿Cómo puedes convertir un objeto en un array de sus claves y valores?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      - Para convertir un objeto en un array de sus claves, se utiliza Object.keys(obj).
+      - Para convertir un objeto en un array de sus valores, se utiliza Object.values(obj).
+      - Para convertir un objeto en un array de pares clave-valor, se utiliza Object.entries(obj).
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  3. ¿Qué es una clonación profunda y cuándo se utiliza en JavaScript?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      La clonación profunda crea una copia de un objeto y todos sus niveles anidados, de modo que las modificaciones en la copia no afectan al original. Se utiliza cuando se trabaja con objetos complejos y se necesita asegurarse de que no haya referencias compartidas entre la copia y el original.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  4. Explica cómo Object.fromEntries() se utiliza para convertir un array de
+  pares clave-valor en un objeto.
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Object.fromEntries() toma un array de pares clave-valor y devuelve un nuevo objeto. Cada sub-array debe contener exactamente dos elementos: la clave y el valor. Este método es útil para reconstruir objetos a partir de datos transformados o manipulados.
+
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  5. ¿Cuál es la diferencia principal entre Object.groupBy() y Map.groupBy()?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Object.groupBy() devuelve un objeto con los elementos agrupados, mientras que Map.groupBy() devuelve un Map. Map permite usar claves de cualquier tipo y preserva el orden de inserción, lo cual es útil para ciertos tipos de operaciones y accesos más flexibles.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  6. ¿Cómo puedes usar Object.assign() para crear una copia superficial de un
+  objeto?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Object.assign() se puede usar para crear una copia superficial de un objeto combinando el objeto original con un nuevo objeto vacío: const copia = Object.assign({}, original). Este método copia solo el primer nivel de propiedades del objeto.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  7. ¿Qué hace el método Object.entries() y cuándo es útil?
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      Object.entries() devuelve un array de pares clave-valor del objeto, útil para iterar sobre las propiedades y valores del objeto utilizando métodos de array como forEach, map, etc.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium mt-5">
+  8. Describe un caso de uso para structuredClone().
+</h4>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+
+      structuredClone() se usa para realizar una clonación profunda de un objeto complejo, como un objeto que contiene otros objetos o arrays anidados. Es útil cuando se necesita una copia completamente independiente del original para evitar efectos colaterales no deseados.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+**Desafíos**
+
+<h4 className="font-medium my-5">1. Clonar un Objeto Superficialmente:</h4>
+
+Crea una función que tome un objeto y devuelva una copia superficial de ese objeto.
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        function clonSuperficial(obj) {
+          return Object.assign({}, obj);
+        }
+
+        const original = { a: 1, b: 2 };
+        const copia = clonSuperficial(original);
+        console.log(copia); // { a: 1, b: 2 }
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">2. Clonar un Objeto Profundamente</h4>
+
+Crea una función que tome un objeto y devuelva una copia profunda de ese objeto.
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        function clonProfundo(obj) {
+          return JSON.parse(JSON.stringify(obj));
+        }
+
+        const original = { a: 1, b: { c: 2 } };
+        const copia = clonProfundo(original);
+        copia.b.c = 3;
+        console.log(original.b.c); // 2
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  3. Convertir un Objeto a un Array de Pares Clave-Valor
+</h4>
+
+Crea una función que tome un objeto y devuelva un array de pares clave-valor.
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        function objetoAArray(obj) {
+          return Object.entries(obj);
+        }
+
+        const usuario = { nombre: "Ana", edad: 25 };
+        console.log(objetoAArray(usuario)); // [["nombre", "Ana"], ["edad", 25]]
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  4. Convertir un Array de Pares Clave-Valor a un Objeto
+</h4>
+
+Crea una función que tome un array de pares clave-valor y devuelva un objeto.
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        function arrayAObjeto(entries) {
+          return Object.fromEntries(entries);
+        }
+
+        const entries = [["nombre", "Ana"], ["edad", 25]];
+        console.log(arrayAObjeto(entries)); // { nombre: "Ana", edad: 25 }
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<h4 className="font-medium my-5">
+  5. Clonación Superficial y Profunda en una Función
+</h4>
+
+Crea una función que permita elegir entre una clonación superficial y una profunda.
+
+<div className="my-5">
+  <Editor
+    height="10vh"
+    theme="vs-dark"
+    defaultLanguage="javascript"
+    defaultValue="// Escribe aquí tu código JavaScript"
+  />
+</div>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Respuesta</AccordionTrigger>
+    <AccordionContent>
+      <div>
+
+        ```js copy filename="JavaScript"
+        function clonar(obj, tipo) {
+          if (tipo === 'superficial') {
+            return Object.assign({}, obj);
+          } else if (tipo === 'profunda') {
+            return JSON.parse(JSON.stringify(obj));
+          }
+        }
+
+        const original = { a: 1, b: { c: 2 } };
+        const copiaSuperficial = clonar(original, 'superficial');
+        const copiaProfunda = clonar(original, 'profunda');
+
+        copiaSuperficial.b.c = 3;
+        copiaProfunda.b.c = 4;
+
+        console.log(original.b.c); // 3
+        console.log(copiaSuperficial.b.c); // 3
+        console.log(copiaProfunda.b.c); // 4
+        ```
+
+      </div>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Arrays
+
+Un array en JavaScript es una estructura de datos fundamental que te permite almacenar múltiples valores en una sola variable. Piensa en un array como una lista ordenada de elementos, donde cada elemento tiene una posición específica conocida como índice. Estos índices comienzan en 0, lo que significa que el primer elemento está en la posición 0, el segundo en la posición 1, y así sucesivamente. Los arrays son increíblemente versátiles, ya que pueden contener cualquier tipo de dato: números, cadenas de texto, booleanos, objetos, funciones e incluso otros arrays.
+
+### Creación de Arrays
+
+Existen varias formas de crear arrays en JavaScript, y cada una tiene sus propias ventajas y usos.
+
+1. **Usando el constructor Array:**
+
+- **new Array(size):** Crea un array con el tamaño especificado. Todos los elementos del array estarán inicializados como undefined. Este método puede ser útil cuando sabes de antemano el número de elementos que el array tendrá, pero no sus valores.
+
+```js copy filename="JavaScript"
+const arr1 = new Array(3); // [undefined, undefined, undefined]
+```
+
+- **new Array(elemento1, elemento2, ...):** Crea un array con los elementos proporcionados.
+
+```js copy filename="JavaScript"
+const arr2 = new Array("a", "b", "c"); // ['a', 'b', 'c']
+```
+
+<Callout emoji="👀" type="default">
+  Es importante notar que new Array(size) y new Array(3) no son lo mismo. El
+  primero crea un array con tres elementos undefined, mientras que el segundo
+  crea un array con un único elemento 3.
+</Callout>
+
+2. **Usando la notación de corchetes (literal de array)**
+
+Esta es la forma más común y recomendada para crear arrays debido a su simplicidad y claridad.
+
+```js copy filename="JavaScript"
+const arr1 = []; // Array vacío
+const arr2 = ["a", "b", "c"]; // ['a', 'b', 'c']
+const arr3 = ["a", 5, true]; // Array mixto ['a', 5, true]
+```
+
+Esta forma de crear arrays es preferida por su claridad y facilidad de uso, especialmente cuando trabajas con datos iniciales conocidos.
+
+**Arrays Mixtos**
+
+Esta forma de crear arrays es preferida por su claridad y facilidad de uso, especialmente cuando trabajas con datos iniciales conocidos.
+
+```js copy filename="JavaScript"
+const mixedArray = ["texto", 42, true, { key: "value" }, [1, 2, 3]];
+```
+
+En este ejemplo, el array contiene una cadena de texto, un número, un booleano, un objeto y otro array. Esta flexibilidad te permite estructurar datos complejos de una manera muy manejable.
+
+### Acceso a Elementos del Array
+
+Una vez que tienes un array, necesitas poder acceder y manipular sus elementos. JavaScript proporciona varias maneras de hacerlo, incluyendo la propiedad .length, el operador [], el método .with(), y el método .at().
+
+**Propiedad length**
+
+La propiedad length de un array en JavaScript devuelve el número de elementos que contiene el array. Es una propiedad que se actualiza automáticamente a medida que se añaden o eliminan elementos del array.
+
+<h4 className="font-medium mt-5">Ejemplo</h4>
+
+```js copy filename="JavaScript"
+let frutas = ["manzana", "banana", "cereza"];
+console.log(frutas.length); // 3
+```
+
+**El Operador []**
+
+El operador de corchetes [] es la manera más básica y común de acceder a los elementos de un array. Puedes usar este operador tanto para leer como para modificar los elementos de un array.
+
+<h4 className="font-medium mt-5">Acceder a elementos</h4>
+
+```js copy filename="JavaScript"
+const letters = ["a", "b", "c"];
+console.log(letters[0]); // 'a'
+console.log(letters[2]); // 'c'
+console.log(letters[5]); // undefined
+```
+
+Aquí, letters[0] accede al primer elemento del array, que es 'a'. Si intentas acceder a un índice que no existe, como letters[5], JavaScript devolverá undefined.
+
+<h4 className="font-medium mt-5">Modificar elementos</h4>
+
+```js copy filename="JavaScript"
+letters[1] = "z";
+console.log(letters); // ['a', 'z', 'c']
+```
+
+Puedes usar el operador [] para asignar un nuevo valor a un elemento existente en el array. En este caso, letters[1] se cambia de 'b' a 'z'.
+
+<h4 className="font-medium mt-5">
+  Añadir elementos en una posición específica
+</h4>
+
+```js copy filename="JavaScript"
+letters[3] = "d";
+console.log(letters); // ['a', 'z', 'c', 'd']
+```
+
+Puedes agregar un nuevo elemento a una posición específica en el array, incluso si esa posición es mayor que la longitud actual del array. JavaScript automáticamente llenará cualquier espacio intermedio con undefined.
+
+**El Método .with()**
+
+El método .with() es una adición moderna a JavaScript (ES2023) que te permite crear una nueva copia de un array con un elemento modificado en una posición específica, sin modificar el array original. Esto es útil cuando necesitas trabajar con versiones inmutables de datos.
+
+<h4 className="font-medium mt-5">Modificar elementos</h4>
+
+```js copy filename="JavaScript"
+const letters = ["a", "b", "c"];
+const newLetters = letters.with(1, "y");
+console.log(newLetters); // ['a', 'y', 'c']
+console.log(letters); // ['a', 'b', 'c'] (sin cambios)
+```
+
+El método .with() devuelve un nuevo array donde el elemento en la posición especificada ha sido cambiado. El array original permanece sin cambios.
+
+<h4 className="font-medium mt-5">
+  Agregar elementos en posiciones no existentes
+</h4>
+
+El método .with() no permite agregar elementos en posiciones que no existen en el array original. Intentar hacerlo resultará en un error.
+
+```js copy filename="JavaScript"
+try {
+  const invalid = letters.with(10, "z");
+} catch (error) {
+  console.error(error); // Error: Index 10 out of range [0, 4)
+}
+```
+
+**El Método .at()**
+
+El método .at() es otra característica moderna (ES2022) que te permite acceder a los elementos del array usando índices positivos o negativos. Esto es particularmente útil para acceder a elementos desde el final del array sin tener que calcular manualmente la posición.
+
+<h4 className="font-medium mt-5">Índices positivos</h4>
+
+```js copy filename="JavaScript"
+console.log(letters.at(0)); // 'a'
+console.log(letters.at(1)); // 'b'
+```
+
+Funciona de manera similar al operador [].
+
+<h4 className="font-medium mt-5">Índices negativos</h4>
+
+```js copy filename="JavaScript"
+console.log(letters.at(-1)); // 'c' (último elemento)
+console.log(letters.at(-2)); // 'b'
+```
+
+Los índices negativos te permiten contar desde el final del array, lo cual puede ser más intuitivo en algunos casos.
+
+### Añadir o eliminar elementos en Arrays
+
+La capacidad de añadir o eliminar elementos de un array es crucial para manipular datos de manera efectiva. Aquí nos centraremos en los métodos más comunes para añadir y eliminar elementos del principio y del final de un array, profundizando en su funcionamiento y proporcionando ejemplos detallados para una comprensión completa.
+
+**Añadir Elementos a un Array**
+
+- **Método push()**
+
+El método push() es utilizado para añadir uno o más elementos al final de un array. Este método modifica el array original y devuelve la nueva longitud del array.
+
+<h4 className="font-medium mt-5">ejemplo</h4>
+
+```js copy filename="JavaScript"
+let frutas = ["manzana", "banana"];
+let nuevaLongitud = frutas.push("naranja", "kiwi");
+console.log(frutas); // ["manzana", "banana", "naranja", "kiwi"]
+console.log(nuevaLongitud); // 4
+```
+
+**Explicación**
+
+-- Estado Inicial: frutas contiene ["manzana", "banana"].
+-- Operación: Se añaden "naranja" y "kiwi" al final del array utilizando push().
+-- Resultado: frutas ahora contiene ["manzana", "banana", "naranja", "kiwi"] y la longitud del array es 4.
+
+El método push() es especialmente útil cuando deseas agregar elementos a una lista de manera dinámica, como al registrar entradas de usuario o al añadir datos recibidos de una API a una lista existente.
+
+- **Método unshift()**
+
+El método unshift() añade uno o más elementos al principio de un array y devuelve la nueva longitud del array. Este método es útil cuando necesitas que ciertos elementos tengan prioridad y sean procesados primero.
+
+<h4 className="font-medium mt-5">ejemplo</h4>
+
+```js copy filename="JavaScript"
+let verduras = ["zanahoria", "pepino"];
+let nuevaLongitud = verduras.unshift("lechuga", "espinaca");
+console.log(verduras); // ["lechuga", "espinaca", "zanahoria", "pepino"]
+console.log(nuevaLongitud); // 4
+```
+
+**Explicación**
+
+-- Estado Inicial: verduras contiene ["zanahoria", "pepino"].
+-- Operación: Se añaden "lechuga" y "espinaca" al principio del array utilizando unshift().
+-- Resultado: verduras ahora contiene ["lechuga", "espinaca", "zanahoria", "pepino"] y la longitud del array es 4.
+
+Este método es ideal para escenarios donde los elementos nuevos deben ser procesados primero, como una lista de tareas donde las tareas más recientes deben tener prioridad.
+
+**Eliminar Elementos de un Array**
+
+- **Método pop()**
+
+El método pop() elimina el último elemento de un array y devuelve ese elemento. Este método es útil cuando trabajas con estructuras de datos tipo pila (LIFO - Last In, First Out).
+
+<h4 className="font-medium mt-5">ejemplo</h4>
+
+```js copy filename="JavaScript"
+let numeros = [1, 2, 3, 4, 5];
+let ultimoNumero = numeros.pop();
+console.log(numeros); // [1, 2, 3, 4]
+console.log(ultimoNumero); // 5
+```
+
+**Explicación**
+
+-- Estado Inicial: numeros contiene [1, 2, 3, 4, 5].
+-- Operación: Se elimina el último elemento del array utilizando pop().
+-- Resultado: numeros ahora contiene [1, 2, 3, 4] y el valor devuelto por pop() es 5.
+
+pop() es útil en situaciones donde necesitas procesar o manejar el último elemento añadido a una lista, como deshacer la última acción en una aplicación.
+
+- **Método shift()**
+
+El método shift() elimina el primer elemento de un array y devuelve ese elemento. Este método es útil cuando trabajas con estructuras de datos tipo cola (FIFO - First In, First Out).
+
+<h4 className="font-medium mt-5">ejemplo</h4>
+
+```js copy filename="JavaScript"
+let tareas = ["desayunar", "trabajar", "cenar"];
+let primeraTarea = tareas.shift();
+console.log(tareas); // ["trabajar", "cenar"]
+console.log(primeraTarea); // "desayunar"
+```
+
+**Explicación**
+
+-- Estado Inicial: tareas contiene ["desayunar", "trabajar", "cenar"].
+-- Operación: Se elimina el primer elemento del array utilizando shift().
+-- Resultado: tareas ahora contiene ["trabajar", "cenar"] y el valor devuelto por shift() es "desayunar".
+
+shift() es ideal para escenarios donde los elementos deben ser procesados en el orden en que fueron añadidos, como en una cola de solicitudes o tareas.
